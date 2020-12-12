@@ -8,6 +8,9 @@ import { FlexSpacerDirective } from './flex-spacer.directive';
   declarations: [FlexSpacerDirective],
   imports: [
     CommonModule
+  ],
+  exports: [
+    FlexSpacerDirective
   ]
 })
 export class DirectivesModule { }
