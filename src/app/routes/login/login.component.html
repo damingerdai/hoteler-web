@@ -1,6 +1,6 @@
 <div class="box w-full">
   <mat-card class="card">
-    <mat-card-title>
+    <mat-card-title class="text-center">
       Hoteler系统登录
     </mat-card-title>
     <form class="form-field-full" [formGroup]="loginForm" (submit)="login()">
@@ -15,7 +15,7 @@
         <mat-label>密码</mat-label>
         <input matInput placeholder="password" formControlName="password">
       </mat-form-field>
-      <button class="w-full" mat-raised-button color="primary"  [disabled]="loginForm.invalid">登录</button>
+      <button class="w-full" mat-raised-button color="primary" [disabled]="loginForm.invalid">登录</button>
     </form>
   </mat-card>
 </div>
