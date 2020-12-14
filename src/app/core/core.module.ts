@@ -1,5 +1,5 @@
-import { NgModule, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule, Optional } from '@angular/core';
 import { SkipSelf } from '@angular/core';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 

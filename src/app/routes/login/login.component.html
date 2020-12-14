@@ -1,0 +1,21 @@
+<div class="box w-full">
+  <mat-card class="card">
+    <mat-card-title>
+      Hoteler系统登录
+    </mat-card-title>
+    <form class="form-field-full" [formGroup]="loginForm" (submit)="login()">
+      <mat-form-field appearance="outline">
+        <mat-label>用户名</mat-label>
+        <input matInput placeholder="user name" formControlName="username">
+        <mat-error *ngIf="username.invalid">
+           请输入用户名
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field  appearance="outline">
+        <mat-label>密码</mat-label>
+        <input matInput placeholder="password" formControlName="password">
+      </mat-form-field>
+      <button class="w-full" mat-raised-button color="primary"  [disabled]="loginForm.invalid">登录</button>
+    </form>
+  </mat-card>
+</div>

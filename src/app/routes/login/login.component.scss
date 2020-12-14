@@ -1,0 +1,17 @@
+.box {
+  align-items: center;
+  display: flex;
+  padding: {
+    top: 200px;
+  };
+
+  .card {
+    margin: 0 auto;
+
+    .form-field-full {
+      .mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
