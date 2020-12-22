@@ -9,6 +9,11 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'login'
+      },
+      {
         path: 'login',
         loadChildren: () => import('./routes/login/login.module').then(m => m.LoginModule)
       }

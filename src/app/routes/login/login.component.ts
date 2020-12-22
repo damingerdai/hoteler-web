@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/core/api/api.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage/local-storage.service';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private api: ApiService,
     private fb: FormBuilder,
+    private localStorageService: LocalStorageService,
     private settings: SettingsService
   ) {
     this.loginForm = this.fb.group({
@@ -35,9 +37,11 @@ export class LoginComponent implements OnInit {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }).subscribe(res => {
-      this.settings.user = {
+      const user =  {
         username: this.loginForm.value.username
       };
+      this.localStorageService.set('user', user);
+      this.settings.user = user;
     });
   }
 
