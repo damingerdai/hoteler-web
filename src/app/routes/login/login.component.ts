@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api/api.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage/local-storage.service';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private api: ApiService,
     private fb: FormBuilder,
     private localStorageService: LocalStorageService,
-    private settings: SettingsService
+    private settings: SettingsService,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
       };
       this.localStorageService.set('user', user);
       this.settings.user = user;
+      this.router.navigate(['dashboard']);
     });
   }
 

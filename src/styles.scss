@@ -1,16 +1,12 @@
-// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.h-full {
-  height: 100% !important;
-}
+@import './app-theme';
 
-.w-full {
-  width: 100% !important;
-}
+// Include material core styles.
+@include mat-core();
 
-.text-center {
-  text-align: center !important;
-}
+@include angular-material-theme($theme);
+@include hoteler-app-theme($theme);
+
+

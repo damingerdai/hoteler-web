@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 import { LayoutComponent } from './layout/layout.component';
 
 
@@ -19,7 +20,13 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
+        canLoad: [AuthGuard],
         loadChildren: () => import('./routes/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'room',
+        canLoad: [AuthGuard],
+        loadChildren: () => import('./routes/room/room.module').then(m => m.RoomModule)
       }
     ]
   }

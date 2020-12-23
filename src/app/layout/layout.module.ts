@@ -8,7 +8,6 @@ import { LayoutComponent } from './layout.component';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
     SharedModule
   ],
   declarations: [LayoutComponent],
