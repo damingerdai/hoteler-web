@@ -1,19 +1,25 @@
 <mat-toolbar color="primary">
   <a mat-button class="docs-button" routerLink="/" aria-label="Angular Material">
-      <img class="logo" src="assets/img/angular-white-transparent.svg" alt="angular">
-      <span>Hoteler</span>
+    <img class="logo" src="assets/img/angular-white-transparent.svg" alt="angular">
+    <span>Hoteler</span>
   </a>
   <a mat-button class="docs-button" routerLink="dashboard">
     仪表盘
-</a>
-  <a mat-button class="docs-button" >
-      客户信息
+  </a>
+  <a mat-button class="docs-button">
+    客户信息
   </a>
   <a mat-button class="docs-button" routerLink="room">
-      房间信息
+    房间信息
   </a>
   <div flexSpacer></div>
-  <a mat-button class="docs-button">
+  <a mat-button class="docs-button" [matMenuTriggerFor]="menu" aria-label="user profile">
     {{ username }}
-</a>
+  </a>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>登出</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>

@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate, CanLoad {
 
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    console.log(this.localStorageService.get('user'));
     if (this.localStorageService.get('user')) {
       return true;
     }
@@ -27,7 +26,6 @@ export class AuthGuard implements CanActivate, CanLoad {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log(route);
       if (this.localStorageService.get('user')) {
         return true;
       }
