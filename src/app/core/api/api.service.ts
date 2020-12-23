@@ -26,4 +26,8 @@ export class ApiService {
     }
     return this.httpClient.post<T>(url, params, httpOptions);
   }
+
+  public get<T>(url: string): Observable<T> {
+    return this.httpClient.get<T>(url);
+  }
 }
