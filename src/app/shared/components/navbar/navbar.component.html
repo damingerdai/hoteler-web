@@ -1,17 +1,20 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" aria-label="Top Toolbar">
   <a mat-button class="docs-button" routerLink="/" aria-label="Angular Material">
     <img class="logo" src="assets/img/angular-white-transparent.svg" alt="angular">
     <span>Hoteler</span>
   </a>
-  <a mat-button class="docs-button" routerLink="dashboard">
-    仪表盘
-  </a>
-  <a mat-button class="docs-button">
-    客户信息
-  </a>
-  <a mat-button class="docs-button" routerLink="room">
-    房间信息
-  </a>
+  <ng-container *ngIf="!isMobile">
+    <a mat-button class="docs-button" routerLink="dashboard">
+      仪表盘
+    </a>
+    <a mat-button class="docs-button">
+      客户信息
+    </a>
+    <a mat-button class="docs-button" routerLink="room">
+      房间信息
+    </a>
+  </ng-container>
+
   <div flexSpacer></div>
   <a mat-button class="docs-button" [matMenuTriggerFor]="menu" aria-label="user profile">
     {{ username }}
@@ -22,4 +25,15 @@
       <span>登出</span>
     </button>
   </mat-menu>
+</mat-toolbar>
+<mat-toolbar color="primary" aria-label="Section Nav Bar" *ngIf="isMobile">
+  <a mat-button class="docs-button navbar-link" routerLink="dashboard">
+    仪表盘
+  </a>
+  <a mat-button class="docs-button navbar-link">
+    客户信息
+  </a>
+  <a mat-button class="docs-button navbar-link" routerLink="room">
+    房间信息
+  </a>
 </mat-toolbar>

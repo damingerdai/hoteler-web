@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NavbarComponent, PageHeaderComponent } from './components';
-
+import { SharedCdkModule } from './shared.cdk.module';
 import { SharedMaterialModule } from './shared.material.module';
 import { UiModule } from './ui/ui.module';
 
@@ -20,12 +20,14 @@ const DECLARATIONS = [
     UiModule,
     RouterModule,
     ReactiveFormsModule,
+    SharedCdkModule,
     SharedMaterialModule
   ],
   exports: [
     UiModule,
     RouterModule,
     ReactiveFormsModule,
+    SharedCdkModule,
     SharedMaterialModule,
 
     ...DECLARATIONS
