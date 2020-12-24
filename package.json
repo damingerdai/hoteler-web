@@ -5,10 +5,15 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+		"changelog:all": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points --tsconfig ./tsconfig.json"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points --tsconfig ./tsconfig.json",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+		"version:patch": "yarn version --patch",
+		"version:minor": "yarn version --minor"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +28,7 @@
     "@angular/platform-browser": "~11.0.5",
     "@angular/platform-browser-dynamic": "~11.0.5",
     "@angular/router": "~11.0.5",
+    "conventional-changelog-cli": "^2.1.1",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
