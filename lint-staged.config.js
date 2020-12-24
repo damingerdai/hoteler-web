@@ -1,9 +1,10 @@
 const path = require('path');
 
 module.exports = {
-    "*.ts" : absolutePath => {
-        // const cwd = process.cwd();
-        // const relativePaths = absolutePath
-        return 'ng lint hoteler-web'
-    }
+    "**/*.ts?(x)": (filenames) =>
+		filenames.length > 10
+			? 'ng lint hoteler-web'
+			: `tslint --format verbose --project ./tsconfig.json --config ./tslint.json ${filenames.join(
+					" "
+			  )}`,
 }
