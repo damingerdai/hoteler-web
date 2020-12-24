@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>创建房间</h1>
+<div mat-dialog-content>
+  <p>请输入房间名</p>
+  <mat-form-field appearance="outline">
+    <mat-label>房间名</mat-label>
+    <input matInput [formControl]="roonname"/>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>取消</button>
+  <button mat-button [mat-dialog-close]="roonname.value" [disabled]="roonname.invalid">确定</button>
+</div>

@@ -11,6 +11,10 @@ export class RoomService {
     private api: ApiService
   ) { }
 
+  public create(roomname: string): Observable<number> {
+    return this.api.post<number>('api/v1/room', { roomname });
+  }
+
   public list(): Observable<Rooms> {
     return this.api.get<Rooms>('api/v1/rooms');
   }
