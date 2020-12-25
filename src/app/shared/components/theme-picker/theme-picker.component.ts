@@ -14,19 +14,19 @@ export class ThemePickerComponent implements OnInit {
 
   themes: SiteThemes = [
     {
-      primary: '#673AB7',
-      accent: '#FFC107',
-      displayName: 'Deep Purple & Amber',
-      name: 'deeppurple-amber',
-      isDark: false,
-    },
-    {
       primary: '#3F51B5',
       accent: '#E91E63',
       displayName: 'Indigo & Pink',
       name: 'indigo-pink',
       isDark: false,
       isDefault: true,
+    },
+    {
+      primary: '#673AB7',
+      accent: '#FFC107',
+      displayName: 'Deep Purple & Amber',
+      name: 'deeppurple-amber',
+      isDark: false,
     },
     {
       primary: '#E91E63',
