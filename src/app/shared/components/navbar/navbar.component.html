@@ -17,7 +17,7 @@
 
   <div flexSpacer></div>
   <app-theme-picker></app-theme-picker>
-  <a mat-button class="docs-button" [matMenuTriggerFor]="menu" aria-label="user profile">
+  <a mat-button class="docs-button" [matMenuTriggerFor]="menu" aria-label="user profile" *ngIf="username">
     {{ username }}
   </a>
   <mat-menu #menu="matMenu">
