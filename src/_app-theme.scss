@@ -7,6 +7,10 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
+  .app-background {
+    background: mat-color($background, background);
+  }
+
   .primary-header {
     background: mat-color($primary);
 
