@@ -27,6 +27,11 @@ const routes: Routes = [
         path: 'room',
         canLoad: [AuthGuard],
         loadChildren: () => import('./routes/room/room.module').then(m => m.RoomModule)
+      },
+      {
+        path: 'customer',
+        canLoad: [AuthGuard],
+        loadChildren: () => import('./routes/customer/customer.module').then(m => m.CustomerModule)
       }
     ]
   }
