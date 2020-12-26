@@ -11,6 +11,14 @@
     background: mat-color($background, background);
   }
 
+  .box {
+    padding: 20px 40px;
+
+    @media (max-width: 600px) {
+      padding: 20px;
+    }
+  }
+
   .primary-header {
     background: mat-color($primary);
 

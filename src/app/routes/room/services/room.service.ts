@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api/api.service';
 import { Rooms } from 'src/app/core/models/room';
 
-
 @Injectable()
 export class RoomService {
 
