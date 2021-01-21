@@ -12,6 +12,8 @@ import { SettingsService } from 'src/app/core/services/settings/settings.service
 })
 export class LoginComponent implements OnInit {
 
+  public hide = true;
+
   public loginForm: FormGroup;
 
   public get username() {
