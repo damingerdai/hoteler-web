@@ -21,16 +21,19 @@ const routes: Routes = [
       {
         path: 'dashboard',
         canLoad: [AuthGuard],
+        canActivate:  [AuthGuard],
         loadChildren: () => import('./routes/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'room',
         canLoad: [AuthGuard],
+        canActivate:  [AuthGuard],
         loadChildren: () => import('./routes/room/room.module').then(m => m.RoomModule)
       },
       {
         path: 'customer',
         canLoad: [AuthGuard],
+        canActivate:  [AuthGuard],
         loadChildren: () => import('./routes/customer/customer.module').then(m => m.CustomerModule)
       }
     ]

@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   public isMobile: boolean;
 
   public get username() {
-    return this.localStorage.get('user')?.username;
+    return this.localStorage.get<any>('user')?.username;
   }
 
   constructor(

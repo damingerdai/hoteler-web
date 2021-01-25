@@ -8,8 +8,13 @@ export class LocalStorageService {
 
   constructor() { }
 
-  get(key: string) {
-    return JSON.parse(localStorage.getItem(key));
+  get<T>(key: string): T | null {
+    const value = localStorage.getItem(key);
+    if (value) {
+      return JSON.parse(value) as T;
+    } else {
+      return null;
+    }
   }
 
   set(key: string, value: any): boolean {

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CoreModule } from '../core.module';
-import { LocalStorageService } from '../services/local-storage/local-storage.service';
+
+import { CoreModule } from '..';
+import { LocalStorageService } from '../services/local-storage';
 
 @Injectable({
   providedIn: CoreModule

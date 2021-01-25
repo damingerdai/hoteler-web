@@ -4,7 +4,6 @@ import { NgModule, Optional } from '@angular/core';
 import { SkipSelf } from '@angular/core';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
-
 @NgModule({
   imports: [
     CommonModule,

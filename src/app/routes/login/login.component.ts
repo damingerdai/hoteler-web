@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api/api.service';
+import { ITokenReponse } from 'src/app/core/models';
 import { LocalStorageService } from 'src/app/core/services/local-storage/local-storage.service';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
@@ -37,11 +38,12 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-    this.api.post('/api/v1/token', {}, {
+    this.api.post<ITokenReponse>('/api/v1/token', {}, {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }).subscribe(res => {
       const user =  {
+        ...res,
         username: this.loginForm.value.username
       };
       this.localStorageService.set('user', user);
