@@ -3,12 +3,19 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { NavbarComponent, PageHeaderComponent, ThemePickerComponent, ThemeStorageService } from './components';
+import {
+  ErrorCodeComponent,
+  NavbarComponent,
+  PageHeaderComponent,
+  ThemePickerComponent,
+  ThemeStorageService
+} from './components';
 import { SharedCdkModule } from './shared.cdk.module';
 import { SharedMaterialModule } from './shared.material.module';
 import { UiModule } from './ui/ui.module';
 
 const DECLARATIONS = [
+  ErrorCodeComponent,
   NavbarComponent,
   PageHeaderComponent,
   ThemePickerComponent

@@ -1,6 +1,11 @@
 @import '~@angular/material/theming';
 
+@import './app/shared/components/error-code/error-code-theme';
+
 @mixin hoteler-app-theme($theme) {
+
+  @include hoteler-error-code-theme($theme);
+
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);

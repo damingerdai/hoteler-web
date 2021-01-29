@@ -1,11 +1,14 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { throwError, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ITokenReponse } from '../models';
 import { LocalStorageService } from '../services';
 
@@ -13,15 +16,33 @@ import { LocalStorageService } from '../services';
 export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
+    private router: Router,
     private localStorageService: LocalStorageService
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    return this.afterIntercept(this.doIntercept(request, next));
+  }
+
+  private doIntercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const accessToken = this.localStorageService.get<ITokenReponse>('user')?.accessToken;
     if (accessToken) {
       const authReq = request.clone({ setHeaders: { Authorization: 'Bearer ' + accessToken }});
       return next.handle(authReq);
     }
     return next.handle(request);
+  }
+
+  private afterIntercept(response: Observable<HttpEvent<unknown>>) {
+    return response.pipe(
+      catchError(error => {
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 403) {
+            this.router.navigateByUrl('/403');
+          }
+        }
+        return throwError(error);
+      })
+    );
   }
 }

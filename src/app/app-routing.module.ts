@@ -35,6 +35,10 @@ const routes: Routes = [
         canLoad: [AuthGuard],
         canActivate:  [AuthGuard],
         loadChildren: () => import('./routes/customer/customer.module').then(m => m.CustomerModule)
+      },
+      {
+        path: '403',
+        loadChildren: () => import('./routes/forbidden/forbidden.module').then(m => m.ForbiddenModule)
       }
     ]
   }
