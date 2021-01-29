@@ -28,6 +28,13 @@ export class ThemePickerComponent implements OnInit {
       name: 'deeppurple-amber',
       isDark: false,
     },
+    // {
+    //   primary: '#FF9800',
+    //   accent: '#FF5722',
+    //   displayName: 'PWC & Light',
+    //   name: 'pwc-light',
+    //   isDark: false
+    // },
     {
       primary: '#E91E63',
       accent: '#607D8B',
@@ -42,6 +49,13 @@ export class ThemePickerComponent implements OnInit {
       name: 'purple-green',
       isDark: true,
     },
+    // {
+    //   primary: '#FF9800',
+    //   accent: '#FF5722',
+    //   displayName: 'PWC & Dark',
+    //   name: 'pwc-dark',
+    //   isDark: true
+    // },
   ];
 
   constructor(

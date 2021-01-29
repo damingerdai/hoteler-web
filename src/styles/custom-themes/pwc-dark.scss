@@ -1,0 +1,10 @@
+@import '../../app-theme';
+
+// Define the light theme.
+$primary: mat-palette($mat-orange, 900, 100, 700, 900);
+$accent:  mat-palette($mat-deep-orange, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$theme: mat-dark-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+@include hoteler-app-theme($theme);

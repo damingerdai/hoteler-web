@@ -50,6 +50,16 @@
                 "inject": false,
                 "input": "src/styles/custom-themes/purple-green.scss",
                 "bundleName": "assets/purple-green"
+              },
+              {
+                "inject": false,
+                "input": "src/styles/custom-themes/pwc-light.scss",
+                "bundleName": "assets/pwc-light"
+              },
+              {
+                "inject": false,
+                "input": "src/styles/custom-themes/pwc-dark.scss",
+                "bundleName": "assets/pwc-dark"
               }
             ],
             "scripts": []
