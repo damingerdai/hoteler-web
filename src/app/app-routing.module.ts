@@ -39,6 +39,10 @@ const routes: Routes = [
       {
         path: '403',
         loadChildren: () => import('./routes/forbidden/forbidden.module').then(m => m.ForbiddenModule)
+      },
+      {
+        path: '401',
+        loadChildren: () => import('./routes/unauthorized/unauthorized.module').then(m => m.UnauthorizedModule)
       }
     ]
   }
