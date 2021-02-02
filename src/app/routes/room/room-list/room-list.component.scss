@@ -1,3 +1,5 @@
+@import '../../../../styles/breakpoints';
+
 .mat-divider  {
   margin: {
     bottom: 10px;
@@ -9,7 +11,20 @@
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+
+  @include respond-below(sm) {
+    .mat-column-no {
+      display: none;
+    }
+
+    .mat-column-roomname {
+      padding: {
+        left: 12px;
+      };
+    }
+  }
 }
+
 .action-container {
   display: flex;
   justify-content: flex-start;
@@ -19,3 +34,4 @@
     margin: 8px 8px 8px 0;
   }
 }
+
