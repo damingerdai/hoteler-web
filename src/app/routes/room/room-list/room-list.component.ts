@@ -15,7 +15,7 @@ import { RoomService } from '../services/room.service';
 })
 export class RoomListComponent implements OnInit {
 
-  public displayedColumns: string[] = ['no', 'roomname', 'status'];
+  public displayedColumns: string[] = ['no', 'roomname', 'price', 'status', 'action'];
 
   public rooms: Rooms;
 
@@ -31,12 +31,12 @@ export class RoomListComponent implements OnInit {
 
   public createRoom() {
     const dialogRef = this.dialog.open(CreateRoomDialogComponent, {
-      width: '250px',
+      width: '400px',
     });
 
     dialogRef.afterClosed().pipe(
       filter(res => !!res),
-      switchMap(roomname => this.roomApi.create(roomname))
+      switchMap(res => this.roomApi.create(res))
     ).subscribe(() => {
       this.snackBar.open('创建房间成功🚀', 'X', {
         duration: 500,

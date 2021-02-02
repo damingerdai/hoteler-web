@@ -1,6 +1,7 @@
 export interface IRoom {
   id: string;
   roomname: string;
+  price: number;
   status: string;
 }
 

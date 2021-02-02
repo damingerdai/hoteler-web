@@ -1,0 +1,21 @@
+.mat-divider  {
+  margin: {
+    bottom: 10px;
+    top: 10px;
+  };
+}
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.action-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -9,13 +9,24 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class CreateRoomDialogComponent implements OnInit {
 
-  public roonname: FormControl;
+  public room: FormGroup;
+
+  public get roomname() {
+    return this.room.get('roomname');
+  }
+
+  public get price() {
+    return this.room.get('price');
+  }
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CreateRoomDialogComponent>,
   ) {
-    this.roonname = this.fb.control('', [Validators.required]);
+    this.room = this.fb.group({
+      roomname: ['', [Validators.required]],
+      price: [0, [Validators.required, Validators.min(0), Validators.pattern('^[0-9]*$')]]
+    });
   }
 
   ngOnInit(): void {
