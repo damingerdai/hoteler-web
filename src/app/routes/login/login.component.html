@@ -3,21 +3,30 @@
     <mat-card-title class="text-center">
       Hoteler系统登录
     </mat-card-title>
-    <form class="form-field-full" [formGroup]="loginForm" (submit)="login()">
+    <form class="form-field-full" [formGroup]="loginForm" (submit)="login()" (touch)="errorMessage = ''">
       <mat-form-field appearance="outline">
         <mat-label>用户名</mat-label>
-        <input matInput placeholder="user name" formControlName="username">
+        <input matInput placeholder="用户名" formControlName="username">
         <mat-error *ngIf="username.invalid">
-           请输入用户名
+          请输入用户名
         </mat-error>
       </mat-form-field>
-      <mat-form-field  appearance="outline">
+      <mat-form-field appearance="outline">
         <mat-label>密码</mat-label>
         <input matInput placeholder="password" [type]="hide ? 'password' : 'text'" formControlName="password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
+        </button>
+        <mat-error *ngIf="password.invalid">
+          请输入密码
+        </mat-error>
       </mat-form-field>
+      <div class="error" *ngIf="loginForm.errors">
+        <mat-error>
+          {{loginForm.errors.login}}
+        </mat-error>
+      </div>
       <button class="w-full" mat-raised-button color="primary" [disabled]="loginForm.invalid">登录</button>
     </form>
   </mat-card>

@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ITokenReponse } from '../models';
+import { IUserToken } from '../models';
 import { LocalStorageService } from '../services';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private doIntercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const accessToken = this.localStorageService.get<ITokenReponse>('user')?.accessToken;
+    const accessToken = this.localStorageService.get<IUserToken>('user')?.accessToken;
     if (accessToken) {
       const authReq = request.clone({ setHeaders: { Authorization: 'Bearer ' + accessToken }});
       return next.handle(authReq);

@@ -30,4 +30,8 @@ export class ApiService {
   public get<T>(url: string): Observable<T> {
     return this.httpClient.get<T>(url);
   }
+
+  public delete<T>(url: string): Observable<T> {
+    return this.httpClient.delete<T>(url);
+  }
 }
