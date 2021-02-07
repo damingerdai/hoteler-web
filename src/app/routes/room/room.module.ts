@@ -2,16 +2,16 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CreateRoomDialogComponent } from './dialog/create-room-dialog/create-room-dialog.component';
+import { CreateRoomDialogComponent, UpdateRoomDialogComponent } from './dialog/';
 import { RoomListComponent } from './room-list/room-list.component';
 import { RoomRoutingModule } from './room-routing.module';
 import { RoomService } from './services/room.service';
 
-
 @NgModule({
   declarations: [
     RoomListComponent,
-    CreateRoomDialogComponent
+    CreateRoomDialogComponent,
+    UpdateRoomDialogComponent
   ],
   imports: [
     CommonModule,

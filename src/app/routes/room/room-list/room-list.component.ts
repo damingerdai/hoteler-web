@@ -1,11 +1,11 @@
-import { filter, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Rooms } from 'src/app/core/models/room';
-import { CreateRoomDialogComponent } from '../dialog/create-room-dialog/create-room-dialog.component';
+import { IRoom, Rooms } from 'src/app/core/models/room';
+import { CreateRoomDialogComponent, UpdateRoomDialogComponent } from '../dialog';
 import { RoomService } from '../services/room.service';
 
 @Component({
@@ -48,8 +48,42 @@ export class RoomListComponent implements OnInit {
     }, () => this.fetchAllRooms());
   }
 
-  public deleteRoom(id: number) {
+  public updateRoom(room: IRoom) {
+    console.log(room);
+    const dialogRef = this.dialog.open(UpdateRoomDialogComponent, {
+      width: '400px',
+      data: room
+    });
+    dialogRef.afterClosed().pipe(
+      filter(res => !!res),
+      map(res => {
+        return {
+          ...room,
+          ...res
+        };
+      }),
+      switchMap(res => this.roomApi.update(res))
+    ).subscribe((res) => {
+      if (res.status === 200) {
+        this.snackBar.open('更新房间成功🚀', 'X', {
+          duration: 500,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
+      } else {
+        const message = res.error.message;
+        this.snackBar.open('更新房间失败🚀：' + message , 'X', {
+          duration: 500,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
+      }
+    }, err => {
+      console.error(err);
+    }, () => this.fetchAllRooms());
+  }
 
+  public deleteRoom(id: number) {
     this.roomApi.delete(id).subscribe(res => {
       if (res.status === 200) {
         this.snackBar.open('删除房间成功🚀', 'X', {

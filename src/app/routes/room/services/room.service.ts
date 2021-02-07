@@ -15,6 +15,10 @@ export class RoomService {
     return this.api.post<number>('api/v1/room', room);
   }
 
+  public update(room: { id: number, roomname: string, price: string, status: number | string}): Observable<IRespone> {
+    return this.api.put<IRespone>('api/v1/room', room as any);
+  }
+
   public delete(id: number): Observable<IRespone> {
     return this.api.delete<IRespone>(`api/v1/room/${id}`);
   }

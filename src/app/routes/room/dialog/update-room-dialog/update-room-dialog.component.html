@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>创建房间</h1>
+<h1 mat-dialog-title>更新房间</h1>
 <div mat-dialog-content>
   <p>请输入房间名</p>
   <form [formGroup]="room">
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>房间名</mat-label>
-      <input matInput formControlName="roomname" required/>
+      <input matInput formControlName="roomname" />
       <mat-error *ngIf="roomname.errors?.required">
         请输入房间名
       </mat-error>
@@ -16,9 +16,16 @@
         请输入价格
       </mat-error>
     </mat-form-field>
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>状态</mat-label>
+      <mat-select formControlName="status" required>
+        <mat-option [value]="1">NoUse</mat-option>
+        <mat-option [value]="2">InUsed</mat-option>
+      </mat-select>
+    </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()" cdkFocusInitial>取消</button>
-  <button mat-button color="primary" [mat-dialog-close]="room.value" [disabled]="room.invalid">确定</button>
+  <button mat-button color="primary"  [mat-dialog-close]="room.value" [disabled]="room.invalid">确定</button>
 </div>
