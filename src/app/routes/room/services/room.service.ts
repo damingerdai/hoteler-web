@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api/api.service';
+import { IRespone } from 'src/app/core/models';
 import { Rooms } from 'src/app/core/models/room';
 
 @Injectable()
@@ -12,6 +13,10 @@ export class RoomService {
 
   public create(room: { roomname: string, price: string}): Observable<number> {
     return this.api.post<number>('api/v1/room', room);
+  }
+
+  public delete(id: number): Observable<IRespone> {
+    return this.api.delete<IRespone>(`api/v1/room/${id}`);
   }
 
   public list(): Observable<Rooms> {

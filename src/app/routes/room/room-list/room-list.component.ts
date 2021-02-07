@@ -48,6 +48,26 @@ export class RoomListComponent implements OnInit {
     }, () => this.fetchAllRooms());
   }
 
+  public deleteRoom(id: number) {
+
+    this.roomApi.delete(id).subscribe(res => {
+      if (res.status === 200) {
+        this.snackBar.open('删除房间成功🚀', 'X', {
+          duration: 500,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
+        this.fetchAllRooms();
+      } else {
+        this.snackBar.open('删除房间失败:' + res.error.message, 'X', {
+          duration: 500,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
+      }
+    });
+  }
+
   private fetchAllRooms() {
     this.roomApi.list().subscribe(rooms => this.rooms = rooms);
   }
