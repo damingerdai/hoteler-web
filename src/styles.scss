@@ -1,6 +1,7 @@
 
 @import './app-theme';
 @import './styles/general';
+@import './styles/helpers';
 
 // Include material core styles.
 @include mat-core();
