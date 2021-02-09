@@ -48,7 +48,13 @@ export class CustomerListComponent implements OnInit {
   }
 
   private fetchCustomers() {
-    this.customerApi.list().subscribe((customers) => this.customers = customers);
+    this.customerApi.list().subscribe((res) => {
+      if (res.status === 200) {
+        this.customers =  res.data;
+      } else {
+        this.snackBar.open('获取客户失败：' + res.error.message);
+      }
+    });
   }
 
 }
