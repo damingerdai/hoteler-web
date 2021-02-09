@@ -1,6 +1,9 @@
-.mat-divider  {
-  margin: {
-    bottom: 10px;
-    top: 10px;
-  };
+.action-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
 }

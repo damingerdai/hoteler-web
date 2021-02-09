@@ -11,3 +11,7 @@ export interface IRespone {
 }
 
 export type UserTokenReponse = IRespone & { userToken: IUserToken };
+
+export type DataReponse<T> = IRespone & { data: T };
+
+export type ListReponse<T> = IRespone & { data: T[] };
