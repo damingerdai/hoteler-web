@@ -1,7 +1,7 @@
 <app-page-header title="房间信息"></app-page-header>
 <div fxLayout="row wrap" class="box">
   <button mat-raised-button color="primary" (click)="createRoom()">创建房间</button>
-  <mat-divider></mat-divider>
+  <mat-divider class="divider"></mat-divider>
   <div class="mat-elevation-z8 table-responsive">
     <table mat-table [dataSource]="rooms" class="mat-elevation-z8 w-full">
       <ng-container matColumnDef="no">

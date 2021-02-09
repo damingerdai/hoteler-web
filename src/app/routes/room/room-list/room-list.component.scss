@@ -1,29 +1,18 @@
 @import '../../../../styles/breakpoints';
 
-.mat-divider  {
-  margin: {
-    bottom: 10px;
-    top: 10px;
-  };
-}
-.table-responsive {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-
+.mat-column {
   @include respond-below(sm) {
-    .mat-column-no {
+    &-no {
       display: none;
     }
-
-    .mat-column-roomname {
+    &-roomname {
       padding: {
         left: 12px;
       };
     }
   }
 }
+
 
 .action-container {
   display: flex;
