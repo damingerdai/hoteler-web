@@ -1,3 +1,18 @@
+@import '../../../../styles/breakpoints';
+
+.mat-column {
+  @include respond-below(sm) {
+    &-id, &-cardId, &-phone {
+      display: none;
+    }
+    &-name {
+      padding: {
+        left: 12px;
+      };
+    }
+  }
+}
+
 .action-container {
   display: flex;
   justify-content: flex-start;
