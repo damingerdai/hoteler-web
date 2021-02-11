@@ -1,6 +1,7 @@
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { StyleManagerService } from 'src/app/core/services/style-manager/style-manager.service';
-import { SiteTheme, SiteThemes } from './theme-storage/theme-storage.service';
+import { SiteTheme, SiteThemes, ThemeStorageService } from './theme-storage/theme-storage.service';
 
 @Component({
   selector: 'app-theme-picker',
@@ -59,9 +60,15 @@ export class ThemePickerComponent implements OnInit {
   ];
 
   constructor(
-    private styleManager: StyleManagerService
+    private styleManager: StyleManagerService,
+    private themeStorage: ThemeStorageService,
+    private liveAnnouncer: LiveAnnouncer
   ) {
     this.currentTheme = this.themes[0];
+    const themeName = this.themeStorage.getStoredThemeName();
+    if (themeName) {
+      this.selectTheme(themeName);
+    }
   }
 
   ngOnInit(): void {
@@ -79,6 +86,11 @@ export class ThemePickerComponent implements OnInit {
       this.styleManager.removeStyle('theme');
     } else {
       this.styleManager.setStyle('theme', `assets/${theme.name}.css`);
+    }
+
+    if (this.currentTheme) {
+      this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);
+      this.themeStorage.storeTheme(this.currentTheme);
     }
   }
 
