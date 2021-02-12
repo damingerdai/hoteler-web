@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { ApiService } from 'src/app/core/api/api.service';
-import { DataReponse, ListReponse } from 'src/app/core/models';
+import { DataReponse, IRespone, ListReponse } from 'src/app/core/models';
 import { ICustomer } from 'src/app/core/models/customer';
 
 @Injectable()
@@ -19,5 +19,9 @@ export class CustomerService {
 
   public list(): Observable<ListReponse<ICustomer>> {
     return this.api.get<ListReponse<ICustomer>>('api/v1/customers');
+  }
+
+  public delete(id: string | number): Observable<IRespone> {
+    return this.api.delete<IRespone>(`api/v1/customer/${id}`);
   }
 }

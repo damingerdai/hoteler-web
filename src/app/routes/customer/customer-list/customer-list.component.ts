@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { filter, switchMap } from 'rxjs/operators';
 import { Customers } from 'src/app/core/models';
+import { ConfirmComponent } from 'src/app/shared/components';
 import { CreateCustomerDialogComponent } from '../dialog';
 import { CustomerService } from '../services/customer.service';
 
@@ -39,11 +40,33 @@ export class CustomerListComponent implements OnInit {
       switchMap(customer => this.customerApi.create(customer))
     ).subscribe(res => {
       if (res.status === 200) {
-        this.snackBar.open('创建客户成功');
+        this.snackBar.open('创建客户成功', 'X');
         this.fetchCustomers();
       } else {
         this.snackBar.open('创建客户失败：' + res.error.message);
       }
+    });
+  }
+
+  deleteCustomer(id: string | number) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '400px',
+      data: {
+        title: '确定删除',
+        description: '请确定是否删除？'
+      }
+    });
+
+    dialogRef.afterClosed().pipe(
+      filter(res => res === true),
+      switchMap(() => this.customerApi.delete(id))
+    ).subscribe(res => {
+        if (res.status === 200) {
+          this.snackBar.open('删除客户成功', 'X');
+          this.fetchCustomers();
+        } else {
+          this.snackBar.open('创建客户失败：' + res.error.message);
+        }
     });
   }
 

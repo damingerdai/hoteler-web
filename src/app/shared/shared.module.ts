@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import {
+  ConfirmComponent,
   ErrorCodeComponent,
   NavbarComponent,
   PageHeaderComponent,
@@ -15,6 +16,7 @@ import { SharedMaterialModule } from './shared.material.module';
 import { UiModule } from './ui/ui.module';
 
 const DECLARATIONS = [
+  ConfirmComponent,
   ErrorCodeComponent,
   NavbarComponent,
   PageHeaderComponent,
