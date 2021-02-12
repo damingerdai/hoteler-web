@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
-import { filter, switchMap } from 'rxjs/operators';
-import { Customers } from 'src/app/core/models';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { filter, map, switchMap } from 'rxjs/operators';
+import { Customers, ICustomer } from 'src/app/core/models';
 import { ConfirmComponent } from 'src/app/shared/components';
-import { CreateCustomerDialogComponent } from '../dialog';
+import { CreateCustomerDialogComponent, UpdateCustomerDialogComponent } from '../dialog';
 import { CustomerService } from '../services/customer.service';
 
 @Component({
@@ -44,6 +44,28 @@ export class CustomerListComponent implements OnInit {
         this.fetchCustomers();
       } else {
         this.snackBar.open('创建客户失败：' + res.error.message);
+      }
+    });
+  }
+
+  updateCustomer(customer: ICustomer) {
+    const dialogRef = this.dialog.open(UpdateCustomerDialogComponent, { width: '400px', data: customer});
+
+    dialogRef.afterClosed().pipe(
+      filter(res => !!res),
+      map(res => {
+        return {
+          id: customer.id,
+          ...res
+        };
+      }),
+      switchMap(request => this.customerApi.update(request))
+    ).subscribe(res => {
+      if (res.status === 200) {
+        this.snackBar.open('更新客户成功', 'X');
+        this.fetchCustomers();
+      } else {
+        this.snackBar.open('更新客户失败：' + res.error.message, 'X', { duration: 2000});
       }
     });
   }

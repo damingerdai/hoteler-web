@@ -17,6 +17,10 @@ export class CustomerService {
     return this.api.post<DataReponse<number>>('api/v1/customer', customer as any);
   }
 
+  public update(customer: ICustomer): Observable<DataReponse<number>> {
+    return this.api.put<DataReponse<number>>('api/v1/customer', customer as any);
+  }
+
   public list(): Observable<ListReponse<ICustomer>> {
     return this.api.get<ListReponse<ICustomer>>('api/v1/customers');
   }

@@ -14,6 +14,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { materailProviders } from './material-config';
+
 
 const materials = [
   MatButtonModule,
@@ -40,6 +42,9 @@ const materials = [
   ],
   exports: [
     ...materials
+  ],
+  providers: [
+    ...materailProviders,
   ]
 })
 export class SharedMaterialModule { }
