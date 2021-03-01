@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { NgApexchartsModule } from 'ng-apexcharts';
+
 import {
   ConfirmComponent,
   ErrorCodeComponent,
@@ -31,7 +33,9 @@ const DECLARATIONS = [
     RouterModule,
     ReactiveFormsModule,
     SharedCdkModule,
-    SharedMaterialModule
+    SharedMaterialModule,
+
+    NgApexchartsModule
   ],
   providers: [
     ThemeStorageService
@@ -42,6 +46,8 @@ const DECLARATIONS = [
     ReactiveFormsModule,
     SharedCdkModule,
     SharedMaterialModule,
+
+    NgApexchartsModule,
 
     ...DECLARATIONS
   ]
