@@ -13,7 +13,8 @@
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points --tsconfig ./tsconfig.json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "version:patch": "yarn version --patch",
-    "version:minor": "yarn version --minor"
+    "version:minor": "yarn version --minor",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -44,7 +45,7 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "conventional-changelog-cli": "^2.1.1",
-    "husky": "^4.3.8",
+    "husky": "5",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.2.3",
