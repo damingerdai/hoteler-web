@@ -31,7 +31,7 @@
     "@angular/router": "~11.2.2",
     "apexcharts": "^3.25.0",
     "ng-apexcharts": "^1.5.8",
-    "rxjs": "~6.6.3",
+    "rxjs": "~6.6.6",
     "tslib": "^2.1.0",
     "zone.js": "~0.10.2"
   },
