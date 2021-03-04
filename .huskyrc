@@ -1,7 +1,0 @@
-{
-    "hooks": {
-        "pre-commit": "lint-staged",
-        "pre-push": "ng lint hoteler-web",
-        "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
-    }
-}

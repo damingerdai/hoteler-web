@@ -1,0 +1,5 @@
+#!/bin/sh
+# commit-msg git hook, see https://typicode.github.io/husky/#/ for more on how husky works.
+. "$(dirname "$0")/_/husky.sh"
+
+yarn commitlint --edit "$1"

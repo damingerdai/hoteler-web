@@ -1,0 +1,5 @@
+#!/bin/sh
+# pre-push git hook, see https://typicode.github.io/husky/#/ for more on how husky works.
+. "$(dirname "$0")/_/husky.sh"
+
+yarn ng lint hoteler-web
