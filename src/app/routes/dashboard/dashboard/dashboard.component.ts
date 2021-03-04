@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  public chart = { type: 'line'};
+
+  public series = [{
+    name: 'sales',
+    data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+  }];
+
+  public title = {
+    text: 'Test'
+  };
+
   constructor() { }
 
   ngOnInit(): void {

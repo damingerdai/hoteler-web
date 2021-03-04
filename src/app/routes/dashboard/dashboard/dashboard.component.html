@@ -1,1 +1,15 @@
 <app-page-header title="仪表盘"></app-page-header>
+<main class="dashboard">
+  <mat-grid-list cols="2">
+    <mat-grid-tile>
+      <mat-card class="w-full h-full">
+        <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart>
+      </mat-card>
+    </mat-grid-tile>
+    <!-- <mat-grid-tile>
+      <mat-card class="w-full">
+        <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart>
+      </mat-card>
+    </mat-grid-tile> -->
+  </mat-grid-list>
+</main>
