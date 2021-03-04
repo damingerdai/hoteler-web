@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 // TODO: remove
-// import { NgApexchartsModule } from "ng-apexcharts";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -14,7 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   declarations: [DashboardComponent],
   imports: [
     CommonModule,
-    // NgApexchartsModule,
+    FlexLayoutModule,
     DashboardRoutingModule,
     SharedModule
   ]

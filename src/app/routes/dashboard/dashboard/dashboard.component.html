@@ -1,15 +1,26 @@
 <app-page-header title="仪表盘"></app-page-header>
-<main class="dashboard">
-  <mat-grid-list cols="2">
-    <mat-grid-tile>
-      <mat-card class="w-full h-full">
-        <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart>
-      </mat-card>
-    </mat-grid-tile>
-    <!-- <mat-grid-tile>
-      <mat-card class="w-full">
-        <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart>
-      </mat-card>
-    </mat-grid-tile> -->
-  </mat-grid-list>
+<main fxLayout="row wrap" fxLayoutAlign="space-between stretch" class="dashboard holeler-row">
+  <div fxFlex="100" fxFlex.gt-sm="40" class="holeler-col">
+    <mat-card>
+      <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart>
+    </mat-card>
+  </div>
+  <div fxFlex="100" fxFlex.gt-sm="40" class="holeler-col">
+    <mat-card>
+      <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart>
+    </mat-card>
+  </div>
+  <div fxFlex class="holeler-col">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>操作中心</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <button class="w-full" mat-raised-button color="primary">入住</button>
+        <!-- <button class="w-full" mat-raised-button color="accent">Accent</button> -->
+      </mat-card-content>
+
+    </mat-card>
+  </div>
 </main>
