@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api/api.service';
-import { IRespone } from 'src/app/core/models';
-import { Rooms } from 'src/app/core/models/room';
+import { IRespone, ListReponse } from 'src/app/core/models';
+import { IRoom, Rooms } from 'src/app/core/models/room';
 
-@Injectable()
+type RoomsListReponse = ListReponse<IRoom>;
+
+@Injectable({
+  providedIn: 'root'
+})
 export class RoomService {
 
   constructor(
@@ -23,7 +27,8 @@ export class RoomService {
     return this.api.delete<IRespone>(`api/v1/room/${id}`);
   }
 
-  public list(): Observable<Rooms> {
-    return this.api.get<Rooms>('api/v1/rooms');
+  public list(): Observable<RoomsListReponse> {
+    return this.api.get<RoomsListReponse>('api/v1/rooms');
   }
 }
+

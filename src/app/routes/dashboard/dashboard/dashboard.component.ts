@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { filter, switchMap } from 'rxjs/operators';
+import { UserRoomService } from 'src/app/core/services/user-room';
+import { AddUserRoomComponent } from '../dialog/add-user-room/add-user-room.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +22,23 @@ export class DashboardComponent implements OnInit {
     text: 'Test'
   };
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog,
+    private userRoomApi: UserRoomService,
+  ) { }
+
+  openAddUserRoomDialog() {
+    const dialogRef = this.dialog.open(AddUserRoomComponent);
+    dialogRef.afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(ur => this.userRoomApi.create(ur))
+      ).subscribe(res => {
+        if (res.status === 200) {
+          console.log('test');
+        }
+      });
+  }
 
   ngOnInit(): void {
   }

@@ -6,7 +6,9 @@ import { ApiService } from 'src/app/core/api/api.service';
 import { DataReponse, IRespone, ListReponse } from 'src/app/core/models';
 import { ICustomer } from 'src/app/core/models/customer';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CustomerService {
 
   constructor(

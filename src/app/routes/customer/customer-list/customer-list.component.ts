@@ -3,9 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { Customers, ICustomer } from 'src/app/core/models';
+import { CustomerService } from 'src/app/core/services/customers';
 import { ConfirmComponent } from 'src/app/shared/components';
 import { CreateCustomerDialogComponent, UpdateCustomerDialogComponent } from '../dialog';
-import { CustomerService } from '../services/customer.service';
 
 @Component({
   selector: 'app-customer-list',

@@ -5,8 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { IRoom, Rooms } from 'src/app/core/models/room';
+import { RoomService } from 'src/app/core/services/room';
 import { CreateRoomDialogComponent, UpdateRoomDialogComponent } from '../dialog';
-import { RoomService } from '../services/room.service';
 
 @Component({
   selector: 'app-room-list',
@@ -103,7 +103,11 @@ export class RoomListComponent implements OnInit {
   }
 
   private fetchAllRooms() {
-    this.roomApi.list().subscribe(rooms => this.rooms = rooms);
+    this.roomApi.list().subscribe(res => {
+      if (res.status === 200) {
+        this.rooms = res.data;
+      }
+    });
   }
 
 
