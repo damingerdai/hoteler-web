@@ -35,5 +35,5 @@ jobs:
         run: npm install -g yarn
       - name: Install package
         run: yarn 
-      - name: check
+      - name: Check
         run: yarn ng lint hoteler-web && yarn ng build --prod
