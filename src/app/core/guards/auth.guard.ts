@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -12,7 +13,8 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   constructor(
     private router: Router,
-    private localStorageService: LocalStorageService) {
+    private localStorageService: LocalStorageService,
+    private dialog: MatDialog) {
 
   }
 
@@ -21,6 +23,7 @@ export class AuthGuard implements CanActivate, CanLoad {
     if (this.localStorageService.get('user')) {
       return true;
     }
+    this.dialog.closeAll();
     return this.router.parseUrl('login');
   }
 
@@ -30,7 +33,7 @@ export class AuthGuard implements CanActivate, CanLoad {
       if (this.localStorageService.get('user')) {
         return true;
       }
-      console.log('canLoad');
+      this.dialog.closeAll();
       return this.router.parseUrl('login');
   }
 

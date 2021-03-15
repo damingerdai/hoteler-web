@@ -6,6 +6,7 @@ import {
   HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -17,7 +18,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
     private router: Router,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private dialog: MatDialog
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -39,9 +41,11 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error instanceof HttpErrorResponse) {
           switch (error.status) {
             case 401:
+              this.dialog.closeAll();
               this.router.navigateByUrl('/401');
               break;
             case 403:
+              this.dialog.closeAll();
               this.router.navigateByUrl('/401');
               break;
             default:
