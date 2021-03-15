@@ -13,6 +13,13 @@
   }
 }
 
+.table-header {
+  display: flex;
+
+  .no-display {
+    display: none;
+  }
+}
 
 .action-container {
   display: flex;

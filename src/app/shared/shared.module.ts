@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+
 
 import { NgApexchartsModule } from 'ng-apexcharts';
 
@@ -29,6 +31,7 @@ const DECLARATIONS = [
   declarations: DECLARATIONS,
   imports: [
     CommonModule,
+    FlexLayoutModule,
     UiModule,
     RouterModule,
     ReactiveFormsModule,
@@ -41,6 +44,7 @@ const DECLARATIONS = [
     ThemeStorageService
   ],
   exports: [
+    FlexLayoutModule,
     UiModule,
     RouterModule,
     ReactiveFormsModule,

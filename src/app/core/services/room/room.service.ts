@@ -27,8 +27,8 @@ export class RoomService {
     return this.api.delete<IRespone>(`api/v1/room/${id}`);
   }
 
-  public list(): Observable<RoomsListReponse> {
-    return this.api.get<RoomsListReponse>('api/v1/rooms');
+  public list(room?: { status?: number }): Observable<RoomsListReponse> {
+    return this.api.get<RoomsListReponse>('api/v1/rooms', room);
   }
 }
 

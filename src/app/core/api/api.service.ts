@@ -41,8 +41,8 @@ export class ApiService {
     return this.httpClient.put<T>(url, params, httpOptions);
   }
 
-  public get<T>(url: string): Observable<T> {
-    return this.httpClient.get<T>(url);
+  public get<T>(url: string, params?: any): Observable<T> {
+    return this.httpClient.get<T>(url, { params });
   }
 
   public delete<T>(url: string): Observable<T> {

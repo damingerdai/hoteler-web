@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { IRoom, Rooms } from 'src/app/core/models/room';
 import { RoomService } from 'src/app/core/services/room';
 import { CreateRoomDialogComponent, UpdateRoomDialogComponent } from '../dialog';
@@ -19,11 +20,36 @@ export class RoomListComponent implements OnInit {
 
   public rooms: Rooms;
 
+  public roomForm: FormGroup;
+
   constructor(
     private dialog: MatDialog,
+    private fb: FormBuilder,
     private roomApi: RoomService,
     private snackBar: MatSnackBar
-  ) { }
+  ) {
+    this.roomForm = this.fb.group({
+      status: [0]
+    });
+
+    this.roomForm.get('status').valueChanges
+      .pipe(
+        map(res => typeof res === 'string' ? parseInt(res, 10) : res)
+      )
+      .subscribe(status => {
+        console.log(status);
+        if (status === 0) {
+          this.fetchAllRooms();
+        } else {
+          this.roomApi.list({status}).subscribe(res => {
+            if (res.status === 200) {
+              this.rooms = res.data;
+            }
+          });
+        }
+
+      });
+  }
 
   ngOnInit(): void {
     this.fetchAllRooms();
@@ -72,7 +98,7 @@ export class RoomListComponent implements OnInit {
         });
       } else {
         const message = res.error.message;
-        this.snackBar.open('更新房间失败🚀：' + message , 'X', {
+        this.snackBar.open('更新房间失败🚀：' + message, 'X', {
           duration: 500,
           horizontalPosition: 'right',
           verticalPosition: 'top',
