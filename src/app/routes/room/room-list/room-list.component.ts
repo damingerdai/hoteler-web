@@ -37,7 +37,6 @@ export class RoomListComponent implements OnInit {
         map(res => typeof res === 'string' ? parseInt(res, 10) : res)
       )
       .subscribe(status => {
-        console.log(status);
         if (status === 0) {
           this.fetchAllRooms();
         } else {
