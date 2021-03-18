@@ -136,17 +136,10 @@
   dependencies:
     tslib "^2.0.0"
 
-<<<<<<< HEAD
-"@angular/cdk@~11.2.1":
-  version "11.2.5"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-11.2.5.tgz#e0cce8b28ca635b6151b834c6e1c4bc0a8dd7c04"
-  integrity sha512-ugalSDLME5E9JlxcRR8RGlOYlaV6rIzxOVQrGRBzY2tdhMT4Ng+BFtCkq1K88AU1sTLHq54xg9Xkfn7b5W2kiA==
-=======
 "@angular/cdk@~11.2.4":
   version "11.2.4"
   resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-11.2.4.tgz#7b2afc2609625383903ae458bf67640aa2179b9c"
   integrity sha512-BcMHRaKZxkpK+dPwmjqktAzWUnywbyHyrORGlF4OMtbE88IvbI8tQ+0xANfBm0cPaAm+na5AlGKyH2ptzedyRQ==
->>>>>>> build(deps): upgrade angular material from 11.2.1 to 11.2.4
   dependencies:
     tslib "^2.0.0"
   optionalDependencies:
@@ -251,17 +244,10 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-11.2.6.tgz#920d29bcaff80bff6450c9eea5064e1fe1abc307"
   integrity sha512-jzIutEzUbfBZxLWftpi5oXusL3rwbe2P/6HnNd8NUeBos9+G859R7hCsstAQ61XPn41a2/Fbl+YOwYhdjoBQrw==
 
-<<<<<<< HEAD
-"@angular/material@^11.2.1":
-  version "11.2.5"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-11.2.5.tgz#33145101816cd88a74c8f14073a218cb4d4f5bba"
-  integrity sha512-zdzAexDl0WQ2NhRXpa6CKzIvenozLcLl0kmAJBSoUYclES9B+t86tPdWW5CKl4zJOHDM2ZnxhzkYGEffS9Qvug==
-=======
 "@angular/material@^11.2.4":
   version "11.2.4"
   resolved "https://registry.yarnpkg.com/@angular/material/-/material-11.2.4.tgz#3ec538414aa23e94dcbc89c6fa8ec5c9e03ba49f"
   integrity sha512-OrngpFQpl7QvnIAOnbbnwWgOl7xlIcVPYi4fTfjioGKa1D+YWtrnYR6RCGoStbv2WZLDJwhPz0pMyPQWdJ0q/A==
->>>>>>> build(deps): upgrade angular material from 11.2.1 to 11.2.4
   dependencies:
     tslib "^2.0.0"
 
@@ -5781,10 +5767,10 @@ jasmine-core@~3.6.0:
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.6.0.tgz#491f3bb23941799c353ceb7a45b38a950ebc5a20"
   integrity sha512-8uQYa7zJN8hq9z+g8z1bqCfdC8eoDAeVnM5sfqs7KHv9/ifoJ500m018fpFc7RDaO6SWCLCXwo/wPSNcdYTgcw==
 
-jasmine-spec-reporter@~5.0.0:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/jasmine-spec-reporter/-/jasmine-spec-reporter-5.0.2.tgz#b61288ab074ad440dc2477c4d42840b0e74a6b95"
-  integrity sha512-6gP1LbVgJ+d7PKksQBc2H0oDGNRQI3gKUsWlswKaQ2fif9X5gzhQcgM5+kiJGCQVurOG09jqNhk7payggyp5+g==
+jasmine-spec-reporter@~6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/jasmine-spec-reporter/-/jasmine-spec-reporter-6.0.0.tgz#3b9c85689676a351f343ba8dd6d3957f11a4bf1d"
+  integrity sha512-MvTOVoMxDZAftQYBApIlSfKnGMzi9cj351nXeqtnZTuXffPlbONN31+Es7F+Ke4okUeQ2xISukt4U1npfzLVrQ==
   dependencies:
     colors "1.4.0"
 
@@ -8549,22 +8535,14 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-<<<<<<< HEAD
-rxjs@6.6.3:
-=======
-rxjs@6.6.3, rxjs@^6.5.3, rxjs@^6.6.0, rxjs@^6.6.3:
->>>>>>> build(deps): upgrade rxjs from 6.6.4 to 6.6.6
+rxjs@6.6.3, rxjs@^6.5.3, rxjs@^6.6.0:
   version "6.6.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.3.tgz#8ca84635c4daa900c0d3967a6ee7ac60271ee552"
   integrity sha512-trsQc+xYYXZ3urjOiJOuCOa5N3jAZ3eiSpQB5hIT8zGlL2QfnHLJ2r7GMkBGuIausdJN1OneaI6gQlsqNHHmZQ==
   dependencies:
     tslib "^1.9.0"
 
-<<<<<<< HEAD
-rxjs@^6.5.3, rxjs@^6.6.0, rxjs@^6.6.6, rxjs@~6.6.3:
-=======
-rxjs@~6.6.6:
->>>>>>> build(deps): upgrade rxjs from 6.6.4 to 6.6.6
+rxjs@^6.6.6, rxjs@~6.6.6:
   version "6.6.6"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.6.tgz#14d8417aa5a07c5e633995b525e1e3c0dec03b70"
   integrity sha512-/oTwee4N4iWzAMAL9xdGKjkEHmIwupR3oXbQjCKywF1BeFohswF3vZdogbmEF6pZkOsXTzWkrZszrWpQTByYVg==
