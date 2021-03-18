@@ -5,56 +5,69 @@
       <mat-form-field class="form-field" appearance="standard">
         <mat-label>用户状态</mat-label>
         <mat-select formControlName="status">
-          <mat-option [value]="0">
-            全部
-          </mat-option>
-          <mat-option [value]="1">
-            NoUse
-          </mat-option>
-          <mat-option [value]="2">
-            InUsed
-          </mat-option>
+          <mat-option [value]="0"> 全部 </mat-option>
+          <mat-option [value]="1"> 空闲 </mat-option>
+          <mat-option [value]="2"> 占用 </mat-option>
         </mat-select>
       </mat-form-field>
     </form>
-    <button mat-raised-button color="primary" (click)="createRoom()">创建房间</button>
+    <button mat-raised-button color="primary" (click)="createRoom()">
+      创建房间
+    </button>
   </div>
 
   <mat-divider class="divider"></mat-divider>
   <div class="mat-elevation-z8 table-responsive">
     <table mat-table [dataSource]="rooms" class="mat-elevation-z8 w-full">
       <ng-container matColumnDef="no">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
       </ng-container>
       <ng-container matColumnDef="roomname">
-        <th mat-header-cell *matHeaderCellDef> 房间名 </th>
-        <td mat-cell *matCellDef="let element"> {{element.roomname}} </td>
+        <th mat-header-cell *matHeaderCellDef>房间名</th>
+        <td mat-cell *matCellDef="let element">{{ element.roomname }}</td>
       </ng-container>
       <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef> 价格 </th>
-        <td mat-cell *matCellDef="let element"> {{element.price | currency }} </td>
+        <th mat-header-cell *matHeaderCellDef>价格</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.price | currency }}
+        </td>
       </ng-container>
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> 状态 </th>
+        <th mat-header-cell *matHeaderCellDef>状态</th>
         <td mat-cell *matCellDef="let element">
           <mat-chip-list>
-            <mat-chip *ngIf="element.status === 1" color="primary" selected>NoUse</mat-chip>
-            <mat-chip *ngIf="element.status === 2" color="primary" selected>InUsed</mat-chip>
+            <mat-chip *ngIf="element.status === 1" color="primary" selected
+              >空闲</mat-chip
+            >
+            <mat-chip *ngIf="element.status === 2" color="primary" selected
+              >占用</mat-chip
+            >
           </mat-chip-list>
         </td>
       </ng-container>
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> 操作 </th>
+        <th mat-header-cell *matHeaderCellDef>操作</th>
         <td mat-cell *matCellDef="let element" class="action-container">
           <!-- <button mat-raised-button color="primary">修改</button> -->
-          <button mat-raised-button color="accent" (click)="updateRoom(element)">修改</button>
-          <button mat-raised-button color="warn" (click)="deleteRoom(element.id)">删除</button>
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="updateRoom(element)"
+          >
+            修改
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="deleteRoom(element.id)"
+          >
+            删除
+          </button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   </div>
-
 </div>
