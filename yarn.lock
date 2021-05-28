@@ -1849,10 +1849,10 @@ anymatch@~3.1.1:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apexcharts@^3.26.2:
-  version "3.26.2"
-  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.26.2.tgz#5ed0d88c9db8fe881ae6ec6b60f086468727577b"
-  integrity sha512-CD7bad4ygwc9rs9vOQDDagUcoJ1mcc9BwNSiQB14l6jiZBCQKrXxnG4I1ZjJ2MIel/Y5GmsJFs8HTcZBqpe/Ew==
+apexcharts@^3.26.3:
+  version "3.26.3"
+  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.26.3.tgz#9cf25eb4dd9daedf94f566e5513fcea08de46e2b"
+  integrity sha512-zbP7RBBV2CGffoVMIuTCUG64YbEUzV8IIT7iNVLMtY/OAVXTjPksDxSqKIniTvgJoscKe6sx4P56qDpBSU19VA==
   dependencies:
     svg.draggable.js "^2.2.2"
     svg.easing.js "^2.0.0"
@@ -6722,10 +6722,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-ng-apexcharts@^1.5.8:
-  version "1.5.9"
-  resolved "https://registry.yarnpkg.com/ng-apexcharts/-/ng-apexcharts-1.5.9.tgz#6bc3f3526bb91981b2313b041301d560ccf234f6"
-  integrity sha512-ZRsU9meBvXNPG1vhEolCJGRrhfR7Nnj37E6H5CHfWpUEAw9/89U5TK+yDD+myPhT0ubQbRb6fZJoG74dEebXYA==
+ng-apexcharts@^1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/ng-apexcharts/-/ng-apexcharts-1.5.10.tgz#d2d1d939cc4e9fd63def9a66f4c8ef2d4a34b505"
+  integrity sha512-NcAQZnzG4Knf9QG8PP20B9lx+rLm1ynoKIP3tMDsv272VAMaN0Yn01B50WR7yI3ouWufuH4qOPB8lqjjyqbJJg==
   dependencies:
     tslib "^1.10.0"
 
