@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 @mixin hoteler-error-code-theme($theme) {
   $background: map-get($theme, background);
@@ -6,7 +6,7 @@
 
   .hoteler-error {
     &-code, &-title, &-message {
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
     }
   }
 }
