@@ -45,7 +45,7 @@
     "@types/jasmine": "~3.6.7",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
-    "codelyzer": "^6.0.0",
+    "codelyzer": "^6.0.2",
     "conventional-changelog-cli": "^2.1.1",
     "husky": "^6.0.0",
     "jasmine-core": "~3.6.0",
