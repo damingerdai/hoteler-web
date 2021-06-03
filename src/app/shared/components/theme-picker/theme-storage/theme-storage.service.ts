@@ -22,7 +22,9 @@ export class ThemeStorageService {
 
   storeTheme(theme: SiteTheme) {
     try {
-      window.localStorage[ThemeStorageService.storageKey] = theme.name;
+      if (window) {
+        window.localStorage[ThemeStorageService.storageKey] = theme.name;
+      }
     } catch { }
 
     this.onThemeUpdate.emit(theme);
@@ -30,7 +32,7 @@ export class ThemeStorageService {
 
   getStoredThemeName(): string | null {
     try {
-      return window.localStorage[ThemeStorageService.storageKey] || null;
+      return window ? window.localStorage[ThemeStorageService.storageKey] || null : null;
     } catch {
       return null;
     }
@@ -38,7 +40,9 @@ export class ThemeStorageService {
 
   clearStorage() {
     try {
-      window.localStorage.removeItem(ThemeStorageService.storageKey);
+      if (window) {
+        window.localStorage.removeItem(ThemeStorageService.storageKey);
+      }
     } catch { }
   }
 }

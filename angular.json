@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hoteler",
+            "outputPath": "dist/hoteler/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -79,7 +79,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "namedChunks": false,
+              "namedChunks": true,
               "extractLicenses": true,
               "buildOptimizer": true,
               "budgets": [
@@ -156,6 +156,71 @@
               "devServerTarget": "angular:serve:production"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/hoteler/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "optimization": false,
+            "sourceMap": true,
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules",
+                "src",
+                "src/styles"
+              ]
+            },
+            "extractLicenses": false
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "extractLicenses": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "hoteler-web:build:development",
+              "serverTarget": "hoteler-web:server:development"
+            },
+            "production": {
+              "browserTarget": "hoteler-web:build:production",
+              "serverTarget": "hoteler-web:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "hoteler-web:build:production",
+              "serverTarget": "hoteler-web:server:production"
+            },
+            "development": {
+              "browserTarget": "hoteler-web:build:development",
+              "serverTarget": "hoteler-web:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
