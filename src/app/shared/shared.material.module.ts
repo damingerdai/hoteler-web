@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -49,8 +49,18 @@ const materials = [
   exports: [
     ...materials
   ],
-  providers: [
-    ...materailProviders,
-  ]
+  // providers: [
+  //   ...materailProviders,
+  // ]
 })
-export class SharedMaterialModule { }
+export class SharedMaterialModule {
+
+  static forRoot(config: SharedMaterialModule): ModuleWithProviders<SharedMaterialModule> {
+    return {
+      ngModule: SharedMaterialModule,
+      providers: [
+       ...materailProviders,
+      ]
+    };
+  }
+ }
