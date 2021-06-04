@@ -7,10 +7,10 @@ import { IUser } from '../../models';
 })
 export class SettingsService {
 
-  // tslint:disable-next-line: variable-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
   private _user: IUser;
 
-  // tslint:disable-next-line: variable-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   public set user(_user: IUser) {
     this._user = _user;
   }
