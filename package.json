@@ -62,5 +62,8 @@
     "tslint": "~6.1.0",
     "typescript": "~4.2.4"
   },
-  "resolutions": {}
+  "resolutions": {
+    "**/**/postcss": ">=8.2.10",
+    "**/**/ws": ">=7.4.6"
+  }
 }
