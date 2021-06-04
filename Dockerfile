@@ -13,12 +13,16 @@ WORKDIR /app
 COPY scripts/postinstall  /app/scripts/postinstall/
 COPY tools/postinstall /app/tools/postinstall/
 COPY package.json yarn.lock /app/
-RUN yarn install
+# RUN yarn install
+RUN yarn install --ignore-scripts
+# RUN sh scripts/postinstall/ngcc.sh
+# RUN sh scripts/postinstall/apexcharts.sh
 
 COPY . .
 RUN yarn build
 
 FROM nginx:1.16.1
+COPY _nginx/default.conf /etc/nginx/conf.d/
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 COPY --from=builder /app/dist/hoteler .
