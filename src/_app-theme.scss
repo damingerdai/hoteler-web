@@ -1,15 +1,19 @@
+@use 'sass:map';
 @use '~@angular/material' as mat;
-@import './app/shared/components/error-code/error-code-theme';
+@use './app/shared/components/error-code/error-code-theme';
+@use './app/shared/components/page-header/page-header-theme';
+
 
 @mixin hoteler-app-theme($theme) {
 
-  @include hoteler-error-code-theme($theme);
+  @include error-code-theme.hoteler-error-code-theme($theme);
+  @include page-header-theme.hoteler-page-header-theme($theme);
 
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
 
   .app-background {
     background: mat.get-color-from-palette($background, background);
@@ -22,15 +26,6 @@
       padding: 10px;
     }
   }
-
-  .primary-header {
-    background: mat.get-color-from-palette($primary);
-
-    h1 {
-      color: mat.get-color-from-palette($primary, default-contrast);
-    }
-  }
-
 }
 
 // Define the light theme.
