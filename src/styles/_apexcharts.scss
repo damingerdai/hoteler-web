@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use '~@angular/material' as mat;
+
+@mixin hoteler-apexcharts-theme($theme) {
+
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
+
+  .apexcharts-title-text {
+    color: mat.get-color-from-palette($foreground, text) !important;
+    fill: mat.get-color-from-palette($foreground, text) !important;
+  }
+
+  .apexcharts-menu {
+    background: mat.get-color-from-palette($background, background) !important;
+  }
+
+  .apexcharts-menu-item {
+    &:hover {
+      background: mat.get-color-from-palette($background, background) !important;
+      color: mat.get-color-from-palette($foreground, text) !important;
+    }
+  }
+
+}
