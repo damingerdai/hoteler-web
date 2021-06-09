@@ -3,21 +3,24 @@
   <form [formGroup]="room">
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>房间名</mat-label>
-      <input matInput formControlName="roomname" required/>
-      <mat-error *ngIf="roomname.errors?.required">
-        请输入房间名
-      </mat-error>
+      <input matInput formControlName="roomname" required />
+      <mat-error *ngIf="roomname.errors?.required"> 请输入房间名 </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>价格</mat-label>
-      <input matInput type="number" formControlName="price" required/>
-      <mat-error *ngIf="price.errors?.required">
-        请输入价格
-      </mat-error>
+      <input matInput type="number" formControlName="price" required />
+      <mat-error *ngIf="price.errors?.required"> 请输入价格 </mat-error>
     </mat-form-field>
   </form>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions align="end">
   <button mat-button mat-dialog-close cdkFocusInitial>取消</button>
-  <button mat-button color="primary" [mat-dialog-close]="room.value" [disabled]="room.invalid">确定</button>
+  <button
+    mat-button
+    color="primary"
+    [mat-dialog-close]="room.value"
+    [disabled]="room.invalid"
+  >
+    确定
+  </button>
 </div>
