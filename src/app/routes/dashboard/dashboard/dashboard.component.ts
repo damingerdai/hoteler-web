@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ApexOptions } from 'ng-apexcharts';
 import { filter, switchMap } from 'rxjs/operators';
+import { RoomService } from 'src/app/core/services/room';
 import { UserRoomService } from 'src/app/core/services/user-room';
 import { AddUserRoomComponent } from '../dialog/add-user-room/add-user-room.component';
 
@@ -11,7 +13,37 @@ import { AddUserRoomComponent } from '../dialog/add-user-room/add-user-room.comp
 })
 export class DashboardComponent implements OnInit {
 
-  public chart = { type: 'line'};
+  public chart = { type: 'line' };
+
+  public roomStatusDonutChart: ApexOptions & { show: boolean } = {
+    show: false,
+    chart: {
+      type: 'donut',
+    },
+    title: {
+      text: '房间状态统计'
+    },
+    series: [44, 55, 13, 33],
+    labels: ['Apple', 'Mango', 'Orange', 'Watermelon'],
+    plotOptions: {
+      pie: {
+        donut: {
+          labels: {
+            show: true,
+            name: {
+              show: true,
+            },
+            value: {
+              show: true,
+            },
+            total: {
+              show: true,
+            }
+          }
+        }
+      }
+    }
+  }
 
   public series = [{
     name: 'sales',
@@ -25,6 +57,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private userRoomApi: UserRoomService,
+    private roomApi: RoomService
   ) { }
 
   openAddUserRoomDialog() {
@@ -41,6 +74,13 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.roomApi.getRoomStatusStat().subscribe(res => {
+      if (res.status ===  200) {
+        this.roomStatusDonutChart.show = true;
+        this.roomStatusDonutChart.series = [res.data.inUseNums, res.data.notUsedNums];
+        this.roomStatusDonutChart.labels = ['占用', '空闲'];
+      }
+    })
   }
 
 }

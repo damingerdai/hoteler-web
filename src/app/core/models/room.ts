@@ -6,3 +6,9 @@ export interface IRoom {
 }
 
 export type Rooms = IRoom[];
+
+export interface IRoomStatusStat {
+  inUseNums: number;
+  notUsedNums: number;
+  totalNums: number
+}
