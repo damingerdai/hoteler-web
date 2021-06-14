@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { CoreModule } from '../../core.module';
 import { IUser } from '../../models';
+import { LocalStorageService } from '../local-storage';
 
 @Injectable({
   providedIn: CoreModule
@@ -8,16 +10,24 @@ import { IUser } from '../../models';
 export class SettingsService {
 
   // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
-  private _user: IUser;
+  private _user: Partial<IUser>;
+  private userSource = new Subject<Partial<IUser>>();
+  public user$ = this.userSource.asObservable();
 
   // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
-  public set user(_user: IUser) {
-    this._user = _user;
+  public set user(user: Partial<IUser>) {
+    this._user = user;
+    this.localStorageService.set('user', user);
+    this.userSource.next(user)
   }
 
   public get user() {
     return this._user;
   }
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService
+  ) { }
+
+
 }

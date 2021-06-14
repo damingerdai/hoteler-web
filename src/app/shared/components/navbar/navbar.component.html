@@ -1,23 +1,32 @@
 <mat-toolbar color="primary" aria-label="Top Toolbar">
-  <a mat-button class="docs-button" routerLink="/" aria-label="Angular Material">
-    <img class="logo" src="assets/img/angular-white-transparent.svg" alt="angular">
+  <a
+    mat-button
+    class="docs-button"
+    routerLink="/"
+    aria-label="Angular Material"
+  >
+    <img
+      class="logo"
+      src="assets/img/angular-white-transparent.svg"
+      alt="angular"
+    />
     <span>Hoteler</span>
   </a>
-  <ng-container *ngIf="!isMobile">
-    <a mat-button class="docs-button" routerLink="dashboard">
-      仪表盘
-    </a>
-    <a mat-button class="docs-button" routerLink="customer">
-      客户信息
-    </a>
-    <a mat-button class="docs-button" routerLink="room">
-      房间信息
-    </a>
+  <ng-container *ngIf="!isMobile && username">
+    <a mat-button class="docs-button" routerLink="dashboard"> 仪表盘 </a>
+    <a mat-button class="docs-button" routerLink="customer"> 客户信息 </a>
+    <a mat-button class="docs-button" routerLink="room"> 房间信息 </a>
   </ng-container>
 
   <div flexSpacer></div>
   <app-theme-picker></app-theme-picker>
-  <a mat-button class="docs-button" [matMenuTriggerFor]="menu" aria-label="user profile" *ngIf="username">
+  <a
+    mat-button
+    class="docs-button"
+    [matMenuTriggerFor]="menu"
+    aria-label="user profile"
+    *ngIf="username"
+  >
     {{ username | titlecase }}
   </a>
   <mat-menu #menu="matMenu">
@@ -27,14 +36,16 @@
     </button>
   </mat-menu>
 </mat-toolbar>
-<mat-toolbar color="primary" aria-label="Section Nav Bar" *ngIf="isMobile">
+<mat-toolbar
+  color="primary"
+  aria-label="Section Nav Bar"
+  *ngIf="isMobile && username"
+>
   <a mat-button class="docs-button navbar-link" routerLink="dashboard">
     仪表盘
   </a>
   <a mat-button class="docs-button navbar-link" routerLink="customer">
     客户信息
   </a>
-  <a mat-button class="docs-button navbar-link" routerLink="room">
-    房间信息
-  </a>
+  <a mat-button class="docs-button navbar-link" routerLink="room"> 房间信息 </a>
 </mat-toolbar>

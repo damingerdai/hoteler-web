@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api/api.service';
 import { UserTokenReponse } from 'src/app/core/models';
-import { LocalStorageService } from 'src/app/core/services/local-storage/local-storage.service';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
 @Component({
@@ -30,7 +29,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private api: ApiService,
     private fb: FormBuilder,
-    private localStorageService: LocalStorageService,
     private settings: SettingsService,
     private router: Router
   ) {
@@ -56,7 +54,6 @@ export class LoginComponent implements OnInit {
           ...res.userToken,
           username: this.loginForm.value.username
         };
-        this.localStorageService.set('user', user);
         this.settings.user = user;
         this.router.navigate(['dashboard']);
       } else {

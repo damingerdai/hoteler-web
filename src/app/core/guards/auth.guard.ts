@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStat
 import { Observable } from 'rxjs';
 
 import { CoreModule } from '..';
-import { LocalStorageService } from '../services/local-storage';
+import { SettingsService } from '../services/settings/settings.service';
 
 @Injectable({
   providedIn: CoreModule
@@ -13,14 +13,14 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   constructor(
     private router: Router,
-    private localStorageService: LocalStorageService,
+    private settings: SettingsService,
     private dialog: MatDialog) {
 
   }
 
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if (this.localStorageService.get('user')) {
+    if (this.settings.user) {
       return true;
     }
     this.dialog.closeAll();
@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.localStorageService.get('user')) {
+      if (this.settings.user) {
         return true;
       }
       this.dialog.closeAll();
