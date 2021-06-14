@@ -1,0 +1,11 @@
+.material-icons {
+	display: none !important;
+
+	&-loaded {
+		display: inline-block !important;
+	}
+
+  &-error {
+    display: none !important;
+  }
+}

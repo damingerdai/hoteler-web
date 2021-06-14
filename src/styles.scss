@@ -5,8 +5,10 @@
 @import './styles/general';
 @import './styles/form';
 @import './styles/table';
+@import './styles/icons';
 @import './styles/misc';
 @import './styles/helpers';
+
 
 // Include material core styles.
 @include mat.core();
