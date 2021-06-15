@@ -42,11 +42,13 @@ export class AuthInterceptor implements HttpInterceptor {
           switch (error.status) {
             case 401:
               this.dialog.closeAll();
+              this.settings.user = null;
               this.router.navigateByUrl('/401');
               break;
             case 403:
               this.dialog.closeAll();
-              this.router.navigateByUrl('/401');
+              this.settings.user = null;
+              this.router.navigateByUrl('/403');
               break;
             default:
               return throwError(error);

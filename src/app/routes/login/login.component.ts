@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-    console.log('登陆');
     this.errorMessage = '';
     this.api.post<UserTokenReponse>('/api/v1/token', {}, {
       username: this.loginForm.value.username,
