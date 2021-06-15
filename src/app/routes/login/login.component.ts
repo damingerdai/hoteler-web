@@ -44,11 +44,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleKeyPress(event: KeyboardEvent) {
+  public handleKeyPress(event: KeyboardEvent) {
     event.stopPropagation();
     if ([ENTER, MAC_ENTER].includes(event.keyCode)) {
       event.preventDefault();
     }
+  }
+
+  public toggleVisibilityIcon(event: MouseEvent) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.hide = !this.hide;
   }
 
   public login() {

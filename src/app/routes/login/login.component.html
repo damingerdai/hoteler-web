@@ -23,7 +23,7 @@
         <button
           mat-icon-button
           matSuffix
-          (click)="hide = !hide"
+          (click)="toggleVisibilityIcon($event)"
           [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide"
         >
