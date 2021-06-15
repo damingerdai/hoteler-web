@@ -7,12 +7,12 @@
       (submit)="login()"
       (touch)="errorMessage = ''"
     >
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" (keypress)="handleKeyPress($event)">
         <mat-label>用户名</mat-label>
         <input matInput placeholder="用户名" formControlName="username" />
         <mat-error *ngIf="username.invalid"> 请输入用户名 </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" (keypress)="handleKeyPress($event)">
         <mat-label>密码</mat-label>
         <input
           matInput

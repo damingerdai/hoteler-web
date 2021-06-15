@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ENTER, MAC_ENTER } from '@angular/cdk/keycodes';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api/api.service';
@@ -43,7 +44,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleKeyPress(event: KeyboardEvent) {
+    event.stopPropagation();
+    if ([ENTER, MAC_ENTER].includes(event.keyCode)) {
+      event.preventDefault();
+    }
+  }
+
   public login() {
+    console.log('登陆');
     this.errorMessage = '';
     this.api.post<UserTokenReponse>('/api/v1/token', {}, {
       username: this.loginForm.value.username,
