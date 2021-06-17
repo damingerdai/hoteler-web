@@ -20,9 +20,13 @@
 
   .apexcharts-menu-item {
     &:hover {
-      background: mat.get-color-from-palette($background, background) !important;
       color: mat.get-color-from-palette($foreground, text) !important;
     }
+  }
+
+  .apexcharts-legend-text {
+    // background: mat.get-color-from-palette($background, background) !important;
+    color: mat.get-color-from-palette($foreground, text) !important;
   }
 
 }
