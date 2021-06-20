@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { ApiService } from 'src/app/core/api/api.service';
-import { DataReponse, IRespone, ListReponse } from 'src/app/core/models';
+import { DataReponse, IPastWeekCustomerCountStat, IRespone, ListReponse } from 'src/app/core/models';
 import { ICustomer } from 'src/app/core/models/customer';
 
 @Injectable({
@@ -29,5 +29,9 @@ export class CustomerService {
 
   public delete(id: string | number): Observable<IRespone> {
     return this.api.delete<IRespone>(`api/v1/customer/${id}`);
+  }
+
+  public getPastWeekCustomerCountStat(): Observable<DataReponse<IPastWeekCustomerCountStat>> {
+    return this.api.get<DataReponse<IPastWeekCustomerCountStat>>('api/v1/stat/customers/counts');
   }
 }

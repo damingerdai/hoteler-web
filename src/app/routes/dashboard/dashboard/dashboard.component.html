@@ -20,9 +20,18 @@
       ></apx-chart>
     </mat-card>
   </div>
-  <div fxFlex="100" fxFlex.gt-sm="40" class="holeler-col">
+  <div
+    fxFlex="100"
+    fxFlex.gt-sm="40"
+    class="holeler-col"
+    *ngIf="pastWeekCustomerCountChart.show"
+  >
     <mat-card>
-      <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart>
+      <apx-chart
+        [series]="pastWeekCustomerCountChart.series"
+        [chart]="pastWeekCustomerCountChart.chart"
+        [title]="pastWeekCustomerCountChart.title"
+      ></apx-chart>
     </mat-card>
   </div>
   <div fxFlex class="holeler-col">
