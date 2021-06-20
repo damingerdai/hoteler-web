@@ -27,7 +27,13 @@ export class SettingsService {
 
   constructor(
     private localStorageService: LocalStorageService
-  ) { }
+  ) {
+    const user = this.localStorageService.get<Partial<IUser>>('user');
+    if (user) {
+      this._user = user;
+      this.userSource.next(user);
+    }
+   }
 
 
 }
