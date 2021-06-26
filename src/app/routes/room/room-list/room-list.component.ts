@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { IRoom, Rooms } from 'src/app/core/models/room';
 import { RoomService } from 'src/app/core/services/room';
 import { CreateRoomDialogComponent, UpdateRoomDialogComponent } from '../dialog';
+import { ConfirmComponent } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-room-list',
@@ -109,7 +110,17 @@ export class RoomListComponent implements OnInit {
   }
 
   public deleteRoom(id: number) {
-    this.roomApi.delete(id).subscribe(res => {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '400px',
+      data: {
+        title: '确定删除',
+        description: '请确定是否删除？'
+      }
+    });
+    dialogRef.afterClosed().pipe(
+      filter(res => res === true),
+      switchMap(() => this.roomApi.delete(id))
+    ).subscribe(res => {
       if (res.status === 200) {
         this.snackBar.open('删除房间成功🚀', 'X', {
           duration: 500,
