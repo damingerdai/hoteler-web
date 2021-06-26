@@ -7,8 +7,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IRoom, Rooms } from 'src/app/core/models/room';
 import { RoomService } from 'src/app/core/services/room';
-import { CreateRoomDialogComponent, UpdateRoomDialogComponent } from '../dialog';
+import { AddCustomerRoomDialogComponent, CreateRoomDialogComponent, UpdateRoomDialogComponent } from '../dialog';
 import { ConfirmComponent } from 'src/app/shared/components';
+import { UserRoomService } from 'src/app/core/services/user-room';
 
 @Component({
   selector: 'app-room-list',
@@ -27,6 +28,7 @@ export class RoomListComponent implements OnInit {
     private dialog: MatDialog,
     private fb: FormBuilder,
     private roomApi: RoomService,
+    private userRoomApi: UserRoomService,
     private snackBar: MatSnackBar
   ) {
     this.roomForm = this.fb.group({
@@ -75,7 +77,6 @@ export class RoomListComponent implements OnInit {
   }
 
   public updateRoom(room: IRoom) {
-    console.log(room);
     const dialogRef = this.dialog.open(UpdateRoomDialogComponent, {
       width: '400px',
       data: room
@@ -136,6 +137,32 @@ export class RoomListComponent implements OnInit {
         });
       }
     });
+  }
+
+  public addCustomerRoomDialog(room: IRoom) {
+    const dialogRef = this.dialog.open(AddCustomerRoomDialogComponent, {
+      width: '400px',
+      data: room
+    })
+
+    dialogRef.afterClosed().pipe(
+      filter(res => !!res),
+      map(res => {
+        res.userId = res.customerId,
+        res.beginDate = new Date(res.beginDate + ' 12:00:000')
+        res.endDate = new Date(res.endDate + ' 12:00:000')
+        return res;
+      }),
+      switchMap(res => this.userRoomApi.create(res))
+    ).subscribe(res => {
+      if (res.status === 200) {
+        this.snackBar.open('入住成功🚀', 'X', {
+          duration: 500,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
+      }
+    })
   }
 
   private fetchAllRooms() {
