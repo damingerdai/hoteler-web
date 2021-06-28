@@ -8,7 +8,7 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "changelog:all": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "ng test",
-    "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+    "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "sh scripts/postinstall/ngcc.sh && sh scripts/postinstall/apexcharts.sh",
