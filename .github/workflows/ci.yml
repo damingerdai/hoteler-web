@@ -35,5 +35,9 @@ jobs:
         run: npm install -g yarn
       - name: Install package
         run: yarn
-      - name: Check
-        run: yarn ng lint hoteler-web && yarn ng build --configuration production
+      - name: Lint
+        run: yarn ng lint hoteler-web
+      - name: Build
+        run: yarn ng build --configuration production
+      - name: Unit Test
+        run: yarn ng test --browsers=ChromeHeadless --watch=false --code-coverage
