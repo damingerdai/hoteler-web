@@ -1,8 +1,30 @@
-import { FlexSpacerDirective } from './flex-spacer.directive';
+import { Component } from '@angular/core';
+import { TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DirectivesModule } from './directives.module';
+@Component({
+  template: `
+    <nav style="display: flex">
+    <div flexSpacer></div>
+    </nav>
+  `
+})
+export class FlexSpacerDirectiveTestComponent { }
 
 describe('FlexSpacerDirective', () => {
-  it('should create an instance', () => {
-    const directive = new FlexSpacerDirective();
-    expect(directive).toBeTruthy();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [DirectivesModule],
+      declarations: [ FlexSpacerDirectiveTestComponent ],
+      // schemas:      [ CUSTOM_ELEMENTS_SCHEMA ]
+    }).compileComponents()
+  }))
+  it('div flex-grow style should be 1', () => {
+    const fixture = TestBed.createComponent(FlexSpacerDirectiveTestComponent);
+    fixture.detectChanges(); // initial bindin
+    const div = fixture.debugElement.query(By.css('div'))!.nativeElement as HTMLDivElement;
+    const flexGrow = div.style.flexGrow;
+    fixture.detectChanges();
+    expect(flexGrow).toBe('1');
   });
 });
