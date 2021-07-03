@@ -28,7 +28,7 @@ export class CreateCustomerDialogComponent implements OnInit {
   }
 
   constructor(
-    private dialogRef: MatDialogRef<CreateCustomerDialogComponent>,
+    // : MatDialogRef<CreateCustomerDialogComponent>,
     private fb: FormBuilder,
   ) {
     this.customer = this.fb.group({
