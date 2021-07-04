@@ -1,4 +1,9 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatMenuModule } from '@angular/material/menu';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LocalStorageService } from 'src/app/core/services';
+import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
 import { NavbarComponent } from './navbar.component';
 
@@ -8,7 +13,13 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      imports: [
+        RouterTestingModule,
+        MatMenuModule
+       ],
+      declarations: [ NavbarComponent ],
+      providers: [ SettingsService, LocalStorageService ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   });
