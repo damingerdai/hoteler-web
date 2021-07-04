@@ -6,7 +6,9 @@ describe('ThemeStorageService', () => {
   let service: ThemeStorageService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [ ThemeStorageService ]
+    });
     service = TestBed.inject(ThemeStorageService);
   });
 
