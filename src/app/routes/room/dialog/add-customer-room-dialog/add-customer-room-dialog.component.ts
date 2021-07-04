@@ -17,7 +17,7 @@ export class AddCustomerRoomDialogComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<AddCustomerRoomDialogComponent>,
+    // private dialogRef: MatDialogRef<AddCustomerRoomDialogComponent>,
     private customerApi: CustomerService,
     @Inject(MAT_DIALOG_DATA) public data: IRoom
   ) {

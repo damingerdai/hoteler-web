@@ -21,7 +21,7 @@ export class CreateRoomDialogComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<CreateRoomDialogComponent>,
+    // private dialogRef: MatDialogRef<CreateRoomDialogComponent>,
   ) {
     this.room = this.fb.group({
       roomname: ['', [Validators.required]],

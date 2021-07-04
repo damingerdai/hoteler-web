@@ -26,7 +26,7 @@ export class UpdateRoomDialogComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<UpdateRoomDialogComponent>,
+    // private dialogRef: MatDialogRef<UpdateRoomDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IRoom
   ) {
     this.room = this.fb.group({
