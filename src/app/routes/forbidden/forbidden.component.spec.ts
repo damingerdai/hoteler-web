@@ -1,7 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { ErrorCodeComponent } from 'src/app/shared/components';
 
 import { ForbiddenComponent } from './forbidden.component';
 
@@ -11,7 +9,7 @@ describe('ForbiddenComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForbiddenComponent, ErrorCodeComponent ],
+      declarations: [ ForbiddenComponent ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
@@ -26,9 +24,4 @@ describe('ForbiddenComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('error code should be 401', () => {
-    const appErrorCodeComponent = TestBed.createComponent(ErrorCodeComponent).componentInstance;
-    expect(appErrorCodeComponent).toBe('401');
-  })
 });
