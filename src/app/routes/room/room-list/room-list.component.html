@@ -18,7 +18,12 @@
 
   <mat-divider class="divider"></mat-divider>
   <div class="mat-elevation-z8 table-responsive">
-    <table mat-table [dataSource]="rooms" class="mat-elevation-z8 w-full">
+    <table
+      mat-table
+      [dataSource]="rooms"
+      class="mat-elevation-z8 w-full"
+      *ngIf="rooms && rooms.length > 0; else empty"
+    >
       <ng-container matColumnDef="no">
         <th mat-header-cell *matHeaderCellDef>No.</th>
         <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -75,5 +80,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+    <ng-template #empty> no data </ng-template>
   </div>
 </div>
