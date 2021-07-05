@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
     );
     this.subscriptions.push(subscription1);
-    const subscription2 = this.settings.user$.subscribe(user => this._username = user.username);
+    const subscription2 = this.settings.user$.subscribe(user => this._username = user?.username || '');
     this.subscriptions.push(subscription2);
   }
 
