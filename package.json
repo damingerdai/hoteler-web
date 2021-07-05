@@ -46,7 +46,7 @@
     "@angular-eslint/template-parser": "12.1.0",
     "@angular/cli": "~12.1.0",
     "@angular/compiler-cli": "~12.1.0",
-    "@angular/language-service": "~12.1.0",
+    "@angular/language-service": "~12.1.1",
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.4",
     "@types/jasmine": "~3.6.7",
