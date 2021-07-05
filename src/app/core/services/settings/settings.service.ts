@@ -18,7 +18,7 @@ export class SettingsService {
   public set user(user: Partial<IUser>) {
     this._user = user;
     this.localStorageService.set('user', user);
-    this.userSource.next(user)
+    this.userSource.next(user);
   }
 
   public get user() {
