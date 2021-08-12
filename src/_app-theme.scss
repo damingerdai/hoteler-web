@@ -1,12 +1,14 @@
 @use 'sass:map';
 @use '~@angular/material' as mat;
 @use './styles/apexcharts' as apexcharts-theme;
+@use './app/routes/room/room-list/room-list-theme';
 @use './app/shared/components/error-code/error-code-theme';
 @use './app/shared/components/page-header/page-header-theme';
 
 
 @mixin hoteler-app-theme($theme) {
 
+  @include room-list-theme.hoteler-room-list-theme($theme);
   @include error-code-theme.hoteler-error-code-theme($theme);
   @include page-header-theme.hoteler-page-header-theme($theme);
   @include apexcharts-theme.hoteler-apexcharts-theme($theme);
