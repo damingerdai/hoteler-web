@@ -1,0 +1,12 @@
+diff --git a/node_modules/apexcharts/package.json b/node_modules/apexcharts/package.json
+index 2854556..932df6d 100644
+--- a/node_modules/apexcharts/package.json
++++ b/node_modules/apexcharts/package.json
+@@ -9,6 +9,7 @@
+   "main": "dist/apexcharts.common.js",
+   "unpkg": "dist/apexcharts.js",
+   "jsdelivr": "dist/apexcharts.js",
++  "module": "dist/apexcharts.esm.js",
+   "typings": "types/apexcharts.d.ts",
+   "files": [
+     "src",
