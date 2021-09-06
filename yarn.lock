@@ -18,6 +18,14 @@
     "@angular-devkit/core" "12.2.3"
     rxjs "6.6.7"
 
+"@angular-devkit/architect@0.1202.4":
+  version "0.1202.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1202.4.tgz#0db02f48f8863b3cfb68d6a8cb5ae781953d414c"
+  integrity sha512-RBatkiiZWGX7/qYYaWVNAzaF3E8TCEt9dRfAoZSaLy/JLQLT3xjX+qT4bBC/XPdC8SQCWvMjW3IjfYRaKTBv1g==
+  dependencies:
+    "@angular-devkit/core" "12.2.4"
+    rxjs "6.6.7"
+
 "@angular-devkit/build-angular@~12.2.3":
   version "12.2.3"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-12.2.3.tgz#52981758dd1f11c377ddbd1fa895929425db03e7"
@@ -122,12 +130,24 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-12.2.3.tgz#307b5af645449e64bfa2e9c0eb8f14462531c1a9"
-  integrity sha512-pbYOK8DK1V7YCzt8C3OckjQDGvCQqrLmg5kH+nLLAYOlkToRk3DBPIocuF9tCflNt6tEIkRJM4lPeDyy/z/GjQ==
+"@angular-devkit/core@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-12.2.4.tgz#0514a29989abc5b16ed6014b0109472e9fc3dc04"
+  integrity sha512-lONchANfqBHE0UgqK1PFcaBwpT/FetM8atuLjbhgdM1VcR6lVLzyZImhR12gtNWJ5nledhMp8QeGkFvO3KCdxw==
   dependencies:
-    "@angular-devkit/core" "12.2.3"
+    ajv "8.6.2"
+    ajv-formats "2.1.0"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.7"
+    source-map "0.7.3"
+
+"@angular-devkit/schematics@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-12.2.4.tgz#298f7a48ccedfbfc817e49c37017437f10cccb23"
+  integrity sha512-hL2POzb2G8PzYzLl3Dmc3ePCRyXg1LnJEpGTXvTqgLCUI6fKGb2T7hwn3fbD7keCv88UleGazOPq9iU7Qqvx3Q==
+  dependencies:
+    "@angular-devkit/core" "12.2.4"
     ora "5.4.1"
     rxjs "6.6.7"
 
@@ -188,15 +208,15 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
-"@angular/cli@~12.2.3":
-  version "12.2.3"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-12.2.3.tgz#08b3d64ac9c4c4a2355dadcfc46b90494ece455a"
-  integrity sha512-QBudMbLc+m/Z7GZTskeStk8PUAIPYVYRDq+9dQyKmill56t4MdmTU/m8eteVUXWpQFdRwhqIz6L9hlsfJXzP6A==
+"@angular/cli@~12.2.4":
+  version "12.2.4"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-12.2.4.tgz#bf624b5a7ffe6a25429ceb31a553f26195164447"
+  integrity sha512-oUpUKnFyunUMaWXF/5mXgM4r2Yav0ucysNN5rIhqtKPwGePGMALIuBWAhgsuIyT+SrmF9HIp1dVC5+sGA1WzYQ==
   dependencies:
-    "@angular-devkit/architect" "0.1202.3"
-    "@angular-devkit/core" "12.2.3"
-    "@angular-devkit/schematics" "12.2.3"
-    "@schematics/angular" "12.2.3"
+    "@angular-devkit/architect" "0.1202.4"
+    "@angular-devkit/core" "12.2.4"
+    "@angular-devkit/schematics" "12.2.4"
+    "@schematics/angular" "12.2.4"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.1"
     debug "4.3.2"
@@ -1836,13 +1856,13 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.15.tgz#6a9d143f7f4f49db2d782f9e1c8839a29b43ae23"
   integrity sha512-15spi3V28QdevleWBNXE4pIls3nFZmBbUGrW9IVPwiQczuSb9n76TCB4bsk8TSel+I1OkHEdPhu5QKMfY6rQHA==
 
-"@schematics/angular@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-12.2.3.tgz#e0e21fdc0e8aff6c5d6ad9f1f4712ed46585baec"
-  integrity sha512-MyInM0/Dg1geP5eYx370IX6l70ZTtGq7QIt9CFBViHlX4BWNmXq5bbJIPYJ/FWwT+zhSK7zp5AcyDKg6PWqh/Q==
+"@schematics/angular@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-12.2.4.tgz#db3b3a1c68a7d5a70043f717a0775889027a5667"
+  integrity sha512-JPyjoTQMiVnaFmaEgACm7dzRMp7WMq78abeVaAg/xy8z2apMeDhTBXoSSLhXpQNtFvzLmfM4ovC6sCwn9esU9A==
   dependencies:
-    "@angular-devkit/core" "12.2.3"
-    "@angular-devkit/schematics" "12.2.3"
+    "@angular-devkit/core" "12.2.4"
+    "@angular-devkit/schematics" "12.2.4"
     jsonc-parser "3.0.0"
 
 "@tootallnate/once@1":
@@ -7031,19 +7051,10 @@ npm-normalize-package-bin@^1.0.1:
   resolved "https://registry.yarnpkg.com/npm-normalize-package-bin/-/npm-normalize-package-bin-1.0.1.tgz#6e79a41f23fd235c0623218228da7d9c23b8f6e2"
   integrity sha512-EPfafl6JL5/rU+ot6P3gRSCpPDW5VmIzX959Ob1+ySFUuuYHWHekXpwdUZcKP5C+DS4GEtdJluwBjnsNDl+fSA==
 
-npm-package-arg@8.1.5:
+npm-package-arg@8.1.5, npm-package-arg@^8.0.0, npm-package-arg@^8.0.1, npm-package-arg@^8.1.2:
   version "8.1.5"
   resolved "https://registry.yarnpkg.com/npm-package-arg/-/npm-package-arg-8.1.5.tgz#3369b2d5fe8fdc674baa7f1786514ddc15466e44"
   integrity sha512-LhgZrg0n0VgvzVdSm1oiZworPbTxYHUJCgtsJW8mGvlDpxTM1vSJc3m5QZeUkhAHIzbz3VCHd/R4osi1L1Tg/Q==
-  dependencies:
-    hosted-git-info "^4.0.1"
-    semver "^7.3.4"
-    validate-npm-package-name "^3.0.0"
-
-npm-package-arg@^8.0.0, npm-package-arg@^8.0.1, npm-package-arg@^8.1.2:
-  version "8.1.4"
-  resolved "https://registry.yarnpkg.com/npm-package-arg/-/npm-package-arg-8.1.4.tgz#8001cdbc4363997b8ef6c6cf7aaf543c5805879d"
-  integrity sha512-xLokoCFqj/rPdr3LvcdDL6Kj6ipXGEDHD/QGpzwU6/pibYUOXmp5DBmg76yukFyx4ZDbrXNOTn+BPyd8TD4Jlw==
   dependencies:
     hosted-git-info "^4.0.1"
     semver "^7.3.4"
