@@ -205,7 +205,7 @@
   dependencies:
     tslib "^2.2.0"
 
-"@angular/cdk@~12.2.0":
+"@angular/cdk@~12.2.9":
   version "12.2.9"
   resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-12.2.9.tgz#f39e4d7cdb3568ad8e1d412e3500772e2d4c605c"
   integrity sha512-9Wgj69iGAZ4teQqW/zPbVg2RGna+m9i3v0zkWGx/+Uo95rikJCUZBQM4bfeOe+bSJrS77jV5EisBWG7ayNUSzQ==
@@ -299,7 +299,7 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-12.2.9.tgz#6732c2dae7c25760cfe22f65c714096aa4f0a387"
   integrity sha512-q6WH8CxS4nXKnIR/imQbRYTdP0PW63tDogzlol6gnB/jEmGgmQJphYRVeDqr5owIxuzCB06JkWXPVsyHY3yHvA==
 
-"@angular/material@^12.2.0":
+"@angular/material@^12.2.9":
   version "12.2.9"
   resolved "https://registry.yarnpkg.com/@angular/material/-/material-12.2.9.tgz#b4a1e138c7fd2341bd27aa6012b4738f61b5ad2d"
   integrity sha512-+eM67RF038S56m3wsj37h0PyyRD18cQ8V2zmKG1UezH0nnosbmCAwzH9BfcNiIB+/V+k5QMJ/JVu5MjDQqX37w==
@@ -3529,9 +3529,9 @@ css-tree@^1.1.2, css-tree@^1.1.3:
     source-map "^0.6.1"
 
 css-what@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/css-what/-/css-what-5.0.1.tgz#3efa820131f4669a8ac2408f9c32e7c7de9f4cad"
-  integrity sha512-FYDTSHb/7KXsWICVsxdmiExPjCfRC4qRFBdVwv7Ax9hMnvMmEjP9RfxTEZ3qPZGmADDn2vAKSo9UcN1jKVYscg==
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/css-what/-/css-what-5.1.0.tgz#3f7b707aadf633baf62c2ceb8579b545bb40f7fe"
+  integrity sha512-arSMRWIIFY0hV8pIxZMEfmMI47Wj3R/aWpZDDxWYCPEiOMv6tfOrnpDtgxBYPEQD4V0Y/958+1TdC3iWTFcUPw==
 
 css@^2.0.0:
   version "2.2.4"
