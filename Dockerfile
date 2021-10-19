@@ -7,16 +7,9 @@ RUN yarn config set strict-ssl false
 
 WORKDIR /app
 
-# COPY scripts/postinstall/ngcc.sh  /app/scripts/postinstall/ngcc.sh
-# COPY scripts/postinstall/apexcharts.sh  /app/scripts/postinstall/apexcharts.sh
-# COPY tools/postinstall/apexcharts-patch.js  /app/tools/postinstall/apexcharts-patch.js
 COPY scripts/postinstall  /app/scripts/postinstall/
-COPY tools/postinstall /app/tools/postinstall/
 COPY package.json yarn.lock /app/
-# RUN yarn install
-RUN yarn install --ignore-scripts
-# RUN sh scripts/postinstall/ngcc.sh
-# RUN sh scripts/postinstall/apexcharts.sh
+RUN yarn install
 
 COPY . .
 RUN yarn build
