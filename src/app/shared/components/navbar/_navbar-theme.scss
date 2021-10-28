@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use '~@angular/material' as mat;
+
+@mixin hoteler-navbar-theme($theme) {
+  $accent: map.get($theme, accent);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
+
+  app-navbar {
+    a.docs-button {
+      &:hover, &:focus {
+        background: {
+          color: rgba(0, 0, 0, 0.4)
+        };
+        color: mat.get-color-from-palette($accent);
+      }
+    }
+  }
+}
