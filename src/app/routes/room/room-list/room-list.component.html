@@ -15,9 +15,52 @@
       创建房间
     </button>
   </div>
-
   <mat-divider class="divider"></mat-divider>
-  <div class="mat-elevation-z8 table-responsive room-list">
+  <div *ngIf="layout === 'card'" fxLayout="row wrap" class="room-card">
+    <mat-card
+      fxFlex="100"
+      fxFlex.gt-sm="33"
+      fxFlex.gt-xs="50"
+      *ngFor="let room of rooms; let i = index"
+      class="room-list-card"
+    >
+      <mat-card-header>
+        <mat-card-title>
+          {{ room.roomname }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <mat-chip-list>
+            <mat-chip *ngIf="room.status === 1" color="primary" selected
+              >空闲</mat-chip
+            >
+            <mat-chip *ngIf="room.status === 2" color="primary" selected
+              >占用</mat-chip
+            >
+          </mat-chip-list>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="'https://picsum.photos/200/300?random=' + i" />
+      <mat-card-actions>
+        <button
+          mat-button
+          color="primary"
+          (click)="addCustomerRoomDialog(room)"
+        >
+          入住
+        </button>
+        <button mat-button color="accent" (click)="updateRoom(room)">
+          修改
+        </button>
+        <button mat-button color="warn" (click)="deleteRoom(room.id)">
+          删除
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div
+    *ngIf="layout === 'table'"
+    class="mat-elevation-z8 table-responsive room-list"
+  >
     <table
       mat-table
       [dataSource]="rooms"
@@ -83,3 +126,4 @@
     <ng-template #empty> no data </ng-template>
   </div>
 </div>
+<app-customizer (layoutChange)="layoutChange($event)"></app-customizer>

@@ -1,0 +1,19 @@
+<div
+  class="customizer-handle"
+  matTooltip="Drag me around"
+  cdkDrag
+  [matMenuTriggerFor]="menu"
+>
+  <button mat-fab>
+    <mat-icon aria-label="settings icons">settings</mat-icon>
+  </button>
+</div>
+<mat-menu #menu="matMenu" yPosition="above">
+  <button
+    mat-menu-item
+    *ngFor="let layout of layouts"
+    (click)="changeLayout(layout.value)"
+  >
+    {{ layout.display }}
+  </button>
+</mat-menu>

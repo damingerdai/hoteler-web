@@ -4,7 +4,7 @@
 @mixin hoteler-room-list-theme($theme) {
   $foreground: map.get($theme, foreground);
 
-  .room-list {
-    color: mat.get-color-from-palette($foreground, text);
-  }
+  // .room-list {
+  //   color: mat.get-color-from-palette($foreground, text);
+  // }
 }
