@@ -10,6 +10,10 @@
         left: 12px;
       };
     }
+
+    &-action {
+      justify-content: center
+    }
   }
 }
 
@@ -21,7 +25,7 @@
   }
 }
 
-.action-container {
+tr.mat-column-action {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -44,11 +48,6 @@
        margin: 0;
        width: 100%;
      }
-    //  &:not(:first-child) {
-    //    margin: {
-    //      top: 15px;
-    //    };
-    //  }
    }
 }
 
