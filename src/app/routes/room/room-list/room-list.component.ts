@@ -18,6 +18,8 @@ import { UserRoomService } from 'src/app/core/services/user-room';
 })
 export class RoomListComponent implements OnInit {
 
+  public layout = 'table';
+
   public displayedColumns: string[] = ['no', 'roomname', 'price', 'status', 'action'];
 
   public rooms: Rooms;
@@ -163,6 +165,10 @@ export class RoomListComponent implements OnInit {
         });
       }
     })
+  }
+
+  public layoutChange(layout) {
+      this.layout = layout;
   }
 
   private fetchAllRooms() {

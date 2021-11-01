@@ -7,13 +7,15 @@ import { CreateRoomDialogComponent, UpdateRoomDialogComponent } from './dialog/'
 import { RoomListComponent } from './room-list/room-list.component';
 import { RoomRoutingModule } from './room-routing.module';
 import { AddCustomerRoomDialogComponent } from './dialog/add-customer-room-dialog/add-customer-room-dialog.component';
+import { CustomizerComponent } from './customizer/customizer.component';
 
 @NgModule({
   declarations: [
     RoomListComponent,
     CreateRoomDialogComponent,
     UpdateRoomDialogComponent,
-    AddCustomerRoomDialogComponent
+    AddCustomerRoomDialogComponent,
+    CustomizerComponent
   ],
   imports: [
     CommonModule,

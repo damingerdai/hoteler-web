@@ -31,3 +31,28 @@
   }
 }
 
+.room-list {
+   &-card {
+     max-width: 400px;
+     min-width: 200px;
+     padding: {
+       left: 8px;
+       right: 8px;
+     };
+
+     .mat-card-image  {
+       margin: 0;
+       width: 100%;
+     }
+    //  &:not(:first-child) {
+    //    margin: {
+    //      top: 15px;
+    //    };
+    //  }
+   }
+}
+
+.room-card {
+  width: 100%;
+}
+
