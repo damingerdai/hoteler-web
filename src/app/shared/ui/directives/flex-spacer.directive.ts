@@ -9,7 +9,6 @@ export class FlexSpacerDirective {
     // this.render.setStyle(this.el.nativeElement, 'flex-grow', '1');
     this.el.nativeElement.style.customProperty = true
     this.el.nativeElement.style.flexGrow = '1';
-    console.log(this.el);
   }
 
 }
