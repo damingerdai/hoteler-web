@@ -1,5 +1,6 @@
-node_modules
+.angular
 .github
 .husky
 .vscode
 dist
+node_modules
