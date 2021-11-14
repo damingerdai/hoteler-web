@@ -17,7 +17,8 @@ export class ThemePickerComponent implements OnInit {
     {
       primary: '#3F51B5',
       accent: '#E91E63',
-      displayName: 'Indigo & Pink',
+      // displayName: 'Indigo & Pink',
+      displayName: '靛蓝 & 粉红',
       name: 'indigo-pink',
       isDark: false,
       isDefault: true,
@@ -25,7 +26,8 @@ export class ThemePickerComponent implements OnInit {
     {
       primary: '#673AB7',
       accent: '#FFC107',
-      displayName: 'Deep Purple & Amber',
+      // displayName: 'Deep Purple & Amber',
+      displayName: '深紫 & 琥珀',
       name: 'deeppurple-amber',
       isDark: false,
     },
@@ -39,14 +41,16 @@ export class ThemePickerComponent implements OnInit {
     {
       primary: '#E91E63',
       accent: '#607D8B',
-      displayName: 'Pink & Blue-grey',
+      // displayName: 'Pink & Blue-grey',
+      displayName: '粉色 & 蓝灰',
       name: 'pink-bluegrey',
       isDark: true,
     },
     {
       primary: '#9C27B0',
       accent: '#4CAF50',
-      displayName: 'Purple & Green',
+      // displayName: 'Purple & Green',
+      displayName: '紫色 & 绿色',
       name: 'purple-green',
       isDark: true,
     },
