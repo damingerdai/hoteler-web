@@ -35,6 +35,12 @@ tr.mat-column-action {
   }
 }
 
+.table-responsive {
+  .mat-table {
+    min-width: 576px;
+  }
+}
+
 .room-list {
    &-card {
      max-width: 400px;
