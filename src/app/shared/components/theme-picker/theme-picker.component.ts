@@ -1,5 +1,6 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { StyleManagerService } from 'src/app/core/services/style-manager/style-manager.service';
 import { SiteTheme, SiteThemes, ThemeStorageService } from './theme-storage/theme-storage.service';
 
@@ -66,7 +67,8 @@ export class ThemePickerComponent implements OnInit {
   constructor(
     private styleManager: StyleManagerService,
     private themeStorage: ThemeStorageService,
-    private liveAnnouncer: LiveAnnouncer
+    private liveAnnouncer: LiveAnnouncer,
+    private metaService: Meta
   ) {
     this.currentTheme = this.themes[0];
     const themeName = this.themeStorage.getStoredThemeName();
@@ -94,6 +96,9 @@ export class ThemePickerComponent implements OnInit {
 
     if (this.currentTheme) {
       this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);
+      this.metaService.updateTag({
+        name: 'theme-color', content: theme.primary, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
+      });
       this.themeStorage.storeTheme(this.currentTheme);
     }
   }
