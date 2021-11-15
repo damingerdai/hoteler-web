@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LayoutModule } from '@angular/cdk/layout';
+import { PlatformModule } from '@angular/cdk/platform'
 
 const cdks = [
   DragDropModule,
-  LayoutModule
+  LayoutModule,
+  PlatformModule
 ];
 
 

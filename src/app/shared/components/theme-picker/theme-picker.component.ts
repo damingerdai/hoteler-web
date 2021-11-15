@@ -1,4 +1,5 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { StyleManagerService } from 'src/app/core/services/style-manager/style-manager.service';
@@ -68,7 +69,8 @@ export class ThemePickerComponent implements OnInit {
     private styleManager: StyleManagerService,
     private themeStorage: ThemeStorageService,
     private liveAnnouncer: LiveAnnouncer,
-    private metaService: Meta
+    private metaService: Meta,
+    private platform: Platform
   ) {
     this.currentTheme = this.themes[0];
     const themeName = this.themeStorage.getStoredThemeName();
@@ -78,6 +80,12 @@ export class ThemePickerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.platform.isBrowser && this.platform.IOS && this.platform.SAFARI) {
+      this.metaService.addTag({
+        name: 'apple-mobile-web-app-capable',
+        content: 'yes'
+      })
+    }
   }
 
   selectTheme(themeName: string) {
@@ -96,11 +104,32 @@ export class ThemePickerComponent implements OnInit {
 
     if (this.currentTheme) {
       this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);
-      this.metaService.updateTag({
-        name: 'theme-color', content: theme.primary, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
-      });
+      this.updateThemeColor(theme);
+
       this.themeStorage.storeTheme(this.currentTheme);
     }
   }
 
+
+  private updateThemeColor(theme: SiteTheme) {
+    if (!this.platform.isBrowser) {
+      return;
+    }
+    if (this.platform.ANDROID && this.platform.BLINK) {
+      this.metaService.updateTag({
+        name: 'theme-color', content: theme.primary, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
+      });
+    }
+    if (this.platform.TRIDENT) {
+      // only for wp
+      this.metaService.updateTag({
+        name: 'msapplication-navbutton-color', content: theme.primary,
+      });
+    }
+    if (this.platform.IOS && this.platform.SAFARI) {
+      this.metaService.updateTag({
+        name: 'apple-mobile-web-app-status-bar-style', content: theme.isDark ? 'black' : 'default',
+      });
+    }
+  }
 }
