@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 @use './styles/apexcharts' as apexcharts-theme;
+@use './styles/input' as input-theme;
 @use './app/routes/room/room-list/room-list-theme';
 @use './app/shared/components/error-code/error-code-theme';
 @use './app//shared/components//navbar/navbar-theme';
@@ -14,6 +15,7 @@
   @include navbar-theme.hoteler-navbar-theme($theme);
   @include page-header-theme.hoteler-page-header-theme($theme);
   @include apexcharts-theme.hoteler-apexcharts-theme($theme);
+  @include input-theme.hoteler-input-theme($theme);
 
   $primary: map.get($theme, primary);
   $accent: map.get($theme, accent);
