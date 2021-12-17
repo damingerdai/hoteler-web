@@ -4,7 +4,7 @@ import { ApexOptions } from 'ng-apexcharts';
 import { filter, switchMap } from 'rxjs/operators';
 import { CustomerService } from 'src/app/core/services/customers';
 import { RoomService } from 'src/app/core/services/room';
-import { UserRoomService } from 'src/app/core/services/user-room';
+import { CustomerCheckinRecordService } from 'src/app/core/services/customer-checkin-record';
 import { AddUserRoomComponent } from '../dialog/add-user-room/add-user-room.component';
 
 type ApexOptions2 = ApexOptions & { show: boolean };
@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private customerApi: CustomerService,
     public dialog: MatDialog,
-    private userRoomApi: UserRoomService,
+    private customerCheckinRecordApi: CustomerCheckinRecordService,
     private roomApi: RoomService
   ) { }
 
@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
     dialogRef.afterClosed()
       .pipe(
         filter(res => !!res),
-        switchMap(ur => this.userRoomApi.create(ur))
+        switchMap(ur => this.customerCheckinRecordApi.create(ur))
       ).subscribe(res => {
         if (res.status === 200) {
           console.log('test');

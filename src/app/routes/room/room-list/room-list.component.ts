@@ -5,11 +5,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { IRoom, Rooms } from 'src/app/core/models/room';
-import { RoomService } from 'src/app/core/services/room';
+import { IRoom, Rooms } from '../../../core/models/room';
+import { RoomService } from '../../../core/services/room';
 import { AddCustomerRoomDialogComponent, CreateRoomDialogComponent, UpdateRoomDialogComponent } from '../dialog';
-import { ConfirmComponent } from 'src/app/shared/components';
-import { UserRoomService } from 'src/app/core/services/user-room';
+import { ConfirmComponent } from '../../../shared/components';
+import { CustomerCheckinRecordService } from '../../../core/services/customer-checkin-record';
 
 @Component({
   selector: 'app-room-list',
@@ -30,7 +30,7 @@ export class RoomListComponent implements OnInit {
     private dialog: MatDialog,
     private fb: FormBuilder,
     private roomApi: RoomService,
-    private userRoomApi: UserRoomService,
+    private customerCheckinRecordApi: CustomerCheckinRecordService,
     private snackBar: MatSnackBar
   ) {
     this.roomForm = this.fb.group({
@@ -155,7 +155,7 @@ export class RoomListComponent implements OnInit {
         res.endDate = new Date(res.endDate + ' 12:00:000')
         return res;
       }),
-      switchMap(res => this.userRoomApi.create(res))
+      switchMap(res => this.customerCheckinRecordApi.create(res))
     ).subscribe(res => {
       if (res.status === 200) {
         this.snackBar.open('入住成功🚀', 'X', {
