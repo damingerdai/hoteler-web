@@ -1,4 +1,4 @@
-export interface IUserRoom {
+export interface ICustomerCheckinRecord {
   id: string;
   userId: string;
   roomId: string;

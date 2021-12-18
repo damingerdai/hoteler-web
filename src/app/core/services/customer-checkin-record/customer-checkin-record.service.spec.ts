@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { ApiTestingModule } from '../../testings';
 
-import { UserRoomService } from './user-room.service';
+import { CustomerCheckinRecordService } from './customer-checkin-record.service';
 
 describe('UserRoomService', () => {
-  let service: UserRoomService;
+  let service: CustomerCheckinRecordService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ApiTestingModule]
     });
-    service = TestBed.inject(UserRoomService);
+    service = TestBed.inject(CustomerCheckinRecordService);
   });
 
   it('should be created', () => {
