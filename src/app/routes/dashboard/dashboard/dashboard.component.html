@@ -7,13 +7,13 @@
     *ngIf="roomStatusDonutChart.show"
   >
     <mat-card>
-      <apx-chart
+      <daming-chart
         [series]="roomStatusDonutChart.series"
         [chart]="roomStatusDonutChart.chart"
         [title]="roomStatusDonutChart.title"
         [labels]="roomStatusDonutChart.labels"
         [plotOptions]="roomStatusDonutChart.plotOptions"
-      ></apx-chart>
+      ></daming-chart>
     </mat-card>
   </div>
   <div
@@ -23,12 +23,12 @@
     *ngIf="pastWeekCustomerCountChart.show"
   >
     <mat-card>
-      <apx-chart
+      <daming-chart
         [series]="pastWeekCustomerCountChart.series"
         [chart]="pastWeekCustomerCountChart.chart"
         [title]="pastWeekCustomerCountChart.title"
         [xaxis]="pastWeekCustomerCountChart.xaxis"
-      ></apx-chart>
+      ></daming-chart>
     </mat-card>
   </div>
 </main>
