@@ -2,6 +2,7 @@
 @use '@angular/material' as mat;
 @use './styles/apexcharts' as apexcharts-theme;
 @use './styles/input' as input-theme;
+@use './app/shared/skeleton//skeletion-theme';
 @use './app/routes/room/room-list/room-list-theme';
 @use './app/shared/components/error-code/error-code-theme';
 @use './app//shared/components//navbar/navbar-theme';
@@ -10,6 +11,7 @@
 
 @mixin hoteler-app-theme($theme) {
 
+  @include skeletion-theme.hoteler-skeletion-theme($theme);
   @include room-list-theme.hoteler-room-list-theme($theme);
   @include error-code-theme.hoteler-error-code-theme($theme);
   @include navbar-theme.hoteler-navbar-theme($theme);

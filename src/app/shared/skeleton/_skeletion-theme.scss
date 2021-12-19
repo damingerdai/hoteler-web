@@ -1,0 +1,44 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+// $effectbg: rgb(50, 50, 50);
+// $darkenbg: darken($effectbg, 4%);
+
+@mixin effect-animation($effectbg) {
+    $darkenbg: darken($effectbg, 4%);
+    @keyframes beat {
+        0% {
+            background: $effectbg;
+        }
+    
+        50% {
+            background: $darkenbg;
+        }
+    
+        100% {
+            background: $effectbg;
+        }
+    }
+
+    animation: beat 1.3s ease infinite;
+}
+
+
+@mixin hoteler-skeletion-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $is-dark-theme:   map.get($color-config, 'is-dark');
+
+  @if $is-dark-theme {
+    $effectbg: #323232;
+    .effect {
+        @include effect-animation($effectbg);
+        background: rgb(50, 50, 50) !important;
+    }
+  } @else {
+    $effectbg: #f6f7f8;
+    .effect {
+        @include effect-animation($effectbg);
+        background: #f2f2f2 !important;
+    }
+  }
+}

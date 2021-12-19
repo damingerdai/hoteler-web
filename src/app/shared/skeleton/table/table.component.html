@@ -1,0 +1,14 @@
+<div class="container" [@visibilityChanged]="visiblityState">
+  <!-- <div [ngClass]="[animate, 'e-0']"></div> -->
+
+  <div *ngFor="let i of [1, 2, 3, 4, 5, 6, 7]">
+    <div class="left">
+      <div *ngFor="let i of [1, 2]" [ngClass]="[animate, 'le-' + i]"></div>
+    </div>
+    <div class="right">
+      <div *ngFor="let i of [1, 2]" class="right__row">
+        <div *ngFor="let i of [1, 2, 3]" [ngClass]="[animate, 're-' + i]"></div>
+      </div>
+    </div>
+  </div>
+</div>

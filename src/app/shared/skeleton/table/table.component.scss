@@ -1,0 +1,40 @@
+@use '../skeleton';
+
+.container {
+	padding: 1rem;
+	z-index: 1;
+}
+
+.e-0 {
+	width: 70%;
+}
+
+.left {
+	display: inline-block;
+	width: 50%;
+
+	.le-0 {
+		width: 100%;
+	}
+
+	.le-1 {
+		margin-top: 2.35rem;
+	}
+}
+
+.right {
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+
+	&__row {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.effect {
+		display: inline-block;
+		margin-left: 3%;
+		width: 30%;
+	}
+}

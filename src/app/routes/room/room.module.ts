@@ -8,6 +8,7 @@ import { RoomListComponent } from './room-list/room-list.component';
 import { RoomRoutingModule } from './room-routing.module';
 import { AddCustomerRoomDialogComponent } from './dialog/add-customer-room-dialog/add-customer-room-dialog.component';
 import { CustomizerComponent } from './customizer/customizer.component';
+import { SkeletonModule } from './../../shared/skeleton/skeleton.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { CustomizerComponent } from './customizer/customizer.component';
   imports: [
     CommonModule,
     RoomRoutingModule,
+
+    SkeletonModule,
     SharedModule
   ],
   providers: [
