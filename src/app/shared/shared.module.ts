@@ -4,9 +4,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-
-import { NgApexchartsModule } from 'ng-apexcharts';
-
 import {
   ConfirmComponent,
   ErrorCodeComponent,
@@ -37,8 +34,6 @@ const DECLARATIONS = [
     ReactiveFormsModule,
     SharedCdkModule,
     SharedMaterialModule,
-
-    NgApexchartsModule
   ],
   providers: [
     ThemeStorageService
@@ -50,8 +45,6 @@ const DECLARATIONS = [
     ReactiveFormsModule,
     SharedCdkModule,
     SharedMaterialModule,
-
-    NgApexchartsModule,
 
     ...DECLARATIONS
   ]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ApexOptions } from 'ng-apexcharts';
+import { ApexOptions } from 'src/app/shared/apexcharts';
 import { filter, switchMap } from 'rxjs/operators';
 import { CustomerService } from 'src/app/core/services/customers';
 import { RoomService } from 'src/app/core/services/room';
