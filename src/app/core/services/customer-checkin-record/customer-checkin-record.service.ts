@@ -13,6 +13,6 @@ export class CustomerCheckinRecordService {
   ) { }
 
   public create(customerCheckinRecord: Partial<ICustomerCheckinRecord>): Observable<DataReponse<number>> {
-    return this.api.post<DataReponse<number>>('api/v1/users/rooms', customerCheckinRecord as any);
+    return this.api.post<DataReponse<number>>('api/v1/customer-checkin-record', customerCheckinRecord as any);
   }
 }
