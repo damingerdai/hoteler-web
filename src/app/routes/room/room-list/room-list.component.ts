@@ -163,6 +163,7 @@ export class RoomListComponent implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top',
         });
+        this.fetchAllRooms();
       }
     })
   }
