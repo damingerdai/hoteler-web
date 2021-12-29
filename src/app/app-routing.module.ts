@@ -37,6 +37,10 @@ const routes: Routes = [
         loadChildren: () => import('./routes/customer/customer.module').then(m => m.CustomerModule)
       },
       {
+        path: 'settings',
+        loadChildren: () => import('./routes/settings/settings.module').then(m => m.SettingsModule)
+      },
+      {
         path: '403',
         loadChildren: () => import('./routes/forbidden/forbidden.module').then(m => m.ForbiddenModule)
       },
