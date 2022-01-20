@@ -7,7 +7,6 @@ RUN yarn config set strict-ssl false
 
 WORKDIR /app
 
-COPY scripts/postinstall  /app/scripts/postinstall/
 COPY package.json yarn.lock /app/
 RUN yarn install
 
