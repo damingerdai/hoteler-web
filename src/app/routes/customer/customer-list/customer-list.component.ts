@@ -18,12 +18,15 @@ export class CustomerListComponent implements OnInit {
 
   public customers: Customers;
 
+  public isLoading: boolean;
+
   constructor(
     private customerApi: CustomerService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {
     this.customers = [];
+    this.isLoading = true;
   }
 
   ngOnInit(): void {
@@ -93,12 +96,14 @@ export class CustomerListComponent implements OnInit {
   }
 
   private fetchCustomers() {
+    this.isLoading = true;
     this.customerApi.list().subscribe((res) => {
       if (res.status === 200) {
         this.customers =  res.data;
       } else {
         this.snackBar.open('获取客户失败：' + res.error.message);
       }
+      this.isLoading = false;
     });
   }
 
