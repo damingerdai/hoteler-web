@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin hoteler-settings-theme($theme) {
+  $foreground: map.get($theme, foreground);
+
+  app-settings {
+    color: mat.get-color-from-palette($foreground, text);
+  }
+}
