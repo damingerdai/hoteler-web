@@ -1,4 +1,4 @@
-import { IUserToken } from "./user-token";
+import { IUserToken } from './user-token';
 
 export interface IUser extends IUserToken {
   id: string;

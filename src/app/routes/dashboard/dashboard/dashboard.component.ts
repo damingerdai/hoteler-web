@@ -97,7 +97,7 @@ export class DashboardComponent implements OnInit {
           categories: res.data.pastWeekCustomerCounts.map(v => v.checkInDate)
         };
       }
-    })
+    });
   }
 
 }

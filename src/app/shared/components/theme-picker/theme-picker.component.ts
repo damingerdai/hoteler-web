@@ -84,7 +84,7 @@ export class ThemePickerComponent implements OnInit {
       this.metaService.addTag({
         name: 'apple-mobile-web-app-capable',
         content: 'yes'
-      })
+      });
     }
   }
 

@@ -5,7 +5,7 @@ import { SettingsService } from './settings.service';
 
 describe('SettingsService', () => {
   let service: SettingsService;
-  let localStorageService: LocalStorageService
+  let localStorageService: LocalStorageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

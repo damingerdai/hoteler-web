@@ -9,7 +9,7 @@ import {
   ViewChild,
   ViewEncapsulation,
   ChangeDetectionStrategy,
-} from "@angular/core";
+} from '@angular/core';
 import {
   ApexAnnotations,
   ApexAxisChartSeries,
@@ -30,13 +30,13 @@ import {
   ApexTooltip,
   ApexXAxis,
   ApexYAxis,
-} from "../model/apex-types";
-import { asapScheduler } from "rxjs";
+} from '../model/apex-types';
+import { asapScheduler } from 'rxjs';
 
-import * as ApexCharts from "apexcharts";
+import * as ApexCharts from 'apexcharts';
 
 @Component({
-  selector: "daming-chart",
+  selector: 'daming-chart',
   template: '<div #chart></div>',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -66,7 +66,7 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() autoUpdateSeries = true;
 
-  @ViewChild("chart", { static: true }) private chartElement: ElementRef;
+  @ViewChild('chart', { static: true }) private chartElement: ElementRef;
   private chartObj: any;
 
   ngOnInit() {
@@ -79,7 +79,7 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
     asapScheduler.schedule(() => {
       if (
         this.autoUpdateSeries &&
-        Object.keys(changes).filter((c) => c !== "series").length === 0
+        Object.keys(changes).filter((c) => c !== 'series').length === 0
       ) {
         this.updateSeries(this.series, true);
         return;

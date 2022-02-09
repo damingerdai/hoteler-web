@@ -1,5 +1,5 @@
-import { ChangeDetectorRef } from "@angular/core";
-import { ComponentFixture } from "@angular/core/testing";
+import { ChangeDetectorRef } from '@angular/core';
+import { ComponentFixture } from '@angular/core/testing';
 
 /**
  * @see https://betterprogramming.pub/how-to-write-tests-for-components-with-onpush-change-detection-in-angular-24f2637a0f40

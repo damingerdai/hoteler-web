@@ -23,7 +23,9 @@ export class ThemeStorageService {
   storeTheme(theme: SiteTheme) {
     try {
       window.localStorage[ThemeStorageService.storageKey] = theme.name;
-    } catch { }
+    } catch (err) { 
+      console.error(err);
+    }
 
     this.onThemeUpdate.emit(theme);
   }
@@ -39,6 +41,8 @@ export class ThemeStorageService {
   clearStorage() {
     try {
       window.localStorage.removeItem(ThemeStorageService.storageKey);
-    } catch { }
+    } catch (err) { 
+      console.error(err);
+    }
   }
 }

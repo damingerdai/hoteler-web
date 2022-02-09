@@ -145,14 +145,14 @@ export class RoomListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddCustomerRoomDialogComponent, {
       width: '400px',
       data: room
-    })
+    });
 
     dialogRef.afterClosed().pipe(
       filter(res => !!res),
       map(res => {
         res.userId = res.customerId,
-        res.beginDate = new Date(res.beginDate + ' 12:00:000')
-        res.endDate = new Date(res.endDate + ' 12:00:000')
+        res.beginDate = new Date(res.beginDate + ' 12:00:000');
+        res.endDate = new Date(res.endDate + ' 12:00:000');
         return res;
       }),
       switchMap(res => this.customerCheckinRecordApi.create(res))
@@ -165,7 +165,7 @@ export class RoomListComponent implements OnInit {
         });
         this.fetchAllRooms();
       }
-    })
+    });
   }
 
   public layoutChange(layout) {

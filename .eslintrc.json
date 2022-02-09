@@ -1,6 +1,11 @@
 {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
   "overrides": [
     {
       "files": ["*.ts"],
@@ -9,6 +14,7 @@
         "createDefaultProgram": true
       },
       "extends": [
+        "eslint:recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
@@ -29,7 +35,10 @@
             "type": "attribute"
           }
         ],
-        "@angular-eslint/no-empty-lifecycle-method": ["warn"]
+        "@angular-eslint/no-empty-lifecycle-method": ["warn"],
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "no-unused-vars": ["warn"]
       }
     },
     {

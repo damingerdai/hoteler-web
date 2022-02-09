@@ -22,7 +22,7 @@ export class AddCustomerRoomDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: IRoom
   ) {
     const currentDate = new Date();
-    const nextDate = new Date(currentDate.getTime() + 1000 * 60 * 60 * 24)
+    const nextDate = new Date(currentDate.getTime() + 1000 * 60 * 60 * 24);
     this.form = this.fb.group({
       customerId: [null, [Validators.required]],
       roomId: [data.id, [Validators.required]],
@@ -32,7 +32,7 @@ export class AddCustomerRoomDialogComponent implements OnInit {
     this.form.get('roomId').disable({ onlySelf: true, emitEvent: true });
     this.form.get('beginDate').disable();
     this.form.get('endDate').disable();
-    console.log(this.form)
+    console.log(this.form);
   }
 
   ngOnInit(): void {

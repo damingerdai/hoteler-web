@@ -30,5 +30,5 @@ describe('PageHeaderComponent', () => {
     const h1El = fixture.debugElement.query(By.css('h1'));
     expect(h1El).toBeTruthy();
     expect((h1El.nativeElement as HTMLHeadElement).textContent).toContain('hello');
-  })
+  });
 });

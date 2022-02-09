@@ -17,8 +17,8 @@ describe('FlexSpacerDirective', () => {
       imports: [DirectivesModule],
       declarations: [ FlexSpacerDirectiveTestComponent ],
       // schemas:      [ CUSTOM_ELEMENTS_SCHEMA ]
-    }).compileComponents()
-  }))
+    }).compileComponents();
+  }));
   it('div flex-grow style should be 1', () => {
     const fixture = TestBed.createComponent(FlexSpacerDirectiveTestComponent);
     fixture.detectChanges(); // initial bindin
