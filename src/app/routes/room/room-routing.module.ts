@@ -5,11 +5,6 @@ import { RoomListComponent } from './room-list/room-list.component';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'list'
-  },
-  {
-    path: 'list',
     component: RoomListComponent
   }
 ];
