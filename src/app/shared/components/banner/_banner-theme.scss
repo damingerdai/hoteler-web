@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin hoteler-banner-theme($theme) {
+    $primary: map.get($theme, primary);
+    $background: map.get($theme, background);
+    $foreground: map.get($theme, foreground);
+  
+    app-banner {
+        .banner {
+            background: mat.get-color-from-palette($primary);
+            color: mat.get-color-from-palette($primary, default-contrast);
+        }
+       
+    }
+  }
+  
