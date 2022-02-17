@@ -85,6 +85,22 @@
         <p>手机号码: {{ customer.phone }}</p>
       </mat-card-content>
       <app-banner [text]="customer.gender"></app-banner>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="updateCustomer(customer)"
+        >
+          修改
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="deleteCustomer(customer.id)"
+        >
+          删除
+        </button>
+      </mat-card-actions>
     </mat-card>
   </ng-container>
 </div>
