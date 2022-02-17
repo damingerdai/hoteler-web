@@ -20,6 +20,8 @@ export class CustomerListComponent implements OnInit {
 
   public isLoading: boolean;
 
+  public layout: 'table' | 'card';
+
   constructor(
     private customerApi: CustomerService,
     private dialog: MatDialog,
@@ -27,6 +29,7 @@ export class CustomerListComponent implements OnInit {
   ) {
     this.customers = [];
     this.isLoading = true;
+    this.layout = 'card';
   }
 
   ngOnInit(): void {
@@ -93,6 +96,10 @@ export class CustomerListComponent implements OnInit {
           this.snackBar.open('创建客户失败：' + res.error.message);
         }
     });
+  }
+
+  toggleLayout() {
+    this.layout === 'table' ? this.layout = 'card' : this.layout = 'table';
   }
 
   private fetchCustomers() {
