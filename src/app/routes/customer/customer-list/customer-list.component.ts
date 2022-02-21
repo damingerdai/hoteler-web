@@ -102,6 +102,14 @@ export class CustomerListComponent implements OnInit {
     this.layout === 'table' ? this.layout = 'card' : this.layout = 'table';
   }
 
+  processCustomerPhone(customer: ICustomer): string {
+    return customer.phone.toString(10).replace(/^(\d{4})(\d*)(\d{4})$/, (a, b, c, d) => b + c.replace(/\d/g, '*') + d);
+  }
+
+  processCustomerCardId(customer: ICustomer): string {
+    return customer.cardId.replace(/^(\d{4})(\d*)((\dX{4})|(\d{3}X))$/, (a, b, c, d) => b + c.replace(/\d/g, '*') + d);
+  }
+
   private fetchCustomers() {
     this.isLoading = true;
     this.customerApi.list().subscribe((res) => {

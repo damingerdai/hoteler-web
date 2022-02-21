@@ -1,11 +1,14 @@
 <app-page-header title="客户信息"></app-page-header>
-<div xLayout="row wrap" class="box">
-  <button mat-raised-button color="primary" (click)="createCustomer()">
-    创建客户
-  </button>
-  <button mat-raised-button color="warn" (click)="toggleLayout()">
-    切换布局
-  </button>
+<div class="box">
+  <div fxLayout="row wrap" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" (click)="createCustomer()">
+      创建客户
+    </button>
+    <button mat-raised-button color="warn" (click)="toggleLayout()">
+      切换布局
+    </button>
+  </div>
+
   <mat-divider class="divider"></mat-divider>
   <div *ngIf="layout === 'table'" class="mat-elevation-z8 table-responsive">
     <div class="loading-shade" *ngIf="isLoading">
@@ -35,11 +38,15 @@
       </ng-container>
       <ng-container matColumnDef="cardId">
         <th mat-header-cell *matHeaderCellDef>身份证号码</th>
-        <td mat-cell *matCellDef="let element">{{ element.cardId }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ processCustomerCardId(element) }}
+        </td>
       </ng-container>
       <ng-container matColumnDef="phone">
         <th mat-header-cell *matHeaderCellDef>联系方式</th>
-        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ processCustomerPhone(element) }}
+        </td>
       </ng-container>
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>操作</th>
@@ -64,12 +71,20 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   </div>
-  <div *ngIf="layout === 'card'" fxLayout="row wrap">
+  <div
+    *ngIf="layout === 'card'"
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between center"
+  >
+    <div class="loading-shade" *ngIf="isLoading">
+      <mat-spinner></mat-spinner>
+    </div>
     <div
       class="customer-card"
       *ngFor="let customer of customers"
       fxFlex.gt-sm="25"
       fxFlex.gt-xs="50"
+      fxFlex.gt-md="33"
       fxFlex="100"
     >
       <mat-card class="mat-card">
@@ -85,8 +100,8 @@
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p>身份证号码: {{ customer.cardId }}</p>
-          <p>手机号码: {{ customer.phone }}</p>
+          <p>身份证号码: {{ processCustomerCardId(customer) }}</p>
+          <p>手机号码: {{ processCustomerPhone(customer) }}</p>
         </mat-card-content>
         <app-banner [text]="customer.gender"></app-banner>
         <mat-card-actions>
