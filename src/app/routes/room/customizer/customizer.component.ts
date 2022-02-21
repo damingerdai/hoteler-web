@@ -18,7 +18,7 @@ export class CustomizerComponent implements OnInit {
       display: '卡片',
       value: 'card'
     }
-  ];
+  ] as Array<{ name: string; display: string, value:  'table' | 'card'}>;
 
   @Output()
   public layoutChange = new EventEmitter<'table' | 'card'>();

@@ -112,7 +112,7 @@ export class RoomListComponent implements OnInit {
     }, () => this.fetchAllRooms());
   }
 
-  public deleteRoom(id: number) {
+  public deleteRoom(id: string | number) {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '400px',
       data: {
@@ -122,7 +122,7 @@ export class RoomListComponent implements OnInit {
     });
     dialogRef.afterClosed().pipe(
       filter(res => res === true),
-      switchMap(() => this.roomApi.delete(id))
+      switchMap(() => this.roomApi.delete(typeof id === 'string' ? parseInt(id, 10) : id))
     ).subscribe(res => {
       if (res.status === 200) {
         this.snackBar.open('删除房间成功🚀', 'X', {
