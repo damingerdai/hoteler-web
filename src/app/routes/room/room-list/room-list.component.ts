@@ -18,7 +18,7 @@ import { CustomerCheckinRecordService } from '../../../core/services/customer-ch
 })
 export class RoomListComponent implements OnInit {
 
-  public layout = 'table';
+  public layout = 'card';
 
   public displayedColumns: string[] = ['no', 'roomname', 'price', 'status', 'action'];
 
