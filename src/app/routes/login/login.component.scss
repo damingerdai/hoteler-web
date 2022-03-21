@@ -1,7 +1,15 @@
+@use '../../../styles/breakpoints';
+
 .login {
   padding: {
     top: 200px
   };
+
+  @include breakpoints.respond-below(ss) {
+    padding: {
+      top: 50px
+    };
+  }
 
   &-card {
     max-width: 380px;
