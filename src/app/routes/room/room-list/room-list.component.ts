@@ -26,6 +26,8 @@ export class RoomListComponent implements OnInit {
 
   public roomForm: FormGroup;
 
+  public isLoading: boolean;
+
   constructor(
     private dialog: MatDialog,
     private fb: FormBuilder,
@@ -33,6 +35,7 @@ export class RoomListComponent implements OnInit {
     private customerCheckinRecordApi: CustomerCheckinRecordService,
     private snackBar: MatSnackBar
   ) {
+    this.isLoading = true;
     this.roomForm = this.fb.group({
       status: [0]
     });
@@ -173,11 +176,13 @@ export class RoomListComponent implements OnInit {
   }
 
   private fetchAllRooms() {
+    this.isLoading = true;
     this.roomApi.list().subscribe(res => {
       if (res.status === 200) {
         this.rooms = res.data;
       }
-    });
+      this.isLoading = false;
+    }, () =>   this.isLoading = false);
   }
 
 
