@@ -11,6 +11,7 @@ import { CoreModule } from './core';
 import { httpInterceptorProviders } from './core/interceptors';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,13 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     CoreModule,
     FlexLayoutModule,
     LayoutModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   providers: [
     httpInterceptorProviders,
