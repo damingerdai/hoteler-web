@@ -11,7 +11,7 @@ COPY package.json yarn.lock /app/
 RUN yarn install
 
 COPY . .
-RUN yarn build
+RUN yarn build:app-shell
 
 # FROM nginx:1.16.1
 # COPY _nginx/default.conf /etc/nginx/conf.d/
@@ -25,7 +25,7 @@ FROM nginx:1.16.1
 COPY _nginx/default.template /etc/nginx/conf.d/default.template
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=builder /app/dist/hoteler .
+COPY --from=builder /app/dist/hoteler-web/browser .
 COPY scripts/run.sh /scripts/scripts.sh
 ENV BACKEND_URL http://127.0.0.1:8443
 RUN ["chmod", "+x", "/scripts/scripts.sh"]
