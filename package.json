@@ -60,7 +60,7 @@
     "@typescript-eslint/parser": "4.33.0",
     "conventional-changelog-cli": "^2.2.2",
     "eslint": "^7.32.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "jasmine-core": "~4.1.0",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.3.19",
