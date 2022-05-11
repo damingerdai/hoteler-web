@@ -10,7 +10,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { IUserToken } from '../models';
 import { SettingsService } from '../services/settings/settings.service';
 
 @Injectable()
@@ -51,10 +50,10 @@ export class AuthInterceptor implements HttpInterceptor {
               this.router.navigateByUrl('/403');
               break;
             default:
-              return throwError(error);
+              return throwError(() => error);
           }
         }
-        return throwError(error);
+        return throwError(() => error);
       })
     );
   }
