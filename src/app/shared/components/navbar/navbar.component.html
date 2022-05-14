@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" aria-label="Top Toolbar">
   <a
     mat-button
-    class="docs-button"
+    class="hoteler-button"
     routerLink="/"
     aria-label="Angular Material"
   >
@@ -13,16 +13,28 @@
     <span>Hoteler</span>
   </a>
   <ng-container *ngIf="!isMobile && username">
-    <a mat-button class="docs-button" routerLink="dashboard"> 仪表盘 </a>
-    <a mat-button class="docs-button" routerLink="customer"> 客户信息 </a>
-    <a mat-button class="docs-button" routerLink="room"> 房间信息 </a>
+    <a mat-button class="hoteler-button" routerLink="dashboard"> 仪表盘 </a>
+    <a mat-button class="hoteler-button" routerLink="customer"> 客户信息 </a>
+    <a mat-button class="hoteler-button" routerLink="room"> 房间信息 </a>
   </ng-container>
 
   <div flexSpacer></div>
   <app-theme-picker></app-theme-picker>
   <a
+    mat-icon-button
+    class="hoteler-button"
+    href="https://github.com/damingerdai/hoteler"
+    aria-label="GitHub Repository"
+  >
+    <img
+      class="hoteler-angular-logo"
+      src="../../../assets/img/github-circle-white-transparent.svg"
+      alt="hoteler"
+    />
+  </a>
+  <a
     mat-button
-    class="docs-button"
+    class="hoteler-button"
     [matMenuTriggerFor]="menu"
     aria-label="user profile"
     *ngIf="username"
@@ -45,11 +57,13 @@
   aria-label="Section Nav Bar"
   *ngIf="isMobile && username"
 >
-  <a mat-button class="docs-button navbar-link" routerLink="dashboard">
+  <a mat-button class="hoteler-button navbar-link" routerLink="dashboard">
     仪表盘
   </a>
-  <a mat-button class="docs-button navbar-link" routerLink="customer">
+  <a mat-button class="hoteler-button navbar-link" routerLink="customer">
     客户信息
   </a>
-  <a mat-button class="docs-button navbar-link" routerLink="room"> 房间信息 </a>
+  <a mat-button class="hoteler-button navbar-link" routerLink="room">
+    房间信息
+  </a>
 </mat-toolbar>
