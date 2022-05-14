@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: hoteler-web
-          image: hoteler-web:bafc5ac
+          image: hoteler-web
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -56,3 +56,21 @@ spec:
   type: NodePort
   selector:
     app: hoteler-web
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: hoteler-namespace
+  name: hoteler-web
+spec:
+  rules:
+  - host: hoteler.damingerdai.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hoteler-web
+            port:
+              number: 80
