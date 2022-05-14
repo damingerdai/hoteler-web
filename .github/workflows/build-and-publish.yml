@@ -47,5 +47,5 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
       - name: Deploy to k3s
         run: |-
-          kubectl set image deployment/hoteler-web hoteler-web=ghcr.io/damingerdai/hoteler:${{ github.sha }} -n hoteler-namespace
+          kubectl set image deployment/hoteler-web hoteler-web=ghcr.io/damingerdai/hoteler-web:${{ github.sha }} -n hoteler-namespace
           kubectl rollout status deployment/hoteler-web -n hoteler-namespace
