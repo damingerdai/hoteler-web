@@ -5,7 +5,7 @@
     top: 200px
   };
 
-  @include breakpoints.respond-below(ss) {
+  @include breakpoints.respond-below(xs) {
     padding: {
       top: 50px
     };
