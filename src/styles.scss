@@ -1,6 +1,8 @@
 
 @use '@angular/material' as mat;
 @import './app-theme';
+@import './styles/breakpoints';
+@import './styles/buttons';
 @import './styles/variables';
 @import './styles/general';
 @import './styles/form';

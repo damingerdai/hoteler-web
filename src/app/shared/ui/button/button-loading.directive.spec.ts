@@ -1,0 +1,48 @@
+import { Component } from '@angular/core';
+import { waitForAsync, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { By } from '@angular/platform-browser';
+import { ButtonLoadingDirective } from './button-loading.directive';
+import { ButtonModule } from './button.module';
+
+@Component({
+  selector: 'test-app',
+  template: `
+    <button mat-button [loading]="loading">Test Button</button>
+  `,
+})
+// eslint-disable-next-line @angular-eslint/component-class-suffix
+class TestApp {
+
+  public loading: boolean = false;
+}
+
+describe('ButtonLoadingDirective', () => {
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [MatButtonModule, ButtonModule],
+      declarations: [ButtonLoadingDirective, TestApp],
+    });
+
+    TestBed.compileComponents();
+  }));
+  it('button loading', () => {
+    const fixture = TestBed.createComponent(TestApp);
+    const testComponent = fixture.debugElement.componentInstance;
+    const buttonDebugElement = fixture.debugElement.query(By.css('button'))!;
+    const buttonNativeElement = fixture.nativeElement.querySelector('button');
+    testComponent.loading = true;
+    fixture.detectChanges();
+    expect(buttonDebugElement.nativeElement.classList.contains('mat-button-loading')).toBe(true);
+    expect(buttonNativeElement.disabled)
+      .withContext('Expected button to be disabled')
+      .toBeTrue();
+
+    testComponent.loading = false;
+    fixture.detectChanges();
+    expect(buttonDebugElement.nativeElement.classList.contains('mat-button-loading')).toBe(false);
+    expect(buttonNativeElement.disabled)
+      .withContext('Expected button not to be disabled')
+      .toBeFalse();
+  });
+});

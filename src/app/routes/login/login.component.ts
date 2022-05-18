@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   public hide = true;
 
+  public isLoading = false;
+
   public errorMessage: string;
 
   public loginForm: FormGroup;
@@ -58,11 +60,13 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
+    this.isLoading = true;
     this.errorMessage = '';
     this.api.post<UserTokenReponse>('/api/v1/token', {}, {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }).subscribe(res => {
+      this.isLoading = false;
       if (res.status === 200) {
         const user =  {
           ...res.userToken,
