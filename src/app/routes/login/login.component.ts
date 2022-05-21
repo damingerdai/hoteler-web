@@ -66,7 +66,6 @@ export class LoginComponent implements OnInit {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }).subscribe(res => {
-      this.isLoading = false;
       if (res.status === 200) {
         const user =  {
           ...res.userToken,
@@ -80,7 +79,7 @@ export class LoginComponent implements OnInit {
           login: (res as any).error.message
         });
       }
-
+      this.isLoading = false;
     });
   }
 
