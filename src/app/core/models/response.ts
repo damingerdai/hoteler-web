@@ -5,13 +5,13 @@ export interface IApiError {
   message: string;
 }
 
-export interface IRespone {
+export interface IResponse {
   status: number;
   error?: IApiError;
 }
 
-export type UserTokenReponse = IRespone & { userToken: IUserToken };
+export type UserTokenResponse= IResponse & { userToken: IUserToken };
 
-export type DataReponse<T> = IRespone & { data: T };
+export type DataResponse<T> = IResponse & { data: T };
 
-export type ListReponse<T> = IRespone & { data: T[] };
+export type ListResponse<T> = IResponse & { data: T[] };

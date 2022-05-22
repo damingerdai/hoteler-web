@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api/api.service';
-import { DataReponse, IRespone, ListReponse } from 'src/app/core/models';
+import { DataResponse, IResponse, ListResponse } from 'src/app/core/models';
 import { IRoom, IRoomStatusStat } from 'src/app/core/models/room';
 
-type RoomsListReponse = ListReponse<IRoom>;
-type IRoomStatusStatReponse = DataReponse<IRoomStatusStat>;
+type RoomsListResponse = ListResponse<IRoom>;
+type IRoomStatusStatReponse = DataResponse<IRoomStatusStat>;
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +20,16 @@ export class RoomService {
     return this.api.post<number>('api/v1/room', room);
   }
 
-  public update(room: { id: number, roomname: string, price: string, status: number | string}): Observable<IRespone> {
-    return this.api.put<IRespone>('api/v1/room', room as any);
+  public update(room: { id: number, roomname: string, price: string, status: number | string}): Observable<IResponse> {
+    return this.api.put<IResponse>('api/v1/room', room as any);
   }
 
-  public delete(id: number): Observable<IRespone> {
-    return this.api.delete<IRespone>(`api/v1/room/${id}`);
+  public delete(id: number): Observable<IResponse> {
+    return this.api.delete<IResponse>(`api/v1/room/${id}`);
   }
 
-  public list(room?: { status?: number }): Observable<RoomsListReponse> {
-    return this.api.get<RoomsListReponse>('api/v1/rooms', room);
+  public list(room?: { status?: number }): Observable<RoomsListResponse> {
+    return this.api.get<RoomsListResponse>('api/v1/rooms', room);
   }
 
   public getRoomStatusStat(): Observable<IRoomStatusStatReponse> {

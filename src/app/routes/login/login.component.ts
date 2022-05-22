@@ -3,7 +3,7 @@ import { ENTER, MAC_ENTER } from '@angular/cdk/keycodes';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api/api.service';
-import { UserTokenReponse } from 'src/app/core/models';
+import { UserTokenResponse } from 'src/app/core/models';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
 @Component({
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
   public login() {
     this.isLoading = true;
     this.errorMessage = '';
-    this.api.post<UserTokenReponse>('/api/v1/token', {}, {
+    this.api.post<UserTokenResponse>('/api/v1/token', {}, {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }).subscribe(res => {
