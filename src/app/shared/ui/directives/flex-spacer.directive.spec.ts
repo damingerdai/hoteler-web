@@ -21,7 +21,7 @@ describe('FlexSpacerDirective', () => {
   }));
   it('div flex-grow style should be 1', () => {
     const fixture = TestBed.createComponent(FlexSpacerDirectiveTestComponent);
-    fixture.detectChanges(); // initial bindin
+    fixture.detectChanges(); // initial binding
     const div = fixture.debugElement.query(By.css('div'))!.nativeElement as HTMLDivElement;
     const flexGrow = div.style.flexGrow;
     fixture.detectChanges();
