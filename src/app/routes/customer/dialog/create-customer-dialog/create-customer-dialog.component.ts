@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class CreateCustomerDialogComponent implements OnInit {
 
-  public customer: FormGroup;
+  public customer: UntypedFormGroup;
 
   public get name() {
     return this.customer.get('name');
@@ -29,7 +29,7 @@ export class CreateCustomerDialogComponent implements OnInit {
 
   constructor(
     // : MatDialogRef<CreateCustomerDialogComponent>,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.customer = this.fb.group({
       name: ['', [Validators.required]],

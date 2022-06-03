@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ICustomer } from 'src/app/core/models';
 
@@ -10,7 +10,7 @@ import { ICustomer } from 'src/app/core/models';
 })
 export class UpdateCustomerDialogComponent implements OnInit {
 
-  public customer: FormGroup;
+  public customer: UntypedFormGroup;
 
   public get name() {
     return this.customer.get('name');
@@ -29,7 +29,7 @@ export class UpdateCustomerDialogComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: ICustomer
   ) {
     this.customer = this.fb.group({

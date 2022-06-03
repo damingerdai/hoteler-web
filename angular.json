@@ -155,9 +155,8 @@
       }
     }
   },
-  "defaultProject": "hoteler-web",
   "cli": {
     "analytics": "af964c41-d2b6-43e3-bd4e-5ebda121c977",
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": ["@angular-eslint/schematics"]
   }
 }
