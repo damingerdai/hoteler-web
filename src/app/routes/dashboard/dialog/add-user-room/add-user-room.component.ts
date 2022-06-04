@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 import { Customers, Rooms } from 'src/app/core/models';
@@ -16,14 +16,14 @@ export class AddUserRoomComponent implements OnInit {
   public customers: Customers = [];
   public rooms: Rooms = [];
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   public currentDate = new Date();
 
   constructor(
     private customerApi: CustomerService,
     private dialogRef: MatDialogRef<AddUserRoomComponent>,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private roomApi: RoomService
   ) {
     this.form = this.fb.group({

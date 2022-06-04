@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class CreateRoomDialogComponent implements OnInit {
 
-  public room: FormGroup;
+  public room: UntypedFormGroup;
 
   public get roomname() {
     return this.room.get('roomname');
@@ -20,7 +20,7 @@ export class CreateRoomDialogComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     // private dialogRef: MatDialogRef<CreateRoomDialogComponent>,
   ) {
     this.room = this.fb.group({
