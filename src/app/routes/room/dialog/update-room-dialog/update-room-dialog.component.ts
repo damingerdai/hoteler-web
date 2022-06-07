@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IRoom } from 'src/app/core/models';
 
@@ -10,7 +10,7 @@ import { IRoom } from 'src/app/core/models';
 })
 export class UpdateRoomDialogComponent implements OnInit {
 
-  public room: UntypedFormGroup;
+  public room: FormGroup;
 
   public get roomname() {
     return this.room.get('roomname');
@@ -25,7 +25,7 @@ export class UpdateRoomDialogComponent implements OnInit {
   }
 
   constructor(
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     // private dialogRef: MatDialogRef<UpdateRoomDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IRoom
   ) {

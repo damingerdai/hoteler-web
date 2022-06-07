@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { IRoom, Rooms } from '../../../core/models/room';
 import { RoomService } from '../../../core/services/room';
 import { AddCustomerRoomDialogComponent, CreateRoomDialogComponent, UpdateRoomDialogComponent } from '../dialog';
@@ -24,13 +24,13 @@ export class RoomListComponent implements OnInit {
 
   public rooms: Rooms;
 
-  public roomForm: UntypedFormGroup;
+  public roomForm: FormGroup;
 
   public isLoading: boolean;
 
   constructor(
     private dialog: MatDialog,
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     private roomApi: RoomService,
     private customerCheckinRecordApi: CustomerCheckinRecordService,
     private snackBar: MatSnackBar
