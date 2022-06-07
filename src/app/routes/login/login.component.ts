@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ENTER, MAC_ENTER } from '@angular/cdk/keycodes';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api/api.service';
 import { UserTokenReponse } from 'src/app/core/models';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   public errorMessage: string;
 
-  public loginForm: UntypedFormGroup;
+  public loginForm: FormGroup;
 
   public get username() {
     return this.loginForm.get('username');
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     private settings: SettingsService,
     private router: Router
   ) {

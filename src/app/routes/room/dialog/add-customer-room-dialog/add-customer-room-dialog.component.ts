@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Customers, IRoom } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/services/customers';
@@ -13,10 +13,10 @@ import { format } from 'src/app/core/utils/date';
 export class AddCustomerRoomDialogComponent implements OnInit {
 
   public customers: Customers = [];
-  public form: UntypedFormGroup;
+  public form: FormGroup;
 
   constructor(
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     // private dialogRef: MatDialogRef<AddCustomerRoomDialogComponent>,
     private customerApi: CustomerService,
     @Inject(MAT_DIALOG_DATA) public data: IRoom
