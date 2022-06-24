@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
         }
       }
     }
-  }
+  };
 
   public pastWeekCustomerCountChart: ApexOptions2 = {
     show: false,
@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
     title: {
       text: '过去一周的入住客户数量变化'
     }
-  }
+  };
 
   constructor(
     private customerApi: CustomerService,
