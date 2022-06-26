@@ -19,7 +19,7 @@
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "version:patch": "yarn version --patch",
     "version:minor": "yarn version --minor",
-    "prepare": "husky install",
+    "prepare": "is-ci || husky install",
     "analyze": "ng build --configuration production --stats-json && webpack-bundle-analyzer dist/hoteler/stats.json"
   },
   "private": true,
@@ -61,6 +61,7 @@
     "conventional-changelog-cli": "2.2.2",
     "eslint": "^8.18.0",
     "husky": "8.0.1",
+    "is-ci": "^3.0.1",
     "jasmine-core": "4.1.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.3.20",
