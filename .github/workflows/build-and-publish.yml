@@ -3,6 +3,10 @@ name: Build and Publish
 on:
   push:
     branches: [master]
+    paths:
+      - "src/**"
+      - "package.json"
+      - "yarn.lock"
 
 jobs:
   build-and-push-docker-image:
