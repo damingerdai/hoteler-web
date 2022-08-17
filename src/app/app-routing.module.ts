@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('./routes/login/login.module').then(m => m.LoginModule)
       },
       {
+        path: 'register',
+        loadChildren: () => import('./routes/register/register.module').then(m => m.RegisterModule)
+      },
+      {
         path: 'dashboard',
         title: 'Hoteler Portal -- 主页',
         canLoad: [AuthGuard],
