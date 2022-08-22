@@ -21,6 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'register',
+        title: 'Hoteler Portal -- 注册',
         loadChildren: () => import('./routes/register/register.module').then(m => m.RegisterModule)
       },
       {
