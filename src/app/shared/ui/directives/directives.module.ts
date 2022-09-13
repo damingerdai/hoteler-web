@@ -6,9 +6,11 @@ import { ImgDirective } from './img.directive';
 
 
 @NgModule({
-  declarations: [FlexSpacerDirective, ImgDirective],
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    FlexSpacerDirective,
+    ImgDirective
   ],
   exports: [
     FlexSpacerDirective,
