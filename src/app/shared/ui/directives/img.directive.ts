@@ -2,7 +2,8 @@
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: 'img'
+  selector: 'img',
+  standalone: true
 })
 export class ImgDirective {
 

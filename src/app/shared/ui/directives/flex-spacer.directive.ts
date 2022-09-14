@@ -1,11 +1,12 @@
-import { Directive, ElementRef, Renderer2 } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[flexSpacer]'
+  selector: '[flexSpacer]',
+  standalone: true
 })
 export class FlexSpacerDirective {
 
-  constructor(private el: ElementRef, private render: Renderer2) {
+  constructor(private el: ElementRef) {
     // this.render.setStyle(this.el.nativeElement, 'flex-grow', '1');
     this.el.nativeElement.style.customProperty = true;
     this.el.nativeElement.style.flexGrow = '1';
