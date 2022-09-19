@@ -1,8 +1,8 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ComponentRef, Directive, Input, OnChanges, Renderer2, SimpleChanges, ViewContainerRef } from '@angular/core';
-import { MatButton } from '@angular/material/button';
-import { ThemePalette } from '@angular/material/core';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatLegacyButton as MatButton } from '@angular/material/legacy-button';
+import { ThemePalette } from '@angular/material/legacy-core';
+import { MatLegacyProgressSpinner as MatProgressSpinner } from '@angular/material/legacy-progress-spinner';
 
 @Directive({
   selector: `button[mat-button][loading],

@@ -6,5 +6,5 @@ $primary: mat.define-palette(mat.$pink-palette);
 $accent:  mat.define-palette(mat.$blue-grey-palette);
 
 $theme: mat.define-dark-theme($primary, $accent);
-@include mat.all-component-themes($theme);
+@include mat.all-legacy-component-themes($theme);
 @include app-theme.hoteler-app-theme($theme);
