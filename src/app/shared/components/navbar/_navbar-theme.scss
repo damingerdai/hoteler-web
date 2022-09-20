@@ -7,6 +7,8 @@
   $foreground: map.get($theme, foreground);
 
   app-navbar {
+    background: mat.get-color-from-palette($background, background);
+
     a.hoteler-button {
       &:hover {
         background: {
