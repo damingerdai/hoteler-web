@@ -16,7 +16,7 @@ function matSnackBarOptionsFactory(breakpointObserver: BreakpointObserver) {
   };
 }
 
-export const materailProviders = [
+export const materialProviders = [
   {
     provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
     useFactory: matSnackBarOptionsFactory,

@@ -2,7 +2,7 @@
 <div fxLayout="row wrap" class="box">
   <div class="w-full" fxLayout="row" fxLayoutAlign="end center">
     <form class="form-inline" [formGroup]="roomForm">
-      <mat-form-field class="form-field" appearance="standard">
+      <mat-form-field class="form-field" appearance="fill">
         <mat-label>用户状态</mat-label>
         <mat-select formControlName="status">
           <mat-option [value]="0"> 全部 </mat-option>
@@ -30,14 +30,14 @@
             {{ room.roomname }}
           </mat-card-title>
           <mat-card-subtitle>
-            <mat-chip-list>
+            <mat-chip-listbox>
               <mat-chip *ngIf="room.status === 1" color="primary" selected
                 >空闲</mat-chip
               >
               <mat-chip *ngIf="room.status === 2" color="primary" selected
                 >占用</mat-chip
               >
-            </mat-chip-list>
+            </mat-chip-listbox>
           </mat-card-subtitle>
         </mat-card-header>
         <img
@@ -89,14 +89,14 @@
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef>状态</th>
           <td mat-cell *matCellDef="let element">
-            <mat-chip-list>
+            <mat-chip-listbox>
               <mat-chip *ngIf="element.status === 1" color="primary" selected
                 >空闲</mat-chip
               >
               <mat-chip *ngIf="element.status === 2" color="primary" selected
                 >占用</mat-chip
               >
-            </mat-chip-list>
+            </mat-chip-listbox>
           </td>
         </ng-container>
         <ng-container matColumnDef="action">
