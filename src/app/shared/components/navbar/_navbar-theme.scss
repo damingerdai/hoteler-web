@@ -2,12 +2,13 @@
 @use '@angular/material' as mat;
 
 @mixin hoteler-navbar-theme($theme) {
+  $primary: map.get($theme, primary);
   $accent: map.get($theme, accent);
   $background: map.get($theme, background);
   $foreground: map.get($theme, foreground);
 
   app-navbar {
-    background: mat.get-color-from-palette($background, background);
+    background: mat.get-color-from-palette($primary);
 
     a.hoteler-button {
       &:hover {
