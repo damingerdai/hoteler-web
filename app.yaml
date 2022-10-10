@@ -64,8 +64,16 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: hoteler-namespace
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: hoteler-namespace-redirect@kubernetescrd
+    cert-manager.io/cluster-issuer: letsencrypt
   name: hoteler-web
 spec:
+  tls:
+  - secretName: hoteler-web-tls
+    hosts:
+      - hoteler.damingerdai.com
   rules:
   - host: hoteler.damingerdai.com
     http:
