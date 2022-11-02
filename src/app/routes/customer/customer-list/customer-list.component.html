@@ -1,6 +1,6 @@
 <app-page-header title="客户信息"></app-page-header>
-<div class="box">
-  <div fxLayout="row wrap" fxLayoutAlign="end center">
+<div fxLayout="row wrap" class="box">
+  <div class="w-full" fxLayout="row" fxLayoutAlign="end center">
     <button mat-raised-button color="primary" (click)="createCustomer()">
       创建客户
     </button>
@@ -10,7 +10,10 @@
   </div>
 
   <mat-divider class="divider"></mat-divider>
-  <div *ngIf="layout === 'table'" class="mat-elevation-z8 table-responsive">
+  <div
+    *ngIf="layout === 'table'"
+    class="mat-elevation-z8 table-responsive m-t-16"
+  >
     <div class="loading-shade" *ngIf="isLoading">
       <mat-spinner></mat-spinner>
     </div>
@@ -77,56 +80,53 @@
     </table>
     <div *ngIf="customers?.length === 0">空</div>
   </div>
-  <div
-    *ngIf="layout === 'card'"
-    fxLayout="row wrap"
-    fxLayoutAlign="space-between center"
-  >
+  <div *ngIf="layout === 'card'" fxLayout="row wrap" class="w-full m-t-8">
     <div class="loading-shade" *ngIf="isLoading">
       <mat-spinner></mat-spinner>
     </div>
-    <div
-      class="customer-card"
+
+    <mat-card
+      class="mat-card customer-card"
       *ngFor="let customer of customers"
+      fxFlex="100"
       fxFlex.gt-sm="25"
       fxFlex.gt-xs="50"
       fxFlex.gt-md="33"
-      fxFlex="100"
     >
-      <mat-card class="mat-card">
-        <mat-card-header>
-          <mat-card-title>{{ customer.name }}</mat-card-title>
-          <mat-card-subtitle>
+      <mat-card-header>
+        <mat-card-title>{{ customer.name }}</mat-card-title>
+        <mat-card-subtitle>
+          <mat-chip-list>
             <mat-chip *ngIf="customer.gender === 'M'" color="primary" selected
               >男</mat-chip
             >
             <mat-chip *ngIf="customer.gender === 'F'" color="primary" selected
               >女</mat-chip
             >
-          </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p>身份证号码: {{ processCustomerCardId(customer) }}</p>
-          <p>手机号码: {{ processCustomerPhone(customer) }}</p>
-        </mat-card-content>
-        <app-banner [text]="customer.gender"></app-banner>
-        <mat-card-actions>
-          <button
-            mat-raised-button
-            color="accent"
-            (click)="updateCustomer(customer)"
-          >
-            修改
-          </button>
-          <button
-            mat-raised-button
-            color="warn"
-            (click)="deleteCustomer(customer.id)"
-          >
-            删除
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+          </mat-chip-list>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>身份证号码: {{ processCustomerCardId(customer) }}</p>
+        <p>手机号码: {{ processCustomerPhone(customer) }}</p>
+      </mat-card-content>
+      <app-banner [text]="customer.gender"></app-banner>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="updateCustomer(customer)"
+        >
+          修改
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="deleteCustomer(customer.id)"
+        >
+          删除
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>
