@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { ApexOptions } from 'ngx-apexcharts';
 import { filter, switchMap } from 'rxjs/operators';
 import { CustomerService } from 'src/app/core/services/customers';
