@@ -6,7 +6,7 @@ mat-toolbar {
 
   .logo {
       height: 26px;
-      margin: 0 4px 3px 0;
+      margin-right: 6px;
       vertical-align: middle;
   }
 
@@ -14,6 +14,10 @@ mat-toolbar {
     height: 21px;
     margin: 0 7px 2px 7px;
     vertical-align: middle;
+  }
+
+  .mat-mdc-button-base:not(:disabled) {
+    color: inherit;
   }
 }
 

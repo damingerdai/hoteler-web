@@ -39,13 +39,41 @@
       padding: 10px;
     }
   }
+
+  // TODO: add new chip
+  // .mdc-evolution-chip__action {
+  //   &--primary {
+  //     &::before {
+  //       background: mat.get-color-from-palette($primary, default-contrast);
+  //     }
+
+  //   }
+
+  //   &--accent {
+  //     &::before {
+  //       background: mat.get-color-from-palette($accent, default-contrast) !important;
+  //     }
+  //   }
+
+  //   &--warn {
+  //     &::before {
+  //       background: mat.get-color-from-palette($warn, default-contrast) !important;
+  //     }
+  //   }
+  // }
 }
 
 // Define the light theme.
 $primary: mat.define-palette(mat.$indigo-palette);
 $accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-$theme: mat.define-light-theme($primary, $accent);
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent
+  ),
+  typography: mat.define-typography-config(),
+));
 
 .text-center {
   text-align: center !important;

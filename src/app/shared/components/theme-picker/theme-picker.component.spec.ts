@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { ThemePickerComponent } from './theme-picker.component';
 import { ThemeStorageService } from './theme-storage/theme-storage.service';
