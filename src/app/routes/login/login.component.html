@@ -1,56 +1,66 @@
 <div class="login w-full h-full" fxLayout="row wrap">
-  <mat-card class="login-card mat-elevation-z4 m-auto">
-    <mat-card-title class="text-center"> Hoteler 系统登录 </mat-card-title>
-    <form
-      class="form-field-full"
-      [formGroup]="loginForm"
-      (submit)="login()"
-      (touch)="errorMessage = ''"
-    >
-      <mat-form-field appearance="outline" (keypress)="handleKeyPress($event)">
-        <mat-label>用户名</mat-label>
-        <input matInput placeholder="用户名" formControlName="username" />
-        <mat-error *ngIf="username.invalid"> 请输入用户名 </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline" (keypress)="handleKeyPress($event)">
-        <mat-label>密码</mat-label>
-        <input
-          matInput
-          placeholder="密码"
-          [type]="hide ? 'password' : 'text'"
-          formControlName="password"
-        />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="toggleVisibilityIcon($event)"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
-        >
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
-        <mat-error *ngIf="password.invalid"> 请输入密码 </mat-error>
-      </mat-form-field>
-      <div class="error" *ngIf="loginForm.errors">
-        <mat-error>
-          {{ loginForm.errors.login }}
-        </mat-error>
-      </div>
-      <button
-        class="w-full"
-        mat-raised-button
-        color="primary"
-        [loading]="isLoading"
-        [disabled]="loginForm.invalid"
+  <mat-card appearance="outlined" class="login-card mat-elevation-z4 m-auto">
+    <mat-card-header>
+      <mat-card-title class="text-center"> Hoteler 系统登录 </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form
+        class="form-field-full"
+        [formGroup]="loginForm"
+        (submit)="login()"
+        (touch)="errorMessage = ''"
       >
-        登录
-      </button>
-      <div class="m-t-16">
-        没有账号?
-        <a routerLink="/register" class="p-0" mat-button color="primary"
-          >点此创建一个</a
+        <mat-form-field
+          appearance="outline"
+          (keypress)="handleKeyPress($event)"
         >
-      </div>
-    </form>
+          <mat-label>用户名</mat-label>
+          <input matInput placeholder="用户名" formControlName="username" />
+          <mat-error *ngIf="username.invalid"> 请输入用户名 </mat-error>
+        </mat-form-field>
+        <mat-form-field
+          appearance="outline"
+          (keypress)="handleKeyPress($event)"
+        >
+          <mat-label>密码</mat-label>
+          <input
+            matInput
+            placeholder="密码"
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="toggleVisibilityIcon($event)"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="password.invalid"> 请输入密码 </mat-error>
+        </mat-form-field>
+        <div class="error" *ngIf="loginForm.errors">
+          <mat-error>
+            {{ loginForm.errors.login }}
+          </mat-error>
+        </div>
+        <button
+          class="w-full"
+          mat-raised-button
+          color="primary"
+          [loading]="isLoading"
+          [disabled]="loginForm.invalid"
+        >
+          登录
+        </button>
+        <div class="m-t-16">
+          没有账号?
+          <a routerLink="/register" class="p-0" mat-button color="primary"
+            >点此创建一个</a
+          >
+        </div>
+      </form>
+    </mat-card-content>
   </mat-card>
 </div>

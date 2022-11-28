@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalStorageService } from 'src/app/core/services';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';

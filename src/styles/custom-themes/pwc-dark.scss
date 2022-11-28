@@ -6,6 +6,12 @@ $primary: mat.define-palette(mat.$orange-palette, 900, 100, 700, 900);
 $accent:  mat.define-palette(mat.$deep-orange-palette, A200, A100, A400);
 $warn: mat.define-palette(mat.$red-palette);
 
-$theme: mat.define-dark-theme($primary, $accent, $warn);
-@include mat.all-legacy-component-themes($theme);
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent
+  ),
+  typography: mat.define-typography-config(),
+));
+@include mat.all-component-themes($theme);
 @include app-theme.hoteler-app-theme($theme);

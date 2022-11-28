@@ -4,10 +4,12 @@
 @mixin hoteler-navbar-theme($theme) {
   $primary: map.get($theme, primary);
   $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
   $background: map.get($theme, background);
   $foreground: map.get($theme, foreground);
 
   app-navbar {
+    color: mat.get-color-from-palette($primary, default-contrast);
     background: mat.get-color-from-palette($primary);
 
     a.hoteler-button {

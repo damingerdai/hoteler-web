@@ -30,13 +30,13 @@ tr.mat-column-action {
   justify-content: flex-start;
   flex-wrap: wrap;
 
-  .mat-button-base {
+  .mat-mdc-button-base {
     margin: 8px 8px 8px 0;
   }
 }
 
 .table-responsive {
-  .mat-table {
+  .mat-mdc-table {
     min-width: 576px;
   }
 }
@@ -50,7 +50,7 @@ tr.mat-column-action {
        right: 8px;
      };
 
-     .mat-card-image  {
+     .mat-mdc-card-image  {
        margin: 0;
        width: 100%;
      }

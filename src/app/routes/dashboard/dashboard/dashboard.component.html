@@ -6,7 +6,7 @@
     class="holeler-col"
     *ngIf="roomStatusDonutChart.show"
   >
-    <mat-card>
+    <mat-card appearance="outlined">
       <apx-chart
         [series]="roomStatusDonutChart.series"
         [chart]="roomStatusDonutChart.chart"
@@ -22,7 +22,7 @@
     class="holeler-col"
     *ngIf="pastWeekCustomerCountChart.show"
   >
-    <mat-card>
+    <mat-card appearance="outlined">
       <apx-chart
         [series]="pastWeekCustomerCountChart.series"
         [chart]="pastWeekCustomerCountChart.chart"

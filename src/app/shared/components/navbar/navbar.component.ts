@@ -1,8 +1,10 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { SettingsService } from 'src/app/core/services/settings/settings.service';
+import { SettingsService } from '../../../core/services/settings/settings.service';
 
 @Component({
   selector: 'app-navbar',
@@ -25,6 +27,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private breakpointObserver: BreakpointObserver,
     private settings: SettingsService,
     private router: Router,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
   ) {
     const subscription1 = this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(
       result => {
@@ -34,6 +38,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subscription1);
     const subscription2 = this.settings.user$.subscribe(user => this._username = user?.username || '');
     this.subscriptions.push(subscription2);
+
+    this.iconRegistry.addSvgIcon('github', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/github-circle-white-transparent.svg'));
   }
 
 
