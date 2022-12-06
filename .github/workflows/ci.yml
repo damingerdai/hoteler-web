@@ -56,5 +56,5 @@ jobs:
         id: build-docker
         run: |
           docker build . -t ${{ env.REGISTRY_NAME }}/damingerdai/hoteler-web:${{ github.sha }} -f Dockerfile
-      - name: Image digest for maven
+      - name: Image digest for docker
         run: echo ${{ steps.build-docker.outputs.digest }}
