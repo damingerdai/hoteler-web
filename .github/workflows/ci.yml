@@ -43,3 +43,15 @@ jobs:
         run: yarn ng build --configuration production
       - name: Unit Test
         run: yarn ng test --browsers=ChromeHeadless --watch=false --code-coverage
+  build-docker:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@master
+      # Container build
+      - name: Build docker
+        id: build-docker
+        run: |
+          docker build . -t ${{ env.REGISTRY_NAME }}/damingerdai/hoteler-web:${{ github.sha }} -f Dockerfile
+      - name: Image digest for maven
+        run: echo ${{ steps.build-docker.outputs.digest }}
