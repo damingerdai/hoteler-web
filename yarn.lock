@@ -7027,6 +7027,13 @@ ngx-apexcharts@0.1.1:
   dependencies:
     tslib "^2.0.0"
 
+ngx-dom-confetti@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/ngx-dom-confetti/-/ngx-dom-confetti-0.1.0.tgz#6f726017aa498962d9e8b1a1ee596bdcbe3f3a50"
+  integrity sha512-A8xMm/uheNHfAQkGB6osUppAl8AkFDbyPok/dsm5gr8WiwVKOaG0A36sgfKGFMm7cGZBByjn/i/73HbspXJwrg==
+  dependencies:
+    tslib "^2.3.0"
+
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nice-napi/-/nice-napi-1.0.2.tgz#dc0ab5a1eac20ce548802fc5686eaa6bc654927b"

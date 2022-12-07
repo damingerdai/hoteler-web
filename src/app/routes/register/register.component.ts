@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { NgxDomConfettiService } from 'ngx-dom-confetti';
 import { timer } from 'rxjs';
 import { UserService } from 'src/app/core/services/user/user.service';
 
@@ -18,6 +19,9 @@ const identityPasswordValidator: ValidatorFn = (control: AbstractControl): Valid
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+
+  @ViewChild('btn', { read: ElementRef })
+  btn!: ElementRef<HTMLButtonElement>;
 
   public hidePassword: boolean;
 
@@ -44,6 +48,7 @@ export class RegisterComponent implements OnInit {
     private snackBar: MatSnackBar,
     private userApi: UserService,
     private router: Router,
+    private ngxDomConfettiService: NgxDomConfettiService
   ) {
     this.form = this.fb.group({
       username: ['', [Validators.required]],
@@ -73,13 +78,19 @@ export class RegisterComponent implements OnInit {
   }
 
   public register() {
+    this.isLoading = true;
     this.userApi.createUser(this.username.value, this.password.value)
       .subscribe(res => {
         if (res.status === 200) {
           this.snackBar.open('注册成功', 'X');
+          const el = this.btn.nativeElement.children.item(0) as HTMLElement;
+          if (el) {
+            this.ngxDomConfettiService.open(el);
+          }
           timer(1500).subscribe(() => this.router.navigateByUrl('login'));
         } else {
           this.snackBar.open(res.error?.message ?? '注册失败', 'X');
+          this.isLoading = false;
         }
       });
   }
