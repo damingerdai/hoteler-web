@@ -39,7 +39,7 @@ jobs:
       - name: Install yarn
         run: npm install -g yarn
       - name: Install package
-        run: yarn
+        run: yarn install --frozen-lockfile --non-interactive
       - name: Lint
         run: yarn ng lint hoteler-web
       - name: Build
