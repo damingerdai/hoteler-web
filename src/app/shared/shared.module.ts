@@ -10,6 +10,8 @@ import {
   ErrorCodeComponent,
   NavbarComponent,
   PageHeaderComponent,
+  SkeletonLoaderComponent,
+  SKELETON_LOADER_CONFIG,
   ThemePickerComponent,
   ThemeStorageService
 } from './components';
@@ -23,6 +25,7 @@ const DECLARATIONS = [
   ErrorCodeComponent,
   NavbarComponent,
   PageHeaderComponent,
+  SkeletonLoaderComponent,
   ThemePickerComponent
 ];
 
@@ -38,7 +41,10 @@ const DECLARATIONS = [
     SharedMaterialModule,
   ],
   providers: [
-    ThemeStorageService
+    ThemeStorageService,
+    {
+      provide: SKELETON_LOADER_CONFIG, useValue: {}
+    },
   ],
   exports: [
     FlexLayoutModule,
