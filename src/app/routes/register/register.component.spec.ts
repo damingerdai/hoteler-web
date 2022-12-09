@@ -1,6 +1,7 @@
 import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -11,6 +12,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LocalStorageService } from 'src/app/core/services';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { ApiTestingModule } from 'src/app/core/testings';
+
+import { NgxDomConfettiModule } from 'ngx-dom-confetti';
 
 import { RegisterComponent } from './register.component';
 
@@ -47,6 +50,7 @@ describe('RegisterComponent', () => {
   ],
   exports: [
     BrowserModule,
+    MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
@@ -55,6 +59,7 @@ describe('RegisterComponent', () => {
     RouterTestingModule,
     NoopAnimationsModule,
     ApiTestingModule,
+    NgxDomConfettiModule,
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
