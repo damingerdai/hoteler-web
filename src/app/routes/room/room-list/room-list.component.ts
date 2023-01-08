@@ -1,4 +1,4 @@
-import { filter, map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,6 +10,7 @@ import { RoomService } from '../../../core/services/room';
 import { AddCustomerRoomDialogComponent, CreateRoomDialogComponent, UpdateRoomDialogComponent } from '../dialog';
 import { ConfirmComponent } from '../../../shared/components';
 import { CustomerCheckinRecordService } from '../../../core/services/customer-checkin-record';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-room-list',
@@ -42,20 +43,16 @@ export class RoomListComponent implements OnInit {
 
     this.roomForm.get('status').valueChanges
       .pipe(
-        map(res => typeof res === 'string' ? parseInt(res, 10) : res)
+        tap(() => this.isLoading = true),
+        map(res => typeof res !== 'number' ? parseInt(res, 10) : res),
+        switchMap(s =>  s ? this.roomApi.list({status: s}) : this.roomApi.list())
       )
-      .subscribe(status => {
-        if (status === 0) {
-          this.fetchAllRooms();
-        } else {
-          this.roomApi.list({status}).subscribe(res => {
-            if (res.status === 200) {
-              this.rooms = res.data;
-            }
-          });
+      .subscribe({ next: (res) => {
+        if (res.status === 200) {
+          this.rooms = res.data;
         }
-
-      });
+        this.isLoading = false;
+      }, error: () => this.isLoading = false});
   }
 
   ngOnInit(): void {
@@ -109,7 +106,7 @@ export class RoomListComponent implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top',
         });
-      }
+    }
     }, err => {
       console.error(err);
     }, () => this.fetchAllRooms());
@@ -177,13 +174,15 @@ export class RoomListComponent implements OnInit {
 
   private fetchAllRooms() {
     this.isLoading = true;
-    this.roomApi.list().subscribe(res => {
+    const status = this.roomForm.get('status').value;
+    of(status).pipe(
+      map(res => typeof res !== 'number' ? parseInt(res, 10) : res),
+      switchMap(s =>  s ? this.roomApi.list({status: s}) : this.roomApi.list()))
+    .subscribe({ next: (res) => {
       if (res.status === 200) {
         this.rooms = res.data;
       }
       this.isLoading = false;
-    }, () =>   this.isLoading = false);
+    }, error: () => this.isLoading = false});
   }
-
-
 }
