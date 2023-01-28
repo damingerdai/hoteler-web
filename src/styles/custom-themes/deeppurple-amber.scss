@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
 @use '../../app-theme';
 
@@ -12,5 +13,7 @@ $theme: mat.define-light-theme((
   ),
   typography: mat.define-typography-config(),
 ));
-@include mat.all-component-themes($theme);
+@include mat.all-component-themes(map.merge($theme, (
+  typography: mat.define-typography-config()
+)));
 @include app-theme.hoteler-app-theme($theme);
