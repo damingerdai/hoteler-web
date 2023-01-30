@@ -8,9 +8,9 @@
     <span>Hoteler</span>
   </a>
   <ng-container *ngIf="!isMobile && username">
-    <a mat-button class="hoteler-button" routerLink="dashboard"> 仪表盘 </a>
-    <a mat-button class="hoteler-button" routerLink="customer"> 客户信息 </a>
-    <a mat-button class="hoteler-button" routerLink="room"> 房间信息 </a>
+    <a mat-button class="hoteler-button" routerLink="/dashboard"> 仪表盘 </a>
+    <a mat-button class="hoteler-button" routerLink="/customer"> 客户信息 </a>
+    <a mat-button class="hoteler-button" routerLink="/room"> 房间信息 </a>
   </ng-container>
 
   <div flexSpacer></div>
@@ -41,6 +41,10 @@
       <mat-icon>exit_to_app</mat-icon>
       <span>登出</span>
     </button>
+    <button mat-menu-item routerLink="/admin">
+      <mat-icon aria-label="content icons">content_paste</mat-icon>
+      <span>内容管理</span>
+    </button>
     <button mat-menu-item routerLink="settings">
       <mat-icon aria-label="settings icons">settings</mat-icon>
       <span>设置</span>
@@ -52,13 +56,13 @@
   aria-label="Section Nav Bar"
   *ngIf="isMobile && username"
 >
-  <a mat-button class="hoteler-button navbar-link" routerLink="dashboard">
+  <a mat-button class="hoteler-button navbar-link" routerLink="/dashboard">
     仪表盘
   </a>
-  <a mat-button class="hoteler-button navbar-link" routerLink="customer">
+  <a mat-button class="hoteler-button navbar-link" routerLink="/customer">
     客户信息
   </a>
-  <a mat-button class="hoteler-button navbar-link" routerLink="room">
+  <a mat-button class="hoteler-button navbar-link" routerLink="/room">
     房间信息
   </a>
 </mat-toolbar>
