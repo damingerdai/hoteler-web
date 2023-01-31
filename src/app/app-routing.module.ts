@@ -59,9 +59,15 @@ const routes: Routes = [
         path: '401',
         title: 'Hoteler Portal',
         loadChildren: () => import('./routes/unauthorized/unauthorized.module').then(m => m.UnauthorizedModule)
+      },
+      {
+        path: '404',
+        title: 'Hoteler Portal',
+        loadChildren: () => import('./routes/not-found/not-found.module').then(m => m.NotFoundModule)
       }
     ]
-  }
+  },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({
