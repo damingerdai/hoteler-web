@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 .holeler-row {
   margin-right: math.div(-$gutter, 2);

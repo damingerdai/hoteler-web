@@ -5,14 +5,14 @@ mat-toolbar {
   padding: 8px 16px;
 
   .logo {
-      height: 26px;
-      margin-right: 6px;
-      vertical-align: middle;
+    height: 26px;
+    margin-right: 6px;
+    vertical-align: middle;
   }
 
   .hoteler-angular-logo {
     height: 21px;
-    margin: 0 7px 2px 7px;
+    margin: 0 7px 2px;
     vertical-align: middle;
   }
 
@@ -22,6 +22,6 @@ mat-toolbar {
 }
 
 .navbar-link {
-  text-decoration: inherit;
   flex: 1;
+  text-decoration: inherit;
 }

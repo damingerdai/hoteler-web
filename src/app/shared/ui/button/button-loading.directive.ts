@@ -50,11 +50,11 @@ export class ButtonLoadingDirective implements OnChanges {
     }
 
     if (changes.loading.currentValue) {
-      this.matButton._elementRef.nativeElement.classList.add('mat-button-loading');
+      this.matButton._elementRef.nativeElement.classList.add('mat-mdc-button-loading');
       this.matButton.disabled = true;
       this.createSpinner();
     } else if (!changes.loading.firstChange) {
-      this.matButton._elementRef.nativeElement.classList.remove('mat-button-loading');
+      this.matButton._elementRef.nativeElement.classList.remove('mat-mdc-button-loading');
       this.matButton.disabled = this.disabled;
       this.destroySpinner();
     }

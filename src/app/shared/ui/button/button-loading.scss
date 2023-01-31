@@ -1,15 +1,12 @@
-
-/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
-/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
-.mat-button-loading {
-  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
-  .mat-button-wrapper {
+.mat-mdc-button-loading {
+  .mdc-button__label,
+  .mat-icon {
     visibility: hidden;
   }
 
   .mat-mdc-progress-spinner {
     position: absolute;
-    top: calc(50% - 10px);
-    left: calc(50% - 10px);
+    top: calc(50% - 12px);
+    left: calc(50% - 12px);
   }
 }

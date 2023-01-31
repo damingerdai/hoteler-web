@@ -1,14 +1,13 @@
 .page-header {
-
   h1 {
-    outline: none;
-    font-weight: 300;
     margin: 0;
+    font-weight: 300;
+    font-size: 20px;
+    outline: none;
     padding: {
-      bottom: 28px;
       top: 28px;
+      bottom: 28px;
       left: 28px;
     };
-    font-size: 20px;
   }
 }

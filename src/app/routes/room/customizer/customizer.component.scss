@@ -1,15 +1,16 @@
 .customizer-handle {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 1;
 
-    .customizer-radio-group {
-        display: flex;
-        flex-direction: column;
-        margin: 15px 0;
-    }
-    .customizer-radio-button {
-        margin: 5px
-    }
+  .customizer-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+
+  .customizer-radio-button {
+    margin: 5px;
+  }
 }

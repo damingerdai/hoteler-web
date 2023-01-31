@@ -6,7 +6,9 @@
   $foreground: map.get($theme, foreground);
 
   .hoteler-error {
-    &-code, &-title, &-message {
+    &-code,
+    &-title,
+    &-message {
       color: mat.get-color-from-palette($foreground, text);
     }
   }

@@ -35,7 +35,7 @@ describe('ButtonLoadingDirective', () => {
     const buttonNativeElement = fixture.nativeElement.querySelector('button');
     testComponent.loading = true;
     fixture.detectChanges();
-    expect(buttonDebugElement.nativeElement.classList.contains('mat-button-loading')).toBe(true);
+    expect(buttonDebugElement.nativeElement.classList.contains('mat-mdc-button-loading')).toBe(true);
     expect(buttonNativeElement.disabled).withContext('Expected button to be disabled').toBeTrue();
     const spinner1 = fixture.debugElement.query(
       By.directive(MatProgressSpinner)
@@ -44,7 +44,7 @@ describe('ButtonLoadingDirective', () => {
 
     testComponent.loading = false;
     fixture.detectChanges();
-    expect(buttonDebugElement.nativeElement.classList.contains('mat-button-loading')).toBe(false);
+    expect(buttonDebugElement.nativeElement.classList.contains('mat-mdc-button-loading')).toBe(false);
     expect(buttonNativeElement.disabled)
       .withContext('Expected button not to be disabled')
       .toBeFalse();

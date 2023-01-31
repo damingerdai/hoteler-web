@@ -1,10 +1,11 @@
-@import '../../../../styles/breakpoints';
+@use '../../../../styles/breakpoints' as bp;
 
 .mat-column {
-  @include respond-below(sm) {
+  @include bp.respond-below(sm) {
     &-no {
       display: none;
     }
+
     &-roomname {
       padding: {
         left: 12px;
@@ -12,7 +13,7 @@
     }
 
     &-action {
-      justify-content: center
+      justify-content: center;
     }
   }
 }
@@ -27,8 +28,8 @@
 
 tr.mat-column-action {
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
+  justify-content: flex-start;
 
   .mat-mdc-button-base {
     margin: 8px 8px 8px 0;
@@ -42,19 +43,19 @@ tr.mat-column-action {
 }
 
 .room-list {
-   &-card {
-     max-width: 400px;
-     min-width: 200px;
-     padding: {
-       left: 8px;
-       right: 8px;
-     };
+  &-card {
+    min-width: 200px;
+    max-width: 400px;
+    padding: {
+      right: 8px;
+      left: 8px;
+    };
 
-     .mat-mdc-card-image  {
-       margin: 0;
-       width: 100%;
-     }
-   }
+    .mat-mdc-card-image {
+      width: 100%;
+      margin: 0;
+    }
+  }
 }
 
 .room-card {
@@ -64,13 +65,12 @@ tr.mat-column-action {
 .loading-shade {
   position: absolute;
   top: 0;
-  left: 0;
-  bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.15);
+  bottom: 0;
+  left: 0;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  background: rgba(0, 0, 0, .15);
 }

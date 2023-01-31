@@ -21,6 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+@use 'sass:map';
+@use 'sass:list';
 // ------------------------------
 @import 'helpers/functions';
 @import 'helpers/variables';
@@ -29,13 +31,12 @@ SOFTWARE.
 @import 'helpers/spacing';
 @import 'helpers/size';
 
-
 // Generate Helpers
 @each $key, $utility in $utilities {
-  $values: map-get($utility, values);
+  $values: map.get($utility, values);
 
-  $properties: map-get($utility, property);
-  $property-class-prefix: map-get($utility, class);
+  $properties: map.get($utility, property);
+  $property-class-prefix: map.get($utility, class);
   $property-class-prefix-hyphen: if(
     $property-class-prefix== '',
     $property-class-prefix,
@@ -43,7 +44,7 @@ SOFTWARE.
   );
 
   @if type-of($properties) == 'string' {
-    $properties: append((), $properties);
+    $properties: list.append((), $properties);
   }
 
   @each $class-modifier, $value in $values {

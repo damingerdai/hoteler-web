@@ -2,12 +2,12 @@
 
 .login {
   padding: {
-    top: 200px
+    top: 200px;
   };
 
   @include breakpoints.respond-below(xs) {
     padding: {
-      top: 50px
+      top: 50px;
     };
   }
 

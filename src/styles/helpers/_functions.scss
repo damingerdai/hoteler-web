@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+@use 'sass:map';
 // It makes the value negative.
 // Bootstrap
 @function negativify-map($map) {
@@ -28,7 +29,7 @@ SOFTWARE.
 
   @each $key, $value in $map {
     @if $key !=0 {
-      $result: map-merge($result, ('-' + $key: (-$value)));
+      $result: map.merge($result, ('-' + $key: (-$value)));
     }
   }
 
