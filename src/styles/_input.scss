@@ -1,5 +1,5 @@
-@use "sass:map";
-@use "@angular/material" as mat;
+@use 'sass:map';
+@use '@angular/material' as mat;
 
 @mixin hoteler-input-theme($theme) {
   $background: map.get($theme, background);
@@ -13,10 +13,10 @@
     }
 
     &:-webkit-autofill {
-      box-shadow: 0 0 0px 1000px mat.get-color-from-palette($background, card) inset !important;
+      box-shadow: 0 0 0 1000px mat.get-color-from-palette($background, card) inset !important;
 
       &:focus {
-        box-shadow: 0 0 0px 1000px mat.get-color-from-palette($background, card) inset !important;
+        box-shadow: 0 0 0 1000px mat.get-color-from-palette($background, card) inset !important;
       }
     }
   }

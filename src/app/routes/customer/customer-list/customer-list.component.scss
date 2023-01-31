@@ -1,10 +1,13 @@
-@import '../../../../styles/breakpoints';
+@use '../../../../styles/breakpoints' as bp;
 
 .mat-column {
-  @include respond-below(sm) {
-    &-id, &-cardId, &-phone {
+  @include bp.respond-below(sm) {
+    &-id,
+    &-cardId,
+    &-phone {
       display: none;
     }
+
     &-name {
       padding: {
         left: 12px;
@@ -15,8 +18,8 @@
 
 .action-container {
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
+  justify-content: flex-start;
 
   .mat-mdc-button-base {
     margin: 8px 8px 8px 0;
@@ -28,22 +31,21 @@
     right: 8px;
     left: 8px;
   };
-  margin: 8px;
-  max-width: 350px;
+
   min-width: 300px;
+  max-width: 350px;
+  margin: 8px;
 }
 
 .loading-shade {
   position: absolute;
   top: 0;
-  left: 0;
-  bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.15);
+  bottom: 0;
+  left: 0;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  background: rgba(0, 0, 0, .15);
 }
-

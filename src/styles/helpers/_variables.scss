@@ -21,13 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+@use 'sass:map';
 // All Map
 $utilities: () !default;
 
 // Spacing
 $spacer: 16px !default;
 $spacers: () !default;
-$spacers: map-merge(
+$spacers: map.merge(
   (
     0: 0,
     4: $spacer * .25,

@@ -1,15 +1,14 @@
 .settings_wrapper {
-    padding: 20px 70px 0;
-    display: block;
-    text-align: center;
+  display: block;
+  padding: 20px 70px 0;
+  text-align: center;
 
-    .settings {
-        max-width: 375px;
-        text-align: left;
+  .settings {
+    max-width: 375px;
+    text-align: left;
 
-        .header {
-            max-width: 100px;
-        }
+    .header {
+      max-width: 100px;
     }
-    
+  }
 }

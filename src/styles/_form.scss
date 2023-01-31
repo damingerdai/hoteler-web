@@ -2,7 +2,6 @@
   &-inline {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -ms-flex-flow: row wrap;
     flex-flow: row wrap;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -21,4 +20,3 @@
     width: 100%;
   }
 }
-
