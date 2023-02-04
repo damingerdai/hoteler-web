@@ -10,8 +10,6 @@ export class AdminComponent {
 
   public isMobile: boolean;
 
-  fillerNav = Array.from({length: 5}, (_, i) => `Nav Item ${i + 1}`);
-
   constructor(private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(
       result => {

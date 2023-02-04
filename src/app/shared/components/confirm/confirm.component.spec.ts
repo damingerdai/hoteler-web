@@ -50,7 +50,6 @@ describe('ConfirmComponent', () => {
     expect(component).toBeTruthy();
     const h2 = fixture.debugElement.query(By.css('h2'))!.nativeElement as HTMLDivElement;
     expect(h2.innerText).toBe('confirm');
-    console.log(fixture.debugElement.query(By.directive(MatDialogContent)));
     const content = fixture.debugElement.query(By.directive(MatDialogContent))!.nativeElement as HTMLDialogElement;
     expect(content.innerText.trim()).toBe('confirm description');
   });
