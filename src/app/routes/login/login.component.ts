@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ENTER, MAC_ENTER } from '@angular/cdk/keycodes';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/core/api/api.service';
 import { UserTokenResponse } from 'src/app/core/models';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
+import { TokenService } from 'src/app/core/services/token/token.service';
+import { UserService } from 'src/app/core/services/user/user.service';
+import { switchMap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -30,9 +32,10 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(
-    private api: ApiService,
     private fb: FormBuilder,
     private settings: SettingsService,
+    private tokenApi: TokenService,
+    private userApi: UserService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -62,26 +65,36 @@ export class LoginComponent implements OnInit {
   public login() {
     this.isLoading = true;
     this.errorMessage = '';
-    this.api.post<UserTokenResponse>('/api/v1/token', {}, {
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password
-    }).subscribe(res => {
-      if (res.status === 200) {
-        const user =  {
-          ...res.userToken,
-          username: this.loginForm.value.username
-        };
-        this.settings.user = user;
-        this.router.navigate(['dashboard']);
-      } else {
-        // this.errorMessage = (res as any).error.message;
-        this.loginForm.setErrors({
-          login: (res as any).error.message
-        });
-        this.isLoading = false;
-      }
+    const username = this.loginForm.value.username;
+    const password = this.loginForm.value.password;
+    this.tokenApi.login(username, password).pipe(
+      switchMap(res => {
+        if (res.status === 200) {
+          const user =  {
+            ...res.userToken,
+            // username,
+          };
+          this.settings.user = user;
+          return this.userApi.getCurrentUser();
+        } else {
+          this.loginForm.setErrors({
+            login: (res as any).error.message
+          });
+          // this.isLoading = false;
+          return throwError(() => res);
+        }
 
-    });
+      })
+    ).subscribe({next: (res) => {
+      if (res.status == 200) {
+        this.settings.user = {
+          ...this.settings.user,
+          ...res.data,
+        };
+        this.router.navigate(['dashboard']);
+      }
+      this.isLoading = false;
+    }});
   }
 
 }

@@ -32,7 +32,6 @@ export class AddCustomerRoomDialogComponent implements OnInit {
     this.form.get('roomId').disable({ onlySelf: true, emitEvent: true });
     this.form.get('beginDate').disable();
     this.form.get('endDate').disable();
-    console.log(this.form);
   }
 
   ngOnInit(): void {

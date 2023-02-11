@@ -4,12 +4,14 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { IUser } from 'src/app/core/models';
 import { SettingsService } from '../../../core/services/settings/settings.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
@@ -17,10 +19,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   public isMobile: boolean;
 
-  private _username: string;
+  private _user: IUser;
+
+  public get user() {
+    return this._user;
+  }
 
   public get username() {
-    return this._username;
+    return this._user?.username;
+  }
+
+  public get isAdmin() {
+    return this._user?.roles?.map(r => r.name).includes('admin');
   }
 
   constructor(
@@ -36,7 +46,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
     );
     this.subscriptions.push(subscription1);
-    const subscription2 = this.settings.user$.subscribe(user => this._username = user?.username || '');
+    const subscription2 = this.settings.user$.subscribe(user => this._user = { ...user } as IUser);
     this.subscriptions.push(subscription2);
 
     this.iconRegistry.addSvgIcon('github', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/github-circle-white-transparent.svg'));
@@ -44,7 +54,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this._username = this.settings.user?.username;
+    // this._username = this.settings.user?.username;
+    this._user = this.settings.user as IUser;
   }
 
   ngOnDestroy(): void {

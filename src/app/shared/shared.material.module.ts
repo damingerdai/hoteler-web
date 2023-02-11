@@ -16,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -41,6 +42,7 @@ const materials = [
   MatRadioModule,
   MatSnackBarModule,
   MatSelectModule,
+  MatSidenavModule,
   MatTableModule,
   MatToolbarModule,
   MatTooltipModule,
