@@ -1,4 +1,3 @@
-/*
 MIT License
 
 Copyright (c) 2019 Zongbin
@@ -20,23 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
-@use 'sass:map';
-// ==================================================
-// WIDTH & HEIGHT
-// ==================================================
-
-$size: (
-  'width': (
-    property: width,
-    class: w,
-    values: $size
-  ),
-  'height': (
-    property: height,
-    class: h,
-    values: $size
-  )
-);
-
-$utilities: map.merge($size, $utilities);

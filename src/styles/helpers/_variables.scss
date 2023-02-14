@@ -1,48 +1,60 @@
-/*
-MIT License
+@use 'functions';
 
-Copyright (c) 2019 Zongbin
+// Utility Map
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-@use 'sass:map';
-// All Map
 $utilities: () !default;
 
 // Spacing
-$spacer: 16px !default;
-$spacers: () !default;
-$spacers: map.merge(
-  (
-    0: 0,
-    4: $spacer * .25,
-    8: $spacer * .5,
-    16: $spacer,
-    24: $spacer * 1.5,
-    32: $spacer * 2,
-    48: $spacer * 3
-  ),
-  $spacers
-);
-$negative-spacers: negativify-map($spacers) !default;
 
-// Fonts
+$spacer: 16px !default;
+$spacers: (
+  0: 0,
+  2: $spacer * .125,
+  4: $spacer * .25,
+  8: $spacer * .5,
+  12: $spacer * .75,
+  16: $spacer,
+  24: $spacer * 1.5,
+  32: $spacer * 2,
+  48: $spacer * 3
+) !default;
+$negative-spacers: functions.negativify-map($spacers) !default;
+
+// Border
+
+$border-color: rgba(0, 0, 0, .12) !default;
+$borders: (
+  0: 0,
+  1: 1px solid $border-color,
+  2: 2px solid $border-color,
+  4: 4px solid $border-color,
+  8: 8px solid $border-color
+) !default;
+
+$border-widths: (
+  0: 0,
+  1: 1px,
+  2: 2px,
+  4: 4px,
+  8: 8px
+) !default;
+
+$border-styles: solid dashed dotted double hidden none !default;
+
+// Border radius
+
+$radius-base: 4px !default;
+$radius: (
+  0: 0,
+  4: $radius-base,
+  8: $radius-base * 2,
+  12: $radius-base * 3,
+  16: $radius-base * 4,
+  full: 9999px
+) !default;
+
+// Text
+
 $font-wieghts: (
   100: 100,
   200: 200,
@@ -65,8 +77,10 @@ $font-sizes: (
   20: 20px
 ) !default;
 
-// Size
-$size: (
+// Sizing
+
+$sizes: (
+  0: 0,
   20: 20%,
   25: 25%,
   40: 40%,
@@ -76,26 +90,4 @@ $size: (
   80: 80%,
   full: 100%,
   auto: auto
-) !default;
-
-// Border radius
-$radius-base: 4px !default;
-$radius: (
-  0: 0,
-  4: $radius-base,
-  8: $radius-base * 2,
-  16: $radius-base * 4,
-  24: $radius-base * 6,
-  32: $radius-base * 8,
-  full: 9999px
-) !default;
-
-// Border width
-$border-solid: (
-  0: 0,
-  1: 1px solid rgba(0, 0, 0, .12),
-  2: 2px solid rgba(0, 0, 0, .12),
-  3: 3px solid rgba(0, 0, 0, .12),
-  4: 4px solid rgba(0, 0, 0, .12),
-  5: 5px solid rgba(0, 0, 0, .12)
 ) !default;
