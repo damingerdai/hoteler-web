@@ -1,10 +1,15 @@
 <app-page-header title="客户信息"></app-page-header>
-<div fxLayout="row wrap" class="box">
-  <div class="w-full" fxLayout="row" fxLayoutAlign="end center">
+<main class="customer">
+  <div class="d-flex w-full justify-content-end">
     <button mat-raised-button color="primary" (click)="createCustomer()">
       创建客户
     </button>
-    <button mat-raised-button color="warn" (click)="toggleLayout()">
+    <button
+      mat-raised-button
+      class="m-l-8"
+      color="warn"
+      (click)="toggleLayout()"
+    >
       切换布局
     </button>
   </div>
@@ -80,18 +85,14 @@
     </table>
     <div *ngIf="customers?.length === 0">空</div>
   </div>
-  <div *ngIf="layout === 'card'" fxLayout="row wrap" class="w-full m-t-8">
+  <div
+    *ngIf="layout === 'card'"
+    class="holeler-row d-flex flex-wrap w-full m-t-8"
+  >
     <div class="loading-shade" *ngIf="isLoading">
       <mat-spinner></mat-spinner>
     </div>
-    <div
-      class="p-8"
-      *ngFor="let customer of customers"
-      fxFlex="100"
-      fxFlex.gt-sm="25"
-      fxFlex.gt-xs="50"
-      fxFlex.gt-md="33"
-    >
+    <div class="holeler-col p-8" *ngFor="let customer of customers">
       <mat-card appearance="outlined" class="mat-card customer-card">
         <mat-card-header>
           <mat-card-title>{{ customer.name }}</mat-card-title>
@@ -130,4 +131,4 @@
       </mat-card>
     </div>
   </div>
-</div>
+</main>
