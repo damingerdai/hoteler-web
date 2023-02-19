@@ -30,14 +30,6 @@
     background: mat.get-color-from-palette($background, background);
   }
 
-  .box {
-    padding: 20px 40px;
-
-    @media (max-width: 600px) {
-      padding: 10px;
-    }
-  }
-
   // TODO: add new chip
   // .mdc-evolution-chip__action {
   //   &--primary {
