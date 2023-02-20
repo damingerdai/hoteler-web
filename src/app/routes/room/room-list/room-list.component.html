@@ -1,6 +1,6 @@
 <app-page-header title="房间信息"></app-page-header>
-<div fxLayout="row wrap" class="box">
-  <div class="w-full" fxLayout="row" fxLayoutAlign="end center">
+<div class="d-flex flex-col p-16">
+  <div class="w-full d-flex justify-content-end align-items-baseline">
     <form class="form-inline" [formGroup]="roomForm">
       <mat-form-field class="form-field">
         <mat-label>用户状态</mat-label>
@@ -17,51 +17,52 @@
   </div>
   <mat-divider class="divider"></mat-divider>
   <ng-container *ngIf="!isLoading">
-    <div *ngIf="layout === 'card'" fxLayout="row wrap" class="room-card">
-      <mat-card
-        appearance="outlined"
-        fxFlex="100"
-        fxFlex.gt-sm="33"
-        fxFlex.gt-xs="50"
+    <div
+      *ngIf="layout === 'card'"
+      class="room-card-wrapper d-flex flex-row flex-wrap"
+    >
+      <div
+        class="room-card room-list-card"
         *ngFor="let room of rooms; let i = index"
-        class="room-list-card"
       >
-        <mat-card-header>
-          <mat-card-title>
-            {{ room.roomname }}
-          </mat-card-title>
-          <mat-card-subtitle>
-            <mat-chip-set>
-              <mat-chip *ngIf="room.status === 1" color="primary" selected
-                >空闲</mat-chip
-              >
-              <mat-chip *ngIf="room.status === 2" color="primary" selected
-                >占用</mat-chip
-              >
-            </mat-chip-set>
-          </mat-card-subtitle>
-        </mat-card-header>
-        <img
-          mat-card-image
-          [src]="'https://picsum.photos/200/300?random=' + i"
-        />
-        <mat-card-actions>
-          <button
-            mat-button
-            color="primary"
-            [disabled]="room.status === 2"
-            (click)="addCustomerRoomDialog(room)"
-          >
-            入住
-          </button>
-          <button mat-button color="accent" (click)="updateRoom(room)">
-            修改
-          </button>
-          <button mat-button color="warn" (click)="deleteRoom(room.id)">
-            删除
-          </button>
-        </mat-card-actions>
-      </mat-card>
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>
+              {{ room.roomname }}
+            </mat-card-title>
+            <mat-card-subtitle>
+              <mat-chip-set>
+                <mat-chip *ngIf="room.status === 1" color="primary" selected
+                  >空闲</mat-chip
+                >
+                <mat-chip *ngIf="room.status === 2" color="primary" selected
+                  >占用</mat-chip
+                >
+              </mat-chip-set>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            [src]="'https://picsum.photos/200/300?random=' + i"
+          />
+          <mat-card-actions>
+            <button
+              mat-button
+              color="primary"
+              [disabled]="room.status === 2"
+              (click)="addCustomerRoomDialog(room)"
+            >
+              入住
+            </button>
+            <button mat-button color="accent" (click)="updateRoom(room)">
+              修改
+            </button>
+            <button mat-button color="warn" (click)="deleteRoom(room.id)">
+              删除
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
     <div
       *ngIf="layout === 'table'"

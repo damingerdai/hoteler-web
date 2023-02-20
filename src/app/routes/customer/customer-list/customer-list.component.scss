@@ -1,5 +1,36 @@
 @use '../../../../styles/breakpoints' as bp;
 
+.customer {
+  padding: 16px;
+
+  .holeler-col {
+    width: 100%;
+
+    @include bp.respond-above(sm) {
+      width: 50%;
+    }
+
+    @include bp.respond-above(md) {
+      width: 33%;
+    }
+
+    @include bp.respond-above(lg) {
+      width: 25%;
+    }
+
+    .customer-card {
+      padding: {
+        right: 8px;
+        left: 8px;
+      };
+
+      min-width: 300px;
+      max-width: 350px;
+      margin: 8px;
+    }
+  }
+}
+
 .mat-column {
   @include bp.respond-below(sm) {
     &-id,
@@ -24,17 +55,6 @@
   .mat-mdc-button-base {
     margin: 8px 8px 8px 0;
   }
-}
-
-.customer-card {
-  padding: {
-    right: 8px;
-    left: 8px;
-  };
-
-  min-width: 300px;
-  max-width: 350px;
-  margin: 8px;
 }
 
 .loading-shade {

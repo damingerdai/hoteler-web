@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,7 +20,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
-    FlexLayoutModule,
     LayoutModule,
     SharedModule
   ],
