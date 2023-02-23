@@ -80,7 +80,7 @@
     "stylelint": "^15.0.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended-scss": "^8.0.0",
-    "stylelint-config-standard": "^29.0.0",
+    "stylelint-config-standard": "^30.0.0",
     "stylelint-order": "^6.0.2",
     "stylelint-scss": "^4.4.0",
     "ts-node": "10.9.1",
