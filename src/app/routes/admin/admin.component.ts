@@ -1,4 +1,4 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints, MediaMatcher } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,9 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AdminComponent {
 
+  private _mobileQueryListener: () => void;
   public isMobile: boolean;
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  public get mode() {
+    return this.isMobile ? 'over' : 'side';
+  }
+
+  constructor(
+    private media: MediaMatcher,
+    private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(
       result => {
         this.isMobile = result.matches;
