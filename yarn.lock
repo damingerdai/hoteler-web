@@ -180,10 +180,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/cdk@15.1.4":
-  version "15.1.4"
-  resolved "https://registry.npmmirror.com/@angular/cdk/-/cdk-15.1.4.tgz#6b7ee7d3cfda89200f69ddad8efa5a9b5d9f906b"
-  integrity sha512-uCYrquUYakm+ym3l/0GG2HtyEtzJlr3eO3T8Oezvl4HcNB0jlcN80ut5SwQC0KcgiWDuP1BVv8PGinD2vearJg==
+"@angular/cdk@15.2.0":
+  version "15.2.0"
+  resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-15.2.0.tgz#0711ace8b2d30f0512d5a9bd6342ea5962ff33e4"
+  integrity sha512-+D0gLmDZVCBMSZ6juImP0eXpL40hw4Ipm8KRQmF3UOU9T5xXMxzYjUI8N3J+ZUZsNzQwy+eW0HImkZ5St6YxvA==
   dependencies:
     tslib "^2.3.0"
   optionalDependencies:
@@ -262,10 +262,10 @@
   resolved "https://registry.npmjs.org/@angular/language-service/-/language-service-15.2.0.tgz#5256d7269c2755b30bd918d8cf555789c5a4517a"
   integrity sha512-Gwg/IWPiBZ+LE0hHxtQGvQuJ+A7YehL6p0k26ClP0HS7Wy0ERRD9+ITGh5SnhKTKVMRwOb4HYcLp0N5W3yTajw==
 
-"@angular/material@15.1.4":
-  version "15.1.4"
-  resolved "https://registry.npmmirror.com/@angular/material/-/material-15.1.4.tgz#ba61aee1b7cdcbb8d257262ec57e3e7caa79f8f0"
-  integrity sha512-mepKRVzO3v4BxGkzkwO1PZjWTdLDbqkydmmiEYkzPOUk9I3tElzjYlybB0xuY6A5CIdXU9Mdc+AaUZWng2yN/g==
+"@angular/material@15.2.0":
+  version "15.2.0"
+  resolved "https://registry.npmjs.org/@angular/material/-/material-15.2.0.tgz#7613ebecf0e92569c17b4bbcd539f2f46d8e8b6e"
+  integrity sha512-3Y6MMureeqFx5mzVnLuWrm+MXtTBAZGq0cPNcS3HUSv4gpKE3gSE0b3I4c/jFF5tcS2eQKNkU/HDvSFrYz8/iA==
   dependencies:
     "@material/animation" "15.0.0-canary.684e33d25.0"
     "@material/auto-init" "15.0.0-canary.684e33d25.0"
