@@ -1,7 +1,13 @@
 <mat-toolbar color="primary" aria-label="Top Toolbar">
-  <!-- <button mat-icon-button color="primary" aria-label="hamburger menu">
+  <button
+    *ngIf="showMenu"
+    mat-icon-button
+    color="primary"
+    aria-label="hamburger menu"
+    (click)="toggle()"
+  >
     <mat-icon>menu</mat-icon>
-  </button> -->
+  </button>
   <a mat-button class="hoteler-button" routerLink="/" aria-label="Hoteler">
     <img
       class="logo"

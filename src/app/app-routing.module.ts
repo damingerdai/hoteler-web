@@ -73,14 +73,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        pathMatch: 'full',
         title: 'Hoteler Admin',
         loadChildren: () => import('./routes/admin/admin.module').then(m => m.AdminModule)
       },
       // { path: '**', redirectTo: '/403' },
     ]
   },
-  { path: '**', redirectTo: '403' },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({

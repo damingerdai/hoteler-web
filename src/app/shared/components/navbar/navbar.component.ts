@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/core/models';
+import { LayoutService } from 'src/app/core/services/layout';
 import { SettingsService } from '../../../core/services/settings/settings.service';
 
 @Component({
@@ -18,6 +19,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   public isMobile: boolean;
+
+  public showMenu: boolean = false;
 
   private _user: IUser;
 
@@ -38,7 +41,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private settings: SettingsService,
     private router: Router,
     private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    protected layoutService: LayoutService
   ) {
     const subscription1 = this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(
       result => {
@@ -48,6 +52,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subscription1);
     const subscription2 = this.settings.user$.subscribe(user => this._user = { ...user } as IUser);
     this.subscriptions.push(subscription2);
+    const subscription3 = this.layoutService.adminlayoutSource$.subscribe(b => {
+      this.showMenu = b;
+    });
+    this.subscriptions.push(subscription3);
 
     this.iconRegistry.addSvgIcon('github', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/github-circle-white-transparent.svg'));
   }
@@ -67,6 +75,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public logout() {
     this.settings.user = null;
     this.router.navigateByUrl('login');
+  }
+
+  public toggle() {
+    this.layoutService.drawerStatus(true);
   }
 
 }
