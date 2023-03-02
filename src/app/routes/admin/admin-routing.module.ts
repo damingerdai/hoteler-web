@@ -34,6 +34,13 @@ const routes: Routes = [
         canActivate:  [AuthGuard],
         loadChildren: () => import('../../routes/customer/customer.module').then(m => m.CustomerModule)
       },
+      {
+        path: 'user',
+        title: 'Hoteler Portal -- 用户管理',
+        canLoad: [AuthGuard],
+        canActivate:  [AuthGuard],
+        loadChildren: () => import('../../routes/user/user.module').then(m => m.UserModule)
+      },
     ]
   }
 ];
