@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ENTER, MAC_ENTER } from '@angular/cdk/keycodes';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserTokenResponse } from 'src/app/core/models';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { TokenService } from 'src/app/core/services/token/token.service';
 import { UserService } from 'src/app/core/services/user/user.service';
@@ -47,6 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.settings.clearUser();
   }
 
   public handleKeyPress(event: KeyboardEvent) {

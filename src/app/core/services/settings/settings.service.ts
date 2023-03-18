@@ -33,7 +33,11 @@ export class SettingsService {
       this._user = user;
       this.userSource.next(user);
     }
-   }
+  }
+
+  public clearUser() {
+    this.user = null;
+  }
 
 
 }
