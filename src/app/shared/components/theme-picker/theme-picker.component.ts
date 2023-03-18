@@ -116,8 +116,11 @@ export class ThemePickerComponent implements OnInit {
       return;
     }
     if (this.platform.ANDROID && this.platform.BLINK) {
+      // this.metaService.updateTag({
+      //   name: 'theme-color', content: theme.primary, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
+      // });
       this.metaService.updateTag({
-        name: 'theme-color', content: theme.primary, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
+        name: 'theme-color', content: theme.primary
       });
     }
     if (this.platform.TRIDENT) {
