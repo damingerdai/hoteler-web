@@ -4532,7 +4532,7 @@ css-what@^6.0.1:
 
 cssesc@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.npmmirror.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
+  resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
 currently-unhandled@^0.4.1:
@@ -7402,7 +7402,7 @@ lodash.upperfirst@^4.3.1:
 
 lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4:
   version "4.17.21"
-  resolved "https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^2.0.0, log-symbols@^2.2.0:
@@ -8742,7 +8742,7 @@ postcss-markdown@^0.36.0:
 
 postcss-media-query-parser@^0.2.3:
   version "0.2.3"
-  resolved "https://registry.npmmirror.com/postcss-media-query-parser/-/postcss-media-query-parser-0.2.3.tgz#27b39c6f4d94f81b1a73b8f76351c609e5cef244"
+  resolved "https://registry.yarnpkg.com/postcss-media-query-parser/-/postcss-media-query-parser-0.2.3.tgz#27b39c6f4d94f81b1a73b8f76351c609e5cef244"
   integrity sha512-3sOlxmbKcSHMjlUXQZKQ06jOswE7oVkXPxmZdoB1r5l0q6gTFTQSHxNxOrCccElbW7dxNytifNEo8qidX2Vsig==
 
 postcss-modules-extract-imports@^3.0.0:
@@ -8785,7 +8785,7 @@ postcss-reporter@^6.0.0:
 
 postcss-resolve-nested-selector@^0.1.1:
   version "0.1.1"
-  resolved "https://registry.npmmirror.com/postcss-resolve-nested-selector/-/postcss-resolve-nested-selector-0.1.1.tgz#29ccbc7c37dedfac304e9fff0bf1596b3f6a0e4e"
+  resolved "https://registry.yarnpkg.com/postcss-resolve-nested-selector/-/postcss-resolve-nested-selector-0.1.1.tgz#29ccbc7c37dedfac304e9fff0bf1596b3f6a0e4e"
   integrity sha512-HvExULSwLqHLgUy1rl3ANIqCsvMS0WHss2UOsXhXnQaZ9VCc2oBvIpXrl00IUFT5ZDITME0o6oiXeiHr2SAIfw==
 
 postcss-safe-parser@^4.0.0:
@@ -10200,9 +10200,9 @@ stylelint-order@^6.0.2:
     postcss-sorting "^8.0.1"
 
 stylelint-scss@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-4.4.0.tgz#87ce9d049eff1ce67cce788780fbfda63099017e"
-  integrity sha512-Qy66a+/30aylFhPmUArHhVsHOun1qrO93LGT15uzLuLjWS7hKDfpFm34mYo1ndR4MCo8W4bEZM1+AlJRJORaaw==
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-4.5.0.tgz#c270fff4f0dad65a7a39178be883062c6552482a"
+  integrity sha512-/+rQ8FePOiwT5xblOHkujYzRYfSjmE6HYhLpqJShL+9wH6/HaAVj4mWpXlpEsM3ZgIpOblG9Y+/BycSJzWgjNw==
   dependencies:
     lodash "^4.17.21"
     postcss-media-query-parser "^0.2.3"
