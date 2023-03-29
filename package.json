@@ -64,7 +64,7 @@
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "conventional-changelog-cli": "2.2.2",
-    "eslint": "^8.35.0",
+    "eslint": "^8.37.0",
     "husky": "8.0.3",
     "is-ci": "3.0.1",
     "jasmine-core": "4.6.0",
