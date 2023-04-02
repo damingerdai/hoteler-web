@@ -36,7 +36,7 @@ $utilities: (
     class: b-x,
     values: variables.$borders
   ),
-  // only border-width
+  /* only border-width*/
   'border-width': (
     property: border-width,
     class: border,
@@ -72,7 +72,7 @@ $utilities: (
     class: border-x,
     values: variables.$border-widths
   ),
-  // only border-style
+  /* only border-style*/
   'border-style': (
     property: border-style,
     class: border,

@@ -33,6 +33,7 @@
     "scss/at-extend-no-missing-placeholder": null,
     "scss/comment-no-empty": null,
     "scss/operator-no-unspaced": null,
-    "import-notation": null
+    "import-notation": null,
+    "media-feature-range-notation": "prefix"
   }
 }
