@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CoreModule } from '../../core.module';
 
+/**
+ * @deprecated 已经废弃使用，将来会删除
+ */
 @Injectable({
   providedIn: CoreModule
 })
