@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import { LayoutComponent } from './layout/layout.component';
-
+import { AdminLayoutComponent } from './layout/admin-layout';
+import { CommonLayoutComponent } from './layout/common-layout';
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    component: CommonLayoutComponent,
     children: [
       {
         path: '',
@@ -69,14 +69,48 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: LayoutComponent,
+    component: AdminLayoutComponent,
     children: [
       {
         path: '',
-        title: 'Hoteler Admin',
-        loadChildren: () => import('./routes/admin/admin.module').then(m => m.AdminModule)
+        pathMatch: 'full',
+        redirectTo: 'user'
       },
-      // { path: '**', redirectTo: '/403' },
+      {
+        path: 'dashboard',
+        title: 'Hoteler Portal -- 主页',
+        canLoad: [AuthGuard],
+        canActivate:  [AuthGuard],
+        loadChildren: () => import('./routes/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'room',
+        title: 'Hoteler Portal -- 房间管理',
+        canLoad: [AuthGuard],
+        canActivate:  [AuthGuard],
+        loadChildren: () => import('./routes/room/room.module').then(m => m.RoomModule)
+      },
+      {
+        path: 'customer',
+        title: 'Hoteler Portal -- 客户管理',
+        canLoad: [AuthGuard],
+        canActivate:  [AuthGuard],
+        loadChildren: () => import('./routes/customer/customer.module').then(m => m.CustomerModule)
+      },
+      {
+        path: 'user',
+        title: 'Hoteler Portal -- 用户管理',
+        canLoad: [AuthGuard],
+        canActivate:  [AuthGuard],
+        loadChildren: () => import('./routes/user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'settings',
+        title: 'Hoteler Portal -- 设置',
+        canLoad: [AuthGuard],
+        canActivate:  [AuthGuard],
+        loadChildren: () => import('./routes/settings/settings.module').then(m => m.SettingsModule)
+      },
     ]
   },
   { path: '**', redirectTo: '404' },

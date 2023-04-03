@@ -1,5 +1,5 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   public isMobile: boolean;
 
+  @Input()
   public showMenu: boolean = false;
 
   private _user: IUser;

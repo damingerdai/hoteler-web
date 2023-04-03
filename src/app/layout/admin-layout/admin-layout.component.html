@@ -1,0 +1,51 @@
+<app-navbar class="mat-elevation-z6" [showMenu]="true"></app-navbar>
+<div class="h-full">
+  <mat-drawer-container class="container">
+    <mat-drawer class="h-full drawer" #drawer [opened]="open" [mode]="mode">
+      <ng-container *ngFor="let menu of menus">
+        <mat-nav-list *ngIf="menu.type === 'menu'">
+          <h3 matSubheader *ngIf="menu.header">{{ menu.header }}</h3>
+          <a
+            mat-list-item
+            *ngFor="let item of menu.items"
+            [routerLink]="item.link"
+            routerLinkActive="active"
+          >
+            <mat-icon matListItemIcon> {{ item.icon }} </mat-icon>
+            <p mat-line>{{ item.line }}</p>
+          </a>
+        </mat-nav-list>
+        <mat-divider *ngIf="menu.type === 'divider'"></mat-divider>
+      </ng-container>
+      <!-- <mat-nav-list>
+        <h3 matSubheader>主页</h3>
+        <a mat-list-item routerLink="/admin/dashboard" routerLinkActive="active">
+          <mat-icon matListItemIcon> dashboard </mat-icon>
+          <p mat-line>仪表盘</p>
+        </a>
+        <a mat-list-item routerLink="/admin/customer" routerLinkActive="active">
+          <mat-icon matListItemIcon> business </mat-icon>
+          <p mat-line>客户管理</p>
+        </a>
+        <a mat-list-item routerLink="/admin/room" routerLinkActive="active">
+          <mat-icon matListItemIcon> room_preferences </mat-icon>
+          <p mat-line>房间管理</p>
+        </a>
+        <a mat-list-item routerLink="./user" routerLinkActive="active">
+          <mat-icon matListItemIcon> group </mat-icon>
+          <p mat-line>用户</p>
+        </a>
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/settings" routerLinkActive="active">
+          <mat-icon matListItemIcon> settings </mat-icon>
+          <p mat-line>设置</p>
+        </a>
+      </mat-nav-list> -->
+    </mat-drawer>
+    <mat-drawer-content class="h-full">
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
