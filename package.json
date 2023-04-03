@@ -38,7 +38,7 @@
     "@angular/platform-browser": "15.2.5",
     "@angular/platform-browser-dynamic": "15.2.5",
     "@angular/router": "15.2.5",
-    "apexcharts": "3.37.2",
+    "apexcharts": "3.37.3",
     "ngx-apexcharts": "0.1.1",
     "ngx-dom-confetti": "^0.1.0",
     "perf-marks": "^1.14.2",
