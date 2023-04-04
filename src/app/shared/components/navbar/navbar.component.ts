@@ -18,10 +18,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  public isMobile: boolean;
-
   @Input()
   public showMenu: boolean = false;
+
+  protected isMobile: boolean;
+
+  protected isKikeIPhone5s: boolean;
 
   private _user: IUser;
 
@@ -37,6 +39,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     return this._user?.roles?.map(r => r.name).includes('admin');
   }
 
+  public get showBarnd() {
+    if (this.showMenu) {
+      return !this.isKikeIPhone5s;
+    }
+    return true;
+  }
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private settings: SettingsService,
@@ -45,6 +54,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private sanitizer: DomSanitizer,
     protected layoutService: LayoutService
   ) {
+    this.isKikeIPhone5s = false;
     const subscription1 = this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(
       result => {
         this.isMobile = result.matches;
@@ -57,7 +67,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.showMenu = b;
     });
     this.subscriptions.push(subscription3);
-
+    const subscription4 = this.breakpointObserver.observe(['(max-width: 374px) and (orientation: portrait)']).subscribe(
+      result => {
+        this.isKikeIPhone5s = result.matches;
+      }
+    );
+    this.subscriptions.push(subscription4);
     this.iconRegistry.addSvgIcon('github', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/github-circle-white-transparent.svg'));
   }
 

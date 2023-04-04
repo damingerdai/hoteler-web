@@ -14,7 +14,7 @@
       src="assets/img/angular-white-transparent.svg"
       alt="angular"
     />
-    <span>Hoteler</span>
+    <span *ngIf="showBarnd">Hoteler</span>
   </a>
   <ng-container *ngIf="!isMobile && username">
     <a mat-button class="hoteler-button" routerLink="/dashboard"> 仪表盘 </a>
