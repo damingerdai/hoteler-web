@@ -11,7 +11,7 @@
   <button
     mat-menu-item
     *ngFor="let theme of themes"
-    (click)="selectTheme(theme.name)"
+    (click)="selectTheme($event, theme.name)"
   >
     <mat-icon [color]="currentTheme === theme ? 'accent' : undefined">
       {{
