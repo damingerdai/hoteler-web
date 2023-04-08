@@ -102,7 +102,6 @@ export class ThemePickerComponent implements OnInit {
 
   private doSelectTheme(theme: SiteTheme) {
 
-
     if (!theme) {
       return;
     }
@@ -128,11 +127,8 @@ export class ThemePickerComponent implements OnInit {
       return;
     }
     if (this.platform.ANDROID && this.platform.BLINK) {
-      // this.metaService.updateTag({
-      //   name: 'theme-color', content: theme.primary, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
-      // });
       this.metaService.updateTag({
-        name: 'theme-color', content: theme.primary
+        name: 'theme-color', content: theme.primary, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
       });
     }
     if (this.platform.TRIDENT) {
@@ -160,12 +156,14 @@ export class ThemePickerComponent implements OnInit {
         Math.max(x, innerWidth - x),
         Math.max(y, innerHeight - y)
       );
-
-      let isDark: boolean;
+      const root = this.document.documentElement;
+      const isDark = root.classList.contains('dark');
+      if (isDark === theme.isDark) {
+        this.doSelectTheme(theme);
+        return;
+      }
       // @ts-ignore
       const transition = this.document.startViewTransition(() => {
-        const root = this.document.documentElement;
-        isDark = theme.isDark;
         root.classList.remove(isDark ? 'dark' : 'light');
         root.classList.add(isDark ? 'light' : 'dark');
       });
