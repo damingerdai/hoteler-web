@@ -1,9 +1,10 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Platform } from '@angular/cdk/platform';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { StyleManagerService } from 'src/app/core/services/style-manager/style-manager.service';
 import { SiteTheme, SiteThemes, ThemeStorageService } from './theme-storage/theme-storage.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-theme-picker',
@@ -66,6 +67,7 @@ export class ThemePickerComponent implements OnInit {
   ];
 
   constructor(
+    @Inject(DOCUMENT) private document: Document,
     private styleManager: StyleManagerService,
     private themeStorage: ThemeStorageService,
     private liveAnnouncer: LiveAnnouncer,
@@ -74,8 +76,9 @@ export class ThemePickerComponent implements OnInit {
   ) {
     this.currentTheme = this.themes[0];
     const themeName = this.themeStorage.getStoredThemeName();
-    if (themeName) {
-      this.selectTheme(themeName);
+    const theme = this.themes.find(currentTheme => currentTheme.name === themeName);
+    if (themeName && theme) {
+      this.doSelectTheme(theme);
     }
   }
 
@@ -88,8 +91,16 @@ export class ThemePickerComponent implements OnInit {
     }
   }
 
-  selectTheme(themeName: string) {
+  selectTheme(event: MouseEvent, themeName: string) {
     const theme = this.themes.find(currentTheme => currentTheme.name === themeName);
+
+    if (!theme) {
+      return;
+    }
+    this.viewTransitionAnimate(event, theme);
+  }
+
+  private doSelectTheme(theme: SiteTheme) {
 
     if (!theme) {
       return;
@@ -116,11 +127,8 @@ export class ThemePickerComponent implements OnInit {
       return;
     }
     if (this.platform.ANDROID && this.platform.BLINK) {
-      // this.metaService.updateTag({
-      //   name: 'theme-color', content: theme.primary, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
-      // });
       this.metaService.updateTag({
-        name: 'theme-color', content: theme.primary
+        name: 'theme-color', content: theme.primary, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
       });
     }
     if (this.platform.TRIDENT) {
@@ -134,5 +142,48 @@ export class ThemePickerComponent implements OnInit {
         name: 'apple-mobile-web-app-status-bar-style', content: theme.isDark ? 'black' : 'default',
       });
     }
+  }
+
+  private viewTransitionAnimate(event: MouseEvent, theme: SiteTheme) {
+    if (!this.platform.isBrowser || !('startViewTransition' in this.document)) {
+      this.doSelectTheme(theme);
+      return;
+    }
+
+    const x = event.clientX;
+      const y = event.clientY;
+      const endRadius = Math.hypot(
+        Math.max(x, innerWidth - x),
+        Math.max(y, innerHeight - y)
+      );
+      const root = this.document.documentElement;
+      const isDark = root.classList.contains('dark');
+      if (isDark === theme.isDark) {
+        this.doSelectTheme(theme);
+        return;
+      }
+      // @ts-ignore
+      const transition = this.document.startViewTransition(() => {
+        root.classList.remove(isDark ? 'dark' : 'light');
+        root.classList.add(isDark ? 'light' : 'dark');
+      });
+
+      transition.ready.then(() => {
+        const clipPath = [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${endRadius}px at ${x}px ${y}px)`,
+        ];
+        this.document.documentElement.animate(
+          {
+            clipPath: isDark ? [...clipPath].reverse() : clipPath,
+          },
+          {
+            duration: 500,
+            easing: 'ease-in',
+            pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
+          }
+        );
+        this.doSelectTheme(theme);
+      });
   }
 }
