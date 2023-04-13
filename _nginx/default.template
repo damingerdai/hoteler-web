@@ -14,6 +14,11 @@ server {
         gzip_comp_level  2;
         gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/jpeg image/gif image/png;
         gzip_vary on;
+
+        if ($request_filename ~* \.(css|gif|jpg|js|png|ico|otf|sng|xls|doc|exe|jpeg|tgx)$){
+          expires 1y;
+          add_header Cache-Control  max-age=86400;
+        }
     }
 
     error_page   500 502 503 504  /50x.html;
