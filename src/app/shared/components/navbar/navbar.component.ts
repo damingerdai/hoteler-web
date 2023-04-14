@@ -149,7 +149,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
 
       return { ...item };
-    });
+    }).filter(item => item.withPermissions);
   }
 
 }
