@@ -77,13 +77,8 @@ export class LoginComponent implements OnInit {
           this.settings.user = user;
           return this.userApi.getCurrentUser();
         } else {
-          this.loginForm.setErrors({
-            login: (res as any).error.message
-          });
-          // this.isLoading = false;
           return throwError(() => res);
         }
-
       })
     ).subscribe({next: (res) => {
       if (res.status == 200) {
@@ -94,7 +89,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['dashboard']);
       }
       this.isLoading = false;
-    }});
+    }, error: (err) => {
+      this.loginForm.setErrors({
+        login: (err as any).error.message
+      });
+      this.isLoading = false;
+    }, complete: () => this.isLoading = false});
   }
 
 }
