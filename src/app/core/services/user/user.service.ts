@@ -15,9 +15,13 @@ export class UserService {
     return this.api.post<IResponse>('/api/v1/user', { username, password });
   }
 
-  public getCurrentUser(): Observable<DataResponse<IUser>> {
-    return this.api.get<DataResponse<IUser>>('/api/v1/user');
+  public getCurrentUser(accessToken?: string): Observable<DataResponse<IUser>> {
+    const headers = {
+      Authorization: 'Bearer ' + accessToken
+    };
+    return this.api.get<DataResponse<IUser>>('/api/v1/user', null, headers);
   }
+
 
 
 }

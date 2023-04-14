@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CoreModule } from '../../core.module';
-import { IUser } from '../../models';
+import { IUser, IUserToken } from '../../models';
 import { LocalStorageService } from '../local-storage';
 
 @Injectable({
@@ -16,13 +16,32 @@ export class SettingsService {
 
   // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   public set user(user: Partial<IUser>) {
-    this._user = user;
+    const exitUser = this.localStorageService.get<Partial<IUser>>('user') ?? {};
+    this._user = {
+      ...exitUser,
+      ...user,
+    };
     this.localStorageService.set('user', user);
     this.userSource.next(user);
   }
 
   public get user() {
+    if (!this._user) {
+      this._user = this.localStorageService.get<Partial<IUser>>('user');
+    }
+    if (!this._user) {
+      this._user = {};
+    }
     return this._user;
+  }
+
+  public saveToken(token: IUserToken) {
+    const user = this.localStorageService.get<Partial<IUser>>('user') ?? {};
+    user.accessToken = token.accessToken;
+    user.refreshToken =  token.refreshToken;
+    user.exp =  token.exp;
+    this._user = user;
+    this.localStorageService.set('user', user);
   }
 
   constructor(
@@ -31,12 +50,12 @@ export class SettingsService {
     const user = this.localStorageService.get<Partial<IUser>>('user');
     if (user) {
       this._user = user;
-      this.userSource.next(user);
     }
   }
 
   public clearUser() {
     this.user = null;
+    this.localStorageService.remove('user');
   }
 
 

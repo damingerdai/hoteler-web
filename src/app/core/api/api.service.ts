@@ -41,7 +41,17 @@ export class ApiService {
     return this.httpClient.put<T>(url, params, httpOptions);
   }
 
-  public get<T>(url: string, params?: any): Observable<T> {
+  public get<T>(url: string, params?: any, headers?: any): Observable<T> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+    if (headers) {
+      Object.keys(headers).forEach(key => {
+        httpOptions.headers = httpOptions.headers.set(key, headers[key]);
+      });
+    }
     return this.httpClient.get<T>(url, { params });
   }
 

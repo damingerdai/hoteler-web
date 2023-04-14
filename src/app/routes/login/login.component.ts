@@ -69,16 +69,12 @@ export class LoginComponent implements OnInit {
     const password = this.loginForm.value.password;
     this.tokenApi.login(username, password).pipe(
       switchMap(res => {
-        if (res.status === 200) {
-          const user =  {
-            ...res.userToken,
-            // username,
-          };
-          this.settings.user = user;
-          return this.userApi.getCurrentUser();
-        } else {
+        if (res.status != 200) {
           return throwError(() => res);
         }
+        const token = res.userToken;
+        this.settings.saveToken(token);
+        return this.userApi.getCurrentUser(token.accessToken);
       })
     ).subscribe({next: (res) => {
       if (res.status == 200) {
