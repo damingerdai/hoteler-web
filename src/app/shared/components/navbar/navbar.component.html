@@ -17,9 +17,13 @@
     <span *ngIf="showBarnd">Hoteler</span>
   </a>
   <ng-container *ngIf="!isMobile && username">
-    <a mat-button class="hoteler-button" routerLink="/dashboard"> 仪表盘 </a>
-    <a mat-button class="hoteler-button" routerLink="/customer"> 客户信息 </a>
-    <a mat-button class="hoteler-button" routerLink="/room"> 房间信息 </a>
+    <a
+      *ngFor="let menu of menus"
+      [routerLink]="menu.slug"
+      mat-button
+      class="hoteler-button"
+      >{{ menu.displayName }}</a
+    >
   </ng-container>
 
   <div flexSpacer></div>
@@ -65,13 +69,11 @@
   aria-label="Section Nav Bar"
   *ngIf="isMobile && username"
 >
-  <a mat-button class="hoteler-button navbar-link" routerLink="/dashboard">
-    仪表盘
-  </a>
-  <a mat-button class="hoteler-button navbar-link" routerLink="/customer">
-    客户信息
-  </a>
-  <a mat-button class="hoteler-button navbar-link" routerLink="/room">
-    房间信息
-  </a>
+  <a
+    *ngFor="let menu of menus"
+    [routerLink]="menu.slug"
+    mat-button
+    class="hoteler-button navbar-link"
+    >{{ menu.displayName }}</a
+  >
 </mat-toolbar>

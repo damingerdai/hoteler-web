@@ -1,3 +1,4 @@
+import { Permissions } from './permission';
 import { Roles } from './roles';
 import { IUserToken } from './user-token';
 
@@ -6,6 +7,7 @@ export interface IUser extends IUserToken {
   username: string;
   accessToken: string;
   roles: Roles
+  permissions: Permissions
 }
 
 
