@@ -4,10 +4,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LocalStorageService } from '../services/local-storage';
 import { SettingsService } from '../services/settings/settings.service';
 
-import { AuthGuard } from './auth.guard';
+import { canActivateFn } from './auth.guard';
+import { CanActivateFn } from '@angular/router';
 
-describe('AuthGuard', () => {
-  let guard: AuthGuard;
+describe('canActivateFn', () => {
+  let guard: CanActivateFn;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -16,12 +17,11 @@ describe('AuthGuard', () => {
         MatDialogModule
       ],
       providers: [
-        AuthGuard,
         SettingsService,
         LocalStorageService
       ]
     });
-    guard = TestBed.inject(AuthGuard);
+    guard = canActivateFn;
   });
 
   it('should be created', () => {
