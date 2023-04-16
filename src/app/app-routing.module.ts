@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard';
+import { canActivateFn } from './core/guards/auth.guard';
 import { AdminLayoutComponent } from './layout/admin-layout';
 import { CommonLayoutComponent } from './layout/common-layout';
 
@@ -27,22 +27,22 @@ const routes: Routes = [
       {
         path: 'dashboard',
         title: 'Hoteler Portal -- 主页',
-        canLoad: [AuthGuard],
-        canActivate:  [AuthGuard],
+        canLoad: [canActivateFn],
+        canActivate:  [canActivateFn],
         loadChildren: () => import('./routes/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'room',
         title: 'Hoteler Portal -- 房间管理',
-        canLoad: [AuthGuard],
-        canActivate:  [AuthGuard],
+        canLoad: [canActivateFn],
+        canActivate:  [canActivateFn],
         loadChildren: () => import('./routes/room/room.module').then(m => m.RoomModule)
       },
       {
         path: 'customer',
         title: 'Hoteler Portal -- 客户管理',
-        canLoad: [AuthGuard],
-        canActivate:  [AuthGuard],
+        canLoad: [canActivateFn],
+        canActivate:  [canActivateFn],
         loadChildren: () => import('./routes/customer/customer.module').then(m => m.CustomerModule)
       },
       {
@@ -79,36 +79,36 @@ const routes: Routes = [
       {
         path: 'dashboard',
         title: 'Hoteler Portal -- 主页',
-        canLoad: [AuthGuard],
-        canActivate:  [AuthGuard],
+        canLoad: [canActivateFn],
+        canActivate:  [canActivateFn],
         loadChildren: () => import('./routes/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'room',
         title: 'Hoteler Portal -- 房间管理',
-        canLoad: [AuthGuard],
-        canActivate:  [AuthGuard],
+        canLoad: [canActivateFn],
+        canActivate:  [canActivateFn],
         loadChildren: () => import('./routes/room/room.module').then(m => m.RoomModule)
       },
       {
         path: 'customer',
         title: 'Hoteler Portal -- 客户管理',
-        canLoad: [AuthGuard],
-        canActivate:  [AuthGuard],
+        canLoad: [canActivateFn],
+        canActivate:  [canActivateFn],
         loadChildren: () => import('./routes/customer/customer.module').then(m => m.CustomerModule)
       },
       {
         path: 'user',
         title: 'Hoteler Portal -- 用户管理',
-        canLoad: [AuthGuard],
-        canActivate:  [AuthGuard],
+        canLoad: [canActivateFn],
+        canActivate:  [canActivateFn],
         loadChildren: () => import('./routes/user/user.module').then(m => m.UserModule)
       },
       {
         path: 'settings',
         title: 'Hoteler Portal -- 设置',
-        canLoad: [AuthGuard],
-        canActivate:  [AuthGuard],
+        canLoad: [canActivateFn],
+        canActivate:  [canActivateFn],
         loadChildren: () => import('./routes/settings/settings.module').then(m => m.SettingsModule)
       },
     ]

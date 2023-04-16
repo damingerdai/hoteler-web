@@ -1,40 +1,18 @@
-import { Injectable } from '@angular/core';
+import { inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivateFn, Router } from '@angular/router';
 
-import { CoreModule } from '..';
 import { SettingsService } from '../services/settings/settings.service';
 
-@Injectable({
-  providedIn: CoreModule
-})
-export class AuthGuard implements CanActivate, CanLoad {
+export const canActivateFn: CanActivateFn = () => {
+  const router = inject(Router);
+  const setting = inject(SettingsService);
+  const dialog = inject(MatDialog);
 
-  constructor(
-    private router: Router,
-    private settings: SettingsService,
-    private dialog: MatDialog) {
-
+  if (setting.user) {
+    return true;
   }
+  dialog.closeAll();
+  return router.parseUrl('login');
+};
 
-
-  canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if (this.settings.user) {
-      return true;
-    }
-    this.dialog.closeAll();
-    return this.router.parseUrl('login');
-  }
-
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.settings.user) {
-        return true;
-      }
-      this.dialog.closeAll();
-      return this.router.parseUrl('login');
-  }
-
-}
