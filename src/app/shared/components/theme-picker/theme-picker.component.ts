@@ -151,39 +151,41 @@ export class ThemePickerComponent implements OnInit {
     }
 
     const x = event.clientX;
-      const y = event.clientY;
-      const endRadius = Math.hypot(
-        Math.max(x, innerWidth - x),
-        Math.max(y, innerHeight - y)
-      );
-      const root = this.document.documentElement;
-      const isDark = root.classList.contains('dark');
-      if (isDark === theme.isDark) {
-        this.doSelectTheme(theme);
-        return;
-      }
-      // @ts-ignore
-      const transition = this.document.startViewTransition(() => {
-        root.classList.remove(isDark ? 'dark' : 'light');
-        root.classList.add(isDark ? 'light' : 'dark');
-      });
+    const y = event.clientY;
+    const endRadius = Math.hypot(
+      // eslint-disable-next-line no-restricted-globals
+      Math.max(x, innerWidth - x),
+      // eslint-disable-next-line no-restricted-globals
+      Math.max(y, innerHeight - y)
+    );
+    const root = this.document.documentElement;
+    const isDark = root.classList.contains('dark');
+    if (isDark === theme.isDark) {
+      this.doSelectTheme(theme);
+      return;
+    }
+    // @ts-ignore
+    const transition = this.document.startViewTransition(() => {
+      root.classList.remove(isDark ? 'dark' : 'light');
+      root.classList.add(isDark ? 'light' : 'dark');
+    });
 
-      transition.ready.then(() => {
-        const clipPath = [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`,
-        ];
-        this.document.documentElement.animate(
-          {
-            clipPath: isDark ? [...clipPath].reverse() : clipPath,
-          },
-          {
-            duration: 500,
-            easing: 'ease-in',
-            pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
-          }
-        );
-        this.doSelectTheme(theme);
-      });
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+      this.document.documentElement.animate(
+        {
+          clipPath: isDark ? [...clipPath].reverse() : clipPath,
+        },
+        {
+          duration: 500,
+          easing: 'ease-in',
+          pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
+        }
+      );
+      this.doSelectTheme(theme);
+    });
   }
 }
