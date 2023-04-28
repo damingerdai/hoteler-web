@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin hoteler-admin-layout-theme($theme) {
+
+  $foreground: map.get($theme, foreground);
+
+  .container {
+    .drawer {
+      mat-icon {
+        color: mat.get-color-from-palette($foreground, text);
+      }
+    }
+  }
+}
