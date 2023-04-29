@@ -10,6 +10,7 @@ import { CoreModule } from './core';
 import { httpInterceptorProviders } from './core/interceptors';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
+import { appInitializerProviders } from './core/initializers';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SharedModule } from './shared/shared.module';
   ],
   providers: [
     httpInterceptorProviders,
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+    appInitializerProviders
   ],
   bootstrap: [AppComponent]
 })
