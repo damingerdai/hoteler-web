@@ -3,6 +3,8 @@
 @use './styles/apexcharts' as apexcharts-theme;
 @use './styles/input' as input-theme;
 @use './app/layout/admin-layout/admin-layout-theme';
+@use './app/routes/login/login-theme';
+@use './app//routes/register/register-theme';
 @use './app/routes/room/room-list/room-list-theme';
 @use './app/routes/settings/settings-theme';
 @use './app/shared/components/banner/banner-theme';
@@ -13,6 +15,8 @@
 @mixin hoteler-app-theme($theme) {
 
   @include admin-layout-theme.hoteler-admin-layout-theme($theme);
+  @include login-theme.hoteler-login-theme($theme);
+  @include register-theme.hoteler-register-theme($theme);
   @include room-list-theme.hoteler-room-list-theme($theme);
   @include settings-theme.hoteler-settings-theme($theme);
   @include banner-theme.hoteler-banner-theme($theme);

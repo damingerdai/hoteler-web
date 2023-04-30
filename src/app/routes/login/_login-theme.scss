@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin hoteler-login-theme($theme) {
+
+  $foreground: map.get($theme, foreground);
+
+  .login {
+    &-card {
+      mat-card-header,
+      .visibility,
+      .tip {
+        color: mat.get-color-from-palette($foreground, text);
+      }
+    }
+  }
+}

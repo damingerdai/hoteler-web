@@ -36,7 +36,9 @@
             [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide"
           >
-            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            <mat-icon class="visibility">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
           </button>
           <mat-error *ngIf="password.invalid"> 请输入密码 </mat-error>
         </mat-form-field>
@@ -54,7 +56,7 @@
         >
           登录
         </button>
-        <div class="m-t-16">
+        <div class="m-t-16 tip">
           没有账号?
           <a routerLink="/register" class="p-0" mat-button color="primary"
             >点此创建一个</a
