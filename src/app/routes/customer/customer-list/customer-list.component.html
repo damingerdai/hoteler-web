@@ -108,8 +108,10 @@
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p>身份证号码: {{ processCustomerCardId(customer) }}</p>
-          <p>手机号码: {{ processCustomerPhone(customer) }}</p>
+          <p class="card-id">
+            身份证号码: {{ processCustomerCardId(customer) }}
+          </p>
+          <p class="phone">手机号码: {{ processCustomerPhone(customer) }}</p>
         </mat-card-content>
         <app-banner [text]="customer.gender"></app-banner>
         <mat-card-actions>

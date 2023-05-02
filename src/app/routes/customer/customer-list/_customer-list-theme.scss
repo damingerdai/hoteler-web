@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin hoteler-customer-list-theme($theme) {
+
+  $foreground: map.get($theme, foreground);
+
+  .customer {
+    &-card {
+      mat-card-header {
+        mat-card-title {
+          color: mat.get-color-from-palette($foreground, text);
+        }
+      }
+
+      mat-card-content {
+        .card-id,
+        .phone {
+          color: mat.get-color-from-palette($foreground, text);
+        }
+      }
+    }
+  }
+}
