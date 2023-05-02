@@ -10590,10 +10590,10 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.npmmirror.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
 
-tfontfaceobserver@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/tfontfaceobserver/-/tfontfaceobserver-0.0.1.tgz#9f81d0cf4553c5bcf28dd60690b9e7be4bfb6e2f"
-  integrity sha512-zmRzlcnq04VuNtB04hxd+IN0TXQy6gkbLSe2+JKc021N/0ly9UfYof89rWVRmAfDbsnMJ0ljBhtLVLM1Yz15GA==
+tfontfaceobserver@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/tfontfaceobserver/-/tfontfaceobserver-0.0.2.tgz#5e9bdd5233280305d8b52ad2e1c76d9af8e24f7b"
+  integrity sha512-eXCYykJrmTjWHYaxfuMK5YxTI+iLCZqG1nBxUOVuf7Sbuhc/kM/q7o8N4nVUgSyt6IGJkz8iExPMHbZgxJrKiA==
 
 through2@^2.0.0:
   version "2.0.5"
