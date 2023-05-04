@@ -80,7 +80,7 @@
     "postcss-scss": "^4.0.6",
     "prettier": "2.8.8",
     "protractor": "7.0.0",
-    "stylelint": "^15.2.0",
+    "stylelint": "^15.6.1",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended-scss": "^11.0.0",
     "stylelint-config-standard": "^33.0.0",
