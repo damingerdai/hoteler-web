@@ -76,6 +76,8 @@
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.0.0",
     "lint-staged": "13.2.2",
+    "postcss": "^8.4.23",
+    "postcss-scss": "^4.0.6",
     "prettier": "2.8.8",
     "protractor": "7.0.0",
     "stylelint": "^15.2.0",
