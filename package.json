@@ -11,6 +11,7 @@
     "start": "ng serve",
     "start:online": "yarn ng serve --proxy-config=src/proxy.conf.online.json --hmr",
     "build": "ng build --configuration production",
+    "build:esbuild": "ng run hoteler-web:esbuild",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "changelog:all": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "ng test",

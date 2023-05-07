@@ -102,6 +102,95 @@
             }
           }
         },
+        "esbuild": {
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
+          "options": {
+            "outputPath": "dist/hoteler-esbuild",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/sitemap.xml",
+              "src/robots.txt"
+            ],
+            "styles": [
+              {
+                "input": "src/styles.scss"
+              },
+              {
+                "inject": false,
+                "input": "src/styles/custom-themes/pink-bluegrey.scss",
+                "bundleName": "pink-bluegrey"
+              },
+              {
+                "inject": false,
+                "input": "src/styles/custom-themes/deeppurple-amber.scss",
+                "bundleName": "deeppurple-amber"
+              },
+              {
+                "inject": false,
+                "input": "src/styles/custom-themes/indigo-pink.scss",
+                "bundleName": "indigo-pink"
+              },
+              {
+                "inject": false,
+                "input": "src/styles/custom-themes/purple-green.scss",
+                "bundleName": "purple-green"
+              },
+              {
+                "inject": false,
+                "input": "src/styles/custom-themes/pwc-light.scss",
+                "bundleName": "pwc-light"
+              },
+              {
+                "inject": false,
+                "input": "src/styles/custom-themes/pwc-dark.scss",
+                "bundleName": "pwc-dark"
+              }
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules", "src", "src/styles"]
+            },
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "namedChunks": false,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          },
+          "defaultConfiguration": "production"
+        },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
