@@ -8537,10 +8537,10 @@ ngx-apexcharts@0.1.1:
   dependencies:
     tslib "^2.0.0"
 
-ngx-dom-confetti@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npmmirror.com/ngx-dom-confetti/-/ngx-dom-confetti-0.1.0.tgz#6f726017aa498962d9e8b1a1ee596bdcbe3f3a50"
-  integrity sha512-A8xMm/uheNHfAQkGB6osUppAl8AkFDbyPok/dsm5gr8WiwVKOaG0A36sgfKGFMm7cGZBByjn/i/73HbspXJwrg==
+ngx-dom-confetti@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ngx-dom-confetti/-/ngx-dom-confetti-0.2.0.tgz#7c03a213066a0f4567bc6627f97f667f22adab4f"
+  integrity sha512-50DmUwqmwBdAWIxcGrotsgRuIQ5fA9yBV1UB7c8HXdS/8LzEpccYlkPem12c4H3L80YpvVUI9XBufEP1YhUXsw==
   dependencies:
     tslib "^2.3.0"
 
