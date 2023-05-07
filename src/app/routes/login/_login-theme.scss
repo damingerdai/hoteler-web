@@ -12,6 +12,16 @@
       .tip {
         color: mat.get-color-from-palette($foreground, text);
       }
+
+      mat-card-content {
+        form {
+          mat-form-field {
+            > mat-icon {
+              color: mat.get-color-from-palette($foreground, text);
+            }
+          }
+        }
+      }
     }
   }
 }
