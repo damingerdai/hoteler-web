@@ -7,4 +7,16 @@
   .room-list {
     color: mat.get-color-from-palette($foreground, text);
   }
+
+  .room-card-wrapper {
+    .room-card {
+      mat-card {
+        .room-card-header {
+          .room-card-title {
+            color:  mat.get-color-from-palette($foreground, text);
+          }
+        }
+      }
+    }
+  }
 }
