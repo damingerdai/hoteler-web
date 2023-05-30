@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../api/api.service';
-import { DataResponse, IResponse, IUser } from '../../models';
+import { DataResponse, IResponse, IUser, ListResponse } from '../../models';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +23,8 @@ export class UserService {
     return this.api.get<DataResponse<IUser>>('/api/v1/user', null, headers);
   }
 
-
+  public list(): Observable<ListResponse<IUser>> {
+    return this.api.get<ListResponse<IUser>>('/api/v1/users');
+  }
 
 }
