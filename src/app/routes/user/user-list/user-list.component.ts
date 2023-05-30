@@ -23,7 +23,6 @@ export class UserListComponent implements OnInit {
     this.userService.list().subscribe((res) => {
       if (res.status === 200) {
         this.users = res.data;
-        console.log(res);
       }
     });
   }
