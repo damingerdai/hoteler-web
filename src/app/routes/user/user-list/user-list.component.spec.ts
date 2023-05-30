@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
+import { ApiTestingModule } from 'src/app/core/testings';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -8,6 +9,9 @@ describe('UserListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        ApiTestingModule,
+      ],
       declarations: [ UserListComponent ]
     })
     .compileComponents();
