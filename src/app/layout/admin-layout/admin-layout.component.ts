@@ -28,16 +28,6 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     {
       type: 'divider'
     },
-    {
-      type: 'menu',
-      items: [
-        {
-          icon: 'settings',
-          link: './settings',
-          line: '设置'
-        }
-      ]
-    },
   ];
 
   public get mode() {
