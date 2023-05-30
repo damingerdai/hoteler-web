@@ -42,46 +42,30 @@ tr.mat-column-action {
   }
 }
 
-.room-list {
-  &-card {
-    min-width: 200px;
-    max-width: 400px;
+.holeler-col {
+  width: 100%;
+
+  @include bp.respond-above(sm) {
+    width: 50%;
+  }
+
+  @include bp.respond-above(md) {
+    width: 33%;
+  }
+
+  @include bp.respond-above(lg) {
+    width: 25%;
+  }
+
+  .customer-card {
     padding: {
       right: 8px;
       left: 8px;
-    };
-
-    .mat-mdc-card-image {
-      width: 100%;
-      margin: 0;
     }
-  }
-}
 
-.room {
-  &-card-wrapper {
-    width: 100%;
-    margin: {
-      right: -8px;
-      left: -8px;
-    };
+    ;
 
-    .room-card {
-      width: 100%;
-      padding: 8px;
-
-      @include bp.respond-above(sm) {
-        width: 50%;
-      }
-
-      @include bp.respond-above(md) {
-        width: 33%;
-      }
-
-      @include bp.respond-above(lg) {
-        width: 25%;
-      }
-    }
+    margin: 8px;
   }
 }
 

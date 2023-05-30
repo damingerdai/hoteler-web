@@ -2,7 +2,7 @@
 <div class="d-flex flex-col p-16">
   <div class="w-full d-flex justify-content-end align-items-baseline">
     <form class="form-inline" [formGroup]="roomForm">
-      <mat-form-field class="form-field">
+      <mat-form-field class="form-field" appearance="outline">
         <mat-label>房间状态</mat-label>
         <mat-select formControlName="status">
           <mat-option [value]="0"> 全部 </mat-option>
@@ -17,17 +17,11 @@
   </div>
   <mat-divider class="divider"></mat-divider>
   <ng-container *ngIf="!isLoading">
-    <div
-      *ngIf="layout === 'card'"
-      class="room-card-wrapper d-flex flex-row flex-wrap"
-    >
-      <div
-        class="room-card room-list-card"
-        *ngFor="let room of rooms; let i = index"
-      >
+    <div *ngIf="layout === 'card'" class="d-flex flex-wrap w-full m-t-8">
+      <div class="holeler-col p-8" *ngFor="let room of rooms; let i = index">
         <mat-card appearance="outlined">
-          <mat-card-header class="room-card-header">
-            <mat-card-title class="room-card-title">
+          <mat-card-header>
+            <mat-card-title>
               {{ room.roomname }}
             </mat-card-title>
             <mat-card-subtitle>

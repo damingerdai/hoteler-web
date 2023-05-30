@@ -1,31 +1,29 @@
 @use '../../../../styles/breakpoints' as bp;
 
-.customer {
-  padding: 16px;
+.holeler-col {
+  width: 100%;
 
-  .holeler-col {
-    width: 100%;
+  @include bp.respond-above(sm) {
+    width: 50%;
+  }
 
-    @include bp.respond-above(sm) {
-      width: 50%;
+  @include bp.respond-above(md) {
+    width: 33%;
+  }
+
+  @include bp.respond-above(lg) {
+    width: 25%;
+  }
+
+  .customer-card {
+    padding: {
+      right: 8px;
+      left: 8px;
     }
 
-    @include bp.respond-above(md) {
-      width: 33%;
-    }
+    ;
 
-    @include bp.respond-above(lg) {
-      width: 25%;
-    }
-
-    .customer-card {
-      padding: {
-        right: 8px;
-        left: 8px;
-      };
-
-      margin: 8px;
-    }
+    margin: 8px;
   }
 }
 
@@ -40,7 +38,9 @@
     &-name {
       padding: {
         left: 12px;
-      };
+      }
+
+      ;
     }
   }
 }

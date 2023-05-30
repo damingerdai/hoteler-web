@@ -1,6 +1,6 @@
 <app-page-header title="客户信息"></app-page-header>
-<main class="customer">
-  <div class="d-flex w-full justify-content-end">
+<main class="-flex flex-col p-16">
+  <div class="w-full d-flex justify-content-end align-items-baseline">
     <button mat-raised-button color="primary" (click)="createCustomer()">
       创建客户
     </button>
@@ -15,13 +15,13 @@
   </div>
 
   <mat-divider class="divider"></mat-divider>
+  <div class="loading-shade" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
   <div
     *ngIf="layout === 'table'"
     class="mat-elevation-z8 table-responsive m-t-16"
   >
-    <div class="loading-shade" *ngIf="isLoading">
-      <mat-spinner></mat-spinner>
-    </div>
     <table
       mat-table
       *ngIf="customers?.length > 0"
@@ -85,44 +85,56 @@
     </table>
     <div *ngIf="customers?.length === 0">空</div>
   </div>
-  <div *ngIf="layout === 'card'" class="d-flex flex-wrap w-full m-t-8">
-    <div class="loading-shade" *ngIf="isLoading">
-      <mat-spinner></mat-spinner>
+  <ng-container *ngIf="!isLoading">
+    <div *ngIf="layout === 'card'" class="d-flex flex-wrap w-full m-t-8">
+      <div class="holeler-col p-8" *ngFor="let customer of customers">
+        <mat-card appearance="outlined" class="mat-card customer-card">
+          <mat-card-header>
+            <mat-card-title>
+              {{ customer.name }}
+            </mat-card-title>
+            <mat-card-subtitle>
+              <mat-chip-listbox>
+                <mat-chip
+                  *ngIf="customer.gender === 'M'"
+                  color="primary"
+                  selected
+                  >男</mat-chip
+                >
+                <mat-chip
+                  *ngIf="customer.gender === 'F'"
+                  color="primary"
+                  selected
+                  >女</mat-chip
+                >
+              </mat-chip-listbox>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="card-id">
+              身份证号码: {{ processCustomerCardId(customer) }}
+            </p>
+            <p class="phone">手机号码: {{ processCustomerPhone(customer) }}</p>
+          </mat-card-content>
+          <app-banner [text]="customer.gender"></app-banner>
+          <mat-card-actions>
+            <button
+              mat-button
+              color="accent"
+              (click)="updateCustomer(customer)"
+            >
+              修改
+            </button>
+            <button
+              mat-button
+              color="warn"
+              (click)="deleteCustomer(customer.id)"
+            >
+              删除
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
-    <div class="holeler-col p-8" *ngFor="let customer of customers">
-      <mat-card appearance="outlined" class="mat-card customer-card">
-        <mat-card-header>
-          <mat-card-title>
-            <div mat-card-avatar class="example-header-image"></div>
-            {{ customer.name }}</mat-card-title
-          >
-          <mat-card-subtitle>
-            <mat-chip-listbox>
-              <mat-chip *ngIf="customer.gender === 'M'" color="primary" selected
-                >男</mat-chip
-              >
-              <mat-chip *ngIf="customer.gender === 'F'" color="primary" selected
-                >女</mat-chip
-              >
-            </mat-chip-listbox>
-          </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p class="card-id">
-            身份证号码: {{ processCustomerCardId(customer) }}
-          </p>
-          <p class="phone">手机号码: {{ processCustomerPhone(customer) }}</p>
-        </mat-card-content>
-        <app-banner [text]="customer.gender"></app-banner>
-        <mat-card-actions>
-          <button mat-button color="accent" (click)="updateCustomer(customer)">
-            修改
-          </button>
-          <button mat-button color="warn" (click)="deleteCustomer(customer.id)">
-            删除
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </div>
+  </ng-container>
 </main>
