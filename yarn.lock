@@ -8690,6 +8690,13 @@ ngx-dom-confetti@^0.2.0:
   dependencies:
     tslib "^2.3.0"
 
+ngx-is-standalone@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ngx-is-standalone/-/ngx-is-standalone-0.3.0.tgz#7fe6ebdb2d9c5a0f87649208cd897108bca262ac"
+  integrity sha512-ET8EkzC5NUKDUI3tNOtB6rgVFAjUhjzTY5r0dzS3HWEwktDHkdd3tglm3ZP77TKd8cQq9oupBdw7W2lJpSxTNw==
+  dependencies:
+    tslib "^2.0.0"
+
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmmirror.com/nice-napi/-/nice-napi-1.0.2.tgz#dc0ab5a1eac20ce548802fc5686eaa6bc654927b"
