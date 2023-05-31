@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { NgxIsStandaloneModule } from 'ngx-is-standalone';
+
 import {
   BannerComponent,
   ConfirmComponent,
@@ -39,6 +41,8 @@ const DECLARATIONS = [
     ReactiveFormsModule,
     SharedCdkModule,
     SharedMaterialModule,
+
+    NgxIsStandaloneModule
   ],
   providers: [
     ThemeStorageService,
