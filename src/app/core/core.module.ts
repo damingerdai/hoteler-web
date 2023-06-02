@@ -8,8 +8,7 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
   imports: [
     CommonModule,
     HttpClientModule
-  ],
-  declarations: [],
+  ]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

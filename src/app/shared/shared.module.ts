@@ -20,6 +20,7 @@ import {
 import { SharedCdkModule } from './shared.cdk.module';
 import { SharedMaterialModule } from './shared.material.module';
 import { UiModule } from './ui/ui.module';
+import { SharedPipesModule } from './shared.pipes.module';
 
 const DECLARATIONS = [
   BannerComponent,
@@ -41,6 +42,7 @@ const DECLARATIONS = [
     ReactiveFormsModule,
     SharedCdkModule,
     SharedMaterialModule,
+    SharedPipesModule,
 
     NgxIsStandaloneModule
   ],
@@ -57,6 +59,7 @@ const DECLARATIONS = [
     ReactiveFormsModule,
     SharedCdkModule,
     SharedMaterialModule,
+    SharedPipesModule,
 
     ...DECLARATIONS
   ]

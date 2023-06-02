@@ -11,7 +11,7 @@ export class UserListComponent implements OnInit {
 
   protected userService = inject(UserService);
 
-  protected displayedColumns: string[] = ['id', 'username'];
+  protected displayedColumns: string[] = ['id', 'username', 'roles'];
 
   protected users: IUser[] = [];
 
