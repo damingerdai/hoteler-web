@@ -61,7 +61,7 @@
     "@angular/compiler-cli": "16.0.3",
     "@angular/language-service": "16.0.3",
     "@commitlint/cli": "17.6.5",
-    "@commitlint/config-conventional": "17.6.3",
+    "@commitlint/config-conventional": "17.6.5",
     "@types/jasmine": "4.3.1",
     "@types/jasminewd2": "2.0.10",
     "@types/node": "20.2.1",
