@@ -1,2 +1,2 @@
-$sha = (git re-parse HEAD)
+$sha = (git rev-parse HEAD)
 docker build -t hoteler-web:$sha .
