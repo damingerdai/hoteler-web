@@ -41,7 +41,7 @@
     "@angular/router": "16.1.1",
     "@angular/service-worker": "16.1.1",
     "apexcharts": "3.41.0",
-    "ngx-apexcharts": "0.2.0",
+    "ngx-apexcharts": "0.3.2",
     "ngx-dom-confetti": "^0.2.0",
     "ngx-is-standalone": "0.3.0",
     "perf-marks": "^1.14.2",
