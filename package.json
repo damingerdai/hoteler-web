@@ -90,7 +90,7 @@
     "stylelint-order": "^6.0.3",
     "stylelint-scss": "^5.0.0",
     "ts-node": "10.9.1",
-    "typescript": "5.0.4",
+    "typescript": "5.1.5",
     "webpack-bundle-analyzer": "4.9.0"
   },
   "resolutions": {}
