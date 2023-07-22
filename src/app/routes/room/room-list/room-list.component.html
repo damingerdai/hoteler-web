@@ -18,7 +18,10 @@
   <mat-divider class="divider"></mat-divider>
   <ng-container *ngIf="!isLoading">
     <div *ngIf="layout === 'card'" class="d-flex flex-wrap w-full m-t-8">
-      <div class="holeler-col p-8" *ngFor="let room of rooms; let i = index">
+      <div
+        class="holeler-col p-8 room-card"
+        *ngFor="let room of rooms; let i = index"
+      >
         <mat-card appearance="outlined">
           <mat-card-header>
             <mat-card-title>

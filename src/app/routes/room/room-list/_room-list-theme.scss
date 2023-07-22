@@ -1,5 +1,5 @@
-@use 'sass:map';
-@use '@angular/material' as mat;
+@use "sass:map";
+@use "@angular/material" as mat;
 
 @mixin hoteler-room-list-theme($theme) {
   $foreground: map.get($theme, foreground);
@@ -8,13 +8,11 @@
     color: mat.get-color-from-palette($foreground, text);
   }
 
-  .room-card-wrapper {
-    .room-card {
-      mat-card {
-        .room-card-header {
-          .room-card-title {
-            color:  mat.get-color-from-palette($foreground, text);
-          }
+  .room-card {
+    mat-card {
+      mat-card-header {
+        mat-card-title {
+          color: mat.get-color-from-palette($foreground, text);
         }
       }
     }
