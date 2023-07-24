@@ -18,13 +18,27 @@
         >
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="w-full" appearance="fill">
+    <mat-form-field class="w-full">
       <mat-label>入住时间</mat-label>
-      <input matInput formControlName="beginDate" type="datetime" />
-    </mat-form-field>
-    <mat-form-field class="w-full" appearance="fill">
-      <mat-label>离开时间</mat-label>
-      <input matInput formControlName="endDate" type="datetime" />
+      <mat-date-range-input
+        formGroupName="checkInTime"
+        [rangePicker]="checkInTimePicker"
+        [comparisonStart]="checkInTime.value.beginDate"
+        [comparisonEnd]="checkInTime.value.endDate"
+        [min]="minDate"
+      >
+        <input
+          matStartDate
+          placeholder="开始时间"
+          formControlName="beginDate"
+        />
+        <input matEndDate placeholder="结束时间" formControlName="endDate" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="checkInTimePicker"
+      ></mat-datepicker-toggle>
+      <mat-date-range-picker #checkInTimePicker></mat-date-range-picker>
     </mat-form-field>
   </form>
 </div>

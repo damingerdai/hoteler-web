@@ -45,14 +45,16 @@ export class RoomListComponent implements OnInit {
       .pipe(
         tap(() => this.isLoading = true),
         map(res => typeof res !== 'number' ? parseInt(res, 10) : res),
-        switchMap(s =>  s ? this.roomApi.list({status: s}) : this.roomApi.list())
+        switchMap(s => s ? this.roomApi.list({ status: s }) : this.roomApi.list())
       )
-      .subscribe({ next: (res) => {
-        if (res.status === 200) {
-          this.rooms = res.data;
-        }
-        this.isLoading = false;
-      }, error: () => this.isLoading = false});
+      .subscribe({
+        next: (res) => {
+          if (res.status === 200) {
+            this.rooms = res.data;
+          }
+          this.isLoading = false;
+        }, error: () => this.isLoading = false
+      });
   }
 
   ngOnInit(): void {
@@ -106,7 +108,7 @@ export class RoomListComponent implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top',
         });
-    }
+      }
     }, err => {
       console.error(err);
     }, () => this.fetchAllRooms());
@@ -150,9 +152,14 @@ export class RoomListComponent implements OnInit {
     dialogRef.afterClosed().pipe(
       filter(res => !!res),
       map(res => {
-        res.userId = res.customerId,
-        res.beginDate = new Date(res.beginDate + ' 12:00:000');
-        res.endDate = new Date(res.endDate + ' 12:00:000');
+        res.userId = res.customerId;
+        const checkInTime = res.checkInTime as { beginDate: Date, endDate: Date };
+        const beginDate = checkInTime.beginDate;
+        beginDate.setHours(12, 0, 0);
+        const endDate = checkInTime.endDate;
+        endDate.setHours(12, 0, 0);
+        res.beginDate = beginDate;
+        res.endDate = endDate;
         return res;
       }),
       switchMap(res => this.customerCheckinRecordApi.create(res))
@@ -168,8 +175,8 @@ export class RoomListComponent implements OnInit {
     });
   }
 
-  public layoutChange(layout) {
-      this.layout = layout;
+  public layoutChange(layout: string) {
+    this.layout = layout;
   }
 
   private fetchAllRooms() {
@@ -177,12 +184,14 @@ export class RoomListComponent implements OnInit {
     const status = this.roomForm.get('status').value;
     of(status).pipe(
       map(res => typeof res !== 'number' ? parseInt(res, 10) : res),
-      switchMap(s =>  s ? this.roomApi.list({status: s}) : this.roomApi.list()))
-    .subscribe({ next: (res) => {
-      if (res.status === 200) {
-        this.rooms = res.data;
-      }
-      this.isLoading = false;
-    }, error: () => this.isLoading = false});
+      switchMap(s => s ? this.roomApi.list({ status: s }) : this.roomApi.list()))
+      .subscribe({
+        next: (res) => {
+          if (res.status === 200) {
+            this.rooms = res.data;
+          }
+          this.isLoading = false;
+        }, error: () => this.isLoading = false
+      });
   }
 }
