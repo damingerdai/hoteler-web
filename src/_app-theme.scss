@@ -34,10 +34,6 @@
   $background: map.get($theme, background);
   $foreground: map.get($theme, foreground);
 
-  .app-background {
-    background: mat.get-color-from-palette($background, background);
-  }
-
   // TODO: add new chip
   // .mdc-evolution-chip__action {
   //   &--primary {
