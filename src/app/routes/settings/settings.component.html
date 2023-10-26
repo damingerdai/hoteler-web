@@ -1,33 +1,37 @@
 <div class="settings_wrapper">
   <div class="settings m-auto">
-    <div class="header">
-      <h1 class="mat-h1">设置</h1>
-      <p>设置页面</p>
-    </div>
-    <div class="content">
-      <h2 class="mat-h2">前端</h2>
-      <mat-nav-list>
-        <a mat-list-item href="https://angular.io" target="_blank"> Angular </a>
-        <a mat-list-item href="https://material.angular.io" target="_blank">
-          Angular Material</a
-        >
-      </mat-nav-list>
-      <h2 class="mat-h2">后端</h2>
-      <mat-nav-list>
-        <a
-          mat-list-item
-          href="https://spring.io/projects/spring-boot"
-          target="_blank"
-        >
-          Spring Boot
-        </a>
-      </mat-nav-list>
-      <h2 class="mat-h2">数据库</h2>
-      <mat-nav-list>
-        <a mat-list-item href="https://www.postgresql.org" target="_blank">
-          PostgreSQL
-        </a>
-      </mat-nav-list>
-    </div>
+    <mat-card appearance="outlined" class="mat-card p-16 m-t-16">
+      <mat-card-header class="header">
+        <mat-card-title class="mat-h1">设置</mat-card-title>
+        <mat-card-subtitle>设置页面</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="content">
+        <h2 class="mat-h2">前端</h2>
+        <mat-nav-list>
+          <a mat-list-item href="https://angular.io" target="_blank">
+            Angular
+          </a>
+          <a mat-list-item href="https://material.angular.io" target="_blank">
+            Angular Material</a
+          >
+        </mat-nav-list>
+        <h2 class="mat-h2">后端</h2>
+        <mat-nav-list>
+          <a
+            mat-list-item
+            href="https://spring.io/projects/spring-boot"
+            target="_blank"
+          >
+            Spring Boot
+          </a>
+        </mat-nav-list>
+        <h2 class="mat-h2">数据库</h2>
+        <mat-nav-list>
+          <a mat-list-item href="https://www.postgresql.org" target="_blank">
+            PostgreSQL
+          </a>
+        </mat-nav-list>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
