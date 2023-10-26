@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
   public handleKeyPress(event: KeyboardEvent) {
     event.stopPropagation();
     if ([ENTER, MAC_ENTER].includes(event.keyCode)) {
+      console.log('preventDefault');
       event.preventDefault();
     }
   }

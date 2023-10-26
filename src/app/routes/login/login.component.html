@@ -4,24 +4,18 @@
       <mat-card-title class="text-center"> Hoteler 系统登录 </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form
-        class="form-field-full"
-        [formGroup]="loginForm"
-        (submit)="login()"
-        (touch)="errorMessage = ''"
-      >
-        <mat-form-field
-          appearance="outline"
-          (keypress)="handleKeyPress($event)"
-        >
+      <form class="form-field-full" [formGroup]="loginForm">
+        <mat-form-field appearance="outline">
           <mat-label>用户名</mat-label>
-          <input matInput placeholder="用户名" formControlName="username" />
+          <input
+            matInput
+            placeholder="用户名"
+            formControlName="username"
+            required
+          />
           <mat-error *ngIf="username.invalid"> 请输入用户名 </mat-error>
         </mat-form-field>
-        <mat-form-field
-          appearance="outline"
-          (keypress)="handleKeyPress($event)"
-        >
+        <mat-form-field appearance="outline">
           <mat-label>密码</mat-label>
           <input
             matInput
@@ -30,6 +24,7 @@
             formControlName="password"
           />
           <button
+            type="button"
             mat-icon-button
             matSuffix
             (click)="toggleVisibilityIcon($event)"
@@ -50,9 +45,11 @@
         <button
           class="w-full"
           mat-raised-button
+          type="submit"
           color="primary"
           [loading]="isLoading"
           [disabled]="loginForm.invalid"
+          (click)="login()"
         >
           登录
         </button>

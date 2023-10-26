@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { ApplicationRef, Injectable, inject } from '@angular/core';
+import { ApplicationRef, Injectable, inject, isDevMode } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SwUpdate } from '@angular/service-worker';
 import { NgxIsStandaloneService } from 'ngx-is-standalone';
@@ -27,9 +27,12 @@ export class CheckForUpdateService {
 
   constructor() {
     this.isMobile = false;
-    this.checkIsMobile();
-    this.trackVersionUpdates();
-    this.trackUnrecoverableError();
+    if (!isDevMode) {
+      this.checkIsMobile();
+      this.trackVersionUpdates();
+      this.trackUnrecoverableError();
+    }
+
   }
 
   public check() {
