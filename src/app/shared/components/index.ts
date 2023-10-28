@@ -1,4 +1,6 @@
 export * from './banner/banner.component';
+export * from './carousel/carousel-item.directive';
+export * from './carousel/carousel.component';
 export * from './confirm/confirm.component';
 export * from './error-code/error-code.component';
 export * from './navbar/navbar.component';

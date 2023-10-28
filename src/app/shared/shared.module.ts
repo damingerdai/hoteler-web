@@ -15,7 +15,9 @@ import {
   SkeletonLoaderComponent,
   SKELETON_LOADER_CONFIG,
   ThemePickerComponent,
-  ThemeStorageService
+  ThemeStorageService,
+  CarouselItemDirective,
+  CarouselComponent
 } from './components';
 import { SharedCdkModule } from './shared.cdk.module';
 import { SharedMaterialModule } from './shared.material.module';
@@ -24,6 +26,8 @@ import { SharedPipesModule } from './shared.pipes.module';
 
 const DECLARATIONS = [
   BannerComponent,
+  CarouselItemDirective,
+  CarouselComponent,
   ConfirmComponent,
   ErrorCodeComponent,
   NavbarComponent,
