@@ -197,20 +197,20 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hoteler-web:build",
             "proxyConfig": "src/proxy.conf.json",
-            "hmr": true
+            "hmr": true,
+            "buildTarget": "hoteler-web:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hoteler-web:build:production"
+              "buildTarget": "hoteler-web:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hoteler-web:build"
+            "buildTarget": "hoteler-web:build"
           }
         },
         "test": {
