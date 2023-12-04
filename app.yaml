@@ -12,7 +12,7 @@ metadata:
   namespace: hoteler-namespace
   name: hoteler-web
   labels:
-    app:  hoteler-web
+    app: hoteler-web
 spec:
   replicas: 1
   selector:
@@ -50,7 +50,7 @@ metadata:
   namespace: hoteler-namespace
   name: hoteler-web
   labels:
-    app:  hoteler-web
+    app: hoteler-web
 spec:
   ports:
     - port: 80
@@ -67,13 +67,13 @@ metadata:
   name: hoteler-web
 spec:
   rules:
-  - host: hoteler.damingerdai.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: hoteler-web
-            port:
-              number: 80
+    - host: hoteler.damingerdai.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hoteler-web
+                port:
+                  number: 80
