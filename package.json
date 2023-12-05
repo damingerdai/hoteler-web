@@ -40,7 +40,7 @@
     "@angular/platform-browser-dynamic": "17.0.5",
     "@angular/router": "17.0.5",
     "@angular/service-worker": "17.0.5",
-    "apexcharts": "3.44.0",
+    "apexcharts": "3.44.2",
     "ngx-apexcharts": "0.4.3",
     "ngx-dom-confetti": "0.3.0",
     "ngx-is-standalone": "0.3.0",
