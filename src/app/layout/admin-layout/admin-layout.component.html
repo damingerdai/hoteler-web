@@ -4,19 +4,25 @@
     <mat-drawer class="h-full drawer" #drawer [opened]="open" [mode]="mode">
       <div class="d-flex flex-col h-full">
         <ng-container *ngFor="let menu of menus">
-          <mat-nav-list *ngIf="menu.type === 'menu'">
-            <h3 matSubheader *ngIf="menu.header">{{ menu.header }}</h3>
-            <a
-              mat-list-item
-              *ngFor="let item of menu.items"
-              [routerLink]="item.link"
-              routerLinkActive="active"
-            >
-              <mat-icon matListItemIcon> {{ item.icon }} </mat-icon>
-              <p mat-line>{{ item.line }}</p>
-            </a>
-          </mat-nav-list>
-          <mat-divider *ngIf="menu.type === 'divider'"></mat-divider>
+          @if (menu.type === "menu") {
+            <mat-nav-list>
+              @if (menu.header) {
+                <h3 matSubheader>{{ menu.header }}</h3>
+              }
+              @for (item of menu.items; track item.link) {
+                <a
+                  mat-list-item
+                  [routerLink]="item.link"
+                  routerLinkActive="active"
+                >
+                  <mat-icon matListItemIcon> {{ item.icon }} </mat-icon>
+                  <p mat-line>{{ item.line }}</p>
+                </a>
+              }
+            </mat-nav-list>
+          } @else if (menu.type === "divider") {
+            <mat-divider></mat-divider>
+          }
         </ng-container>
         <mat-divider />
         <div flexSpacer></div>
