@@ -1,26 +1,30 @@
 <app-page-header title="仪表盘"></app-page-header>
 <main class="dashboard">
-  <div class="holeler-row d-flex flex-row flex-wrap">
-    <div class="holeler-col" *ngIf="roomStatusDonutChart.show">
-      <mat-card appearance="outlined" class="d-flex justify-content-center">
-        <apx-chart
-          [series]="roomStatusDonutChart.series"
-          [chart]="roomStatusDonutChart.chart"
-          [title]="roomStatusDonutChart.title"
-          [labels]="roomStatusDonutChart.labels"
-          [plotOptions]="roomStatusDonutChart.plotOptions"
-        ></apx-chart>
-      </mat-card>
-    </div>
-    <div class="holeler-col" *ngIf="pastWeekCustomerCountChart.show">
-      <mat-card appearance="outlined" class="d-flex justify-content-center">
-        <apx-chart
-          [series]="pastWeekCustomerCountChart.series"
-          [chart]="pastWeekCustomerCountChart.chart"
-          [title]="pastWeekCustomerCountChart.title"
-          [xaxis]="pastWeekCustomerCountChart.xaxis"
-        ></apx-chart>
-      </mat-card>
-    </div>
+  <div class="hoteler-row d-flex flex-row flex-wrap">
+    @if (roomStatusDonutChart.show) {
+      <div class="hoteler-col">
+        <mat-card appearance="outlined" class="d-flex justify-content-center">
+          <apx-chart
+            [series]="roomStatusDonutChart.series"
+            [chart]="roomStatusDonutChart.chart"
+            [title]="roomStatusDonutChart.title"
+            [labels]="roomStatusDonutChart.labels"
+            [plotOptions]="roomStatusDonutChart.plotOptions"
+          ></apx-chart>
+        </mat-card>
+      </div>
+    }
+    @if (pastWeekCustomerCountChart.show) {
+      <div class="hoteler-col">
+        <mat-card appearance="outlined" class="d-flex justify-content-center">
+          <apx-chart
+            [series]="pastWeekCustomerCountChart.series"
+            [chart]="pastWeekCustomerCountChart.chart"
+            [title]="pastWeekCustomerCountChart.title"
+            [xaxis]="pastWeekCustomerCountChart.xaxis"
+          ></apx-chart>
+        </mat-card>
+      </div>
+    }
   </div>
 </main>
