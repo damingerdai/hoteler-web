@@ -8,19 +8,14 @@
 </button>
 
 <mat-menu #themeMenu="matMenu" xPosition="before" class="theme-picker-menu">
-  <button
-    mat-menu-item
-    *ngFor="let theme of themes"
-    (click)="selectTheme($event, theme.name)"
-  >
-    <mat-icon [color]="currentTheme === theme ? 'accent' : undefined">
-      {{
+  @for (theme of themes; track $index) {
+    <button mat-menu-item (click)="selectTheme($event, theme.name)">
+      <mat-icon [color]="currentTheme === theme ? 'accent' : undefined">{{
         currentTheme === theme
           ? "radio_button_checked"
           : "radio_button_unchecked"
-      }}
-    </mat-icon>
-    <span>{{ theme.displayName }}</span>
-    <!-- <mat-icon [class]="'theme-example-icon ' + theme.name" svgIcon="theme-example"></mat-icon> -->
-  </button>
+      }}</mat-icon>
+      <span> {{ theme.displayName }}</span>
+    </button>
+  }
 </mat-menu>
