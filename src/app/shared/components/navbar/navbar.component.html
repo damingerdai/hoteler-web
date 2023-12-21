@@ -1,31 +1,31 @@
 <mat-toolbar color="primary" aria-label="Top Toolbar">
-  <button
-    *ngIf="showMenu"
-    mat-icon-button
-    color="primary"
-    aria-label="hamburger menu"
-    (click)="toggle()"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
+  @if (showMenu) {
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="hamburger menu"
+      (click)="toggle()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  }
   <a mat-button class="hoteler-button" routerLink="/" aria-label="Hoteler">
     <img
       class="logo"
       src="assets/img/angular-white-transparent.svg"
       alt="angular"
     />
-    <span *ngIf="showBarnd">Hoteler</span>
+    @if (showBarnd) {
+      <span>Hoteler</span>
+    }
   </a>
-  <ng-container *ngIf="!isMobile && username">
-    <a
-      *ngFor="let menu of menus"
-      [routerLink]="menu.slug"
-      mat-button
-      class="hoteler-button"
-      >{{ menu.displayName }}</a
-    >
-  </ng-container>
-
+  @if (!isMobile && username) {
+    @for (menu of menus; track $index) {
+      <a [routerLink]="menu.slug" mat-button close="hoteler-button">{{
+        menu.displayName
+      }}</a>
+    }
+  }
   <div flexSpacer></div>
   <app-theme-picker></app-theme-picker>
   <a
@@ -40,40 +40,42 @@
       aria-label="gitHub icon"
     ></mat-icon>
   </a>
-  <a
-    mat-button
-    class="hoteler-button"
-    [matMenuTriggerFor]="menu"
-    aria-label="user profile"
-    *ngIf="username"
-  >
-    {{ username | titlecase }}
-  </a>
+  @if (username) {
+    <a
+      mat-button
+      class="hoteler-button"
+      [matMenuTriggerFor]="menu"
+      aria-label="user profile"
+    >
+      {{ username | titlecase }}
+    </a>
+  }
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
       <span>登出</span>
     </button>
-    <button *ngIf="isAdmin" mat-menu-item routerLink="/admin">
-      <mat-icon aria-label="content icons">content_paste</mat-icon>
-      <span>内容管理(beta)</span>
-    </button>
+    @if (isAdmin) {
+      <button mat-menu-item routerLink="/admin">
+        <mat-icon aria-label="content icons">content_paste</mat-icon>
+        <span>内容管理(beta)</span>
+      </button>
+    }
     <button mat-menu-item routerLink="settings">
       <mat-icon aria-label="settings icons">settings</mat-icon>
       <span>设置</span>
     </button>
   </mat-menu>
 </mat-toolbar>
-<mat-toolbar
-  color="primary"
-  aria-label="Section Nav Bar"
-  *ngIf="isMobile && username"
->
-  <a
-    *ngFor="let menu of menus"
-    [routerLink]="menu.slug"
-    mat-button
-    class="hoteler-button navbar-link"
-    >{{ menu.displayName }}</a
-  >
-</mat-toolbar>
+@if (isMobile && username) {
+  <mat-toolbar color="primary" aria-label="Section Nav Bar">
+    @for (menu of menus; track $index) {
+      <a
+        [routerLink]="menu.slug"
+        mat-button
+        class="hoteler-button navbar-link"
+        >{{ menu.displayName }}</a
+      >
+    }
+  </mat-toolbar>
+}
