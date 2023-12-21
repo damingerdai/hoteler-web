@@ -1,6 +1,6 @@
-@use '../../../../styles/breakpoints' as bp;
+@use "../../../../styles/breakpoints" as bp;
 
-.holeler-col {
+.hoteler-col {
   width: 100%;
 
   @include bp.respond-above(sm) {
@@ -21,8 +21,6 @@
       left: 8px;
     }
 
-    ;
-
     margin: 8px;
   }
 }
@@ -39,8 +37,6 @@
       padding: {
         left: 12px;
       }
-
-      ;
     }
   }
 }
@@ -62,5 +58,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, .15);
+  background: rgba(0, 0, 0, 0.15);
 }

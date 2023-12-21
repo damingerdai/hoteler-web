@@ -1,4 +1,4 @@
-@use '../../../../styles/breakpoints' as bp;
+@use "../../../../styles/breakpoints" as bp;
 
 .mat-column {
   @include bp.respond-below(sm) {
@@ -9,7 +9,7 @@
     &-roomname {
       padding: {
         left: 12px;
-      };
+      }
     }
 
     &-action {
@@ -42,7 +42,7 @@ tr.mat-column-action {
   }
 }
 
-.holeler-col {
+.hoteler-col {
   width: 100%;
 
   @include bp.respond-above(sm) {
@@ -63,8 +63,6 @@ tr.mat-column-action {
       left: 8px;
     }
 
-    ;
-
     margin: 8px;
   }
 }
@@ -76,5 +74,5 @@ tr.mat-column-action {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, .15);
+  background: rgba(0, 0, 0, 0.15);
 }
