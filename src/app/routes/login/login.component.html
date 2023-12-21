@@ -13,7 +13,9 @@
             formControlName="username"
             required
           />
-          <mat-error *ngIf="username.invalid"> 请输入用户名 </mat-error>
+          @if (username.invalid) {
+            <mat-error>请输入用户名</mat-error>
+          }
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>密码</mat-label>
@@ -35,13 +37,17 @@
               hide ? "visibility_off" : "visibility"
             }}</mat-icon>
           </button>
-          <mat-error *ngIf="password.invalid"> 请输入密码 </mat-error>
+          @if (password.invalid) {
+            <mat-error> 请输入密码 </mat-error>
+          }
         </mat-form-field>
-        <div class="error" *ngIf="loginForm.errors">
-          <mat-error>
-            {{ loginForm.errors.login }}
-          </mat-error>
-        </div>
+        @if (loginForm.errors) {
+          <div class="error">
+            <mat-error>
+              {{ loginForm.errors.login }}
+            </mat-error>
+          </div>
+        }
         <button
           class="w-full"
           mat-raised-button
