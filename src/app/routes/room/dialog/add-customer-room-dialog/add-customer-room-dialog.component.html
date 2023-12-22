@@ -18,7 +18,7 @@
         >
       </mat-select>
     </mat-form-field>
-    <div class="w-full">
+    <mat-form-field class="w-full" appearance="outline">
       <mat-label>入住时间</mat-label>
       <mat-date-range-input
         formGroupName="checkInTime"
@@ -39,7 +39,7 @@
         [for]="checkInTimePicker"
       ></mat-datepicker-toggle>
       <mat-date-range-picker #checkInTimePicker></mat-date-range-picker>
-    </div>
+    </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions align="end">
