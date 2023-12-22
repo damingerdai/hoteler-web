@@ -5,20 +5,30 @@
     <mat-form-field class="w-full" appearance="outline">
       <mat-label>用户</mat-label>
       <mat-select formControlName="userId">
-        <mat-option *ngFor="let c of customers" [value]="c.id">{{c.name}}</mat-option>
+        @for (c of customers; track c.id) {
+          <mat-option [value]="c.id">{{ c.name }}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
     <mat-form-field class="w-full" appearance="outline">
       <mat-label>房间</mat-label>
       <mat-select formControlName="roomId">
-        <mat-option *ngFor="let r of rooms" [value]="r.id">{{r.roomname}} {{r.price | currency}}</mat-option>
+        @for (r of rooms; track r.id) {
+          <mat-option [value]="r.id"
+            >{{ r.roomname }} {{ r.price | currency }}</mat-option
+          >
+        }
       </mat-select>
     </mat-form-field>
     <mat-form-field class="w-full" appearance="fill">
       <mat-label>选择日期</mat-label>
       <mat-date-range-input [rangePicker]="picker" [min]="currentDate">
-        <input matStartDate formControlName="beginDate" placeholder="开始时间">
-        <input matEndDate formControlName="endDate" placeholder="结束时间">
+        <input
+          matStartDate
+          formControlName="beginDate"
+          placeholder="开始时间"
+        />
+        <input matEndDate formControlName="endDate" placeholder="结束时间" />
       </mat-date-range-input>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
@@ -27,5 +37,12 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close cdkFocusInitial>取消</button>
-  <button mat-button color="primary" [disabled]="form.invalid" (click)="onNoClick()">确定</button>
+  <button
+    mat-button
+    color="primary"
+    [disabled]="form.invalid"
+    (click)="onNoClick()"
+  >
+    确定
+  </button>
 </div>

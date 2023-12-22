@@ -3,7 +3,7 @@
   <mat-drawer-container class="container">
     <mat-drawer class="h-full drawer" #drawer [opened]="open" [mode]="mode">
       <div class="d-flex flex-col h-full">
-        <ng-container *ngFor="let menu of menus">
+        @for (menu of menus; track $index) {
           @if (menu.type === "menu") {
             <mat-nav-list>
               @if (menu.header) {
@@ -23,7 +23,7 @@
           } @else if (menu.type === "divider") {
             <mat-divider></mat-divider>
           }
-        </ng-container>
+        }
         <mat-divider />
         <div flexSpacer></div>
         <mat-divider />

@@ -16,124 +16,127 @@
     </button>
   </div>
   <mat-divider class="divider"></mat-divider>
-  <ng-container *ngIf="!isLoading">
-    <div *ngIf="layout === 'card'" class="d-flex flex-wrap w-full m-t-8">
-      <div
-        class="hoteler-col p-8 room-card"
-        *ngFor="let room of rooms; let i = index"
-      >
-        <mat-card appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>
-              {{ room.roomname }}
-            </mat-card-title>
-            <mat-card-subtitle>
-              <mat-chip-set>
-                <mat-chip *ngIf="room.status === 1" color="primary" selected
-                  >空闲</mat-chip
+  @if (isLoading) {
+    <div class="loading-shade">
+      <mat-spinner></mat-spinner>
+    </div>
+  } @else {
+    @if (layout === "card") {
+      <div class="hoteler-row d-flex flex-wrap w-full m-t-8">
+        @for (room of rooms; track room.id; let i = $index) {
+          <div class="hoteler-col p-8 room-card">
+            <mat-card appearance="outlined">
+              <mat-card-header>
+                <mat-card-title>
+                  {{ room.roomname }}
+                </mat-card-title>
+                <mat-card-subtitle>
+                  <mat-chip-set>
+                    <mat-chip-option color="primary">
+                      @if (room.status === 1) {
+                        空闲
+                      } @else if (room.status === 2) {
+                        占用
+                      }
+                    </mat-chip-option>
+                  </mat-chip-set>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <img
+                class="p-16 p-b-0"
+                mat-card-image
+                [ngSrc]="'https://picsum.photos/200/300?random=' + i"
+                width="364"
+                height="546"
+              />
+              <mat-card-actions>
+                <button
+                  mat-button
+                  color="primary"
+                  [disabled]="room.status === 2"
+                  (click)="addCustomerRoomDialog(room)"
                 >
-                <mat-chip *ngIf="room.status === 2" color="primary" selected
-                  >占用</mat-chip
-                >
-              </mat-chip-set>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <img
-            class="p-16 p-b-0"
-            mat-card-image
-            [src]="'https://picsum.photos/200/300?random=' + i"
-          />
-          <mat-card-actions>
-            <button
-              mat-button
-              color="primary"
-              [disabled]="room.status === 2"
-              (click)="addCustomerRoomDialog(room)"
-            >
-              入住
-            </button>
-            <button mat-button color="accent" (click)="updateRoom(room)">
-              修改
-            </button>
-            <button mat-button color="warn" (click)="deleteRoom(room.id)">
-              删除
-            </button>
-          </mat-card-actions>
-        </mat-card>
+                  入住
+                </button>
+                <button mat-button color="accent" (click)="updateRoom(room)">
+                  修改
+                </button>
+                <button mat-button color="warn" (click)="deleteRoom(room.id)">
+                  删除
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        }
       </div>
-    </div>
-    <div
-      *ngIf="layout === 'table'"
-      class="mat-elevation-z8 table-responsive room-list"
-    >
-      <table
-        mat-table
-        [dataSource]="rooms"
-        class="mat-elevation-z8 w-full"
-        *ngIf="rooms && rooms.length > 0; else empty"
-      >
-        <ng-container matColumnDef="no">
-          <th mat-header-cell *matHeaderCellDef>No.</th>
-          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-        </ng-container>
-        <ng-container matColumnDef="roomname">
-          <th mat-header-cell *matHeaderCellDef>房间名</th>
-          <td mat-cell *matCellDef="let element">{{ element.roomname }}</td>
-        </ng-container>
-        <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef>价格</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.price | currency }}
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef>状态</th>
-          <td mat-cell *matCellDef="let element">
-            <mat-chip-set>
-              <mat-chip *ngIf="element.status === 1" color="primary" selected
-                >空闲</mat-chip
-              >
-              <mat-chip *ngIf="element.status === 2" color="primary" selected
-                >占用</mat-chip
-              >
-            </mat-chip-set>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef>操作</th>
-          <td mat-cell *matCellDef="let element" class="action-container">
-            <button
-              mat-raised-button
-              color="primary"
-              [disabled]="element.status === 2"
-              (click)="addCustomerRoomDialog(element)"
-            >
-              入住
-            </button>
-            <button
-              mat-raised-button
-              color="accent"
-              (click)="updateRoom(element)"
-            >
-              修改
-            </button>
-            <button
-              mat-raised-button
-              color="warn"
-              (click)="deleteRoom(element.id)"
-            >
-              删除
-            </button>
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-      <ng-template #empty> no data </ng-template>
-    </div>
-  </ng-container>
-  <div class="loading-shade" *ngIf="isLoading">
-    <mat-spinner></mat-spinner>
-  </div>
+    }
+    @if (layout === "table") {
+      <div class="mat-elevation-z8 table-responsive room-list">
+        @if (rooms?.length > 0) {
+          <table mat-table [dataSource]="rooms" class="mat-elevation-z8 w-full">
+            <ng-container matColumnDef="no">
+              <th mat-header-cell *matHeaderCellDef>No.</th>
+              <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+            </ng-container>
+            <ng-container matColumnDef="roomname">
+              <th mat-header-cell *matHeaderCellDef>房间名</th>
+              <td mat-cell *matCellDef="let element">{{ element.roomname }}</td>
+            </ng-container>
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef>价格</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.price | currency }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>状态</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-chip-set>
+                  <mat-chip-option color="primary" selected>
+                    @if (element.status === 1) {
+                      空闲
+                    } @else if (element.status === 2) {
+                      占用
+                    }
+                  </mat-chip-option>
+                </mat-chip-set>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>操作</th>
+              <td mat-cell *matCellDef="let element" class="action-container">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="element.status === 2"
+                  (click)="addCustomerRoomDialog(element)"
+                >
+                  入住
+                </button>
+                <button
+                  mat-raised-button
+                  color="accent"
+                  (click)="updateRoom(element)"
+                >
+                  修改
+                </button>
+                <button
+                  mat-raised-button
+                  color="warn"
+                  (click)="deleteRoom(element.id)"
+                >
+                  删除
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        } @else {
+          no data
+        }
+      </div>
+    }
+  }
 </div>
 <app-customizer (layoutChange)="layoutChange($event)"></app-customizer>

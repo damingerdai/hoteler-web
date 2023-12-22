@@ -4,9 +4,9 @@
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>用户</mat-label>
       <input matInput formControlName="name" required />
-      <mat-error *ngIf="name?.errors?.required">
-        请输入用户名
-      </mat-error>
+      @if (name?.errors?.required) {
+        <mat-error> 请输入用户名 </mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>性别</mat-label>
@@ -14,33 +14,46 @@
         <mat-option value="M">男</mat-option>
         <mat-option value="F">女</mat-option>
       </mat-select>
-      <mat-error *ngIf="gender?.errors?.required">
-        请选择性别
-      </mat-error>
+      @if (gender?.errors?.required) {
+        <mat-error> 请选择性别 </mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>身份证号码</mat-label>
       <input matInput formControlName="cardId" required />
-      <mat-error *ngIf="cardId.errors?.required">
-        请输入身份证号码
-      </mat-error>
-      <mat-error *ngIf="cardId.errors?.pattern">
-        请输入正确的身份证号码
-      </mat-error>
+      @if (cardId.errors) {
+        <mat-error>
+          @if (cardId.errors.required) {
+            请输入身份证号码
+          } @else if (cardId.errors?.pattern) {
+            请输入正确的身份证号码
+          }
+        </mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>联系方式</mat-label>
       <input matInput formControlName="phone" required />
-      <mat-error *ngIf="phone?.errors?.required">
-        请输入联系方式
-      </mat-error>
-      <mat-error *ngIf="phone?.errors?.pattern">
-        请输入正确的联系方式
-      </mat-error>
+      @if (phone.errors) {
+        <mat-error>
+          @if (phone.errors?.required) {
+            请输入联系方式
+          } @else if (phone.errors?.pattern) {
+            请输入正确的联系方式
+          }
+        </mat-error>
+      }
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close cdkFocusInitial>取消</button>
-  <button mat-button color="primary" [mat-dialog-close]="customer.value" [disabled]="customer.invalid">确定</button>
+  <button
+    mat-button
+    color="primary"
+    [mat-dialog-close]="customer.value"
+    [disabled]="customer.invalid"
+  >
+    确定
+  </button>
 </mat-dialog-actions>

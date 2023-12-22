@@ -4,12 +4,16 @@
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>房间名</mat-label>
       <input matInput formControlName="roomname" />
-      <mat-error *ngIf="roomname.errors?.required"> 请输入房间名 </mat-error>
+      @if (roomname.errors?.required) {
+        <mat-error>请输入房间名</mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>价格</mat-label>
       <input matInput type="number" formControlName="price" required />
-      <mat-error *ngIf="price.errors?.required"> 请输入价格 </mat-error>
+      @if (price.errors?.required) {
+        <mat-error>请输入价格</mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>状态</mat-label>

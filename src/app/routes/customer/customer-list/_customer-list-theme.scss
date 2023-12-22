@@ -1,8 +1,7 @@
-@use 'sass:map';
-@use '@angular/material' as mat;
+@use "sass:map";
+@use "@angular/material" as mat;
 
 @mixin hoteler-customer-list-theme($theme) {
-
   $foreground: map.get($theme, foreground);
 
   .customer {
