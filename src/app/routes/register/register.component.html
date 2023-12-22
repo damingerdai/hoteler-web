@@ -8,7 +8,9 @@
         <mat-form-field appearance="outline">
           <mat-label>用户名</mat-label>
           <input matInput placeholder="用户名" formControlName="username" />
-          <mat-error *ngIf="username.invalid"> 请输入用户名 </mat-error>
+          @if (username.invalid) {
+            <mat-error>请输入用户名</mat-error>
+          }
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>密码</mat-label>
@@ -28,7 +30,9 @@
               hidePassword ? "visibility_off" : "visibility"
             }}</mat-icon>
           </button>
-          <mat-error *ngIf="password.invalid"> 请输入密码 </mat-error>
+          @if (password.invalid) {
+            <mat-error>请输入密码</mat-error>
+          }
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>确认密码</mat-label>
@@ -48,19 +52,17 @@
               hideConfirmPassword ? "visibility_off" : "visibility"
             }}</mat-icon>
           </button>
-          <mat-error *ngIf="confirmPassword.invalid">
-            请再次输入密码
-          </mat-error>
+          @if (confirmPassword.invalid) {
+            <mat-error> 请再次输入密码 </mat-error>
+          }
         </mat-form-field>
-        <mat-error
-          *ngIf="
-            password.valid &&
-            confirmPassword.valid &&
-            form.errors?.identityPassword
-          "
-        >
-          两次密码不一致
-        </mat-error>
+        @if (
+          password.valid &&
+          confirmPassword.valid &&
+          form.errors?.identityPassword
+        ) {
+          <mat-error>两次密码不一致</mat-error>
+        }
         <button
           class="w-full"
           #btn="matButton"
