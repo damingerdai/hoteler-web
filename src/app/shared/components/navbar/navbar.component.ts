@@ -4,7 +4,6 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { isFunction } from 'lodash';
 import { IUser, Permission } from 'src/app/core/models';
 import { LayoutService } from 'src/app/core/services/layout';
 import { SettingsService } from '../../../core/services/settings/settings.service';
@@ -142,7 +141,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         (Array.isArray(item.neededPermissions)
           ? item.neededPermissions?.some((p) => permissions.includes(p))
           : permissions.includes(item.neededPermissions));
-      } else if (isFunction(item.neededPermissions)) {
+      } else if (typeof item.neededPermissions === 'function') {
         item.withPermissions = item.withPermissions({
           ...this.user,
         } as Partial<IUser>);

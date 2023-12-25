@@ -16,6 +16,7 @@
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
