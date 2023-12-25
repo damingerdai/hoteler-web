@@ -7,7 +7,7 @@
   margin-bottom: 10px;
 
   /**
-  * `overflow` and `position` are required steps to make sure
+  *`overflow` and `position` are required steps to make sure
   * the component respects the specified dimensions
   * given via `theme` object @Input attribute
   */
@@ -46,6 +46,7 @@
     &::before {
       box-sizing: border-box;
     }
+
     // position: relative;
     // this adds GPU acceleration
     transform: translate3d(0, 0, 0);
@@ -97,7 +98,7 @@
     animation-delay: .5s;
   }
 
-  //For custom-content mark height to 100% and remove the background
+  // For custom-content mark height to 100% and remove the background
   &.custom-content {
     height: 100%;
     background: none;

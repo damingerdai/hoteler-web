@@ -30,7 +30,6 @@ $borders: (
   4: 4px solid $border-color,
   8: 8px solid $border-color
 ) !default;
-
 $border-widths: (
   0: 0,
   1: 1px,
@@ -38,7 +37,6 @@ $border-widths: (
   4: 4px,
   8: 8px
 ) !default;
-
 $border-styles: solid dashed dotted double hidden none !default;
 
 // Border radius
@@ -66,7 +64,6 @@ $font-wieghts: (
   800: 800,
   900: 900
 ) !default;
-
 $font-sizes: (
   0: 0,
   10: 10px,

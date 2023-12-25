@@ -2,7 +2,6 @@
 @use '@angular/material' as mat;
 
 @mixin hoteler-admin-layout-theme($theme) {
-
   $foreground: map.get($theme, foreground);
 
   .container {

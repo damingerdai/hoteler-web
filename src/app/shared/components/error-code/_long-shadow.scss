@@ -39,7 +39,6 @@
         color.rgba($color, 1 - math.div($i, $shadow-count))
       )
     );
-
     $shadows: list.append(
       $shadows,
       (math.sin(0deg + $direction) * $current-step)

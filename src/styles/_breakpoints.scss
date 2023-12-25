@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-$breakPoints: (
+$break-points: (
   ss: 376px,
   xs: 576px,
   sm: 768px,
@@ -12,18 +12,17 @@ $breakPoints: (
 // Respond above.
 @mixin respond-above($breakpoint) {
   // If the breakpoint exists in the map.
-  @if map.has-key($breakPoints, $breakpoint) {
+  @if map.has-key($break-points, $breakpoint) {
     // Get the breakpoint value.
-    $breakpointValue: map.get($breakPoints, $breakpoint);
+    $breakpoint-value: map.get($break-points, $breakpoint);
 
     // Write the media query.
-    @media (min-width: $breakpointValue) {
+    @media (min-width: $breakpoint-value) {
       @content;
     }
 
     // If the breakpoint doesn't exist in the map.
-  }
-  @else {
+  } @else {
     // Log a warning.
     @warn 'Invalid breakpoint: #{$breakpoint}.';
   }
@@ -31,46 +30,44 @@ $breakPoints: (
 
 @mixin respond-below($breakpoint) {
   // If the breakpoint exists in the map.
-  @if map.has-key($breakPoints, $breakpoint) {
+  @if map.has-key($break-points, $breakpoint) {
     // Get the breakpoint value.
-    $breakpointValue: map.get($breakPoints, $breakpoint);
+    $breakpoint-value: map.get($break-points, $breakpoint);
 
     // Write the media query.
-    @media (max-width: ($breakpointValue - 1)) {
+    @media (max-width: ($breakpoint-value - 1)) {
       @content;
     }
 
     // If the breakpoint doesn't exist in the map.
-  }
-  @else {
+  } @else {
     // Log a warning.
     @warn 'Invalid breakpoint: #{$breakpoint}.';
   }
 }
 
 @mixin respond-between($lower, $upper) {
-  // If both the lower and upper breakpoints exist in the map.
-  @if map.has-key($breakPoints, $lower) and map.has-key($breakPoints, $upper) {
-    // Get the lower and upper breakpoints.
-    $lowerBreakpoint: map.get($breakPoints, $lower);
-    $upperBreakpoint: map.get($breakPoints, $upper);
+  // If both the lower and upper break-points exist in the map.
+  @if map.has-key($break-points, $lower) and map.has-key($break-points, $upper) {
+    // Get the lower and upper break-points.
+    $lower-breakpoint: map.get($break-points, $lower);
+    $upper-breakpoint: map.get($break-points, $upper);
 
     // Write the media query.
-    @media (min-width: $lowerBreakpoint) and (max-width: ($upperBreakpoint - 1)) {
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
       @content;
     }
 
-    // If one or both of the breakpoints don't exist.
-  }
-  @else {
+    // If one or both of the break-points don't exist.
+  } @else {
     // If lower breakpoint is invalid.
-    @if (map.has-key($breakPoints, $lower) == false) {
+    @if  map.has-key($break-points, $lower) == false {
       // Log a warning.
       @warn 'Your lower breakpoint was invalid: #{$lower}.';
     }
 
     // If upper breakpoint is invalid.
-    @if (map.has-key($breakPoints, $upper) == false) {
+    @if  map.has-key($break-points, $upper) == false {
       // Log a warning.
       @warn 'Your upper breakpoint was invalid: #{$upper}.';
     }
@@ -80,18 +77,17 @@ $breakPoints: (
 // respond height
 @mixin respond-height-above($breakpoint) {
   // If the breakpoint exists in the map.
-  @if map.has-key($breakPoints, $breakpoint) {
+  @if map.has-key($break-points, $breakpoint) {
     // Get the breakpoint value.
-    $breakpointValue: map.get($breakPoints, $breakpoint);
+    $breakpoint-value: map.get($break-points, $breakpoint);
 
     // Write the media query.
-    @media (min-height: $breakpointValue) {
+    @media (min-height: $breakpoint-value) {
       @content;
     }
 
     // If the breakpoint doesn't exist in the map.
-  }
-  @else {
+  } @else {
     // Log a warning.
     @warn 'Invalid breakpoint: #{$breakpoint}.';
   }

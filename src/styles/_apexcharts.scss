@@ -2,7 +2,6 @@
 @use '@angular/material' as mat;
 
 @mixin hoteler-apexcharts-theme($theme) {
-
   $primary: map.get($theme, primary);
   $accent: map.get($theme, accent);
   $warn: map.get($theme, warn);

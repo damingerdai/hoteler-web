@@ -2,7 +2,6 @@
 @use '@angular/material' as mat;
 
 @mixin hoteler-login-theme($theme) {
-
   $foreground: map.get($theme, foreground);
 
   .login {
