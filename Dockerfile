@@ -25,7 +25,7 @@ FROM nginx:1.25.3
 COPY _nginx/default.template /etc/nginx/conf.d/default.template
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=builder /app/dist/hoteler .
+COPY --from=builder /app/dist/hoteler/browser .
 COPY scripts/run.sh /scripts/scripts.sh
 ENV BACKEND_URL http://127.0.0.1:8443
 RUN ["chmod", "+x", "/scripts/scripts.sh"]
