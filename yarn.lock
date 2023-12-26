@@ -2994,10 +2994,10 @@
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-4.6.4.tgz#76350389d51412047934992bacc40750c69d82a8"
   integrity sha512-qCw5sVW+ylTnrEhe5kfX4l6MgU9REXIVDa/lWEcvTOUmd+LqDYwyjovDq+Zk9blElaEHOj1URDQ/djEBVRf+pw==
 
-"@types/jasminewd2@2.0.11":
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/@types/jasminewd2/-/jasminewd2-2.0.11.tgz#53239ff1d169fef041ba9c7a2c171bce5dcee4e5"
-  integrity sha512-J3ggNCbxnHPsd15lzNZtOdPovtErcIl2vD11VSRq2s+ktQr43ZfqO4ws6YDFNRvUoXWCxD5uXTWuwyXPyT5eqg==
+"@types/jasminewd2@2.0.13":
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/@types/jasminewd2/-/jasminewd2-2.0.13.tgz#0b60c1fcd06277ea97efbbad5a02e0c1a4a8996a"
+  integrity sha512-aJ3wj8tXMpBrzQ5ghIaqMisD8C3FIrcO6sDKHqFbuqAsI7yOxj0fA7MrRCPLZHIVUjERIwsMmGn/vB0UQ9u0Hg==
   dependencies:
     "@types/jasmine" "*"
 
