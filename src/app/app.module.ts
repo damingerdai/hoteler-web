@@ -1,7 +1,7 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,18 +20,18 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    BrowserAnimationsModule,
     CoreModule,
     LayoutModule,
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: true,
+      enabled: isDevMode() !== true,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
   providers: [
+    provideAnimationsAsync(),
     httpInterceptorProviders,
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     appInitializerProviders
