@@ -4,7 +4,7 @@ import { canActivateFn } from './core/guards/auth.guard';
 import { AdminLayoutComponent } from './layout/admin-layout';
 import { CommonLayoutComponent } from './layout/common-layout';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: CommonLayoutComponent,
