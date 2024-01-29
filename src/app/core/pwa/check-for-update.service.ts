@@ -84,7 +84,6 @@ export class CheckForUpdateService {
             console.log(
               `Failed to install app version '${evt.version.hash}': ${evt.error}`
             );
-            this.confirmUser();
             break;
         }
       });
