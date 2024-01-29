@@ -1,12 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { CheckForUpdateService } from './core/pwa/check-for-update.service';
 
 
 describe('AppComponent', () => {
-  beforeEach(async() => {
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -16,6 +17,19 @@ describe('AppComponent', () => {
           enabled: true,
         })
       ],
+      providers: [
+        {
+          provide: CheckForUpdateService, usefactory: () => {
+            const service = jasmine.createSpyObj<CheckForUpdateService>('CheckForUpdateService', ['close', 'check']);
+            let status = false;
+            service.close.and.callFake(() => status = false);
+            service.check.and.callFake(() => status = true);
+            service['status'] = status;
+
+            return service;
+          }
+        },
+      ]
     }).compileComponents();
   });
 
@@ -24,4 +38,15 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
+
+  it('should be enabled when the component is initialized', () => {
+    inject([CheckForUpdateService], (service: CheckForUpdateService) => {
+      const fixture = TestBed.createComponent(AppComponent);
+      fixture.detectChanges();
+      expect(service.check).toHaveBeenCalled();
+      fixture.destroy();
+      expect(service.close).toHaveBeenCalled();
+    });
+  });
+
 });

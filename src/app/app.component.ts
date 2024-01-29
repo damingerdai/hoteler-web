@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject, isDevMode } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CheckForUpdateService } from './core/pwa/check-for-update.service';
 
@@ -9,11 +9,16 @@ import { CheckForUpdateService } from './core/pwa/check-for-update.service';
   standalone: true,
   imports: [RouterOutlet]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   protected checkForUpdateService: CheckForUpdateService = inject(CheckForUpdateService);
 
   constructor() {
-    this.checkForUpdateService.check();
+
+  }
+  ngOnInit(): void {
+    if (!isDevMode()) {
+      this.checkForUpdateService.check();
+    }
   }
 }
