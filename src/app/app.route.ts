@@ -18,8 +18,8 @@ export const routes: Routes = [
         path: 'login',
         title: 'Hoteler Portal -- 登录',
         loadChildren: () =>
-          import('./routes/login/login.module').then(
-            (m) => m.LoginModule
+          import('./routes/login/login.routes').then(
+            (r) => r.routes
           ),
       },
       {

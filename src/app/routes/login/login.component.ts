@@ -1,16 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ENTER, MAC_ENTER } from '@angular/cdk/keycodes';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { TokenService } from 'src/app/core/services/token/token.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { switchMap, throwError } from 'rxjs';
+import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
+import { UiModule } from 'src/app/shared/ui/ui.module';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    SharedMaterialModule,
+    UiModule,
+  ]
 })
 export class LoginComponent implements OnInit {
 
