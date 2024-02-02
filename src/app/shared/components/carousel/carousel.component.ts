@@ -1,4 +1,4 @@
-import { ANIMATION_MODULE_TYPE, AfterViewInit, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, Optional, QueryList, ViewChild } from '@angular/core';
+import { ANIMATION_MODULE_TYPE, AfterContentInit, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, Optional, QueryList, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CarouselItemDirective } from './carousel-item.directive';
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import { LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
@@ -6,9 +6,10 @@ import { LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  styleUrls: ['./carousel.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class CarouselComponent implements AfterViewInit {
+export class CarouselComponent implements AfterContentInit {
 
   @Input('aria-label') ariaLabel: string | undefined;
   @ContentChildren(CarouselItemDirective) items!: QueryList<CarouselItemDirective>;
@@ -20,12 +21,7 @@ export class CarouselComponent implements AfterViewInit {
   index = 0;
   private _keyManager!: FocusKeyManager<CarouselItemDirective>;
 
-  constructor(@Optional() @Inject(ANIMATION_MODULE_TYPE) animationsModule?: string) {
-    this.animationsDisabled = animationsModule === 'NoopAnimations';
-  }
-
-  onKeydown(event: KeyboardEvent) {
-    const { keyCode } = event;
+  onKeydown({keyCode}: KeyboardEvent) {
     const manager = this._keyManager;
     const previousActiveIndex = manager.activeItemIndex;
 
@@ -47,7 +43,11 @@ export class CarouselComponent implements AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {
+  constructor(@Optional() @Inject(ANIMATION_MODULE_TYPE) animationsModule?: string) {
+    this.animationsDisabled = animationsModule === 'NoopAnimations';
+  }
+
+  ngAfterContentInit(): void {
     this._keyManager = new FocusKeyManager<CarouselItemDirective>(this.items);
   }
 
@@ -112,7 +112,7 @@ export class CarouselComponent implements AfterViewInit {
 
   /** Checks whether an item at a specific index is outside of the viewport. */
   private _isOutOfView(index: number, side?: 'start' | 'end') {
-    const { offsetWidth, offsetLeft } = this.items.toArray()[index].element.nativeElement;
+    const {offsetWidth, offsetLeft} = this.items.toArray()[index].element.nativeElement;
 
     if ((!side || side === 'start') && offsetLeft - this.position < 0) {
       return true;
@@ -123,5 +123,4 @@ export class CarouselComponent implements AfterViewInit {
       offsetWidth + offsetLeft - this.position > this.list.nativeElement.clientWidth
     );
   }
-
 }

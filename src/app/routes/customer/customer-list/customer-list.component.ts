@@ -20,7 +20,7 @@ export class CustomerListComponent implements OnInit {
 
   public isLoading: boolean;
 
-  public layout: 'table' | 'card';
+  public layout: 'table' | 'card' | 'carousel';
 
   constructor(
     private customerApi: CustomerService,
@@ -99,7 +99,19 @@ export class CustomerListComponent implements OnInit {
   }
 
   toggleLayout() {
-    this.layout === 'table' ? this.layout = 'card' : this.layout = 'table';
+    switch (this.layout) {
+      case 'card':
+        this.layout = 'table';
+        break;
+      case 'table':
+        this.layout = 'carousel';
+        break;
+      case 'carousel':
+        this.layout = 'card';
+        break;
+      default:
+        this.layout = 'card';
+    }
   }
 
   processCustomerPhone(customer: ICustomer): string {

@@ -1,147 +1,232 @@
 <app-page-header title="客户信息"></app-page-header>
 <main class="-flex flex-col p-16">
-  <div class="w-full d-flex justify-content-end align-items-baseline">
-    <button mat-raised-button color="primary" (click)="createCustomer()">
-      创建客户
-    </button>
-    <button
-      mat-raised-button
-      class="m-l-8"
-      color="warn"
-      (click)="toggleLayout()"
-    >
-      切换布局
-    </button>
-  </div>
-
-  <mat-divider class="divider"></mat-divider>
-  @if (isLoading) {
-    <div class="loading-shade">
-      <mat-spinner />
+    <div class="w-full d-flex justify-content-end align-items-baseline">
+        <button mat-raised-button color="primary" (click)="createCustomer()">
+            创建客户
+        </button>
+        <button
+            mat-raised-button
+            class="m-l-8"
+            color="warn"
+            (click)="toggleLayout()"
+        >
+            切换布局
+        </button>
     </div>
-  } @else {
-    @if (layout === "table") {
-      <div class="mat-elevation-z8 table-responsive m-t-16">
-        @if (customers?.length > 0) {
-          <table
-            mat-table
-            [dataSource]="customers"
-            class="mat-elevation-z8 w-full"
-          >
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef>ID.</th>
-              <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-            </ng-container>
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>名字</th>
-              <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-            </ng-container>
-            <ng-container matColumnDef="gender">
-              <th mat-header-cell *matHeaderCellDef>性别</th>
-              <td mat-cell *matCellDef="let element">
-                <mat-chip-set>
-                  <mat-chip-option>
-                    @if (element.gender === "M") {
-                      男
-                    } @else if (element.gender === "F") {
-                      女
-                    } @else {
-                      未知性别
+    <mat-divider class="divider"></mat-divider>
+    @if (isLoading) {
+        <div class="loading-shade">
+            <mat-spinner />
+        </div>
+    } @else {
+        @if (layout === 'table') {
+            <div class="mat-elevation-z8 table-responsive m-t-16">
+                @if (customers?.length > 0) {
+                    <table
+                        mat-table
+                        [dataSource]="customers"
+                        class="mat-elevation-z8 w-full"
+                    >
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef>ID.</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ element.id }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef>名字</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ element.name }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="gender">
+                            <th mat-header-cell *matHeaderCellDef>性别</th>
+                            <td mat-cell *matCellDef="let element">
+                                <mat-chip-set>
+                                    <mat-chip-option>
+                                        @if (element.gender === 'M') {
+                                            男
+                                        } @else if (element.gender === 'F') {
+                                            女
+                                        } @else {
+                                            未知性别
+                                        }
+                                    </mat-chip-option>
+                                </mat-chip-set>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="cardId">
+                            <th mat-header-cell *matHeaderCellDef>
+                                身份证号码
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ processCustomerCardId(element) }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="phone">
+                            <th mat-header-cell *matHeaderCellDef>联系方式</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ processCustomerPhone(element) }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef>操作</th>
+                            <td
+                                mat-cell
+                                *matCellDef="let element"
+                                class="action-container"
+                            >
+                                <button
+                                    mat-raised-button
+                                    color="accent"
+                                    (click)="updateCustomer(element)"
+                                >
+                                    修改
+                                </button>
+                                <button
+                                    mat-raised-button
+                                    color="warn"
+                                    (click)="deleteCustomer(element.id)"
+                                >
+                                    删除
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                        ></tr>
+                        <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                        ></tr>
+                    </table>
+                } @else {
+                    <div>空</div>
+                }
+            </div>
+        } @else if (layout === 'card') {
+            <div class="d-flex flex-wrap w-full m-t-8">
+                @for (customer of customers; track customer.id) {
+                    <div class="hoteler-col p-8">
+                        <mat-card
+                            appearance="outlined"
+                            class="mat-card customer-card"
+                        >
+                            <mat-card-header>
+                                <mat-card-title>
+                                    {{ customer.name }}
+                                </mat-card-title>
+                                <mat-card-subtitle>
+                                    <mat-chip-listbox>
+                                        <mat-chip-option>
+                                            @if (customer.gender === 'M') {
+                                                男
+                                            } @else if (
+                                                customer.gender === 'F'
+                                            ) {
+                                                女
+                                            } @else {
+                                                未知性别
+                                            }
+                                        </mat-chip-option>
+                                    </mat-chip-listbox>
+                                </mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p class="card-id">
+                                    身份证号码:
+                                    {{ processCustomerCardId(customer) }}
+                                </p>
+                                <p class="phone">
+                                    手机号码:
+                                    {{ processCustomerPhone(customer) }}
+                                </p>
+                            </mat-card-content>
+                            <app-banner [text]="customer.gender"></app-banner>
+                            <mat-card-actions>
+                                <button
+                                    mat-button
+                                    color="accent"
+                                    (click)="updateCustomer(customer)"
+                                >
+                                    修改
+                                </button>
+                                <button
+                                    mat-button
+                                    color="warn"
+                                    (click)="deleteCustomer(customer.id)"
+                                >
+                                    删除
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                }
+            </div>
+        } @else if (layout === 'carousel') {
+            <div class="m-x-32 p-x-16">
+                <app-carousel>
+                    @for (customer of customers; track customer.id) {
+                        <div class="hoteler-col p-8" appCarouselItem>
+                            <mat-card
+                                appearance="outlined"
+                                class="mat-card customer-card"
+                            >
+                                <mat-card-header>
+                                    <mat-card-title>
+                                        {{ customer.name }}
+                                    </mat-card-title>
+                                    <mat-card-subtitle>
+                                        <mat-chip-listbox>
+                                            <mat-chip-option>
+                                                @if (customer.gender === 'M') {
+                                                    男
+                                                } @else if (
+                                                    customer.gender === 'F'
+                                                ) {
+                                                    女
+                                                } @else {
+                                                    未知性别
+                                                }
+                                            </mat-chip-option>
+                                        </mat-chip-listbox>
+                                    </mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <p class="card-id">
+                                        身份证号码:
+                                        {{ processCustomerCardId(customer) }}
+                                    </p>
+                                    <p class="phone">
+                                        手机号码:
+                                        {{ processCustomerPhone(customer) }}
+                                    </p>
+                                </mat-card-content>
+                                <app-banner
+                                    [text]="customer.gender"
+                                ></app-banner>
+                                <mat-card-actions>
+                                    <button
+                                        mat-button
+                                        color="accent"
+                                        (click)="updateCustomer(customer)"
+                                    >
+                                        修改
+                                    </button>
+                                    <button
+                                        mat-button
+                                        color="warn"
+                                        (click)="deleteCustomer(customer.id)"
+                                    >
+                                        删除
+                                    </button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
                     }
-                  </mat-chip-option>
-                </mat-chip-set>
-              </td>
-            </ng-container>
-            <ng-container matColumnDef="cardId">
-              <th mat-header-cell *matHeaderCellDef>身份证号码</th>
-              <td mat-cell *matCellDef="let element">
-                {{ processCustomerCardId(element) }}
-              </td>
-            </ng-container>
-            <ng-container matColumnDef="phone">
-              <th mat-header-cell *matHeaderCellDef>联系方式</th>
-              <td mat-cell *matCellDef="let element">
-                {{ processCustomerPhone(element) }}
-              </td>
-            </ng-container>
-            <ng-container matColumnDef="action">
-              <th mat-header-cell *matHeaderCellDef>操作</th>
-              <td mat-cell *matCellDef="let element" class="action-container">
-                <button
-                  mat-raised-button
-                  color="accent"
-                  (click)="updateCustomer(element)"
-                >
-                  修改
-                </button>
-                <button
-                  mat-raised-button
-                  color="warn"
-                  (click)="deleteCustomer(element.id)"
-                >
-                  删除
-                </button>
-              </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-          </table>
-        } @else {
-          <div>空</div>
+                </app-carousel>
+            </div>
         }
-      </div>
-    } @else if (layout === "card") {
-      <div class="d-flex flex-wrap w-full m-t-8">
-        @for (customer of customers; track customer.id) {
-          <div class="hoteler-col p-8">
-            <mat-card appearance="outlined" class="mat-card customer-card">
-              <mat-card-header>
-                <mat-card-title>
-                  {{ customer.name }}
-                </mat-card-title>
-                <mat-card-subtitle>
-                  <mat-chip-listbox>
-                    <mat-chip-option>
-                      @if (customer.gender === "M") {
-                        男
-                      } @else if (customer.gender === "F") {
-                        女
-                      } @else {
-                        未知性别
-                      }
-                    </mat-chip-option>
-                  </mat-chip-listbox>
-                </mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p class="card-id">
-                  身份证号码: {{ processCustomerCardId(customer) }}
-                </p>
-                <p class="phone">
-                  手机号码: {{ processCustomerPhone(customer) }}
-                </p>
-              </mat-card-content>
-              <app-banner [text]="customer.gender"></app-banner>
-              <mat-card-actions>
-                <button
-                  mat-button
-                  color="accent"
-                  (click)="updateCustomer(customer)"
-                >
-                  修改
-                </button>
-                <button
-                  mat-button
-                  color="warn"
-                  (click)="deleteCustomer(customer.id)"
-                >
-                  删除
-                </button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-        }
-      </div>
     }
-  }
 </main>
