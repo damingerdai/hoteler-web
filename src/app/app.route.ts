@@ -77,8 +77,8 @@ export const routes: Routes = [
         path: '401',
         title: 'Hoteler Portal -- 401',
         loadChildren: () =>
-          import('./routes/unauthorized/unauthorized.module').then(
-            (m) => m.UnauthorizedModule
+          import('./routes/unauthorized/unauthorized.routes').then(
+            (r) => r.routes
           ),
       },
       {
