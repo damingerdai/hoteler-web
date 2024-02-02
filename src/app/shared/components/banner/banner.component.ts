@@ -4,16 +4,14 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   selector: 'app-banner',
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss'],
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BannerComponent implements OnInit {
+export class BannerComponent {
 
   @Input()
   public text: string;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

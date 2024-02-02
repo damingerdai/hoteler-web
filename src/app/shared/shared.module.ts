@@ -26,14 +26,12 @@ import { UiModule } from './ui/ui.module';
 import { SharedPipesModule } from './shared.pipes.module';
 
 const DECLARATIONS = [
-  BannerComponent,
   CarouselItemDirective,
   CarouselComponent,
   ConfirmComponent,
   ErrorCodeComponent,
   NavbarComponent,
   SkeletonLoaderComponent,
-  // ThemePickerComponent
 ];
 
 @NgModule({
@@ -52,6 +50,7 @@ const DECLARATIONS = [
 
     NgxIsStandaloneModule,
 
+    BannerComponent,
     ThemePickerComponent,
     PageHeaderComponent,
   ],
@@ -71,6 +70,7 @@ const DECLARATIONS = [
     SharedMaterialModule,
     SharedPipesModule,
 
+    BannerComponent,
     ThemePickerComponent,
     PageHeaderComponent,
 
