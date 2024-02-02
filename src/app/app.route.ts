@@ -69,8 +69,8 @@ export const routes: Routes = [
         path: '403',
         title: 'Hoteler Portal -- 403',
         loadChildren: () =>
-          import('./routes/forbidden/forbidden.module').then(
-            (m) => m.ForbiddenModule
+          import('./routes/forbidden/forbidden.routes').then(
+            (r) => r.routes
           ),
       },
       {
