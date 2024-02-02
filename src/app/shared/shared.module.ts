@@ -27,8 +27,6 @@ import { SharedPipesModule } from './shared.pipes.module';
 import { LoadingShadeComponent } from './components/loading-shade';
 
 const DECLARATIONS = [
-  CarouselItemDirective,
-  CarouselComponent,
   ErrorCodeComponent,
   NavbarComponent,
   SkeletonLoaderComponent,
@@ -50,6 +48,8 @@ const DECLARATIONS = [
 
     NgxIsStandaloneModule,
 
+    CarouselItemDirective,
+    CarouselComponent,
     BannerComponent,
     ConfirmComponent,
     LoadingShadeComponent,
@@ -72,6 +72,8 @@ const DECLARATIONS = [
     SharedMaterialModule,
     SharedPipesModule,
 
+    CarouselItemDirective,
+    CarouselComponent,
     BannerComponent,
     ConfirmComponent,
     LoadingShadeComponent,

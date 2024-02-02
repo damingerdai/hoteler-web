@@ -2,12 +2,20 @@ import { ANIMATION_MODULE_TYPE, AfterContentInit, Component, ContentChildren, El
 import { CarouselItemDirective } from './carousel-item.directive';
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import { LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+
+    CarouselItemDirective,
+  ]
 })
 export class CarouselComponent implements AfterContentInit {
 
