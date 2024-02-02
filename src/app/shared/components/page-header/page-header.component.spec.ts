@@ -9,7 +9,7 @@ describe('PageHeaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageHeaderComponent ]
+      imports: [ PageHeaderComponent ]
     })
     .compileComponents();
   }));
