@@ -1,12 +1,17 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-error-code',
   templateUrl: './error-code.component.html',
   styleUrls: ['./error-code.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatButtonModule,
+  ],
+  standalone: true,
 })
-export class ErrorCodeComponent implements OnInit {
+export class ErrorCodeComponent{
 
   @Input()
   public code = '';
@@ -16,8 +21,5 @@ export class ErrorCodeComponent implements OnInit {
   public message = '';
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -12,9 +12,9 @@ describe('DashboardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        TestApp
+        TestApp,
+        DashboardComponent
       ],
-      declarations: [ DashboardComponent ]
     })
     .compileComponents();
   });

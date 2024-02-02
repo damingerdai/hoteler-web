@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { runOnPushChangeDetection } from '../../testings/fixture';
 
 import { ErrorCodeComponent } from './error-code.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 
 describe('ErrorCodeComponent', () => {
@@ -11,7 +12,10 @@ describe('ErrorCodeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorCodeComponent ]
+      imports: [
+        RouterTestingModule,
+        ErrorCodeComponent
+       ]
     })
     .compileComponents();
   }));
