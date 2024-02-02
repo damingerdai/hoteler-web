@@ -23,6 +23,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { AddCustomerRoomDialogComponent, CreateRoomDialogComponent, UpdateRoomDialogComponent } from './dialog';
 import { ConfirmComponent, PageHeaderComponent } from 'src/app/shared/components';
+import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 
 
 @Component({
@@ -44,6 +45,7 @@ import { ConfirmComponent, PageHeaderComponent } from 'src/app/shared/components
     CurrencyPipe,
 
     //SharedModule,
+    LoadingShadeComponent,
     PageHeaderComponent,
     CustomizerComponent
   ],

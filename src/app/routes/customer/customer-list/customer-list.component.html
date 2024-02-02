@@ -15,9 +15,7 @@
     </div>
     <mat-divider class="divider"></mat-divider>
     @if (isLoading) {
-        <div class="loading-shade">
-            <mat-spinner />
-        </div>
+        <app-loading-shade />
     } @else {
         @if (layout === 'table') {
             <div class="mat-elevation-z8 table-responsive m-t-16">

@@ -66,13 +66,3 @@ tr.mat-column-action {
     margin: 8px;
   }
 }
-
-.loading-shade {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.15);
-}

@@ -24,6 +24,7 @@ import { SharedCdkModule } from './shared.cdk.module';
 import { SharedMaterialModule } from './shared.material.module';
 import { UiModule } from './ui/ui.module';
 import { SharedPipesModule } from './shared.pipes.module';
+import { LoadingShadeComponent } from './components/loading-shade';
 
 const DECLARATIONS = [
   CarouselItemDirective,
@@ -51,6 +52,7 @@ const DECLARATIONS = [
     NgxIsStandaloneModule,
 
     BannerComponent,
+    LoadingShadeComponent,
     ThemePickerComponent,
     PageHeaderComponent,
   ],
@@ -71,6 +73,7 @@ const DECLARATIONS = [
     SharedPipesModule,
 
     BannerComponent,
+    LoadingShadeComponent,
     ThemePickerComponent,
     PageHeaderComponent,
 

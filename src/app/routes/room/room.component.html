@@ -17,9 +17,7 @@
     </div>
     <mat-divider class="divider"></mat-divider>
     @if (isLoading) {
-        <div class="loading-shade">
-            <mat-spinner></mat-spinner>
-        </div>
+        <app-loading-shade />
     } @else {
         @if (layout === 'card') {
             <div class="hoteler-row d-flex flex-wrap w-full m-t-8">
