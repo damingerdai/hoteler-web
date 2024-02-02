@@ -9,8 +9,8 @@ describe('CustomizerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ SharedMaterialModule ],
-      declarations: [ CustomizerComponent ]
+      imports: [ SharedMaterialModule, CustomizerComponent ],
+      declarations: [  ]
     })
     .compileComponents();
   });
