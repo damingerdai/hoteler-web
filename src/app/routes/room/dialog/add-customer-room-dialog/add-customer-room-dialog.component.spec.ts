@@ -19,8 +19,8 @@ describe('AddCustomerRoomDialogComponent', () => {
 
   beforeEach((async () => {
    await TestBed.configureTestingModule({
-      imports: [TestApp],
-      declarations: [AddCustomerRoomDialogComponent],
+      imports: [ TestApp, AddCustomerRoomDialogComponent ],
+      declarations: [],
       providers: [
         {
           provide: MAT_DIALOG_DATA,

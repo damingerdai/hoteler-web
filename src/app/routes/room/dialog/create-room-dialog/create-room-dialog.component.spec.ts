@@ -17,8 +17,8 @@ describe('CreateRoomDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ TestApp ],
-      declarations: [ CreateRoomDialogComponent ]
+      imports: [ TestApp, CreateRoomDialogComponent ],
+      declarations: [  ]
     })
     .compileComponents();
   }));

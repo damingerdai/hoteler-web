@@ -17,8 +17,8 @@ describe('UpdateRoomDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ TestApp ],
-      declarations: [ UpdateRoomDialogComponent ],
+      imports: [ TestApp, UpdateRoomDialogComponent ],
+      declarations: [  ],
       providers: [
         {
           provide: MAT_DIALOG_DATA,
