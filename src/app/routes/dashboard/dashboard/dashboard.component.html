@@ -1,30 +1,53 @@
 <app-page-header title="仪表盘"></app-page-header>
 <main class="dashboard">
-  <div class="hoteler-row d-flex flex-row flex-wrap">
-    @if (roomStatusDonutChart.show) {
-      <div class="hoteler-col">
-        <mat-card appearance="outlined" class="d-flex justify-content-center">
-          <apx-chart
-            [series]="roomStatusDonutChart.series"
-            [chart]="roomStatusDonutChart.chart"
-            [title]="roomStatusDonutChart.title"
-            [labels]="roomStatusDonutChart.labels"
-            [plotOptions]="roomStatusDonutChart.plotOptions"
-          ></apx-chart>
-        </mat-card>
-      </div>
+    @if (loading) {
+        <div class="h-full">
+            <app-loading-shade />
+        </div>
+    } @else {
+        <div class="hoteler-row d-flex flex-row flex-wrap">
+            @if (roomStatusDonutChart.show) {
+                <div class="hoteler-col">
+                    <mat-card
+                        appearance="outlined"
+                        class="d-flex justify-content-center"
+                    >
+                        @defer (on viewport; when roomStatusDonutChart.show) {
+                            <apx-chart
+                                [series]="roomStatusDonutChart.series"
+                                [chart]="roomStatusDonutChart.chart"
+                                [title]="roomStatusDonutChart.title"
+                                [labels]="roomStatusDonutChart.labels"
+                                [plotOptions]="roomStatusDonutChart.plotOptions"
+                            />
+                        } @placeholder {
+                            <div>房间状态统计</div>
+                        }
+                    </mat-card>
+                </div>
+            }
+            @if (pastWeekCustomerCountChart.show) {
+                <div class="hoteler-col">
+                    <mat-card
+                        appearance="outlined"
+                        class="d-flex justify-content-center"
+                    >
+                        @defer (
+                            on viewport;
+                            when pastWeekCustomerCountChart.show
+                        ) {
+                            <apx-chart
+                                [series]="pastWeekCustomerCountChart.series"
+                                [chart]="pastWeekCustomerCountChart.chart"
+                                [title]="pastWeekCustomerCountChart.title"
+                                [xaxis]="pastWeekCustomerCountChart.xaxis"
+                            />
+                        } @placeholder {
+                            <div>过去一周的入住客户数量变化</div>
+                        }
+                    </mat-card>
+                </div>
+            }
+        </div>
     }
-    @if (pastWeekCustomerCountChart.show) {
-      <div class="hoteler-col">
-        <mat-card appearance="outlined" class="d-flex justify-content-center">
-          <apx-chart
-            [series]="pastWeekCustomerCountChart.series"
-            [chart]="pastWeekCustomerCountChart.chart"
-            [title]="pastWeekCustomerCountChart.title"
-            [xaxis]="pastWeekCustomerCountChart.xaxis"
-          ></apx-chart>
-        </mat-card>
-      </div>
-    }
-  </div>
 </main>

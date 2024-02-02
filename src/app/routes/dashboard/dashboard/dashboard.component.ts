@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApexOptions } from 'ngx-apexcharts';
 import { filter, switchMap } from 'rxjs/operators';
@@ -15,6 +15,13 @@ type ApexOptions2 = ApexOptions & { show: boolean };
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  protected loading = false;
+
+  private customerApi: CustomerService = inject(CustomerService);
+  private customerCheckinRecordApi: CustomerCheckinRecordService = inject(CustomerCheckinRecordService);
+  private roomApi: RoomService = inject(RoomService);
+  private dialog = inject(MatDialog);
 
   public roomStatusDonutChart: ApexOptions2 = {
     show: false,
@@ -56,12 +63,7 @@ export class DashboardComponent implements OnInit {
     }
   };
 
-  constructor(
-    private customerApi: CustomerService,
-    public dialog: MatDialog,
-    private customerCheckinRecordApi: CustomerCheckinRecordService,
-    private roomApi: RoomService
-  ) { }
+  constructor() {}
 
   openAddUserRoomDialog() {
     const dialogRef = this.dialog.open(AddUserRoomComponent);
@@ -77,7 +79,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.roomApi.getRoomStatusStat().subscribe(res => {
+      this.loading = false;
       if (res.status === 200) {
         this.roomStatusDonutChart.show = true;
         this.roomStatusDonutChart.series = [res.data.inUseNums, res.data.notUsedNums];
@@ -87,6 +91,7 @@ export class DashboardComponent implements OnInit {
 
 
     this.customerApi.getPastWeekCustomerCountStat().subscribe(res => {
+      this.loading = false;
       if (res.status === 200) {
         this.pastWeekCustomerCountChart.show = true;
         this.pastWeekCustomerCountChart.series = [{
