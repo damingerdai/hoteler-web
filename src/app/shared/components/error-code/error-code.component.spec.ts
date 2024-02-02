@@ -4,6 +4,18 @@ import { runOnPushChangeDetection } from '../../testings/fixture';
 
 import { ErrorCodeComponent } from './error-code.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Router, RouterLinkWithHref } from '@angular/router';
+import { Component } from '@angular/core';
+
+@Component({
+  template: `
+    <div>login</div>
+  `,
+  standalone: true,
+})
+class LoginComponent {
+
+}
 
 
 describe('ErrorCodeComponent', () => {
@@ -13,11 +25,13 @@ describe('ErrorCodeComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
+        RouterTestingModule.withRoutes([
+          { path: 'login', component: LoginComponent }
+        ]),
         ErrorCodeComponent
-       ]
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -69,4 +83,10 @@ describe('ErrorCodeComponent', () => {
     const errorCodeEl = fixture.debugElement.query(By.css('.hoteler-error-message'))!.nativeElement as HTMLDialogElement;
     expect(errorCodeEl.textContent).toContain('no-message');
   }));
+
+  it('should navigate to the new route on button click', () => {
+    const button = fixture.debugElement.query(By.directive(RouterLinkWithHref));
+    expect(button.properties['href']).toContain('/login');
+  });
+
 });

@@ -21,8 +21,10 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         TestApp,
+        RouterTestingModule,
+        LoginComponent
       ],
-      declarations: [ LoginComponent ]
+      declarations: [  ]
     })
     .compileComponents();
   });
