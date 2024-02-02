@@ -1,18 +1,30 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ApexOptions } from 'ngx-apexcharts';
+import { ApexOptions, NgxApexchartsModule } from 'ngx-apexcharts';
 import { filter, switchMap } from 'rxjs/operators';
 import { CustomerService } from 'src/app/core/services/customers';
 import { RoomService } from 'src/app/core/services/room';
 import { CustomerCheckinRecordService } from 'src/app/core/services/customer-checkin-record';
 import { AddUserRoomComponent } from '../dialog/add-user-room/add-user-room.component';
+import { PageHeaderComponent } from 'src/app/shared/components';
+import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
+import { MatCardModule } from '@angular/material/card';
 
 type ApexOptions2 = ApexOptions & { show: boolean };
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  standalone: true,
+  imports: [
+    NgxApexchartsModule,
+
+    MatCardModule,
+
+    LoadingShadeComponent,
+    PageHeaderComponent,
+  ]
 })
 export class DashboardComponent implements OnInit {
 

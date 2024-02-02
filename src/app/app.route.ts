@@ -36,21 +36,17 @@ export const routes: Routes = [
         canLoad: [canActivateFn],
         canActivate: [canActivateFn],
         loadChildren: () =>
-          import('./routes/dashboard/dashboard.module').then(
-            (m) => m.DashboardModule
+          import('./routes/dashboard/dashboard.routes').then(
+            (r) => r.routes
           ),
       },
-      { path: 'room', loadChildren: () => import('./routes/room/room.routes').then(r => r.routes) },
-      // {
-      //     path: 'room',
-      //     title: 'Hoteler Portal -- 房间管理',
-      //     canLoad: [canActivateFn],
-      //     canActivate: [canActivateFn],
-      //     loadChildren: () =>
-      //         import('./routes/room/room.routes').then(
-      //             (m) => m.routes
-      //         ),
-      // },
+      {
+        path: 'room',
+        title: 'Hoteler Portal -- 房间管理',
+        canLoad: [canActivateFn],
+        canActivate: [canActivateFn],
+        loadChildren: () => import('./routes/room/room.routes').then(r => r.routes)
+      },
       {
         path: 'customer',
         title: 'Hoteler Portal -- 客户管理',
@@ -110,20 +106,20 @@ export const routes: Routes = [
         canLoad: [canActivateFn],
         canActivate: [canActivateFn],
         loadChildren: () =>
-          import('./routes/dashboard/dashboard.module').then(
-            (m) => m.DashboardModule
+          import('./routes/dashboard/dashboard.routes').then(
+            (r) => r.routes
           ),
       },
-      //{
-      //     path: 'room',
-      //     title: 'Hoteler Portal -- 房间管理',
-      //     canLoad: [canActivateFn],
-      //     canActivate: [canActivateFn],
-      //     loadChildren: () =>
-      //         import('./routes/room/room.routes').then(
-      //             (m) => m.routes
-      //         ),
-      // },
+      {
+          path: 'room',
+          title: 'Hoteler Portal -- 房间管理',
+          canLoad: [canActivateFn],
+          canActivate: [canActivateFn],
+          loadChildren: () =>
+              import('./routes/room/room.routes').then(
+                  (m) => m.routes
+              ),
+      },
       {
         path: 'customer',
         title: 'Hoteler Portal -- 客户管理',
