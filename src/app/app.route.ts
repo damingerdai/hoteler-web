@@ -67,7 +67,7 @@ export const routes: Routes = [
       },
       {
         path: '403',
-        title: 'Hoteler Portal',
+        title: 'Hoteler Portal -- 403',
         loadChildren: () =>
           import('./routes/forbidden/forbidden.module').then(
             (m) => m.ForbiddenModule
@@ -75,7 +75,7 @@ export const routes: Routes = [
       },
       {
         path: '401',
-        title: 'Hoteler Portal',
+        title: 'Hoteler Portal -- 401',
         loadChildren: () =>
           import('./routes/unauthorized/unauthorized.module').then(
             (m) => m.UnauthorizedModule
@@ -83,11 +83,9 @@ export const routes: Routes = [
       },
       {
         path: '404',
-        title: 'Hoteler Portal',
+        title: 'Hoteler Portal -- 404',
         loadChildren: () =>
-          import('./routes/not-found/not-found.module').then(
-            (m) => m.NotFoundModule
-          ),
+          import('./routes/not-found/not-found.routes').then((r) => r.routes),
       },
     ],
   },
