@@ -61,8 +61,8 @@ export const routes: Routes = [
         path: 'settings',
         title: 'Hoteler Portal -- 设置',
         loadChildren: () =>
-          import('./routes/settings/settings.module').then(
-            (m) => m.SettingsModule
+          import('./routes/settings/settings.routes').then(
+            (r) => r.routes
           ),
       },
       {
@@ -144,8 +144,8 @@ export const routes: Routes = [
         canLoad: [canActivateFn],
         canActivate: [canActivateFn],
         loadChildren: () =>
-          import('./routes/settings/settings.module').then(
-            (m) => m.SettingsModule
+          import('./routes/settings/settings.routes').then(
+            (r) => r.routes
           ),
       },
     ],
