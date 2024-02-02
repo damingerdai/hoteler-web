@@ -19,8 +19,6 @@ describe('BannerComponent', () => {
     fixture.detectChanges();
     const bannerEl = fixture.debugElement.query(By.css('.banner'));
     expect(bannerEl).toBeTruthy();
-    console.log(fixture.nativeElement as HTMLDivElement);
-    console.log(bannerEl.nativeElement as HTMLDivElement);
     expect((bannerEl.nativeElement as HTMLDivElement).textContent).toContain('hello');
   });
 });

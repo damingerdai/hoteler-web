@@ -29,7 +29,6 @@ import { LoadingShadeComponent } from './components/loading-shade';
 const DECLARATIONS = [
   CarouselItemDirective,
   CarouselComponent,
-  ConfirmComponent,
   ErrorCodeComponent,
   NavbarComponent,
   SkeletonLoaderComponent,
@@ -52,6 +51,7 @@ const DECLARATIONS = [
     NgxIsStandaloneModule,
 
     BannerComponent,
+    ConfirmComponent,
     LoadingShadeComponent,
     ThemePickerComponent,
     PageHeaderComponent,
@@ -73,6 +73,7 @@ const DECLARATIONS = [
     SharedPipesModule,
 
     BannerComponent,
+    ConfirmComponent,
     LoadingShadeComponent,
     ThemePickerComponent,
     PageHeaderComponent,
