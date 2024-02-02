@@ -1,10 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, RouterLinkWithHref } from '@angular/router';
 import { NgxDomConfettiService } from 'ngx-dom-confetti';
 import { timer } from 'rxjs';
 import { UserService } from 'src/app/core/services/user/user.service';
+import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
+import { UiModule } from 'src/app/shared/ui/ui.module';
+import { NgxDomConfettiModule } from 'ngx-dom-confetti';
 
 const identityPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const password = control.get('password');
@@ -16,7 +19,15 @@ const identityPasswordValidator: ValidatorFn = (control: AbstractControl): Valid
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    SharedMaterialModule,
+    NgxDomConfettiModule,
+    UiModule,
+    RouterLinkWithHref,
+  ]
 })
 export class RegisterComponent implements OnInit {
 

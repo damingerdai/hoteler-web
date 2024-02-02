@@ -26,8 +26,8 @@ export const routes: Routes = [
         path: 'register',
         title: 'Hoteler Portal -- 注册',
         loadChildren: () =>
-          import('./routes/register/register.module').then(
-            (m) => m.RegisterModule
+          import('./routes/register/register.routes').then(
+            (r) => r.routes
           ),
       },
       {
@@ -109,14 +109,14 @@ export const routes: Routes = [
           ),
       },
       {
-          path: 'room',
-          title: 'Hoteler Portal -- 房间管理',
-          canLoad: [canActivateFn],
-          canActivate: [canActivateFn],
-          loadChildren: () =>
-              import('./routes/room/room.routes').then(
-                  (m) => m.routes
-              ),
+        path: 'room',
+        title: 'Hoteler Portal -- 房间管理',
+        canLoad: [canActivateFn],
+        canActivate: [canActivateFn],
+        loadChildren: () =>
+          import('./routes/room/room.routes').then(
+            (m) => m.routes
+          ),
       },
       {
         path: 'customer',

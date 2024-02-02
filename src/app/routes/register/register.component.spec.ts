@@ -25,8 +25,8 @@ describe('RegisterComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         TestApp,
+        RegisterComponent
       ],
-      declarations: [ RegisterComponent ]
     })
     .compileComponents();
   });

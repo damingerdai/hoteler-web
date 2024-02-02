@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ENTER, MAC_ENTER } from '@angular/cdk/keycodes';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLinkWithHref } from '@angular/router';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { TokenService } from 'src/app/core/services/token/token.service';
 import { UserService } from 'src/app/core/services/user/user.service';
@@ -18,6 +18,7 @@ import { UiModule } from 'src/app/shared/ui/ui.module';
     ReactiveFormsModule,
     SharedMaterialModule,
     UiModule,
+    RouterLinkWithHref,
   ]
 })
 export class LoginComponent implements OnInit {
