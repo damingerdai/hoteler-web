@@ -11,8 +11,10 @@ describe('ThemePickerComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ TestApp ],
-      declarations: [ ThemePickerComponent ],
+      imports: [
+        TestApp,
+        ThemePickerComponent
+       ],
       providers: [ ThemeStorageService ]
     })
     .compileComponents();
@@ -31,7 +33,7 @@ describe('ThemePickerComponent', () => {
 
 @NgModule({
   exports: [
-    MatMenuModule
+    MatMenuModule,
   ]
 })
 class TestApp {}
