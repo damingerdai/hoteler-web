@@ -20,9 +20,9 @@ describe('AddUserRoomComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        TestApp
+        TestApp,
+        AddUserRoomComponent
       ],
-      declarations: [ AddUserRoomComponent ],
       providers: [
         {
           provide: MatDialogRef,

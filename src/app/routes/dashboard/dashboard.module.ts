@@ -10,11 +10,12 @@ import { AddUserRoomComponent } from './dialog/add-user-room/add-user-room.compo
 
 
 @NgModule({
-  declarations: [DashboardComponent, AddUserRoomComponent],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     NgxApexchartsModule,
+    AddUserRoomComponent,
     SharedModule
   ]
 })
