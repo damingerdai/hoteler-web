@@ -6,7 +6,7 @@
 @use './app/routes/customer/customer-list/customer-list-theme';
 @use './app/routes/login/login-theme';
 @use './app//routes/register/register-theme';
-@use './app/routes/room/room-list/room-list-theme';
+@use './app/routes/room/room-theme';
 @use './app/routes/settings/settings-theme';
 @use './app/shared/components/banner/banner-theme';
 @use './app/shared/components/error-code/error-code-theme';
@@ -19,7 +19,7 @@
   @include customer-list-theme.hoteler-customer-list-theme($theme);
   @include login-theme.hoteler-login-theme($theme);
   @include register-theme.hoteler-register-theme($theme);
-  @include room-list-theme.hoteler-room-list-theme($theme);
+  @include room-theme.hoteler-room-theme($theme);
   @include settings-theme.hoteler-settings-theme($theme);
   @include banner-theme.hoteler-banner-theme($theme);
   @include error-code-theme.hoteler-error-code-theme($theme);

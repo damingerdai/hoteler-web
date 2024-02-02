@@ -1,15 +1,29 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IRoom } from 'src/app/core/models';
+import { Component, Inject, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { IRoom } from '../../../../core/models';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-update-room-dialog',
   templateUrl: './update-room-dialog.component.html',
-  styleUrls: ['./update-room-dialog.component.scss']
+  styleUrls: ['./update-room-dialog.component.scss'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+  ]
 })
 export class UpdateRoomDialogComponent implements OnInit {
 
+  private fb = inject(FormBuilder);
   public room: FormGroup;
 
   public get roomname() {
@@ -25,8 +39,6 @@ export class UpdateRoomDialogComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder,
-    // private dialogRef: MatDialogRef<UpdateRoomDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IRoom
   ) {
     this.room = this.fb.group({

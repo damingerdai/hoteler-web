@@ -1,19 +1,19 @@
 <div
-  class="customizer-handle"
-  matTooltip="支持拖动"
-  cdkDrag
-  [matMenuTriggerFor]="menu"
+    class="customizer-handle"
+    matTooltip="支持拖动"
+    cdkDrag
+    [matMenuTriggerFor]="menu"
 >
-  <button mat-fab>
-    <mat-icon aria-label="settings icons">settings</mat-icon>
-  </button>
+    <button mat-fab>
+        <mat-icon aria-label="settings icons">settings</mat-icon>
+    </button>
 </div>
 <mat-menu #menu="matMenu" yPosition="above">
-  <button
-    mat-menu-item
-    *ngFor="let layout of layouts"
-    (click)="changeLayout(layout.value)"
-  >
-    {{ layout.display }}
-  </button>
+    <div id="hh">
+        @for (layout of layouts; track $index) {
+            <button mat-menu-item (click)="changeLayout(layout.value)">
+                {{ layout.display }}
+            </button>
+        }
+    </div>
 </mat-menu>

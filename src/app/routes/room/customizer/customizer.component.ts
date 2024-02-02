@@ -1,9 +1,17 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-customizer',
   templateUrl: './customizer.component.html',
-  styleUrls: ['./customizer.component.scss']
+  styleUrls: ['./customizer.component.scss'],
+  standalone: true,
+  imports: [
+    MatIconModule, MatMenuModule, MatTooltipModule, MatButtonModule,
+  ]
 })
 export class CustomizerComponent implements OnInit {
 

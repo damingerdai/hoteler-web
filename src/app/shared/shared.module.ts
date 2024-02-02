@@ -3,6 +3,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { NgxIsStandaloneModule } from 'ngx-is-standalone';
 
@@ -31,13 +32,14 @@ const DECLARATIONS = [
   ConfirmComponent,
   ErrorCodeComponent,
   NavbarComponent,
-  PageHeaderComponent,
   SkeletonLoaderComponent,
-  ThemePickerComponent
+  // ThemePickerComponent
 ];
 
 @NgModule({
-  declarations: DECLARATIONS,
+  declarations: [
+    ...DECLARATIONS,
+  ],
   imports: [
     CommonModule,
     NgOptimizedImage,
@@ -48,13 +50,17 @@ const DECLARATIONS = [
     SharedMaterialModule,
     SharedPipesModule,
 
-    NgxIsStandaloneModule
+    NgxIsStandaloneModule,
+
+    ThemePickerComponent,
+    PageHeaderComponent,
   ],
   providers: [
     ThemeStorageService,
     {
       provide: SKELETON_LOADER_CONFIG, useValue: {}
     },
+   provideAnimationsAsync(),
   ],
   exports: [
     NgOptimizedImage,
@@ -64,6 +70,9 @@ const DECLARATIONS = [
     SharedCdkModule,
     SharedMaterialModule,
     SharedPipesModule,
+
+    ThemePickerComponent,
+    PageHeaderComponent,
 
     ...DECLARATIONS
   ]

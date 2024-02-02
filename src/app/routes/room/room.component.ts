@@ -1,27 +1,55 @@
+
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { IRoom, Rooms } from '../../../core/models/room';
-import { RoomService } from '../../../core/services/room';
-import {
-  AddCustomerRoomDialogComponent,
-  CreateRoomDialogComponent,
-  UpdateRoomDialogComponent,
-} from '../dialog';
-import { ConfirmComponent } from '../../../shared/components';
-import { CustomerCheckinRecordService } from '../../../core/services/customer-checkin-record';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { CustomizerComponent } from './customizer/customizer.component';
+import { RoomService } from 'src/app/core/services/room';
+import { IRoom, Rooms } from 'src/app/core/models';
 import { of } from 'rxjs';
+import { CustomerCheckinRecordService } from 'src/app/core/services/customer-checkin-record';
+import { CurrencyPipe } from '@angular/common';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+import { AddCustomerRoomDialogComponent, CreateRoomDialogComponent, UpdateRoomDialogComponent } from './dialog';
+import { ConfirmComponent, PageHeaderComponent } from 'src/app/shared/components';
+
 
 @Component({
-  selector: 'app-room-list',
-  templateUrl: './room-list.component.html',
-  styleUrls: ['./room-list.component.scss'],
+  selector: 'app-menu',
+  templateUrl: './room.component.html',
+  styleUrls: ['./room.component.scss'],
+  standalone: true,
+  imports: [
+    MatMenuModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatIconModule,
+    MatTableModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatDividerModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    CurrencyPipe,
+
+    //SharedModule,
+    PageHeaderComponent,
+    CustomizerComponent
+  ],
 })
-export class RoomListComponent implements OnInit {
+export class RoomComponent implements OnInit {
+
   public layout = 'card';
 
   public displayedColumns: string[] = [

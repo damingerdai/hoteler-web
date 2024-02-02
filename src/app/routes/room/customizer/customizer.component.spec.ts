@@ -1,4 +1,4 @@
-import { SharedMaterialModule } from './../../../shared/shared.material.module';
+import { SharedMaterialModule } from '../../../shared/shared.material.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CustomizerComponent } from './customizer.component';

@@ -1,13 +1,30 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { Customers, IRoom } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/services/customers';
 
 @Component({
   selector: 'app-add-customer-room-dialog',
   templateUrl: './add-customer-room-dialog.component.html',
-  styleUrls: ['./add-customer-room-dialog.component.scss']
+  styleUrls: ['./add-customer-room-dialog.component.scss'],
+  standalone: true,
+  imports: [
+    CurrencyPipe,
+
+    MatButtonModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
+
+    ReactiveFormsModule,
+  ]
 })
 export class AddCustomerRoomDialogComponent implements OnInit {
 

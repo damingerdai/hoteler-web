@@ -1,3 +1,8 @@
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import {NgFor} from '@angular/common';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
@@ -11,6 +16,8 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './theme-picker.component.html',
   styleUrls: ['./theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MatButtonModule, MatTooltipModule, MatMenuModule, MatIconModule, NgFor]
 })
 export class ThemePickerComponent implements OnInit {
 

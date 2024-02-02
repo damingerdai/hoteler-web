@@ -19,6 +19,8 @@ import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -40,6 +42,7 @@ export const appConfig: ApplicationConfig = {
         appInitializerProviders,
         importProvidersFrom(
             BrowserModule,
+            // BrowserAnimationsModule,
             RouterModule,
             CoreModule,
             LayoutModule,
