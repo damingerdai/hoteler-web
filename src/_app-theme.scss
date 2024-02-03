@@ -26,7 +26,8 @@
   @include navbar-theme.hoteler-navbar-theme($theme);
   @include page-header-theme.hoteler-page-header-theme($theme);
   @include apexcharts-theme.hoteler-apexcharts-theme($theme);
-  @include input-theme.hoteler-input-theme($theme);
+
+  // @include input-theme.hoteler-input-theme($theme);
 
   $primary: map.get($theme, primary);
   $accent: map.get($theme, accent);
