@@ -28,7 +28,6 @@ import { LoadingShadeComponent } from './components/loading-shade';
 
 const DECLARATIONS = [
   NavbarComponent,
-  SkeletonLoaderComponent,
 ];
 
 @NgModule({
@@ -55,6 +54,7 @@ const DECLARATIONS = [
     LoadingShadeComponent,
     ThemePickerComponent,
     PageHeaderComponent,
+    SkeletonLoaderComponent,
   ],
   providers: [
     ThemeStorageService,
@@ -80,6 +80,7 @@ const DECLARATIONS = [
     LoadingShadeComponent,
     ThemePickerComponent,
     PageHeaderComponent,
+    SkeletonLoaderComponent,
 
     ...DECLARATIONS
   ]

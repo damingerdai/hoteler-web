@@ -63,6 +63,10 @@ import { SkeletonLoaderComponent } from './skeleton-loader.component';
       </div>
     </div>
   `,
+  standalone: true,
+  imports: [
+    SkeletonLoaderComponent
+  ]
 })
 class ContainerComponent {
   animationWithFalsePassedViaBinding = false;
@@ -80,7 +84,7 @@ describe('SkeletonLoaderComponent', () => {
     beforeEach(
       waitForAsync(() => {
         fixture = TestBed.configureTestingModule({
-          declarations: [ContainerComponent, SkeletonLoaderComponent],
+          imports: [ContainerComponent, SkeletonLoaderComponent],
           providers: [{ provide: PLATFORM_ID, useValue: 'browser' }],
         }).createComponent(ContainerComponent);
         fixture.detectChanges();
@@ -206,7 +210,7 @@ describe('SkeletonLoaderComponent', () => {
     beforeEach(
       waitForAsync(() => {
         fixture = TestBed.configureTestingModule({
-          declarations: [ContainerComponent, SkeletonLoaderComponent],
+          imports: [ContainerComponent, SkeletonLoaderComponent],
           providers: [
             { provide: PLATFORM_ID, useValue: 'browser' },
             { provide: SKELETON_LOADER_CONFIG, useValue: { appearance: 'circle', count: 3 } },
