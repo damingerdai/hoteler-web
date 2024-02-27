@@ -2,11 +2,14 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser, Permission } from 'src/app/core/models';
 import { LayoutService } from 'src/app/core/services/layout';
 import { SettingsService } from '../../../core/services/settings/settings.service';
+import { SharedMaterialModule } from '../../shared.material.module';
+import { ThemePickerComponent } from '../theme-picker/theme-picker.component';
+import { TitleCasePipe } from '@angular/common';
 
 interface IMenuItem {
   displayName: string;
@@ -41,6 +44,14 @@ const MENUS: IMenuItem[] = [
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  standalone: true,
+  imports: [
+    RouterModule,
+    SharedMaterialModule,
+
+    ThemePickerComponent,
+    TitleCasePipe,
+  ]
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnInit, OnDestroy {

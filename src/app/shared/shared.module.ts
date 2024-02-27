@@ -26,14 +26,9 @@ import { UiModule } from './ui/ui.module';
 import { SharedPipesModule } from './shared.pipes.module';
 import { LoadingShadeComponent } from './components/loading-shade';
 
-const DECLARATIONS = [
-  NavbarComponent,
-];
 
 @NgModule({
-  declarations: [
-    ...DECLARATIONS,
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     NgOptimizedImage,
@@ -46,6 +41,7 @@ const DECLARATIONS = [
 
     NgxIsStandaloneModule,
 
+    NavbarComponent,
     ErrorCodeComponent,
     CarouselItemDirective,
     CarouselComponent,
@@ -72,6 +68,7 @@ const DECLARATIONS = [
     SharedMaterialModule,
     SharedPipesModule,
 
+    NavbarComponent,
     ErrorCodeComponent,
     CarouselItemDirective,
     CarouselComponent,
@@ -81,8 +78,6 @@ const DECLARATIONS = [
     ThemePickerComponent,
     PageHeaderComponent,
     SkeletonLoaderComponent,
-
-    ...DECLARATIONS
   ]
 })
 export class SharedModule { }
