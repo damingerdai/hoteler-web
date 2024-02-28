@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+@use '../../app-theme';
+
+$theme: matx.define-theme((
+  color: (
+    theme-type: dark
+  )
+));
+@include mat.all-component-themes(map.merge($theme, (
+  typography: mat.define-typography-config()
+)));
+
+// @include app-theme.hoteler-app-theme($theme);

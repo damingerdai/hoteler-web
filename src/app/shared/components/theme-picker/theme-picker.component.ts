@@ -71,6 +71,22 @@ export class ThemePickerComponent implements OnInit {
     //   name: 'pwc-dark',
     //   isDark: true
     // },
+    {
+      primary: '#9C27B0',
+      accent: '#4CAF50',
+      // displayName: 'Purple & Green',
+      displayName: '紫色 & 绿色',
+      name: 'm3-light',
+      isDark: false,
+    },
+    {
+      primary: '#9C27B0',
+      accent: '#4CAF50',
+      // displayName: 'Purple & Green',
+      displayName: '紫色 & 绿色',
+      name: 'm3-dark',
+      isDark: true,
+    },
   ];
 
   constructor(
