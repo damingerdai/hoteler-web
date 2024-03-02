@@ -17,8 +17,8 @@ describe('UpdateCustomerDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ TestApp ],
-      declarations: [ UpdateCustomerDialogComponent ],
+      imports: [ TestApp, UpdateCustomerDialogComponent ],
+      declarations: [ ],
       providers: [
         {
           provide: MAT_DIALOG_DATA,

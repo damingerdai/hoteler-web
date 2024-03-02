@@ -1,12 +1,24 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { ICustomer } from 'src/app/core/models';
 
 @Component({
   selector: 'app-update-customer-dialog',
   templateUrl: './update-customer-dialog.component.html',
-  styleUrls: ['./update-customer-dialog.component.scss']
+  styleUrls: ['./update-customer-dialog.component.scss'],
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+
+    ReactiveFormsModule
+  ]
 })
 export class UpdateCustomerDialogComponent implements OnInit {
 

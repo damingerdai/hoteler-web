@@ -16,9 +16,10 @@ describe('CustomerListComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         ApiTestingModule,
-        TestApp
+        TestApp,
+        CustomerListComponent
       ],
-      declarations: [ CustomerListComponent ]
+      declarations: [  ]
     })
     .compileComponents();
   });

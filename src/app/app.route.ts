@@ -53,8 +53,8 @@ export const routes: Routes = [
         canLoad: [canActivateFn],
         canActivate: [canActivateFn],
         loadChildren: () =>
-          import('./routes/customer/customer.module').then(
-            (m) => m.CustomerModule
+          import('./routes/customer/customer.routes').then(
+            (m) => m.routes
           ),
       },
       {
@@ -124,8 +124,8 @@ export const routes: Routes = [
         canLoad: [canActivateFn],
         canActivate: [canActivateFn],
         loadChildren: () =>
-          import('./routes/customer/customer.module').then(
-            (m) => m.CustomerModule
+          import('./routes/customer/customer.routes').then(
+            (m) => m.routes
           ),
       },
       {

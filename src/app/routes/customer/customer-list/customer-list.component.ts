@@ -4,13 +4,32 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { Customers, ICustomer } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/services/customers';
-import { ConfirmComponent } from 'src/app/shared/components';
+import { BannerComponent, CarouselComponent, ConfirmComponent, PageHeaderComponent } from 'src/app/shared/components';
 import { CreateCustomerDialogComponent, UpdateCustomerDialogComponent } from '../dialog';
+import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.scss']
+  styleUrls: ['./customer-list.component.scss'],
+  standalone: true,
+  imports: [
+    PageHeaderComponent,
+    LoadingShadeComponent,
+    BannerComponent,
+    CarouselComponent,
+
+    MatButtonModule,
+    MatDividerModule,
+    MatTableModule,
+    MatChipsModule,
+    MatCardModule,
+  ]
 })
 export class CustomerListComponent implements OnInit {
 

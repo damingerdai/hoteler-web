@@ -17,8 +17,8 @@ describe('CreateCustomerDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ TestApp ],
-      declarations: [ CreateCustomerDialogComponent ],
+      imports: [ TestApp, CreateCustomerDialogComponent ],
+      declarations: [ ],
     })
     .compileComponents();
   });
