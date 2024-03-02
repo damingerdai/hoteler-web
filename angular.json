@@ -1,282 +1,304 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-    "hoteler-web": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "standalone": false
-        },
-        "@schematics/angular:directive": {
-          "standalone": false
-        },
-        "@schematics/angular:pipe": {
-          "standalone": false
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/hoteler",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
-            "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/sitemap.xml",
-              "src/robots.txt",
-              "src/manifest.webmanifest"
-            ],
-            "styles": [
-              {
-                "input": "src/styles.scss"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/pink-bluegrey.scss",
-                "bundleName": "pink-bluegrey"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/deeppurple-amber.scss",
-                "bundleName": "deeppurple-amber"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/indigo-pink.scss",
-                "bundleName": "indigo-pink"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/purple-green.scss",
-                "bundleName": "purple-green"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/pwc-light.scss",
-                "bundleName": "pwc-light"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/pwc-dark.scss",
-                "bundleName": "pwc-dark"
-              }
-            ],
-            "stylePreprocessorOptions": {
-              "includePaths": ["node_modules", "src", "src/styles"]
-            },
-            "scripts": [],
-            "extractLicenses": true,
-            "sourceMap": true,
-            "optimization": true,
-            "namedChunks": true,
-            "serviceWorker": "ngsw-config.json"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "namedChunks": false,
-              "extractLicenses": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "hoteler-web": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss",
+                    "standalone": false
                 },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          }
-        },
-        "esbuild": {
-          "builder": "@angular-devkit/build-angular:browser-esbuild",
-          "options": {
-            "outputPath": "dist/hoteler-esbuild",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/sitemap.xml",
-              "src/robots.txt"
-            ],
-            "styles": [
-              {
-                "input": "src/styles.scss"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/pink-bluegrey.scss",
-                "bundleName": "pink-bluegrey"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/deeppurple-amber.scss",
-                "bundleName": "deeppurple-amber"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/indigo-pink.scss",
-                "bundleName": "indigo-pink"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/purple-green.scss",
-                "bundleName": "purple-green"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/pwc-light.scss",
-                "bundleName": "pwc-light"
-              },
-              {
-                "inject": false,
-                "input": "src/styles/custom-themes/pwc-dark.scss",
-                "bundleName": "pwc-dark"
-              }
-            ],
-            "stylePreprocessorOptions": {
-              "includePaths": ["node_modules", "src", "src/styles"]
-            },
-            "scripts": [],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "namedChunks": false,
-              "extractLicenses": true,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                "@schematics/angular:directive": {
+                    "standalone": false
                 },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                "@schematics/angular:pipe": {
+                    "standalone": false
                 }
-              ]
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "proxyConfig": "src/proxy.conf.json",
-            "hmr": true
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "hoteler-web:build:production"
             },
-            "development": {
-              "buildTarget": "hoteler-web:build:development"
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:application",
+                    "options": {
+                        "outputPath": "dist/hoteler",
+                        "index": "src/index.html",
+                        "browser": "src/main.ts",
+                        "polyfills": ["zone.js"],
+                        "tsConfig": "tsconfig.app.json",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/sitemap.xml",
+                            "src/robots.txt",
+                            "src/manifest.webmanifest"
+                        ],
+                        "styles": [
+                            {
+                                "input": "src/styles.scss"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/pink-bluegrey.scss",
+                                "bundleName": "pink-bluegrey"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/deeppurple-amber.scss",
+                                "bundleName": "deeppurple-amber"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/indigo-pink.scss",
+                                "bundleName": "indigo-pink"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/purple-green.scss",
+                                "bundleName": "purple-green"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/pwc-light.scss",
+                                "bundleName": "pwc-light"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/pwc-dark.scss",
+                                "bundleName": "pwc-dark"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/m3-light.scss",
+                                "bundleName": "m3-light"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/m3-dark.scss",
+                                "bundleName": "m3-dark"
+                            }
+                        ],
+                        "stylePreprocessorOptions": {
+                            "includePaths": [
+                                "node_modules",
+                                "src",
+                                "src/styles"
+                            ]
+                        },
+                        "scripts": [],
+                        "extractLicenses": true,
+                        "sourceMap": true,
+                        "optimization": true,
+                        "namedChunks": true,
+                        "serviceWorker": "ngsw-config.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        },
+                        "development": {
+                            "optimization": false,
+                            "extractLicenses": false,
+                            "sourceMap": true
+                        }
+                    }
+                },
+                "esbuild": {
+                    "builder": "@angular-devkit/build-angular:browser-esbuild",
+                    "options": {
+                        "outputPath": "dist/hoteler-esbuild",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/sitemap.xml",
+                            "src/robots.txt"
+                        ],
+                        "styles": [
+                            {
+                                "input": "src/styles.scss"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/pink-bluegrey.scss",
+                                "bundleName": "pink-bluegrey"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/deeppurple-amber.scss",
+                                "bundleName": "deeppurple-amber"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/indigo-pink.scss",
+                                "bundleName": "indigo-pink"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/purple-green.scss",
+                                "bundleName": "purple-green"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/pwc-light.scss",
+                                "bundleName": "pwc-light"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/pwc-dark.scss",
+                                "bundleName": "pwc-dark"
+                            }
+                        ],
+                        "stylePreprocessorOptions": {
+                            "includePaths": [
+                                "node_modules",
+                                "src",
+                                "src/styles"
+                            ]
+                        },
+                        "scripts": [],
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "buildOptimizer": false,
+                        "sourceMap": true,
+                        "optimization": false,
+                        "namedChunks": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "proxyConfig": "src/proxy.conf.json",
+                        "hmr": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "buildTarget": "hoteler-web:build:production"
+                        },
+                        "development": {
+                            "buildTarget": "hoteler-web:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "buildTarget": "hoteler-web:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": ["zone.js", "zone.js/testing"],
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/manifest.webmanifest"
+                        ],
+                        "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                            "src/styles.scss"
+                        ],
+                        "stylePreprocessorOptions": {
+                            "includePaths": [
+                                "node_modules",
+                                "src",
+                                "src/styles"
+                            ]
+                        },
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "angular:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "angular:serve:production"
+                        }
+                    }
+                }
             }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "hoteler-web:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
-            ],
-            "stylePreprocessorOptions": {
-              "includePaths": ["node_modules", "src", "src/styles"]
-            },
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "angular:serve:production"
-            }
-          }
         }
-      }
-    }
-  },
-  "cli": {
-    "analytics": "af964c41-d2b6-43e3-bd4e-5ebda121c977",
-    "schematicCollections": ["@angular-eslint/schematics"]
-  },
-  "schematics": {
-    "@angular-eslint/schematics:application": {
-      "setParserOptionsProject": true
     },
-    "@angular-eslint/schematics:library": {
-      "setParserOptionsProject": true
+    "cli": {
+        "analytics": "af964c41-d2b6-43e3-bd4e-5ebda121c977",
+        "schematicCollections": ["@angular-eslint/schematics"]
+    },
+    "schematics": {
+        "@angular-eslint/schematics:application": {
+            "setParserOptionsProject": true
+        },
+        "@angular-eslint/schematics:library": {
+            "setParserOptionsProject": true
+        }
     }
-  }
 }
