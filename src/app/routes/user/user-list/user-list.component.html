@@ -1,7 +1,13 @@
 <app-page-header title="用户信息"></app-page-header>
 <div class="p-16">
     <div class="d-flex w-full justify-content-end">
-        <button mat-raised-button color="primary" disabled>创建用户</button>
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="openCreateUserDialog()"
+        >
+            创建用户
+        </button>
     </div>
     <mat-divider class="divider" />
     <div class="mat-elevation-z8 table-responsive m-t-16">

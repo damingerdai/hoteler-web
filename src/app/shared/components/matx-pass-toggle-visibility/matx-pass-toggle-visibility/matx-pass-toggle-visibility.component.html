@@ -1,0 +1,12 @@
+<button
+    mat-icon-button
+    class="mat-icon-button cdk-focused cdk-mouse-focused"
+    aria-label="hide password"
+    matRipple
+    [matRippleCentered]="true"
+    [attr.tabindex]="tabindex"
+    type="button"
+    (click)="visible = !visible"
+>
+    <mat-icon>{{ visible ? 'visibility' : 'visibility_off' }}</mat-icon>
+</button>

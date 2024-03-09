@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>创建用户</h2>
+<form [formGroup]="form" (submit)="confirm()">
+    <mat-dialog-content>
+        <mat-form-field
+            class="w-full form-filed-full m-t-4"
+            appearance="outline"
+        >
+            <mat-label>用户名</mat-label>
+            <input matInput placeholder="用户名" formGroupName="username" />
+        </mat-form-field>
+        <mat-form-field
+            class="w-full form-filed-full m-t-4"
+            appearance="outline"
+        >
+            <mat-label>密码</mat-label>
+            <input
+                matInput
+                [type]="toogle.type"
+                placeholder="密码"
+                formControlName="password"
+            />
+            <matx-pass-toggle-visibility #toogle matSuffix />
+        </mat-form-field>
+        <mat-form-field
+            class="w-full form-field-full m-t-4"
+            appearance="outline"
+        >
+            <mat-label>角色</mat-label>
+            <mat-select multiple formControlName="roles">
+                @for (role of roles; track role.id) {
+                    <mat-option [value]="role.id">{{ role.name }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button cdkFocusInitial (click)="onNoClick()">取消</button>
+        <button mat-button color="primary" type="submit">确定</button>
+    </mat-dialog-actions>
+</form>
