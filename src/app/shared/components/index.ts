@@ -7,5 +7,6 @@ export * from './navbar/navbar.component';
 export * from './page-header/page-header.component';
 export * from './skeleton-loader/skeleton-loader-config.types';
 export * from './skeleton-loader/skeleton-loader.component';
+export * from './tag/tag.component';
 export * from './theme-picker/theme-picker.component';
 export * from './theme-picker/theme-storage/theme-storage.service';

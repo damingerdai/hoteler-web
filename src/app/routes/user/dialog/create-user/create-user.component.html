@@ -34,7 +34,21 @@
         </mat-form-field>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button mat-button cdkFocusInitial (click)="onNoClick()">取消</button>
-        <button mat-button color="primary" type="submit">确定</button>
+        <button
+            mat-button
+            mat-dialog-close
+            cdkFocusInitial
+            (click)="onNoClick()"
+        >
+            取消
+        </button>
+        <button
+            mat-button
+            color="primary"
+            type="submit"
+            [mat-dialog-close]="form.getRawValue()"
+        >
+            确定
+        </button>
     </mat-dialog-actions>
 </form>

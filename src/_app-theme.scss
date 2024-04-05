@@ -12,6 +12,8 @@
 @use './app/shared/components/error-code/error-code-theme';
 @use './app//shared/components//navbar/navbar-theme';
 @use './app/shared/components/page-header/page-header-theme';
+@use './app/shared/components/tag/tag-theme';
+
 
 @mixin hoteler-app-theme($theme) {
 
@@ -26,6 +28,7 @@
   @include navbar-theme.hoteler-navbar-theme($theme);
   @include page-header-theme.hoteler-page-header-theme($theme);
   @include apexcharts-theme.hoteler-apexcharts-theme($theme);
+  @include tag-theme.hoteler-tag-theme($theme);
 
   // @include input-theme.hoteler-input-theme($theme);
 

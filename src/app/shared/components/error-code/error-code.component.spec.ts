@@ -10,7 +10,7 @@ import { runOnPushChangeDetection } from '../../testings/fixture';
 
 import { ErrorCodeComponent } from './error-code.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { RouterLinkWithHref } from '@angular/router';
+import { provideRouter, RouterLinkWithHref } from '@angular/router';
 import { Component, input } from '@angular/core';
 
 @Component({
@@ -31,6 +31,13 @@ describe('ErrorCodeComponent', () => {
         ]),
         ErrorCodeComponent,
       ],
+      providers: [
+        provideRouter(
+         [
+          { path: 'login', component: LoginComponent },
+         ]
+        )
+      ]
     }).compileComponents();
   }));
 
@@ -45,7 +52,7 @@ describe('ErrorCodeComponent', () => {
   });
 
   it('error code show 401', fakeAsync(() => {
-    component.code = input('401');
+    fixture.componentRef.setInput('code', '401');
     runOnPushChangeDetection(fixture);
     tick();
     const errorCodeEl = fixture.debugElement.query(
@@ -55,7 +62,7 @@ describe('ErrorCodeComponent', () => {
   }));
 
   it('no eletemt stores error title', fakeAsync(() => {
-    component.title = input('');
+    fixture.componentRef.setInput('title', '');
     runOnPushChangeDetection(fixture);
     tick();
     const errorTitleEl = fixture.debugElement.query(
@@ -65,7 +72,7 @@ describe('ErrorCodeComponent', () => {
   }));
 
   it('error title show no-title if title is not empty', fakeAsync(() => {
-    component.title = input('no-title');
+    fixture.componentRef.setInput('title', 'no-title');
     runOnPushChangeDetection(fixture);
     tick();
     const errorTitleEl = fixture.debugElement.query(
@@ -75,7 +82,7 @@ describe('ErrorCodeComponent', () => {
   }));
 
   it('no eletemt stores error message', fakeAsync(() => {
-    component.message = input('');
+    fixture.componentRef.setInput('message', '');
     runOnPushChangeDetection(fixture);
     tick();
     const errorCodeEl = fixture.debugElement.query(
@@ -85,7 +92,7 @@ describe('ErrorCodeComponent', () => {
   }));
 
   it('error message show no-message if message is not empty', fakeAsync(() => {
-    component.message = input('no-message');
+    fixture.componentRef.setInput('message', 'no-message');
     runOnPushChangeDetection(fixture);
     tick();
     const errorCodeEl = fixture.debugElement.query(

@@ -18,7 +18,8 @@ import {
   ThemePickerComponent,
   ThemeStorageService,
   CarouselItemDirective,
-  CarouselComponent
+  CarouselComponent,
+  TagComponent
 } from './components';
 import { SharedCdkModule } from './shared.cdk.module';
 import { SharedMaterialModule } from './shared.material.module';
@@ -51,6 +52,7 @@ import { LoadingShadeComponent } from './components/loading-shade';
     ThemePickerComponent,
     PageHeaderComponent,
     SkeletonLoaderComponent,
+    TagComponent,
   ],
   providers: [
     ThemeStorageService,

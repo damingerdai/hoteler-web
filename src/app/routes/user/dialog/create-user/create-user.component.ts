@@ -5,7 +5,7 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Roles } from 'src/app/core/models/roles';
 import { MatxPassToggleVisibilityModule } from 'src/app/shared/components/matx-pass-toggle-visibility/matx-pass-toggle-visibility.module';
 import { SharedCdkModule } from 'src/app/shared/shared.cdk.module';
@@ -32,11 +32,9 @@ export class CreateUserComponent {
     protected roles: Roles;
 
     constructor(
-        private dialogRef: MatDialogRef<CreateUserComponent>,
         @Inject(MAT_DIALOG_DATA) private data: CreateUserDialogData,
         private fb: FormBuilder
     ) {
-        this.dialogRef = dialogRef;
         this.roles = data.roles ?? [];
         console.log(this.roles);
         this.form = this.fb.group({
@@ -47,11 +45,11 @@ export class CreateUserComponent {
     }
 
     confirm(): void {
-        console.log(this.form.value);
-        this.dialogRef.close();
+        // console.log(this.form.value);
+        // this.dialogRef.close();
     }
 
     onNoClick(): void {
-        this.dialogRef.close();
+        // this.dialogRef.close();
     }
 }

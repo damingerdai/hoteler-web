@@ -2,7 +2,7 @@ import { Component, OnInit, afterNextRender, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IUser } from 'src/app/core/models';
 import { UserService } from 'src/app/core/services/user/user.service';
-import { PageHeaderComponent } from 'src/app/shared/components';
+import { PageHeaderComponent, TagComponent } from 'src/app/shared/components';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 import { SharedPipesModule } from 'src/app/shared/shared.pipes.module';
 import { CreateUserComponent } from '../dialog/create-user/create-user.component';
@@ -14,7 +14,7 @@ import { Roles } from 'src/app/core/models/roles';
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.scss'],
     standalone: true,
-    imports: [PageHeaderComponent, SharedMaterialModule, SharedPipesModule],
+    imports: [PageHeaderComponent, SharedMaterialModule, SharedPipesModule, TagComponent],
 })
 export class UserListComponent implements OnInit {
     protected dialog = inject(MatDialog);
