@@ -1,13 +1,34 @@
 .settings_wrapper {
-  display: block;
   text-align: center;
 
   .settings {
-    max-width: 375px;
+    min-width: 375px;
     text-align: left;
 
     .header {
       max-width: 100px;
     }
   }
+}
+
+.mat-h1 {
+  margin: {
+    top: 0;
+    bottom: 8px;
+  };
+
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.mat-h2 {
+  margin: {
+    top: 0;
+    bottom: 8px;
+  };
+
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
 }
