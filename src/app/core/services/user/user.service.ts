@@ -12,8 +12,8 @@ export class UserService {
     private api: ApiService
   ) { }
 
-  public createUser(username: string, password: string): Observable<IResponse> {
-    return this.api.post<IResponse>('/api/v1/user', { username, password });
+  public createUser(username: string, password: string, roles: string[] = []): Observable<IResponse> {
+    return this.api.post<IResponse>('/api/v1/user', { username, password, roles });
   }
 
   public getCurrentUser(accessToken?: string): Observable<DataResponse<IUser>> {

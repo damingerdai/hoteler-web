@@ -36,17 +36,11 @@ export class CreateUserComponent {
         private fb: FormBuilder
     ) {
         this.roles = data.roles ?? [];
-        console.log(this.roles);
         this.form = this.fb.group({
             username: ['', [Validators.required]],
             password: ['', [Validators.required]],
             roles: [[], [Validators.required]],
         });
-    }
-
-    confirm(): void {
-        // console.log(this.form.value);
-        // this.dialogRef.close();
     }
 
     onNoClick(): void {

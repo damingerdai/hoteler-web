@@ -1,12 +1,12 @@
 <h2 mat-dialog-title>创建用户</h2>
-<form [formGroup]="form" (submit)="confirm()">
+<form [formGroup]="form">
     <mat-dialog-content>
         <mat-form-field
             class="w-full form-filed-full m-t-4"
             appearance="outline"
         >
             <mat-label>用户名</mat-label>
-            <input matInput placeholder="用户名" formGroupName="username" />
+            <input matInput placeholder="用户名" formControlName="username" />
         </mat-form-field>
         <mat-form-field
             class="w-full form-filed-full m-t-4"
@@ -28,7 +28,7 @@
             <mat-label>角色</mat-label>
             <mat-select multiple formControlName="roles">
                 @for (role of roles; track role.id) {
-                    <mat-option [value]="role.id">{{ role.name }}</mat-option>
+                    <mat-option [value]="role.name">{{ role.name }}</mat-option>
                 }
             </mat-select>
         </mat-form-field>
@@ -44,6 +44,7 @@
         </button>
         <button
             mat-button
+            [disabled]="form.invalid"
             color="primary"
             type="submit"
             [mat-dialog-close]="form.getRawValue()"
