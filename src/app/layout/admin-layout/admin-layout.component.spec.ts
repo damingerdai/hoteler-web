@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { AdminLayoutComponent } from './admin-layout.component';
-import { LayoutService } from 'src/app/core/services/layout';
 
 describe('AdminLayoutComponent', () => {
   let component: AdminLayoutComponent;
@@ -11,7 +11,7 @@ describe('AdminLayoutComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ AdminLayoutComponent ],
       providers: [
-        LayoutService
+        provideRouter([])
       ]
     })
     .compileComponents();

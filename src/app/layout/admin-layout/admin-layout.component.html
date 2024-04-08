@@ -1,42 +1,52 @@
-<app-navbar class="mat-elevation-z6" [showMenu]="true"></app-navbar>
+<app-navbar
+    class="mat-elevation-z6"
+    [showMenu]="true"
+    (menuClick)="toggleDrawer()"
+></app-navbar>
 <div class="h-full">
-  <mat-drawer-container class="container">
-    <mat-drawer class="h-full drawer" #drawer [opened]="open" [mode]="mode">
-      <div class="d-flex flex-col h-full">
-        @for (menu of menus; track $index) {
-          @if (menu.type === "menu") {
-            <mat-nav-list>
-              @if (menu.header) {
-                <h3 matSubheader>{{ menu.header }}</h3>
-              }
-              @for (item of menu.items; track item.link) {
-                <a
-                  mat-list-item
-                  [routerLink]="item.link"
-                  routerLinkActive="active"
-                >
-                  <mat-icon matListItemIcon> {{ item.icon }} </mat-icon>
-                  <p mat-line>{{ item.line }}</p>
-                </a>
-              }
-            </mat-nav-list>
-          } @else if (menu.type === "divider") {
-            <mat-divider></mat-divider>
-          }
-        }
-        <mat-divider />
-        <div flexSpacer></div>
-        <mat-divider />
-        <mat-nav-list>
-          <a mat-list-item routerLink="settings" routerLinkActive="active">
-            <mat-icon matListItemIcon>settings</mat-icon>
-            <p mat-line>设置</p>
-          </a>
-        </mat-nav-list>
-      </div>
-    </mat-drawer>
-    <mat-drawer-content class="h-full">
-      <router-outlet></router-outlet>
-    </mat-drawer-content>
-  </mat-drawer-container>
+    <mat-drawer-container class="container">
+        <mat-drawer class="h-full drawer" #drawer [opened]="open" [mode]="mode">
+            <div class="d-flex flex-col h-full">
+                @for (menu of menus; track $index) {
+                    @if (menu.type === 'menu') {
+                        <mat-nav-list>
+                            @if (menu.header) {
+                                <h3 matSubheader>{{ menu.header }}</h3>
+                            }
+                            @for (item of menu.items; track item.link) {
+                                <a
+                                    mat-list-item
+                                    [routerLink]="item.link"
+                                    routerLinkActive="active"
+                                >
+                                    <mat-icon matListItemIcon>
+                                        {{ item.icon }}
+                                    </mat-icon>
+                                    <p mat-line>{{ item.line }}</p>
+                                </a>
+                            }
+                        </mat-nav-list>
+                    } @else if (menu.type === 'divider') {
+                        <mat-divider></mat-divider>
+                    }
+                }
+                <mat-divider />
+                <div flexSpacer></div>
+                <mat-divider />
+                <mat-nav-list>
+                    <a
+                        mat-list-item
+                        routerLink="settings"
+                        routerLinkActive="active"
+                    >
+                        <mat-icon matListItemIcon>settings</mat-icon>
+                        <p mat-line>设置</p>
+                    </a>
+                </mat-nav-list>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content class="h-full">
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
 </div>

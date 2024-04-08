@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { TitleCasePipe } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -6,7 +6,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser, Permission } from 'src/app/core/models';
-import { LayoutService } from 'src/app/core/services/layout';
 import { SettingsService } from '../../../core/services/settings/settings.service';
 import { SharedMaterialModule } from '../../shared.material.module';
 import { ThemePickerComponent } from '../theme-picker/theme-picker.component';
@@ -90,13 +89,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
     return true;
   }
 
+  @Output()
+  public menuClick = new EventEmitter<void>();
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private settings: SettingsService,
     private router: Router,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
-    protected layoutService: LayoutService
   ) {
     this.isKikeIPhone5s = false;
     const subscription1 = this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(
@@ -107,10 +108,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subscription1);
     const subscription2 = this.settings.user$.subscribe(user => this.processUser(user));
     this.subscriptions.push(subscription2);
-    const subscription3 = this.layoutService.adminlayoutSource$.subscribe(b => {
-      this.showMenu = b;
-    });
-    this.subscriptions.push(subscription3);
     const subscription4 = this.breakpointObserver.observe(['(max-width: 374px) and (orientation: portrait)']).subscribe(
       result => {
         this.isKikeIPhone5s = result.matches;
@@ -137,7 +134,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   public toggle() {
-    this.layoutService.drawerStatus(true);
+    this.menuClick.next();
   }
 
   protected processUser(user: Partial<IUser>) {
