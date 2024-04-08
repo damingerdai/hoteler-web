@@ -29,15 +29,18 @@
                                     {{ room.roomname }}
                                 </mat-card-title>
                                 <mat-card-subtitle>
-                                    <mat-chip-set>
-                                        <mat-chip-option color="primary">
-                                            @if (room.status === 1) {
-                                                空闲
-                                            } @else if (room.status === 2) {
-                                                占用
-                                            }
-                                        </mat-chip-option>
-                                    </mat-chip-set>
+                                    @switch (room.status) {
+                                        @case (1) {
+                                            <app-tag color="primary"
+                                                >空闲</app-tag
+                                            >
+                                        }
+                                        @case (2) {
+                                            <app-tag color="accent"
+                                                >占用</app-tag
+                                            >
+                                        }
+                                    }
                                 </mat-card-subtitle>
                             </mat-card-header>
                             <img
@@ -106,15 +109,14 @@
                         <ng-container matColumnDef="status">
                             <th mat-header-cell *matHeaderCellDef>状态</th>
                             <td mat-cell *matCellDef="let element">
-                                <mat-chip-set>
-                                    <mat-chip-option color="primary" selected>
-                                        @if (element.status === 1) {
-                                            空闲
-                                        } @else if (element.status === 2) {
-                                            占用
-                                        }
-                                    </mat-chip-option>
-                                </mat-chip-set>
+                                @switch (element.status) {
+                                    @case (1) {
+                                        <app-tag color="primary">空闲</app-tag>
+                                    }
+                                    @case (2) {
+                                        <app-tag color="accent">占用</app-tag>
+                                    }
+                                }
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="action">

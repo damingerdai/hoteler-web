@@ -15,14 +15,13 @@ import { IRoom, Rooms } from 'src/app/core/models';
 import { of } from 'rxjs';
 import { CustomerCheckinRecordService } from 'src/app/core/services/customer-checkin-record';
 import { CurrencyPipe } from '@angular/common';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { AddCustomerRoomDialogComponent, CreateRoomDialogComponent, UpdateRoomDialogComponent } from './dialog';
-import { ConfirmComponent, PageHeaderComponent } from 'src/app/shared/components';
+import { ConfirmComponent, PageHeaderComponent, TagComponent } from 'src/app/shared/components';
 import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 
 
@@ -34,7 +33,6 @@ import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
   imports: [
     MatMenuModule,
     MatButtonModule,
-    MatChipsModule,
     MatIconModule,
     MatTableModule,
     MatCardModule,
@@ -47,7 +45,8 @@ import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
     //SharedModule,
     LoadingShadeComponent,
     PageHeaderComponent,
-    CustomizerComponent
+    CustomizerComponent,
+    TagComponent,
   ],
 })
 export class RoomComponent implements OnInit {
