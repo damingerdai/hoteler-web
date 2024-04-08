@@ -43,7 +43,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
         this.isMobile = result.matches;
       }
     );
-    this.open = false;
+    this.open = true;
     this.layoutService.drawerStatusSource$.subscribe(() => this.open = !this.open);
   }
   ngOnInit(): void {
