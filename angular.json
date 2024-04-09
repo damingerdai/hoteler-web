@@ -79,6 +79,26 @@
                                 "inject": false,
                                 "input": "src/styles/custom-themes/m3-dark.scss",
                                 "bundleName": "m3-dark"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/azure-blue.scss",
+                                "bundleName": "azure-blue"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/rose-red.scss",
+                                "bundleName": "rose-red"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/magenta-violet.scss",
+                                "bundleName": "magenta-violet"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/cyan-orange.scss",
+                                "bundleName": "cyan-orange"
                             }
                         ],
                         "stylePreprocessorOptions": {

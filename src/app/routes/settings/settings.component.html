@@ -8,7 +8,10 @@
             <mat-card-content>
                 <div class="d-flex p-t-8 justify-content-between">
                     M3主题设置
-                    <mat-slide-toggle hideIcon />
+                    <mat-slide-toggle
+                        hideIcon
+                        (change)="toggleM3Theme($event.checked)"
+                    />
                 </div>
             </mat-card-content>
         </mat-card>

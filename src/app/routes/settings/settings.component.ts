@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 
 @Component({
@@ -8,10 +9,16 @@ import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
   standalone: true,
   imports: [
     SharedMaterialModule,
-  ]
+  ],
 })
 export class SettingsComponent{
 
+  private settingsService: SettingsService = inject(SettingsService);
+
   constructor() { }
+
+  public toggleM3Theme(checked: boolean) {
+    this.settingsService.m3Source.next(checked);
+  }
 
 }
