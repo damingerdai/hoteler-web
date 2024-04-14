@@ -1,21 +1,22 @@
 <button
-  mat-icon-button
-  aria-label="Select a theme"
-  [mat-menu-trigger-for]="themeMenu"
-  matTooltip="主题选择"
+    mat-icon-button
+    class="theme-picker-trigger"
+    aria-label="Select a theme"
+    [mat-menu-trigger-for]="themeMenu"
+    matTooltip="主题选择"
 >
-  <mat-icon>format_color_fill</mat-icon>
+    <mat-icon>format_color_fill</mat-icon>
 </button>
 
 <mat-menu #themeMenu="matMenu" xPosition="before" class="theme-picker-menu">
-  @for (theme of themes; track $index) {
-    <button mat-menu-item (click)="selectTheme($event, theme.name)">
-      <mat-icon [color]="currentTheme === theme ? 'accent' : undefined">{{
-        currentTheme === theme
-          ? "radio_button_checked"
-          : "radio_button_unchecked"
-      }}</mat-icon>
-      <span> {{ theme.displayName }}</span>
-    </button>
-  }
+    @for (theme of themes; track $index) {
+        <button mat-menu-item (click)="selectTheme($event, theme.name)">
+            <mat-icon [color]="currentTheme === theme ? 'accent' : undefined">{{
+                currentTheme === theme
+                    ? 'radio_button_checked'
+                    : 'radio_button_unchecked'
+            }}</mat-icon>
+            <span> {{ theme.displayName }}</span>
+        </button>
+    }
 </mat-menu>

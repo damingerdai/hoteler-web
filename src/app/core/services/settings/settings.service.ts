@@ -14,6 +14,10 @@ export class SettingsService {
   private userSource = new Subject<Partial<IUser>>();
   public user$ = this.userSource.asObservable();
 
+  private _m3: boolean;
+  public m3Source = new Subject<boolean>();
+  public m3$ = this.m3Source.asObservable();
+
   // eslint-disable-next-line no-underscore-dangle, id-blacklist, id-match
   public set user(user: Partial<IUser>) {
     const exitUser = this.localStorageService.get<Partial<IUser>>('user') ?? {};

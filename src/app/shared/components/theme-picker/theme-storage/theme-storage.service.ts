@@ -1,15 +1,28 @@
 import { EventEmitter, Injectable } from '@angular/core';
 
-export interface SiteTheme {
+export interface SiteM2Theme {
   name: string;
   displayName?: string;
   accent: string;
   primary: string;
   isDark?: boolean;
   isDefault?: boolean;
+  type: 'm2'
 }
 
-export type SiteThemes = SiteTheme[];
+export interface SiteM3Theme {
+  name: string;
+  displayName?: string;
+  color: string;
+  background: string;
+  isDark?: boolean;
+  isDefault?: boolean;
+  type: 'm3'
+}
+
+export type SiteTheme = SiteM2Theme | SiteM3Theme;
+
+export type SiteThemes = Array<SiteTheme>;
 
 @Injectable()
 export class ThemeStorageService {
@@ -23,7 +36,7 @@ export class ThemeStorageService {
   storeTheme(theme: SiteTheme) {
     try {
       window.localStorage[ThemeStorageService.storageKey] = theme.name;
-    } catch (err) { 
+    } catch (err) {
       console.error(err);
     }
 
@@ -41,7 +54,7 @@ export class ThemeStorageService {
   clearStorage() {
     try {
       window.localStorage.removeItem(ThemeStorageService.storageKey);
-    } catch (err) { 
+    } catch (err) {
       console.error(err);
     }
   }

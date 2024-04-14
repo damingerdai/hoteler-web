@@ -7,7 +7,8 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { StyleManagerService } from 'src/app/core/services/style-manager/style-manager.service';
+import { SettingsService } from '../../../core/services/settings/settings.service';
+import { StyleManagerService } from '../../../core/services/style-manager/style-manager.service';
 import { SiteTheme, SiteThemes, ThemeStorageService } from './theme-storage/theme-storage.service';
 import { DOCUMENT } from '@angular/common';
 
@@ -23,7 +24,7 @@ export class ThemePickerComponent implements OnInit {
 
   currentTheme: SiteTheme;
 
-  themes: SiteThemes = [
+  allTheme: SiteThemes = [
     {
       primary: '#3F51B5',
       accent: '#E91E63',
@@ -32,6 +33,7 @@ export class ThemePickerComponent implements OnInit {
       name: 'indigo-pink',
       isDark: false,
       isDefault: true,
+      type: 'm2',
     },
     {
       primary: '#673AB7',
@@ -40,6 +42,7 @@ export class ThemePickerComponent implements OnInit {
       displayName: '深紫 & 琥珀',
       name: 'deeppurple-amber',
       isDark: false,
+      type: 'm2',
     },
     // {
     //   primary: '#FF9800',
@@ -55,6 +58,7 @@ export class ThemePickerComponent implements OnInit {
       displayName: '粉色 & 蓝灰',
       name: 'pink-bluegrey',
       isDark: true,
+      type: 'm2',
     },
     {
       primary: '#9C27B0',
@@ -63,6 +67,7 @@ export class ThemePickerComponent implements OnInit {
       displayName: '紫色 & 绿色',
       name: 'purple-green',
       isDark: true,
+      type: 'm2',
     },
     // {
     //   primary: '#FF9800',
@@ -71,23 +76,57 @@ export class ThemePickerComponent implements OnInit {
     //   name: 'pwc-dark',
     //   isDark: true
     // },
+    // {
+    //   primary: '#9C27B0',
+    //   accent: '#4CAF50',
+    //   // displayName: 'Purple & Green',
+    //   displayName: 'M3 亮',
+    //   name: 'm3-light',
+    //   isDark: false,
+    //   type: 'm3',
+    // },
+    // {
+    //   primary: '#9C27B0',
+    //   accent: '#4CAF50',
+    //   // displayName: 'Purple & Green',
+    //   displayName: 'M3 暗',
+    //   name: 'm3-dark',
+    //   isDark: true,
+    //   type: 'm3',
+    // },
+
     {
-      primary: '#9C27B0',
-      accent: '#4CAF50',
-      // displayName: 'Purple & Green',
-      displayName: 'M3 亮',
-      name: 'm3-light',
-      isDark: false,
+      color: '#ffd9e1',
+      displayName: 'Rose & Red',
+      name: 'rose-red',
+      background: '#fffbff',
+      type: 'm3',
     },
     {
-      primary: '#9C27B0',
-      accent: '#4CAF50',
-      // displayName: 'Purple & Green',
-      displayName: 'M3 暗',
-      name: 'm3-dark',
-      isDark: true,
+      color: '#d7e3ff',
+      displayName: 'Azure & Blue',
+      name: 'azure-blue',
+      background: '#fdfbff',
+      isDefault: true,
+      type: 'm3',
+    },
+    {
+      color: '#810081',
+      displayName: 'Magenta & Violet',
+      name: 'magenta-violet',
+      background: '#1e1a1d',
+      type: 'm3',
+    },
+    {
+      color: '#004f4f',
+      displayName: 'Cyan & Orange',
+      name: 'cyan-orange',
+      background: '#191c1c',
+      type: 'm3',
     },
   ];
+
+  themes: SiteThemes = [];
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -95,14 +134,24 @@ export class ThemePickerComponent implements OnInit {
     private themeStorage: ThemeStorageService,
     private liveAnnouncer: LiveAnnouncer,
     private metaService: Meta,
-    private platform: Platform
+    private platform: Platform,
+    private settingService: SettingsService
   ) {
+    this.themes = this.allTheme.filter(t => t.type === 'm2');
     this.currentTheme = this.themes[0];
     const themeName = this.themeStorage.getStoredThemeName();
     const theme = this.themes.find(currentTheme => currentTheme.name === themeName);
     if (themeName && theme) {
       this.doSelectTheme(theme);
     }
+    this.settingService.m3$.subscribe(m3 => {
+      this.themes = this.allTheme.filter(t => t.type === (m3 ? 'm3' : 'm2'));
+      this.currentTheme = this.themes[0];
+      const theme = this.themes.find(t => t.name === this.currentTheme.name);
+      if (theme) {
+        this.doSelectTheme(theme);
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -151,13 +200,13 @@ export class ThemePickerComponent implements OnInit {
     }
     if (this.platform.ANDROID && this.platform.BLINK) {
       this.metaService.updateTag({
-        name: 'theme-color', content: theme.primary
+        name: 'theme-color', content: theme.type == 'm2' ? theme.primary : theme.background,
       });
     }
     if (this.platform.TRIDENT) {
       // only for wp
       this.metaService.updateTag({
-        name: 'msapplication-navbutton-color', content: theme.primary,
+        name: 'msapplication-navbutton-color', content: theme.type == 'm2' ? theme.primary : theme.background,
       });
     }
     if (this.platform.IOS && this.platform.SAFARI) {
