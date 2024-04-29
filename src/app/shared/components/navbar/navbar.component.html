@@ -28,18 +28,20 @@
     }
     <div flexSpacer></div>
     <app-theme-picker />
-    <a
-        mat-icon-button
-        class="hoteler-button"
-        href="https://github.com/damingerdai/hoteler"
-        aria-label="GitHub Repository"
-    >
-        <mat-icon
-            svgIcon="github"
-            aria-hidden="false"
-            aria-label="gitHub icon"
-        ></mat-icon>
-    </a>
+    @if (showGithubLogo) {
+        <a
+            mat-icon-button
+            class="hoteler-button"
+            href="https://github.com/damingerdai/hoteler"
+            aria-label="GitHub Repository"
+        >
+            <mat-icon
+                svgIcon="github"
+                aria-hidden="false"
+                aria-label="gitHub icon"
+            ></mat-icon>
+        </a>
+    }
     @if (username) {
         <a
             mat-button
