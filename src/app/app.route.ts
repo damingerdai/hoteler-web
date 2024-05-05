@@ -145,6 +145,16 @@ export const routes: Routes = [
                         (r) => r.routes
                     ),
             },
+            {
+                path: 'orders',
+                title: 'Hoteler Portal -- 订单管理',
+                canLoad: [canActivateFn],
+                canActivate: [canActivateFn],
+                loadChildren: () =>
+                    import('./routes/orders/orders.route').then(
+                        (m) => m.routes
+                    ),
+            },
         ],
     },
     { path: '**', redirectTo: '404' },
