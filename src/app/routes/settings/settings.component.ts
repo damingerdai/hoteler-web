@@ -18,7 +18,7 @@ export class SettingsComponent{
   constructor() { }
 
   public toggleM3Theme(checked: boolean) {
-    this.settingsService.m3Source.next(checked);
+    
   }
 
 }

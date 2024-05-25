@@ -1,26 +1,14 @@
 import { EventEmitter, Injectable } from '@angular/core';
 
-export interface SiteM2Theme {
+export interface SiteTheme {
   name: string;
   displayName?: string;
   accent: string;
   primary: string;
   isDark?: boolean;
   isDefault?: boolean;
-  type: 'm2'
 }
 
-export interface SiteM3Theme {
-  name: string;
-  displayName?: string;
-  color: string;
-  background: string;
-  isDark?: boolean;
-  isDefault?: boolean;
-  type: 'm3'
-}
-
-export type SiteTheme = SiteM2Theme | SiteM3Theme;
 
 export type SiteThemes = Array<SiteTheme>;
 
