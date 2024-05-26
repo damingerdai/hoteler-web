@@ -1,14 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NgModule } from '@angular/core';
 import { ApiService } from '../api/api.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientTestingModule
-  ],
-  providers: [ApiService],
-  declarations: [],
-})
+@NgModule({ declarations: [], imports: [CommonModule], providers: [ApiService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()] })
 export class ApiTestingModule {}
