@@ -2,12 +2,10 @@
 @use '@angular/material' as mat;
 
 @mixin hoteler-admin-layout-theme($theme) {
-  $foreground: map.get($theme, foreground);
-
   .container {
     .drawer {
       mat-icon {
-        color: mat.m2-get-color-from-palette($foreground, text);
+        color: mat.get-theme-color($theme, on-surface);
       }
     }
   }

@@ -10,11 +10,7 @@
         </button>
     }
     <a mat-button class="hoteler-button" routerLink="/" aria-label="Hoteler">
-        <img
-            class="logo"
-            src="assets/img/angular-white-transparent.svg"
-            alt="angular"
-        />
+        <app-logo matButtonIcon />
         @if (showBarnd) {
             <span>Hoteler</span>
         }
@@ -26,8 +22,8 @@
             }}</a>
         }
     }
-    <div flexSpacer></div>
-    <app-theme-picker />
+    <spacer />
+    <!-- <app-theme-picker /> -->
     @if (showGithubLogo) {
         <a
             mat-icon-button

@@ -18,6 +18,7 @@ import { SharedMaterialModule } from '../../shared.material.module';
 import { ThemePickerComponent } from '../theme-picker/theme-picker.component';
 import { FlexSpacerDirective } from '../../ui/directives/flex-spacer.directive';
 import { environment } from 'src/environments/environment';
+import { LogoComponent } from '../logo/logo.component';
 
 interface IMenuItem {
     displayName: string;
@@ -57,6 +58,7 @@ const MENUS: IMenuItem[] = [
         RouterModule,
         SharedMaterialModule,
 
+        LogoComponent,
         ThemePickerComponent,
         TitleCasePipe,
         FlexSpacerDirective,

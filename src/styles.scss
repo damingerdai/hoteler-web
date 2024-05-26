@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
-@import './app-theme';
-@import './styles/breakpoints';
+@use './app-theme';
+@use './styles/breakpoints';
 @import './styles/buttons';
 @import './styles/variables';
 @import './styles/general';
@@ -11,7 +11,19 @@
 @import './styles/view-transition';
 @import './styles/helpers';
 
-@include mat.core;
+$theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  )
+));
 
-@include mat.all-component-themes($theme);
-@include hoteler-app-theme($theme);
+// Include material core styles.
+@include mat.core;
+@include mat.color-variants-backwards-compatibility($theme);
+@include app-theme.hoteler-app-theme($theme);
+
+:root {
+  @include mat.all-component-themes($theme);
+}

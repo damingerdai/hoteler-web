@@ -9,22 +9,22 @@
   $foreground: map.get($theme, foreground);
 
   .apexcharts-title-text {
-    color: mat.m2-get-color-from-palette($foreground, text) !important;
-    fill: mat.m2-get-color-from-palette($foreground, text) !important;
+    color: mat.get-theme-color($theme, on-surface) !important;
+    fill: mat.get-theme-color($theme, on-surface) !important;
   }
 
   .apexcharts-menu {
-    background: mat.m2-get-color-from-palette($background, background) !important;
+    background: mat.get-theme-color($theme, surface) !important;
   }
 
   .apexcharts-menu-item {
     &:hover {
-      color: mat.m2-get-color-from-palette($foreground, text) !important;
+      color: mat.get-theme-color($theme, on-surface) !important;
     }
   }
 
   .apexcharts-legend-text {
     // background: mat.get-color-from-palette($background, background) !important;
-    color: mat.m2-get-color-from-palette($foreground, text) !important;
+    color: mat.get-theme-color($theme, on-surface) !important;
   }
 }

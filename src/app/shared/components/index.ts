@@ -3,6 +3,8 @@ export * from './carousel/carousel-item.directive';
 export * from './carousel/carousel.component';
 export * from './confirm/confirm.component';
 export * from './error-code/error-code.component';
+export * from './loading-shade/loading-shade.component';
+export * from './logo/logo.component';
 export * from './navbar/navbar.component';
 export * from './page-header/page-header.component';
 export * from './skeleton-loader/skeleton-loader-config.types';

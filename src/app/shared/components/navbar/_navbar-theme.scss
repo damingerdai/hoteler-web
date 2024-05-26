@@ -1,16 +1,11 @@
-@use 'sass:map';
 @use '@angular/material' as mat;
 
 @mixin hoteler-navbar-theme($theme) {
-  $primary: map.get($theme, primary);
-  $accent: map.get($theme, accent);
-  $warn: map.get($theme, warn);
-  $background: map.get($theme, background);
-  $foreground: map.get($theme, foreground);
-
   app-navbar {
-    color: mat.m2-get-color-from-palette($primary, default-contrast);
-    background: mat.m2-get-color-from-palette($primary);
+    mat-toolbar {
+      color: mat.get-theme-color($theme, primary) !important;
+      background: mat.get-theme-color($theme, primary-container) !important;
+    }
 
     a.hoteler-button {
       &:hover {
@@ -18,7 +13,7 @@
           color: rgba(0, 0, 0, .4);
         };
 
-        color: mat.m2-get-color-from-palette($accent);
+        color: mat.get-theme-color($theme, tertiary);
       }
     }
   }

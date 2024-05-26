@@ -1,7 +1,7 @@
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[flexSpacer]',
+  selector: '[flexSpacer], spacer',
   standalone: true
 })
 export class FlexSpacerDirective {

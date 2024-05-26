@@ -2,17 +2,15 @@
 @use "@angular/material" as mat;
 
 @mixin hoteler-room-theme($theme) {
-  $foreground: map.get($theme, foreground);
-
   .room-list {
-    color: mat.m2-get-color-from-palette($foreground, text);
+    color: mat.get-theme-color($theme, on-surface);
   }
 
   .room-card {
     mat-card {
       mat-card-header {
         mat-card-title {
-          color: mat.m2-get-color-from-palette($foreground, text);
+          color: mat.get-theme-color($theme, on-surface);
         }
       }
     }

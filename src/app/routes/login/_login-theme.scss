@@ -2,21 +2,19 @@
 @use '@angular/material' as mat;
 
 @mixin hoteler-login-theme($theme) {
-  $foreground: map.get($theme, foreground);
-
   .login {
     &-card {
       mat-card-header,
       .visibility,
       .tip {
-        color: mat.m2-get-color-from-palette($foreground, text);
+        color: mat.get-theme-color($theme, on-surface);
       }
 
       mat-card-content {
         form {
           mat-form-field {
             > mat-icon {
-              color: mat.m2-get-color-from-palette($foreground, text);
+              color: mat.get-theme-color($theme, on-surface);
             }
           }
         }

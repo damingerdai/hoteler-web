@@ -2,9 +2,7 @@
 @use '@angular/material' as mat;
 
 @mixin hoteler-settings-theme($theme) {
-  $foreground: map.get($theme, foreground);
-
   app-settings {
-    color: mat.m2-get-color-from-palette($foreground, text);
+    color: mat.get-theme-color($theme, on-surface);
   }
 }
