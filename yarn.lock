@@ -4224,10 +4224,10 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apexcharts@3.48.0:
-  version "3.48.0"
-  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.48.0.tgz#cf0e18f4551b04a242d81942c965c15547f5f1b6"
-  integrity sha512-Lhpj1Ij6lKlrUke8gf+P+SE6uGUn+Pe1TnCJ+zqrY0YMvbqM3LMb1lY+eybbTczUyk0RmMZomlTa2NgX2EUs4Q==
+apexcharts@~3.49.0:
+  version "3.49.1"
+  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.49.1.tgz#837d1d4fd80f2c092f0587e8fb6bbc31ad57a0f3"
+  integrity sha512-MqGtlq/KQuO8j0BBsUJYlRG8VBctKwYdwuBtajHgHTmSgUU3Oai+8oYN/rKCXwXzrUlYA+GiMgotAIbXY2BCGw==
   dependencies:
     "@yr/monotone-cubic-spline" "^1.0.3"
     svg.draggable.js "^2.2.2"
@@ -8065,10 +8065,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngx-apexcharts@0.4.12:
-  version "0.4.12"
-  resolved "https://registry.yarnpkg.com/ngx-apexcharts/-/ngx-apexcharts-0.4.12.tgz#f3718a0c3c11e8cac9d18e3ec5144b128b65d2ce"
-  integrity sha512-rht55wnTT7zVtJl8pqlQl6MzZ4OhkSmJSDxb2dzNXap+bfQG3qyhhhl7R5eOgVTcvSxNLwaUVZZPeRK5XEhKKg==
+ngx-apexcharts@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/ngx-apexcharts/-/ngx-apexcharts-0.5.1.tgz#0deb5d9479a61b92c9b68d0759e7311e1760b859"
+  integrity sha512-sWR/j1+Ho+UuKiSPgOzCFCGxdhwjVZE8i4CaViLXHoPhePySSGVacBn9RtR8tVItUJKNCZ8eye4BakL7gifOew==
   dependencies:
     tslib "^2.0.0"
 
