@@ -5,14 +5,14 @@
   $foreground: map.get($theme, foreground);
 
   .room-list {
-    color: mat.get-color-from-palette($foreground, text);
+    color: mat.m2-get-color-from-palette($foreground, text);
   }
 
   .room-card {
     mat-card {
       mat-card-header {
         mat-card-title {
-          color: mat.get-color-from-palette($foreground, text);
+          color: mat.m2-get-color-from-palette($foreground, text);
         }
       }
     }

@@ -9,7 +9,7 @@
   $foreground: map.get($theme, foreground);
 
   .carousel-nav.mat-mdc-mini-fab {
-    color: mat.get-color-from-palette($foreground, secondary-text);
-    background: mat.get-color-from-palette($background, background);
+    color: mat.m2-get-color-from-palette($foreground, secondary-text);
+    background: mat.m2-get-color-from-palette($background, background);
   }
 }

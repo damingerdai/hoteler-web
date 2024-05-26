@@ -8,8 +8,8 @@
 
   app-banner {
     .banner {
-      color: mat.get-color-from-palette($primary, default-contrast);
-      background: mat.get-color-from-palette($primary);
+      color: mat.m2-get-color-from-palette($primary, default-contrast);
+      background: mat.m2-get-color-from-palette($primary);
     }
   }
 }

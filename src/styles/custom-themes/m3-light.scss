@@ -3,11 +3,11 @@
 @use '@angular/material-experimental' as matx;
 @use '../../app-theme';
 
-$theme: matx.define-theme();
+$theme: mat.define-theme();
 
 html {
   @include mat.all-component-themes(map.merge($theme, (
-    typography: mat.define-typography-config()
+    typography: mat.m2-define-typography-config()
   )));
 }
 
