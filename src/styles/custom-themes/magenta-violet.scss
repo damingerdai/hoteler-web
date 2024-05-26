@@ -1,15 +1,15 @@
 @use '@angular/material' as mat;
 @use '@angular/material-experimental' as matx;
 
-$theme: matx.define-theme((
+$theme: mat.define-theme((
   color: (
     theme-type: dark,
-    primary: matx.$m3-magenta-palette,
-    tertiary: matx.$m3-violet-palette,
+    primary: mat.$magenta-palette,
+    tertiary: mat.$violet-palette,
   )
 ));
 
-@include matx.color-variants-back-compat($theme);
+@include mat.color-variants-backwards-compatibility($theme);
 
 :root {
   @include mat.all-component-themes($theme);
