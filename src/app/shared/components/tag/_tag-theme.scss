@@ -3,29 +3,29 @@
 
 
 @mixin hoteler-tag-theme($theme) {
-  $primary: map.get($theme, primary);
-  $accent: map.get($theme, accent);
-  $warn: map.get($theme, warn);
-  $background: mat.get-theme-color($theme, background, unselected-chip);
-  $foreground: mat.get-theme-color($theme, foreground, text);
+  // $primary: map.get($theme, primary);
+  // $accent: map.get($theme, accent);
+  // $warn: map.get($theme, warn);
+  // $background: mat.get-theme-color($theme, background, unselected-chip);
+  // $foreground: mat.get-theme-color($theme, foreground, text);
 
   .tag {
-    background-color: $background;
-    color: $foreground;
+    color: mat.get-theme-color($theme, on-surface);
+    background: mat.get-theme-color($theme, surface);
 
-    &-primary {
-      background-color: mat.get-theme-color($theme, primary, default);
-      color: mat.get-theme-color($theme, primary, default-contrast);
-    }
+    // &-primary {
+    //   background-color: mat.get-theme-color($theme, primary, default);
+    //   color: mat.get-theme-color($theme, primary, default-contrast);
+    // }
 
-    &-accent {
-      background-color: mat.get-theme-color($theme, accent, default);
-      color: mat.get-theme-color($theme, accent, default-contrast);
-    }
+    // &-accent {
+    //   background-color: mat.get-theme-color($theme, accent, default);
+    //   color: mat.get-theme-color($theme, accent, default-contrast);
+    // }
 
-    &-warn {
-      background-color: mat.get-theme-color($theme, warn, default);
-      color: mat.get-theme-color($theme, warn, default-contrast);
-    }
+    // &-warn {
+    //   background-color: mat.get-theme-color($theme, warn, default);
+    //   color: mat.get-theme-color($theme, warn, default-contrast);
+    // }
   }
 }

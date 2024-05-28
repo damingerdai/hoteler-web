@@ -6,18 +6,18 @@
 
   input {
     &:-internal-autofill-selected {
-      background-color: mat.m2-get-color-from-palette($background, card) !important;
+      background-color: mat.get-theme-color($theme, on-primary-container) !important;
       background-image: none !important;
 
       // color: rgb(0, 0, 0) !important;
-      box-shadow: inset 0 0 0 1000px mat.m2-get-color-from-palette($background, card) !important;
+      box-shadow: inset 0 0 0 1000px mat.get-theme-color($theme, on-primary-container) !important;
     }
 
     &:-webkit-autofill {
-      box-shadow: 0 0 0 1000px mat.m2-get-color-from-palette($background, card) inset !important;
+      box-shadow: 0 0 0 1000px mat.get-theme-color($theme, on-primary-container) inset !important;
 
       &:focus {
-        box-shadow: 0 0 0 1000px mat.m2-get-color-from-palette($background, card) inset !important;
+        box-shadow: 0 0 0 1000px mat.get-theme-color($theme, on-primary-container) inset !important;
       }
     }
   }
