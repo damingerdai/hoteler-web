@@ -1,8 +1,0 @@
-{
-  "/api": {
-    "target": "https://hoteler.damingerdai.com/",
-    "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
-  }
-}
