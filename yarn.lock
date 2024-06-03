@@ -8011,10 +8011,10 @@ ngx-apexcharts@0.6.0:
   dependencies:
     tslib "^2.0.0"
 
-ngx-dom-confetti@0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/ngx-dom-confetti/-/ngx-dom-confetti-0.3.0.tgz#246578dd876baeeeed9de5cf2fb771dc8507fd14"
-  integrity sha512-qLKF4CwcQzRjhCXd4JyAzFZ7dgqotw3FFbEcJ7kK1NUoKKOP2nHhFdYkLbSpG+1TsqdJPm1jUQV2QNBQSz2KkQ==
+ngx-dom-confetti@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/ngx-dom-confetti/-/ngx-dom-confetti-0.4.0.tgz#cf074a9b4fbf9895fc102cdc3cddc8552479f48a"
+  integrity sha512-6f50lxQZUbgARdlTdXEHdRXR9GYPN3CxzlzlZNjrgGejfjeAa+DrTJ9NVdA/tmJb4ef+ElqZhPiZcN9TEv0sYw==
   dependencies:
     tslib "^2.3.0"
 
