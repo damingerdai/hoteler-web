@@ -120,11 +120,9 @@ export class ThemePickerComponent implements OnInit {
     if (!this.platform.isBrowser) {
       return;
     }
-    if (this.platform.ANDROID && this.platform.BLINK) {
-      this.metaService.updateTag({
-        name: 'theme-color', content: theme.color,
-      });
-    }
+    this.metaService.updateTag({
+      name: 'theme-color', content: theme.color, media: `(prefers-color-scheme: ${theme.isDark ? 'dark' : 'light'})`
+    });
     if (this.platform.TRIDENT) {
       // only for wp
       this.metaService.updateTag({
