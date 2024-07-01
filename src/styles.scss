@@ -1,15 +1,15 @@
 @use '@angular/material' as mat;
 @use './app-theme';
 @use './styles/breakpoints';
-@import './styles/buttons';
-@import './styles/variables';
-@import './styles/general';
-@import './styles/form';
-@import './styles/table';
-@import './styles/misc';
-@import './styles/reboot';
-@import './styles/view-transition';
-@import './styles/helpers';
+@use './styles/buttons';
+@use './styles/colors';
+@use './styles/general';
+@use './styles/form';
+@use './styles/table';
+@use './styles/misc';
+@use './styles/reboot';
+@use './styles/view-transition';
+@use './styles/helpers';
 
 $theme: mat.define-theme((
   color: (

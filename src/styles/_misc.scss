@@ -1,5 +1,7 @@
 @use "sass:math";
 
+$gutter: 16px !default;
+
 .hoteler {
   &-row {
     margin: {

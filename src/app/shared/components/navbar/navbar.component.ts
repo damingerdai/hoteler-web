@@ -132,7 +132,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.iconRegistry.addSvgIcon(
             'github',
             sanitizer.bypassSecurityTrustResourceUrl(
-                '../../../assets/img/github-circle-white-transparent.svg'
+                '../../../img/github-circle-white-transparent.svg'
             )
         );
     }

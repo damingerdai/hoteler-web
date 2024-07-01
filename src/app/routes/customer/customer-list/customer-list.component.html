@@ -4,14 +4,6 @@
         <button mat-raised-button color="primary" (click)="createCustomer()">
             创建客户
         </button>
-        <button
-            mat-raised-button
-            class="m-l-8"
-            color="warn"
-            (click)="toggleLayout()"
-        >
-            切换布局
-        </button>
     </div>
     <mat-divider class="divider"></mat-divider>
     @if (isLoading) {
@@ -116,18 +108,27 @@
                                     {{ customer.name }}
                                 </mat-card-title>
                                 <mat-card-subtitle>
+                                    性别：
                                     @switch (customer.gender) {
                                         @case ('M') {
-                                            <app-tag color="primary"
-                                                >男</app-tag
+                                            <mat-chip
+                                                color="primary"
+                                                class="bg-orange-90"
+                                                >男</mat-chip
                                             >
                                         }
                                         @case ('F') {
-                                            <app-tag color="accent">女</app-tag>
+                                            <mat-chip
+                                                color="tertiary"
+                                                class="bg-blue-90"
+                                                >女</mat-chip
+                                            >
                                         }
                                         @default {
-                                            <app-tag color="warn"
-                                                >未知性别</app-tag
+                                            <mat-chip
+                                                color="error"
+                                                class="bg-red-80"
+                                                >未知性别</mat-chip
                                             >
                                         }
                                     }
@@ -143,7 +144,21 @@
                                     {{ processCustomerPhone(customer) }}
                                 </p>
                             </mat-card-content>
-                            <app-banner [text]="customer.gender"></app-banner>
+                            @switch (customer.gender) {
+                                @case ('M') {
+                                    <app-banner
+                                        bannerClass="bg-orange-90"
+                                        text="男"
+                                    ></app-banner>
+                                }
+                                @case ('F') {
+                                    <app-banner
+                                        bannerClass="bg-blue-90"
+                                        text="女"
+                                    ></app-banner>
+                                }
+                            }
+
                             <mat-card-actions>
                                 <button
                                     mat-button

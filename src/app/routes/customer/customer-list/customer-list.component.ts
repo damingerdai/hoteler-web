@@ -10,6 +10,7 @@ import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -28,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatDividerModule,
     MatTableModule,
     MatCardModule,
+    MatChipsModule,
   ]
 })
 export class CustomerListComponent implements OnInit {
