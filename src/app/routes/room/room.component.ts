@@ -21,7 +21,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { AddCustomerRoomDialogComponent, CreateRoomDialogComponent, UpdateRoomDialogComponent } from './dialog';
-import { ConfirmComponent, PageHeaderComponent, TagComponent } from 'src/app/shared/components';
+import { BreadcrumbComponent, ConfirmComponent, TagComponent } from 'src/app/shared/components';
 import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 
 
@@ -44,7 +44,7 @@ import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 
     //SharedModule,
     LoadingShadeComponent,
-    PageHeaderComponent,
+    BreadcrumbComponent,
     CustomizerComponent,
     TagComponent,
   ],

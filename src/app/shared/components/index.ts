@@ -1,4 +1,5 @@
 export * from './banner/banner.component';
+export * from './breadcrumb/breadcrumb.component';
 export * from './carousel/carousel-item.directive';
 export * from './carousel/carousel.component';
 export * from './confirm/confirm.component';

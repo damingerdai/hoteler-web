@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { Customers, ICustomer } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/services/customers';
-import { BannerComponent, CarouselComponent, ConfirmComponent, PageHeaderComponent, TagComponent } from 'src/app/shared/components';
+import { BannerComponent, BreadcrumbComponent, CarouselComponent, ConfirmComponent, TagComponent } from 'src/app/shared/components';
 import { CreateCustomerDialogComponent, UpdateCustomerDialogComponent } from '../dialog';
 import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 import { MatDividerModule } from '@angular/material/divider';
@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./customer-list.component.scss'],
   standalone: true,
   imports: [
-    PageHeaderComponent,
+    BreadcrumbComponent,
     LoadingShadeComponent,
     BannerComponent,
     CarouselComponent,

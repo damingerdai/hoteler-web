@@ -4,6 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ApiTestingModule } from 'src/app/core/testings';
 
 import { DashboardComponent } from './dashboard.component';
+import { provideRouter } from '@angular/router';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -15,6 +16,9 @@ describe('DashboardComponent', () => {
         TestApp,
         DashboardComponent
       ],
+      providers: [
+        provideRouter([])
+      ]
     })
     .compileComponents();
   });

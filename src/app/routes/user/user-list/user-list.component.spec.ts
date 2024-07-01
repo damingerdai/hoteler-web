@@ -5,6 +5,7 @@ import { ApiTestingModule } from 'src/app/core/testings';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 import { SharedPipesModule } from 'src/app/shared/shared.pipes.module';
 import { PageHeaderComponent, TagComponent } from 'src/app/shared/components';
+import { RouterModule, provideRouter } from '@angular/router';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -14,12 +15,16 @@ describe('UserListComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         ApiTestingModule,
+        RouterModule,
         SharedMaterialModule,
         SharedPipesModule,
 
         PageHeaderComponent,
         TagComponent,
         UserListComponent,
+      ],
+      providers: [
+        provideRouter([])
       ]
     }).compileComponents();
 

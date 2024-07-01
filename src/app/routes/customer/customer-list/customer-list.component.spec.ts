@@ -7,6 +7,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiTestingModule } from 'src/app/core/testings';
 
 import { CustomerListComponent } from './customer-list.component';
+import { provideRouter } from '@angular/router';
 
 describe('CustomerListComponent', () => {
   let component: CustomerListComponent;
@@ -19,7 +20,9 @@ describe('CustomerListComponent', () => {
         TestApp,
         CustomerListComponent
       ],
-      declarations: [  ]
+      providers: [
+        provideRouter([])
+      ]
     })
     .compileComponents();
   });

@@ -6,7 +6,7 @@ import { CustomerService } from 'src/app/core/services/customers';
 import { RoomService } from 'src/app/core/services/room';
 import { CustomerCheckinRecordService } from 'src/app/core/services/customer-checkin-record';
 import { AddUserRoomComponent } from '../dialog/add-user-room/add-user-room.component';
-import { PageHeaderComponent } from 'src/app/shared/components';
+import { BreadcrumbComponent } from 'src/app/shared/components';
 import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 import { MatCardModule } from '@angular/material/card';
 
@@ -23,7 +23,7 @@ type ApexOptions2 = ApexOptions & { show: boolean };
     MatCardModule,
 
     LoadingShadeComponent,
-    PageHeaderComponent,
+    BreadcrumbComponent,
   ]
 })
 export class DashboardComponent implements OnInit {
