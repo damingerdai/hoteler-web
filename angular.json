@@ -34,6 +34,7 @@
                                 "glob": "**/*",
                                 "input": "public"
                             },
+                            "src/favicon.ico",
                             "src/sitemap.xml",
                             "src/robots.txt",
                             "src/manifest.webmanifest"
@@ -41,6 +42,26 @@
                         "styles": [
                             {
                                 "input": "src/styles.scss"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/magenta-violet.scss",
+                                "bundleName": "magenta-violet"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/rose-red.scss",
+                                "bundleName": "rose-red"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/azure-blue.scss",
+                                "bundleName": "azure-blue"
+                            },
+                            {
+                                "inject": false,
+                                "input": "src/styles/custom-themes/cyan-orange.scss",
+                                "bundleName": "cyan-orange"
                             }
                         ],
                         "stylePreprocessorOptions": {
@@ -102,6 +123,7 @@
                                 "glob": "**/*",
                                 "input": "public"
                             },
+                            "src/favicon.ico",
                             "src/sitemap.xml",
                             "src/robots.txt"
                         ],
@@ -111,33 +133,23 @@
                             },
                             {
                                 "inject": false,
-                                "input": "src/styles/custom-themes/pink-bluegrey.scss",
-                                "bundleName": "pink-bluegrey"
+                                "input": "src/styles/custom-themes/magenta-violet.scss",
+                                "bundleName": "magenta-violet"
                             },
                             {
                                 "inject": false,
-                                "input": "src/styles/custom-themes/deeppurple-amber.scss",
-                                "bundleName": "deeppurple-amber"
+                                "input": "src/styles/custom-themes/rose-red.scss",
+                                "bundleName": "rose-red"
                             },
                             {
                                 "inject": false,
-                                "input": "src/styles/custom-themes/indigo-pink.scss",
-                                "bundleName": "indigo-pink"
+                                "input": "src/styles/custom-themes/azure-blue.scss",
+                                "bundleName": "azure-blue"
                             },
                             {
                                 "inject": false,
-                                "input": "src/styles/custom-themes/purple-green.scss",
-                                "bundleName": "purple-green"
-                            },
-                            {
-                                "inject": false,
-                                "input": "src/styles/custom-themes/pwc-light.scss",
-                                "bundleName": "pwc-light"
-                            },
-                            {
-                                "inject": false,
-                                "input": "src/styles/custom-themes/pwc-dark.scss",
-                                "bundleName": "pwc-dark"
+                                "input": "src/styles/custom-themes/cyan-orange.scss",
+                                "bundleName": "cyan-orange"
                             }
                         ],
                         "stylePreprocessorOptions": {
@@ -218,10 +230,11 @@
                                 "glob": "**/*",
                                 "input": "public"
                             },
+                            "src/favicon.ico",
                             "src/manifest.webmanifest"
                         ],
                         "styles": [
-                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                            "./node_modules/@angular/material/prebuilt-themes/azure-blue.css",
                             "src/styles.scss"
                         ],
                         "stylePreprocessorOptions": {

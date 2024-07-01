@@ -26,52 +26,34 @@ export class ThemePickerComponent implements OnInit {
 
   allTheme: SiteThemes = [
     {
-      primary: '#3F51B5',
-      accent: '#E91E63',
-      // displayName: 'Indigo & Pink',
-      displayName: '靛蓝 & 粉红',
-      name: 'indigo-pink',
+      color: '#ffd9e1',
+      displayName: 'Rose & Red',
+      name: 'rose-red',
+      background: '#fffbff',
       isDark: false,
+    },
+    {
+      color: '#d7e3ff',
+      displayName: 'Azure & Blue',
+      name: 'azure-blue',
+      background: '#fdfbff',
       isDefault: true,
-    },
-    {
-      primary: '#673AB7',
-      accent: '#FFC107',
-      // displayName: 'Deep Purple & Amber',
-      displayName: '深紫 & 琥珀',
-      name: 'deeppurple-amber',
       isDark: false,
     },
-    // {
-    //   primary: '#FF9800',
-    //   accent: '#FF5722',
-    //   displayName: 'PWC & Light',
-    //   name: 'pwc-light',
-    //   isDark: false
-    // },
     {
-      primary: '#E91E63',
-      accent: '#607D8B',
-      // displayName: 'Pink & Blue-grey',
-      displayName: '粉色 & 蓝灰',
-      name: 'pink-bluegrey',
+      color: '#810081',
+      displayName: 'Magenta & Violet',
+      name: 'magenta-violet',
+      background: '#1e1a1d',
       isDark: true,
     },
     {
-      primary: '#9C27B0',
-      accent: '#4CAF50',
-      // displayName: 'Purple & Green',
-      displayName: '紫色 & 绿色',
-      name: 'purple-green',
+      color: '#004f4f',
+      displayName: 'Cyan & Orange',
+      name: 'cyan-orange',
+      background: '#191c1c',
       isDark: true,
     },
-    // {
-    //   primary: '#FF9800',
-    //   accent: '#FF5722',
-    //   displayName: 'PWC & Dark',
-    //   name: 'pwc-dark',
-    //   isDark: true
-    // },
   ];
 
   themes: SiteThemes = [];
@@ -140,13 +122,13 @@ export class ThemePickerComponent implements OnInit {
     }
     if (this.platform.ANDROID && this.platform.BLINK) {
       this.metaService.updateTag({
-        name: 'theme-color', content: theme.primary,
+        name: 'theme-color', content: theme.color,
       });
     }
     if (this.platform.TRIDENT) {
       // only for wp
       this.metaService.updateTag({
-        name: 'msapplication-navbutton-color', content: theme.primary
+        name: 'msapplication-navbutton-color', content: theme.color
       });
     }
     if (this.platform.IOS && this.platform.SAFARI) {

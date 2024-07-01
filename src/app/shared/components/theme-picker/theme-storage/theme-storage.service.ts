@@ -3,8 +3,8 @@ import { EventEmitter, Injectable } from '@angular/core';
 export interface SiteTheme {
   name: string;
   displayName?: string;
-  accent: string;
-  primary: string;
+  color: string;
+  background: string;
   isDark?: boolean;
   isDefault?: boolean;
 }
