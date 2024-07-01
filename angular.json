@@ -30,8 +30,10 @@
                         "polyfills": ["zone.js"],
                         "tsConfig": "tsconfig.app.json",
                         "assets": [
-                            "src/favicon.ico",
-                            "src/assets",
+                            {
+                                "glob": "**/*",
+                                "input": "public"
+                            },
                             "src/sitemap.xml",
                             "src/robots.txt",
                             "src/manifest.webmanifest"
@@ -96,8 +98,10 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "assets": [
-                            "src/favicon.ico",
-                            "src/assets",
+                            {
+                                "glob": "**/*",
+                                "input": "public"
+                            },
                             "src/sitemap.xml",
                             "src/robots.txt"
                         ],
@@ -210,8 +214,10 @@
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
                         "assets": [
-                            "src/favicon.ico",
-                            "src/assets",
+                            {
+                                "glob": "**/*",
+                                "input": "public"
+                            },
                             "src/manifest.webmanifest"
                         ],
                         "styles": [
