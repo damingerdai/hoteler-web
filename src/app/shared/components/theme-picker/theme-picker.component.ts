@@ -27,14 +27,16 @@ export class ThemePickerComponent implements OnInit {
   allTheme: SiteThemes = [
     {
       color: '#ffd9e1',
-      displayName: 'Rose & Red',
+      displayName: '玫瑰红',
+      // displayName: 'Rose & Red',
       name: 'rose-red',
       background: '#fffbff',
       isDark: false,
     },
     {
       color: '#d7e3ff',
-      displayName: 'Azure & Blue',
+      displayName: '天空蓝',
+      // displayName: 'Azure & Blue',
       name: 'azure-blue',
       background: '#fdfbff',
       isDefault: true,
@@ -42,14 +44,16 @@ export class ThemePickerComponent implements OnInit {
     },
     {
       color: '#810081',
-      displayName: 'Magenta & Violet',
+      displayName: '品红紫',
+      // displayName: 'Magenta & Violet',
       name: 'magenta-violet',
       background: '#1e1a1d',
       isDark: true,
     },
     {
       color: '#004f4f',
-      displayName: 'Cyan & Orange',
+      displayName: '青柳橙',
+      // displayName: 'Cyan & Orange',
       name: 'cyan-orange',
       background: '#191c1c',
       isDark: true,
