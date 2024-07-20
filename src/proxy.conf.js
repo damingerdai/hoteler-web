@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-let apiServer = process.env.BACKEND_URL ?? 'http://locahost:8443/';
+let apiServer = process.env.BACKEND_URL ?? 'http://localhost:8443/';
 
 module.exports = {
     '/api': {
