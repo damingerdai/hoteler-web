@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { MatMenuModule } from '@angular/material/menu';
 
-// import { RouterTestingModule } from '@angular/router/testing';
 import { LocalStorageService } from 'src/app/core/services';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
@@ -19,12 +18,21 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    imports: [MatMenuModule,
-        NavbarComponent],
-    providers: [SettingsService, LocalStorageService, ThemeStorageService, provideRouter([]), provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-})
+      declarations: [],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [
+        MatMenuModule,
+        NavbarComponent
+      ],
+      providers: [
+        SettingsService,
+        LocalStorageService,
+        ThemeStorageService,
+        provideRouter([]),
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+      ]
+    })
       .compileComponents();
   });
 

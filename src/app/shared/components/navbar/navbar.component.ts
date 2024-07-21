@@ -6,7 +6,7 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { TitleCasePipe } from '@angular/common';
+import { NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -56,6 +56,7 @@ const MENUS: IMenuItem[] = [
     standalone: true,
     imports: [
         RouterModule,
+        NgTemplateOutlet,
         SharedMaterialModule,
 
         LogoComponent,
@@ -109,7 +110,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         private breakpointObserver: BreakpointObserver,
         private settings: SettingsService,
         private router: Router,
-        private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer
     ) {
         this.isKikeIPhone5s = false;
@@ -129,12 +129,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 this.isKikeIPhone5s = result.matches;
             });
         this.subscriptions.push(subscription4);
-        this.iconRegistry.addSvgIcon(
-            'github',
-            sanitizer.bypassSecurityTrustResourceUrl(
-                '../../../img/github-circle-white-transparent.svg'
-            )
-        );
     }
 
     ngOnInit(): void {
