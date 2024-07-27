@@ -1,7 +1,7 @@
 FROM node:20.13.1 AS builder
 
-ENV SELF_SIGNED_CERT_IN_CHAIN=true
-ENV NODE_TLS_REJECT_UNAUTHORIZED=0
+ENV SELF_SIGNED_CERT_IN_CHAIN true
+ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 RUN npm config set strict-ssl false
 RUN yarn config set strict-ssl false
 
@@ -13,7 +13,7 @@ RUN yarn install
 COPY . .
 RUN yarn build
 
-# FROM nginx:1.16.1
+# FROM nginx:1.25.4
 # COPY _nginx/default.conf /etc/nginx/conf.d/
 # WORKDIR /usr/share/nginx/html
 # RUN rm -rf ./*
