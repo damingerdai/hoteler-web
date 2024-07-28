@@ -1,79 +1,79 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  namespace: hoteler-namespace
-  name: hoteler-web-config
+    namespace: hoteler-namespace
+    name: hoteler-web-config
 data:
-  backend_url: http://hoteler-api:8443
+    backend_url: http://hoteler-api:8443
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: hoteler-namespace
-  name: hoteler-web
-  labels:
-    app: hoteler-web
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: hoteler-web
-  template:
-    metadata:
-      labels:
+    namespace: hoteler-namespace
+    name: hoteler-web
+    labels:
         app: hoteler-web
-      name: hoteler-web
-    spec:
-      containers:
-        - name: hoteler-web
-          image: hoteler-web
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 80
-          resources:
-            limits:
-              cpu: "200m"
-              memory: "256Mi"
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-          env:
-            - name: BACKEND_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: hoteler-web-config
-                  key: backend_url
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: hoteler-web
+    template:
+        metadata:
+            labels:
+                app: hoteler-web
+            name: hoteler-web
+        spec:
+            containers:
+                - name: hoteler-web
+                  image: hoteler-web
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                      - containerPort: 80
+                  resources:
+                      limits:
+                          cpu: '200m'
+                          memory: '256Mi'
+                      requests:
+                          cpu: '100m'
+                          memory: '128Mi'
+                  env:
+                      - name: BACKEND_URL
+                        valueFrom:
+                            configMapKeyRef:
+                                name: hoteler-web-config
+                                key: backend_url
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: hoteler-namespace
-  name: hoteler-web
-  labels:
-    app: hoteler-web
+    namespace: hoteler-namespace
+    name: hoteler-web
+    labels:
+        app: hoteler-web
 spec:
-  ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 30001
-  type: NodePort
-  selector:
-    app: hoteler-web
+    ports:
+        - port: 80
+          targetPort: 80
+          nodePort: 30001
+    type: NodePort
+    selector:
+        app: hoteler-web
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: hoteler-namespace
-  name: hoteler-web
+    namespace: hoteler-namespace
+    name: hoteler-web
 spec:
-  rules:
-    - host: hoteler.damingerdai.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: hoteler-web
-                port:
-                  number: 80
+    rules:
+        - host: hoteler.damingerdai.com
+          http:
+              paths:
+                  - path: /
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: hoteler-web
+                            port:
+                                number: 80
