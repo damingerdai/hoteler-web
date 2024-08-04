@@ -6,7 +6,7 @@
 <div class="h-full">
     <mat-drawer-container class="container">
         <mat-drawer class="h-full drawer" #drawer [opened]="open" [mode]="mode">
-            <div class="d-flex flex-col h-full">
+            <div class="d-flex flex-col h-full p-x-2">
                 @for (menu of menus; track $index) {
                     @if (menu.type === 'menu') {
                         <mat-nav-list>
@@ -30,7 +30,6 @@
                         <mat-divider></mat-divider>
                     }
                 }
-                <mat-divider />
                 <div flexSpacer></div>
                 <mat-divider />
                 <mat-nav-list>

@@ -3,14 +3,14 @@ import {
     Breakpoints,
     MediaMatcher,
 } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-admin-layout',
     templateUrl: './admin-layout.component.html',
     styleUrls: ['./admin-layout.component.scss'],
 })
-export class AdminLayoutComponent implements OnInit, OnDestroy {
+export class AdminLayoutComponent {
     public isMobile: boolean;
     protected open: boolean;
 
@@ -31,10 +31,6 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
                 },
             ],
         },
-
-        {
-            type: 'divider',
-        },
     ];
 
     public get mode() {
@@ -51,17 +47,9 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
                 this.isMobile = result.matches;
             });
         this.open = true;
-        // this.layoutService.drawerStatusSource$.subscribe(() => this.open = !this.open);
     }
 
     public toggleDrawer() {
         this.open = !this.open;
-    }
-
-    ngOnInit(): void {
-        // this.layoutService.adminlayout(true);
-    }
-    ngOnDestroy(): void {
-        // this.layoutService.adminlayout(false);
     }
 }

@@ -1,34 +1,32 @@
 :host {
-  position: absolute;
-  display: flex;
-  inset: 64px 0 0;
-  flex-direction: column;
+    position: absolute;
+    display: flex;
+    inset: 64px 0 0;
+    flex-direction: column;
 
-  @media (max-width: 600px) {
-    top: 112px;
-  }
+    @media (max-width: 600px) {
+        top: 112px;
+    }
 }
 
 app-navbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 2;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
 }
 
-
 .container {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 
-  .drawer {
-    min-width: 180px !important;
-    border-right: 1px solid #eee;
-    box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
-
-  }
+    .drawer {
+        max-width: 180px !important;
+        border-right: 1px solid #eee;
+        box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
+    }
 }
