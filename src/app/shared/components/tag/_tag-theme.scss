@@ -1,31 +1,29 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
-
 @mixin hoteler-tag-theme($theme) {
-  // $primary: map.get($theme, primary);
-  // $accent: map.get($theme, accent);
-  // $warn: map.get($theme, warn);
-  // $background: mat.get-theme-color($theme, background, unselected-chip);
-  // $foreground: mat.get-theme-color($theme, foreground, text);
+    .tag {
+        color: mat.get-theme-color($theme, on-surface);
+        background: mat.get-theme-color($theme, surface);
 
-  .tag {
-    color: mat.get-theme-color($theme, on-surface);
-    background: mat.get-theme-color($theme, surface);
+        &-primary {
+            background-color: mat.get-theme-color($theme, primary-container);
+            color: mat.get-theme-color($theme, primary);
+        }
 
-    // &-primary {
-    //   background-color: mat.get-theme-color($theme, primary, default);
-    //   color: mat.get-theme-color($theme, primary, default-contrast);
-    // }
+        &-secondary {
+            background-color: mat.get-theme-color($theme, secondary-container);
+            color: mat.get-theme-color($theme, secondary);
+        }
 
-    // &-accent {
-    //   background-color: mat.get-theme-color($theme, accent, default);
-    //   color: mat.get-theme-color($theme, accent, default-contrast);
-    // }
+        &-tertiary {
+            background-color: mat.get-theme-color($theme, tertiary-container);
+            color: mat.get-theme-color($theme, tertiary);
+        }
 
-    // &-warn {
-    //   background-color: mat.get-theme-color($theme, warn, default);
-    //   color: mat.get-theme-color($theme, warn, default-contrast);
-    // }
-  }
+        &-error {
+            background-color: mat.get-theme-color($theme, error-container);
+            color: mat.get-theme-color($theme, error);
+        }
+    }
 }

@@ -37,10 +37,12 @@
                                         <app-tag color="primary">男</app-tag>
                                     }
                                     @case ('F') {
-                                        <app-tag color="accent">女</app-tag>
+                                        <app-tag color="secondary">女</app-tag>
                                     }
                                     @default {
-                                        <app-tag color="warn">未知性别</app-tag>
+                                        <app-tag color="error"
+                                            >未知性别</app-tag
+                                        >
                                     }
                                 }
                             </td>
@@ -200,12 +202,12 @@
                                                 >
                                             }
                                             @case ('F') {
-                                                <app-tag color="accent"
+                                                <app-tag color="tertiary"
                                                     >女</app-tag
                                                 >
                                             }
                                             @default {
-                                                <app-tag color="warn"
+                                                <app-tag color="error"
                                                     >未知性别</app-tag
                                                 >
                                             }

@@ -2,7 +2,7 @@ import { Component, OnInit, afterNextRender, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IUser } from 'src/app/core/models';
 import { UserService } from 'src/app/core/services/user/user.service';
-import { BreadcrumbComponent } from 'src/app/shared/components';
+import { BreadcrumbComponent, TagComponent } from 'src/app/shared/components';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 import { SharedPipesModule } from 'src/app/shared/shared.pipes.module';
 import { CreateUserComponent } from '../dialog/create-user/create-user.component';
@@ -18,6 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     standalone: true,
     imports: [
         BreadcrumbComponent,
+        TagComponent,
         SharedMaterialModule,
         SharedPipesModule,
     ],
@@ -28,7 +29,12 @@ export class UserListComponent implements OnInit {
     protected roleService = inject(RoleService);
     protected snackBar = inject(MatSnackBar);
 
-    protected displayedColumns: string[] = ['id', 'username', 'roles', 'action'];
+    protected displayedColumns: string[] = [
+        'id',
+        'username',
+        'roles',
+        'action',
+    ];
 
     protected users: IUser[] = [];
     protected roles: Roles = [];

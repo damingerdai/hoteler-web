@@ -34,14 +34,14 @@
                             @for (role of element.roles; track role.name) {
                                 @switch (role.name) {
                                     @case ('admin') {
-                                        <mat-chip color="primary">{{
+                                        <app-tag color="primary">{{
                                             role.name
-                                        }}</mat-chip>
+                                        }}</app-tag>
                                     }
                                     @default {
-                                        <mat-chip color="accent">{{
+                                        <app-tag color="secondary">{{
                                             role.name
-                                        }}</mat-chip>
+                                        }}</app-tag>
                                     }
                                 }
                             }
