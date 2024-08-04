@@ -1,15 +1,28 @@
-import { Component, OnInit, afterNextRender, inject } from '@angular/core';
+import {
+    Component,
+    DestroyRef,
+    OnDestroy,
+    OnInit,
+    afterNextRender,
+    inject,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { IUser } from 'src/app/core/models';
 import { UserService } from 'src/app/core/services/user/user.service';
-import { BreadcrumbComponent, TagComponent } from 'src/app/shared/components';
+import {
+    BreadcrumbComponent,
+    ConfirmComponent,
+    TagComponent,
+} from 'src/app/shared/components';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 import { SharedPipesModule } from 'src/app/shared/shared.pipes.module';
 import { CreateUserComponent } from '../dialog/create-user/create-user.component';
 import { RoleService } from 'src/app/core/services/role/role.service';
 import { Roles } from 'src/app/core/models/roles';
-import { filter, switchMap } from 'rxjs';
+import { Subscription, filter, switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
 @Component({
     selector: 'app-user-list',
@@ -23,11 +36,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
         SharedPipesModule,
     ],
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, OnDestroy {
+    private subscriptions: Subscription[] = [];
+
     protected dialog = inject(MatDialog);
     protected userService = inject(UserService);
     protected roleService = inject(RoleService);
     protected snackBar = inject(MatSnackBar);
+    protected settings = inject(SettingsService);
+    protected destoryRef = inject(DestroyRef);
+    protected currentUser: IUser;
 
     protected displayedColumns: string[] = [
         'id',
@@ -81,11 +99,48 @@ export class UserListComponent implements OnInit {
             });
     }
 
+    public openDeleteUserDialog(id: string) {
+        const dialogRef = this.dialog.open(ConfirmComponent, {
+            data: {
+                title: '删除用户',
+                description: '一旦删除用户将无法回复',
+            },
+        });
+        dialogRef
+            .afterClosed()
+            .pipe(
+                filter((res) => !!res),
+                switchMap(() => this.userService.delete(id))
+            )
+            .subscribe((res) => {
+                if (res.status === 200) {
+                    this.snackBar.open('删除用户成功', 'X');
+                    this.userService.list().subscribe((res) => {
+                        if (res.status === 200) {
+                            this.users = res.data;
+                        }
+                    });
+                } else {
+                    this.snackBar.open('删除用户失败：' + res.error.message);
+                }
+            });
+    }
+
     ngOnInit(): void {
+        this.currentUser = this.settings.user as IUser;
         this.userService.list().subscribe((res) => {
             if (res.status === 200) {
                 this.users = res.data;
             }
         });
+        this.settings.user$
+            .pipe(takeUntilDestroyed(this.destoryRef))
+            .subscribe((u) => {
+                this.currentUser = u as IUser;
+            });
+    }
+
+    ngOnDestroy() {
+        this.subscriptions.forEach((sub) => sub.unsubscribe());
     }
 }

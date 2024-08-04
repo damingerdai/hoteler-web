@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 interface IConfirmData {
@@ -11,7 +12,7 @@ interface IConfirmData {
     templateUrl: './confirm.component.html',
     styleUrls: ['./confirm.component.scss'],
     standalone: true,
-    imports: [MatDialogModule],
+    imports: [MatButtonModule, MatDialogModule],
 })
 export class ConfirmComponent {
     constructor(
