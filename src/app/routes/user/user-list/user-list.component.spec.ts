@@ -6,34 +6,39 @@ import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 import { SharedPipesModule } from 'src/app/shared/shared.pipes.module';
 import { PageHeaderComponent, TagComponent } from 'src/app/shared/components';
 import { RouterModule, provideRouter } from '@angular/router';
+import { SettingsService } from 'src/app/core/services/settings/settings.service';
+import { LocalStorageService } from 'src/app/core/services';
 
 describe('UserListComponent', () => {
-  let component: UserListComponent;
-  let fixture: ComponentFixture<UserListComponent>;
+    let component: UserListComponent;
+    let fixture: ComponentFixture<UserListComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        ApiTestingModule,
-        RouterModule,
-        SharedMaterialModule,
-        SharedPipesModule,
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [
+                ApiTestingModule,
+                RouterModule,
+                SharedMaterialModule,
+                SharedPipesModule,
 
-        PageHeaderComponent,
-        TagComponent,
-        UserListComponent,
-      ],
-      providers: [
-        provideRouter([])
-      ]
-    }).compileComponents();
+                PageHeaderComponent,
 
-    fixture = TestBed.createComponent(UserListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+                TagComponent,
+                UserListComponent,
+            ],
+            providers: [
+                provideRouter([]),
+                LocalStorageService,
+                SettingsService,
+            ],
+        }).compileComponents();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+        fixture = TestBed.createComponent(UserListComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
