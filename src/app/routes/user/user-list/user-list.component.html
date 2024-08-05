@@ -11,7 +11,11 @@
     </div>
     <mat-divider class="divider" />
     <div class="mat-elevation-z8 table-responsive m-t-16">
-        @if (users?.length > 0) {
+        @if (loading) {
+            <div class="w-full d-flex justify-content-center p-y-16">
+                <mat-progress-spinner mode="indeterminate" />
+            </div>
+        } @else if (users?.length > 0) {
             <table
                 mat-table
                 [dataSource]="users"

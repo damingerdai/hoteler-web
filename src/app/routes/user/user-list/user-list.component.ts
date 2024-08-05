@@ -20,7 +20,7 @@ import { SharedPipesModule } from 'src/app/shared/shared.pipes.module';
 import { CreateUserComponent } from '../dialog/create-user/create-user.component';
 import { RoleService } from 'src/app/core/services/role/role.service';
 import { Roles } from 'src/app/core/models/roles';
-import { Subscription, filter, switchMap } from 'rxjs';
+import { Subscription, filter, switchMap, tap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
@@ -46,6 +46,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     protected settings = inject(SettingsService);
     protected destoryRef = inject(DestroyRef);
     protected currentUser: IUser;
+    protected loading: boolean = false;
 
     protected displayedColumns: string[] = [
         'id',
@@ -68,6 +69,24 @@ export class UserListComponent implements OnInit, OnDestroy {
         });
     }
 
+    private loadUsers() {
+        this.loading = true;
+        this.userService.list().subscribe(
+            (res) => {
+                this.loading = false;
+                if (res.status === 200) {
+                    this.users = res.data;
+                } else {
+                    this.snackBar.open('获取用户失败', 'X');
+                }
+            },
+            (_err) => {
+                this.snackBar.open('系统异常');
+                this.loading = false;
+            }
+        );
+    }
+
     public openCreateUserDialog() {
         const dialogRef = this.dialog.open(CreateUserComponent, {
             data: { roles: this.roles },
@@ -88,11 +107,7 @@ export class UserListComponent implements OnInit, OnDestroy {
             .subscribe((res) => {
                 if (res.status === 200) {
                     this.snackBar.open('创建用户成功', 'X');
-                    this.userService.list().subscribe((res) => {
-                        if (res.status === 200) {
-                            this.users = res.data;
-                        }
-                    });
+                    this.loadUsers();
                 } else {
                     this.snackBar.open('创建用户失败：' + res.error.message);
                 }
@@ -115,11 +130,7 @@ export class UserListComponent implements OnInit, OnDestroy {
             .subscribe((res) => {
                 if (res.status === 200) {
                     this.snackBar.open('删除用户成功', 'X');
-                    this.userService.list().subscribe((res) => {
-                        if (res.status === 200) {
-                            this.users = res.data;
-                        }
-                    });
+                    this.loadUsers();
                 } else {
                     this.snackBar.open('删除用户失败：' + res.error.message);
                 }
@@ -128,11 +139,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.currentUser = this.settings.user as IUser;
-        this.userService.list().subscribe((res) => {
-            if (res.status === 200) {
-                this.users = res.data;
-            }
-        });
+        this.loadUsers();
         this.settings.user$
             .pipe(takeUntilDestroyed(this.destoryRef))
             .subscribe((u) => {
