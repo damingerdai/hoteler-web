@@ -1,11 +1,11 @@
 <app-navbar
     class="mat-elevation-z6"
     [showMenu]="true"
-    (menuClick)="toggleDrawer()"
+    (menuClick)="drawer.toggle()"
 ></app-navbar>
 <div class="h-full">
-    <mat-drawer-container class="container">
-        <mat-drawer class="h-full drawer" #drawer [opened]="open" [mode]="mode">
+    <mat-drawer-container class="container" [hasBackdrop]="isMobile">
+        <mat-drawer class="h-full drawer" #drawer [mode]="mode">
             <div class="d-flex flex-col h-full p-x-2">
                 @for (menu of menus; track $index) {
                     @if (menu.type === 'menu') {

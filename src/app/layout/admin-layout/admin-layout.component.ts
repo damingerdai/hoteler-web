@@ -12,7 +12,6 @@ import { Component } from '@angular/core';
 })
 export class AdminLayoutComponent {
     public isMobile: boolean;
-    protected open: boolean;
 
     protected menus = [
         {
@@ -46,10 +45,5 @@ export class AdminLayoutComponent {
             .subscribe((result) => {
                 this.isMobile = result.matches;
             });
-        this.open = true;
-    }
-
-    public toggleDrawer() {
-        this.open = !this.open;
     }
 }
