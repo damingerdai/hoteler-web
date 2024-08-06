@@ -1,25 +1,25 @@
 @use '../../../styles/breakpoints';
 
 .login {
-  padding: {
-    top: 200px;
-  };
-
-  @include breakpoints.respond-below(xs) {
     padding: {
-      top: 50px;
-    };
-  }
-
-  &-card {
-    max-width: 380px;
-    margin: {
-      top: 200px;
-    };
-
-    .mat-mdc-card-header {
-      display: block;
-      padding: 16px;
+        top: 200px;
     }
-  }
+
+    @include breakpoints.respond-below(xs) {
+        padding: {
+            top: 50px;
+        }
+    }
+
+    &-card {
+        max-width: 350px;
+        margin: {
+            top: 200px;
+        }
+
+        .mat-mdc-card-header {
+            display: block;
+            padding: 16px;
+        }
+    }
 }
