@@ -17,10 +17,8 @@ import { appInitializerProviders } from './core/initializers';
 import { CoreModule } from './core';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { provideServiceWorker, ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserModule } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -40,19 +38,16 @@ export const appConfig: ApplicationConfig = {
             useValue: { duration: 2500 },
         },
         appInitializerProviders,
+        provideServiceWorker('ngsw-worker.js', {
+          enabled: !isDevMode(),
+          registrationStrategy: 'registerWhenStable:30000'
+        }),
         importProvidersFrom(
             BrowserModule,
-            // BrowserAnimationsModule,
             RouterModule,
             CoreModule,
             LayoutModule,
             SharedModule,
-            ServiceWorkerModule.register('ngsw-worker.js', {
-                enabled: isDevMode() !== true,
-                // Register the ServiceWorker as soon as the application is stable
-                // or after 30 seconds (whichever comes first).
-                registrationStrategy: 'registerWhenStable:30000',
-            })
         ),
     ],
 };

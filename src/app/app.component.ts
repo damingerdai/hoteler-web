@@ -1,6 +1,7 @@
-import { Component, OnInit, inject, isDevMode } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CheckForUpdateService } from './core/pwa/check-for-update.service';
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +10,16 @@ import { CheckForUpdateService } from './core/pwa/check-for-update.service';
   standalone: true,
   imports: [RouterOutlet]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  protected checkForUpdateService: CheckForUpdateService = inject(CheckForUpdateService);
+  constructor(swUpdate: SwUpdate) {
+    swUpdate.versionUpdates
+      .pipe(filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'))
+      .subscribe(() => {
+        swUpdate.activateUpdate().then(() => {
+          document.location.reload();
+        });
+      });
 
-  constructor() {
-
-  }
-  ngOnInit(): void {
-    if (!isDevMode()) {
-      this.checkForUpdateService.check();
-    }
   }
 }
