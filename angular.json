@@ -58,7 +58,8 @@
                                 "inject": false,
                                 "input": "src/styles/custom-themes/cyan-orange.scss",
                                 "bundleName": "cyan-orange"
-                            }
+                            },
+                            "./node_modules/angular-toaster/toaster.css"
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [
@@ -229,7 +230,8 @@
                         ],
                         "styles": [
                             "./node_modules/@angular/material/prebuilt-themes/azure-blue.css",
-                            "src/styles.scss"
+                            "src/styles.scss",
+                            "./node_modules/angular-toaster/toaster.css"
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [
