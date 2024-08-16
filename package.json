@@ -8,6 +8,7 @@
     },
     "scripts": {
         "ng": "ng",
+        "tauri": "tauri",
         "start": "ng serve",
         "start:online": "yarn ng serve --proxy-config=src/proxy.conf.online.json --hmr",
         "build": "ng build --configuration production",
@@ -63,6 +64,7 @@
         "@angular/language-service": "18.1.4",
         "@commitlint/cli": "18.4.3",
         "@commitlint/config-conventional": "18.4.3",
+        "@tauri-apps/cli": "^1.6.0",
         "@types/jasmine": "4.6.4",
         "@types/jasminewd2": "2.0.13",
         "@types/node": "20.12.12",
