@@ -65,7 +65,7 @@
         "@commitlint/cli": "18.4.3",
         "@commitlint/config-conventional": "18.4.3",
         "@tauri-apps/cli": "^1.6.0",
-        "@types/jasmine": "4.6.4",
+        "@types/jasmine": "5.1.4",
         "@types/jasminewd2": "2.0.13",
         "@types/node": "20.12.12",
         "@typescript-eslint/eslint-plugin": "^7.2.0",
