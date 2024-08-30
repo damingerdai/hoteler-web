@@ -13,13 +13,14 @@
                         class="d-flex justify-content-center"
                     >
                         @defer (on viewport; when roomStatusDonutChart.show) {
-                            <apx-chart
+                            <div
+                                apxChart
                                 [series]="roomStatusDonutChart.series"
                                 [chart]="roomStatusDonutChart.chart"
                                 [title]="roomStatusDonutChart.title"
                                 [labels]="roomStatusDonutChart.labels"
                                 [plotOptions]="roomStatusDonutChart.plotOptions"
-                            />
+                            ></div>
                         } @placeholder {
                             <div>房间状态统计</div>
                         }
@@ -36,12 +37,13 @@
                             on viewport;
                             when pastWeekCustomerCountChart.show
                         ) {
-                            <apx-chart
+                            <div
+                                apxChart
                                 [series]="pastWeekCustomerCountChart.series"
                                 [chart]="pastWeekCustomerCountChart.chart"
                                 [title]="pastWeekCustomerCountChart.title"
                                 [xaxis]="pastWeekCustomerCountChart.xaxis"
-                            />
+                            ></div>
                         } @placeholder {
                             <div>过去一周的入住客户数量变化</div>
                         }
