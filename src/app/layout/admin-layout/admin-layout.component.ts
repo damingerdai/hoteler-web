@@ -3,7 +3,8 @@ import {
     Breakpoints,
     MediaMatcher,
 } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
     selector: 'app-admin-layout',
@@ -11,7 +12,12 @@ import { Component } from '@angular/core';
     styleUrls: ['./admin-layout.component.scss'],
 })
 export class AdminLayoutComponent {
+
     public isMobile: boolean;
+
+    protected drawerOpened = true;
+
+    @ViewChild('drawer') drawer: MatDrawer;
 
     protected menus = [
         {
@@ -45,5 +51,23 @@ export class AdminLayoutComponent {
             .subscribe((result) => {
                 this.isMobile = result.matches;
             });
+    }
+
+    toggleDrawer() {
+      this.drawer.toggle();
+    }
+
+    openDrawer() {
+      this.drawer.open();
+    }
+
+    closeDrawer() {
+      this.drawer.close();
+    }
+
+    closeDrawerInMobile() {
+      if (this.isMobile) {
+        this.drawer.close();
+      }
     }
 }

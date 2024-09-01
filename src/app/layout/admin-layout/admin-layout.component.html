@@ -1,11 +1,16 @@
 <app-navbar
     class="mat-elevation-z6"
     [showMenu]="true"
-    (menuClick)="drawer.toggle()"
+    (menuClick)="toggleDrawer()"
 ></app-navbar>
 <div class="h-full">
     <mat-drawer-container class="container" [hasBackdrop]="isMobile">
-        <mat-drawer class="h-full drawer" #drawer [mode]="mode">
+        <mat-drawer
+            class="h-full drawer"
+            #drawer
+            [(opened)]="drawerOpened"
+            [mode]="mode"
+        >
             <div class="d-flex flex-col h-full p-x-2">
                 @for (menu of menus; track $index) {
                     @if (menu.type === 'menu') {
@@ -18,6 +23,7 @@
                                     mat-list-item
                                     [routerLink]="item.link"
                                     routerLinkActive="active"
+                                    (click)="closeDrawerInMobile()"
                                 >
                                     <mat-icon matListItemIcon>
                                         {{ item.icon }}
@@ -37,6 +43,7 @@
                         mat-list-item
                         routerLink="settings"
                         routerLinkActive="active"
+                        (click)="closeDrawerInMobile()"
                     >
                         <mat-icon matListItemIcon>settings</mat-icon>
                         <p mat-line>设置</p>
