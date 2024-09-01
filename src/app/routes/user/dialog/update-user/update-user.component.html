@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-    <h2 mat-dialog-title>创建用户</h2>
+    <h2 mat-dialog-title>更新用户</h2>
     <mat-dialog-content>
         <mat-form-field
             class="w-full form-filed-full m-t-4"
@@ -8,7 +8,7 @@
             <mat-label>用户名</mat-label>
             <input matInput placeholder="用户名" formControlName="username" />
         </mat-form-field>
-        <mat-form-field
+        <!-- <mat-form-field
             class="w-full form-filed-full m-t-4"
             appearance="outline"
         >
@@ -20,7 +20,7 @@
                 formControlName="password"
             />
             <matx-pass-toggle-visibility #toogle matSuffix />
-        </mat-form-field>
+        </mat-form-field> -->
         <mat-form-field
             class="w-full form-field-full m-t-4"
             appearance="outline"
@@ -34,14 +34,7 @@
         </mat-form-field>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button
-            mat-button
-            mat-dialog-close
-            cdkFocusInitial
-            (click)="onNoClick()"
-        >
-            取消
-        </button>
+        <button mat-button mat-dialog-close cdkFocusInitial>取消</button>
         <button
             mat-button
             [disabled]="form.invalid"

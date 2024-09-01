@@ -17,10 +17,10 @@ import {
 } from 'src/app/shared/components';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 import { SharedPipesModule } from 'src/app/shared/shared.pipes.module';
-import { CreateUserComponent } from '../dialog/create-user/create-user.component';
+import { CreateUserComponent, UpdateUserComponent } from '../dialog';
 import { RoleService } from 'src/app/core/services/role/role.service';
 import { Roles } from 'src/app/core/models/roles';
-import { Subscription, filter, switchMap, tap } from 'rxjs';
+import { Subscription, filter, switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { ToasterService } from 'angular-toaster';
@@ -92,6 +92,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   public openCreateUserDialog() {
     const dialogRef = this.dialog.open(CreateUserComponent, {
       data: { roles: this.roles },
+      width: '400px',
     });
     dialogRef
       .afterClosed()
@@ -120,6 +121,40 @@ export class UserListComponent implements OnInit, OnDestroy {
           this.snackBar.open('创建用户失败：' + res.error.message);
         }
       });
+  }
+
+  public openUpdateUserDialog(user: IUser) {
+    const dialogRef = this.dialog.open(UpdateUserComponent, {
+      data: { roles: this.roles, user: {...user} },
+      width: '400px',
+    });
+    // dialogRef
+      // .afterClosed()
+      // //.pipe(res => skip(res => res === undefined))
+      // .pipe(
+      //   filter((res) => !!res),
+      //   switchMap((res) =>
+      //     this.userService.createUser(
+      //       res.username,
+      //       res.password,
+      //       res.roles
+      //     )
+      //   )
+      // )
+      // .subscribe((res) => {
+      //   if (res.status === 200) {
+      //     // this.snackBar.open('创建用户成功', 'X');
+      //     this.toasterService.pop({
+      //       type: 'success',
+      //       title: '创建成功',
+      //       body: '创建用户成功',
+      //       timeout: 10000
+      //     });
+      //     this.loadUsers();
+      //   } else {
+      //     this.snackBar.open('创建用户失败：' + res.error.message);
+      //   }
+      // });
   }
 
   public openDeleteUserDialog(id: string) {
