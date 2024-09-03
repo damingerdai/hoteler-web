@@ -43,7 +43,7 @@
         "@angular/service-worker": "18.2.2",
         "angular-toaster": "1.6.1",
         "apexcharts": "~3.53.0",
-        "ngx-apexcharts": "0.6.6",
+        "ngx-apexcharts": "0.6.8",
         "ngx-dom-confetti": "0.4.0",
         "ngx-is-standalone": "0.3.0",
         "perf-marks": "^1.14.2",
