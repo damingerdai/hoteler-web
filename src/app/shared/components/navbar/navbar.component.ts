@@ -79,8 +79,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     @Input()
     public showMenu: boolean = false;
 
-    protected isMobile: boolean;
-
     protected isKikeIPhone5s: boolean;
 
     public get user() {
@@ -95,7 +93,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         return this._user?.roles?.map((r) => r.name).includes('admin');
     }
 
-    public get showBarnd() {
+    public get showBrand() {
         if (this.showMenu) {
             return !this.isKikeIPhone5s;
         }
@@ -116,22 +114,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
         private sanitizer: DomSanitizer
     ) {
         this.isKikeIPhone5s = false;
-        const subscription1 = this.breakpointObserver
-            .observe([Breakpoints.XSmall])
-            .subscribe((result) => {
-                this.isMobile = result.matches;
-            });
-        this.subscriptions.push(subscription1);
-        const subscription2 = this.settings.user$.subscribe((user) =>
+        const subscription = this.settings.user$.subscribe((user) =>
             this.processUser(user)
         );
-        this.subscriptions.push(subscription2);
-        const subscription4 = this.breakpointObserver
+        this.subscriptions.push(subscription);
+        const subscription2 = this.breakpointObserver
             .observe(['(max-width: 374px) and (orientation: portrait)'])
             .subscribe((result) => {
                 this.isKikeIPhone5s = result.matches;
             });
-        this.subscriptions.push(subscription4);
+        this.subscriptions.push(subscription2);
     }
 
     ngOnInit(): void {
