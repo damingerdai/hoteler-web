@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -19,6 +18,7 @@ import { ThemePickerComponent } from '../theme-picker/theme-picker.component';
 import { FlexSpacerDirective } from '../../ui/directives/flex-spacer.directive';
 import { environment } from 'src/environments/environment';
 import { LogoComponent } from '../logo/logo.component';
+import { GithubComponent } from '../icons/github/github.component';
 
 interface IMenuItem {
     displayName: string;
@@ -63,6 +63,7 @@ const MENUS: IMenuItem[] = [
         ThemePickerComponent,
         TitleCasePipe,
         FlexSpacerDirective,
+        GithubComponent
     ],
     // changeDetection: ChangeDetectionStrategy.OnPush,
 })

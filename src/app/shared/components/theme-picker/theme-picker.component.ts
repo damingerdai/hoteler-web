@@ -18,7 +18,10 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatButtonModule, MatTooltipModule, MatMenuModule, MatIconModule, NgFor]
+  providers: [
+    ThemeStorageService
+  ],
+  imports: [MatButtonModule, MatTooltipModule, MatMenuModule, MatIconModule]
 })
 export class ThemePickerComponent implements OnInit {
 

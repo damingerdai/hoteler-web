@@ -2,6 +2,7 @@ import {
   ApplicationConfig,
   isDevMode,
 } from '@angular/core';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {
   provideRouter,
@@ -36,6 +37,7 @@ export const appConfig: ApplicationConfig = {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    provideHttpClient(withInterceptorsFromDi()),
     provideAngularToaster(),
   ],
 };

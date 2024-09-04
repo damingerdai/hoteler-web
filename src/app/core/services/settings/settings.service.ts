@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { CoreModule } from '../../core.module';
 import { IUser, IUserToken } from '../../models';
 import { LocalStorageService } from '../local-storage';
 
 @Injectable({
-  providedIn: CoreModule
+  providedIn: 'root'
 })
 export class SettingsService {
 

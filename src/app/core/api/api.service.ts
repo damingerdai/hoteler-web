@@ -2,10 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { CoreModule } from '../core.module';
-
 @Injectable({
-  providedIn: CoreModule
+  providedIn: 'root'
 })
 export class ApiService {
 
