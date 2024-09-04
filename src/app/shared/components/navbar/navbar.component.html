@@ -35,14 +35,14 @@
         </a>
     }
     @if (username) {
-        <a
-            mat-button
+        <button
+            mat-icon-button
             class="hoteler-button"
             [matMenuTriggerFor]="menu"
             aria-label="user profile"
         >
-            {{ username | titlecase }}
-        </a>
+            <ngx-avatars class="avatars" [name]="username" size="30" />
+        </button>
     }
     <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="logout()">
