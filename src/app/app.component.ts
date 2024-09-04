@@ -3,6 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { ToasterContainerComponent } from 'angular-toaster';
 import { filter } from 'rxjs';
+import { CoreModule } from './core';
+import { LayoutModule } from './layout/layout.module';
+import { SharedModule } from './shared/shared.module';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +13,9 @@ import { filter } from 'rxjs';
   styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [
+    CoreModule,
+    LayoutModule,
+    SharedModule,
     RouterOutlet,
     ToasterContainerComponent,
   ]

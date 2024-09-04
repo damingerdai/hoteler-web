@@ -1,11 +1,9 @@
 import {
   ApplicationConfig,
-  importProvidersFrom,
   isDevMode,
 } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {
-  RouterModule,
   provideRouter,
   withComponentInputBinding,
   withInMemoryScrolling,
@@ -14,11 +12,7 @@ import { routes } from './app.route';
 import { httpInterceptorProviders } from './core/interceptors';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { appInitializerProviders } from './core/initializers';
-import { CoreModule } from './core';
-import { LayoutModule } from './layout/layout.module';
-import { SharedModule } from './shared/shared.module';
-import { provideServiceWorker, ServiceWorkerModule } from '@angular/service-worker';
-import { BrowserModule } from '@angular/platform-browser';
+import { provideServiceWorker } from '@angular/service-worker';
 import { provideAngularToaster } from 'angular-toaster';
 
 export const appConfig: ApplicationConfig = {
@@ -43,10 +37,5 @@ export const appConfig: ApplicationConfig = {
       registrationStrategy: 'registerWhenStable:30000'
     }),
     provideAngularToaster(),
-    importProvidersFrom(
-      CoreModule,
-      LayoutModule,
-      SharedModule,
-    ),
   ],
 };
