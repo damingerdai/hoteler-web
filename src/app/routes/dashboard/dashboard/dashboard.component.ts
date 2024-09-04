@@ -1,11 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApexOptions, NgxApexchartsModule } from 'ngx-apexcharts';
-import { filter, switchMap } from 'rxjs/operators';
 import { CustomerService } from 'src/app/core/services/customers';
 import { RoomService } from 'src/app/core/services/room';
 import { CustomerCheckinRecordService } from 'src/app/core/services/customer-checkin-record';
-import { AddUserRoomComponent } from '../dialog/add-user-room/add-user-room.component';
 import { BreadcrumbComponent } from 'src/app/shared/components';
 import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 import { MatCardModule } from '@angular/material/card';
@@ -75,21 +73,6 @@ export class DashboardComponent implements OnInit {
     };
 
     constructor() {}
-
-    openAddUserRoomDialog() {
-        const dialogRef = this.dialog.open(AddUserRoomComponent);
-        dialogRef
-            .afterClosed()
-            .pipe(
-                filter((res) => !!res),
-                switchMap((ur) => this.customerCheckinRecordApi.create(ur))
-            )
-            .subscribe((res) => {
-                if (res.status === 200) {
-                    console.log('test');
-                }
-            });
-    }
 
     ngOnInit(): void {
         this.loading = true;
