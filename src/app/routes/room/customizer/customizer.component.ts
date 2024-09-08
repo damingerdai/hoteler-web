@@ -1,4 +1,4 @@
-import { CdkDragHandle } from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,7 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrls: ['./customizer.component.scss'],
   standalone: true,
   imports: [
-    MatIconModule, MatMenuModule, MatTooltipModule, MatButtonModule, CdkDragHandle,
+    MatIconModule, MatMenuModule, MatTooltipModule, MatButtonModule, DragDropModule,
   ]
 })
 export class CustomizerComponent implements OnInit {
