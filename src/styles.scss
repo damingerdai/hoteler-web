@@ -9,7 +9,9 @@
 @use './styles/misc';
 @use './styles/reboot';
 @use './styles/view-transition';
-@use './styles/helpers';
+
+// @use './styles/helpers';
+@import './styles/tailwind.css';
 
 $theme: mat.define-theme((
   color: (
