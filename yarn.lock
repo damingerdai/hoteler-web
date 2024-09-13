@@ -1741,27 +1741,28 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@commitlint/cli@18.4.3":
-  version "18.4.3"
-  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-18.4.3.tgz#5b6112035f2cb17b76244cde5f1587ab853c2365"
-  integrity sha512-zop98yfB3A6NveYAZ3P1Mb6bIXuCeWgnUfVNkH4yhIMQpQfzFwseadazOuSn0OOfTt0lWuFauehpm9GcqM5lww==
+"@commitlint/cli@18.6.1":
+  version "18.6.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-18.6.1.tgz#78bffdfa00d6f01425d53096954993d83f2b343d"
+  integrity sha512-5IDE0a+lWGdkOvKH892HHAZgbAjcj1mT5QrfA/SVbLJV/BbBMGyKN0W5mhgjekPJJwEQdVNvhl9PwUacY58Usw==
   dependencies:
-    "@commitlint/format" "^18.4.3"
-    "@commitlint/lint" "^18.4.3"
-    "@commitlint/load" "^18.4.3"
-    "@commitlint/read" "^18.4.3"
-    "@commitlint/types" "^18.4.3"
+    "@commitlint/format" "^18.6.1"
+    "@commitlint/lint" "^18.6.1"
+    "@commitlint/load" "^18.6.1"
+    "@commitlint/read" "^18.6.1"
+    "@commitlint/types" "^18.6.1"
     execa "^5.0.0"
     lodash.isfunction "^3.0.9"
     resolve-from "5.0.0"
     resolve-global "1.0.0"
     yargs "^17.0.0"
 
-"@commitlint/config-conventional@18.4.3":
-  version "18.4.3"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-18.4.3.tgz#8158e6bd874a86ff46a6424f45acd803bc5fef1b"
-  integrity sha512-729eRRaNta7JZF07qf6SAGSghoDEp9mH7yHU0m7ff0q89W97wDrWCyZ3yoV3mcQJwbhlmVmZPTkPcm7qiAu8WA==
+"@commitlint/config-conventional@18.6.3":
+  version "18.6.3"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-18.6.3.tgz#1b2740dbe325d76e05924c46bc1504340b701ca1"
+  integrity sha512-8ZrRHqF6je+TRaFoJVwszwnOXb/VeYrPmTwPhf0WxpzpGTcYy1p0SPyZ2eRn/sRi/obnWAcobtDAq6+gJQQNhQ==
   dependencies:
+    "@commitlint/types" "^18.6.1"
     conventional-changelog-conventionalcommits "^7.0.2"
 
 "@commitlint/config-validator@^18.6.1":
@@ -1789,7 +1790,7 @@
   resolved "https://registry.yarnpkg.com/@commitlint/execute-rule/-/execute-rule-18.6.1.tgz#18175e043fe6fb5fceea7b8530316c644f93dfe6"
   integrity sha512-7s37a+iWyJiGUeMFF6qBlyZciUkF8odSAnHijbD36YDctLhGKoYltdvuJ/AFfRm6cBLRtRk9cCVPdsEFtt/2rg==
 
-"@commitlint/format@^18.4.3":
+"@commitlint/format@^18.6.1":
   version "18.6.1"
   resolved "https://registry.yarnpkg.com/@commitlint/format/-/format-18.6.1.tgz#5f2b8b3ae4d8d80bd9239178e97df63e5b8d280a"
   integrity sha512-K8mNcfU/JEFCharj2xVjxGSF+My+FbUHoqR+4GqPGrHNqXOGNio47ziiR4HQUPKtiNs05o8/WyLBoIpMVOP7wg==
@@ -1805,7 +1806,7 @@
     "@commitlint/types" "^18.6.1"
     semver "7.6.0"
 
-"@commitlint/lint@^18.4.3":
+"@commitlint/lint@^18.6.1":
   version "18.6.1"
   resolved "https://registry.yarnpkg.com/@commitlint/lint/-/lint-18.6.1.tgz#fe3834636c99ee14534a8eb3832831ac362e9fd8"
   integrity sha512-8WwIFo3jAuU+h1PkYe5SfnIOzp+TtBHpFr4S8oJWhu44IWKuVx6GOPux3+9H1iHOan/rGBaiacicZkMZuluhfQ==
@@ -1815,7 +1816,7 @@
     "@commitlint/rules" "^18.6.1"
     "@commitlint/types" "^18.6.1"
 
-"@commitlint/load@^18.4.3":
+"@commitlint/load@^18.6.1":
   version "18.6.1"
   resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-18.6.1.tgz#fb79ed7ee8b5897a9b5c274c1e24eda9162df816"
   integrity sha512-p26x8734tSXUHoAw0ERIiHyW4RaI4Bj99D8YgUlVV9SedLf8hlWAfyIFhHRIhfPngLlCe0QYOdRKYFt8gy56TA==
@@ -1846,7 +1847,7 @@
     conventional-changelog-angular "^7.0.0"
     conventional-commits-parser "^5.0.0"
 
-"@commitlint/read@^18.4.3":
+"@commitlint/read@^18.6.1":
   version "18.6.1"
   resolved "https://registry.yarnpkg.com/@commitlint/read/-/read-18.6.1.tgz#8c138311ed9749427920c369f6276be136f2aa50"
   integrity sha512-ia6ODaQFzXrVul07ffSgbZGFajpe8xhnDeLIprLeyfz3ivQU1dIoHp7yz0QIorZ6yuf4nlzg4ZUkluDrGN/J/w==
@@ -1891,7 +1892,7 @@
   dependencies:
     find-up "^5.0.0"
 
-"@commitlint/types@^18.4.3", "@commitlint/types@^18.6.1":
+"@commitlint/types@^18.6.1":
   version "18.6.1"
   resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-18.6.1.tgz#7eb3ab2d799d9166fbb98b96b0744581e59a4ad4"
   integrity sha512-gwRLBLra/Dozj2OywopeuHj2ac26gjGkz2cZ+86cTJOdtWfiRRr4+e77ZDAGc6MDWxaWheI+mAV5TLWWRwqrFg==
