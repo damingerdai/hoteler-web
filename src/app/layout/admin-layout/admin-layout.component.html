@@ -11,7 +11,7 @@
             [(opened)]="drawerOpened"
             [mode]="mode"
         >
-            <div class="d-flex flex-col h-full p-x-2">
+            <div class="flex flex-col h-full p-x-2">
                 @for (menu of menus; track $index) {
                     @if (menu.type === 'menu') {
                         <mat-nav-list>

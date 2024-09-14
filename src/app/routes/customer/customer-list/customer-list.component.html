@@ -1,6 +1,6 @@
 <app-breadcrumb url="/customer" label="客户管理" />
 <main class="-flex flex-col p-16">
-    <div class="w-full d-flex justify-content-end align-items-baseline">
+    <div class="w-full flex justify-content-end align-items-baseline">
         <button mat-raised-button color="primary" (click)="createCustomer()">
             创建客户
         </button>
@@ -98,7 +98,7 @@
                 }
             </div>
         } @else if (layout === 'card') {
-            <div class="d-flex flex-wrap w-full m-t-8">
+            <div class="flex flex-wrap w-full m-t-8">
                 @for (customer of customers; track customer.id) {
                     <div class="hoteler-col p-8">
                         <mat-card

@@ -1,6 +1,6 @@
 <app-breadcrumb label="房间管理" url="/room" />
-<div class="d-flex flex-col p-16">
-    <div class="w-full d-flex justify-content-end align-items-baseline">
+<div class="flex flex-col p-16">
+    <div class="w-full flex justify-content-end align-items-baseline">
         <form class="form-inline" [formGroup]="roomForm">
             <mat-form-field class="form-field" appearance="outline">
                 <mat-label>房间状态</mat-label>
@@ -20,7 +20,7 @@
         <app-loading-shade />
     } @else {
         @if (layout === 'card') {
-            <div class="hoteler-row d-flex flex-wrap w-full m-t-8">
+            <div class="hoteler-row flex flex-wrap w-full m-t-8">
                 @for (room of rooms; track room.id; let i = $index) {
                     <div class="hoteler-col p-8 room-card">
                         <mat-card appearance="outlined">
