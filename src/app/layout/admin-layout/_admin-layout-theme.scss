@@ -2,7 +2,7 @@
 @use '@angular/material' as mat;
 
 @mixin hoteler-admin-layout-theme($theme) {
-    .container {
+    .layout-container {
         .drawer {
             mat-icon {
                 color: mat.get-theme-color($theme, on-surface);

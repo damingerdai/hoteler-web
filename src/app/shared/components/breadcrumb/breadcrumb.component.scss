@@ -8,8 +8,6 @@ nav {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    margin-bottom: 1rem;
-    font-size: 1.275rem;
     list-style: none;
 
     &-item {
@@ -21,12 +19,15 @@ nav {
       }
 
       >a.link {
+        // font: 500 40px / 1.25 Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, \5fae\8f6f\96c5\9ed1, Arial, sans-serif;
+        letter-spacing: normal;
+        margin: 0 0 64px;
         color: currentColor;
         text-decoration: none;
 
         &:hover {
           color: currentColor;
-          text-decoration: underline;
+          text-decoration: none;
         }
       }
     }
