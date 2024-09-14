@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { ThemePickerComponent } from './theme-picker.component';
-import { ThemeStorageService } from './theme-storage/theme-storage.service';
+import { ThemeStorageService } from '../theme-storage/theme-storage.service';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { LocalStorageService } from 'src/app/core/services';
 

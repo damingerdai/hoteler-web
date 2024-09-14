@@ -7,7 +7,7 @@ import { LocalStorageService } from 'src/app/core/services';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
 import { NavbarComponent } from './navbar.component';
-import { ThemeStorageService } from '../theme-picker/theme-storage/theme-storage.service';
+import { ThemeStorageService } from '../theme-storage/theme-storage.service';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 

@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { SettingsService } from 'src/app/core/services/settings/settings.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ThemeSelectorComponent } from 'src/app/shared/components/theme-selector/theme-selector.component';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 
 @Component({
@@ -9,16 +9,18 @@ import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
   standalone: true,
   imports: [
     SharedMaterialModule,
+    ThemeSelectorComponent
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsComponent{
+export class SettingsComponent {
 
-  private settingsService: SettingsService = inject(SettingsService);
 
-  constructor() { }
 
-  public toggleM3Theme(checked: boolean) {
-    
+  constructor() {
+
   }
+
+
 
 }
