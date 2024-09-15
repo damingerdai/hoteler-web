@@ -3,12 +3,18 @@
   display: flex;
   inset: 64px 0 0;
   flex-direction: column;
+
+  app-navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+
+  .layout-container {
+    background-image: radial-gradient(at 97% 21%, hsla(125deg, 98%, 72%, .3) 0, transparent 50%), radial-gradient(at 52% 99%, hsla(354deg, 98%, 61%, .3) 0, transparent 50%), radial-gradient(at 10% 29%, hsla(256deg, 96%, 67%, .3) 0, transparent 50%), radial-gradient(at 97% 96%, hsla(38deg, 60%, 74%, .3) 0, transparent 50%), radial-gradient(at 33% 50%, hsla(222deg, 67%, 73%, .3) 0, transparent 50%), radial-gradient(at 79% 53%, hsla(343deg, 68%, 79%, .3) 0, transparent 50%);
+  }
 }
 
-app-navbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 2;
-}
