@@ -1,4 +1,4 @@
-<div class="login w-full h-full">
+<div class="login flex w-full h-full">
     <mat-card appearance="outlined" class="login-card mat-elevation-z4 m-auto">
         <mat-card-header>
             <mat-card-title class="text-center">
@@ -61,11 +61,17 @@
                 >
                     登录
                 </button>
-                <div class="m-t-16 tip">
-                    没有账号?
-                    <a routerLink="/register" class="p-0">点此创建一个</a>
-                </div>
             </form>
         </mat-card-content>
+        <mat-card-actions>
+            <div class="flex justify-center px-2">
+                <span class="no-account inline-flex items-center justify-center"
+                    >没有账号?</span
+                >
+                <a mat-button routerLink="/register" class="p-0"
+                    >点此创建一个</a
+                >
+            </div>
+        </mat-card-actions>
     </mat-card>
 </div>

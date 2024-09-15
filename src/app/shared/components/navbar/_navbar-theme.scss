@@ -14,7 +14,13 @@
         };
 
         color: mat.get-theme-color($theme, tertiary);
+
+
       }
     }
+  }
+
+  .avatars {
+    background-color: mat.get-theme-color($theme, primary);
   }
 }

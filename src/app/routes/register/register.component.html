@@ -1,4 +1,4 @@
-<div class="register w-full h-full">
+<div class="register w-full">
     <mat-card
         appearance="outlined"
         class="register-card mat-elevation-z4 m-auto"
@@ -71,7 +71,6 @@
                 }
                 <button
                     class="w-full"
-                    #btn="matButton"
                     mat-flat-button
                     color="primary"
                     [disabled]="form.invalid"
@@ -79,11 +78,17 @@
                 >
                     注册
                 </button>
-                <div class="m-t-16">
-                    已经有账号了?
-                    <a routerLink="/login" class="p-0">登录</a>
-                </div>
             </form>
         </mat-card-content>
+        <mat-card-actions>
+            <div class="flex justify-center px-2">
+                <span
+                    class="has-account inline-flex items-center justify-center"
+                >
+                    已经有账号了?</span
+                >
+                <a mat-button routerLink="/login" class="p-0">登录</a>
+            </div>
+        </mat-card-actions>
     </mat-card>
 </div>

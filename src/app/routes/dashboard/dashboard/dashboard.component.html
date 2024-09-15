@@ -12,23 +12,18 @@
                         class="hoteler-col flex justify-content-center h-[400px]"
                     >
                         <mat-card appearance="outlined" class="w-full">
-                            @defer (
-                                on viewport;
-                                when roomStatusDonutChart.show
-                            ) {
-                                <div
-                                    apxChart
-                                    [series]="roomStatusDonutChart.series"
-                                    [chart]="roomStatusDonutChart.chart"
-                                    [title]="roomStatusDonutChart.title"
-                                    [labels]="roomStatusDonutChart.labels"
-                                    [plotOptions]="
-                                        roomStatusDonutChart.plotOptions
-                                    "
-                                ></div>
-                            } @placeholder {
-                                <div>房间状态统计</div>
-                            }
+                            <mat-card-header>
+                                <mat-card-title>{{
+                                    roomStatusDonutChart.title.text
+                                }}</mat-card-title>
+                            </mat-card-header>
+                            <div
+                                apxChart
+                                [series]="roomStatusDonutChart.series"
+                                [chart]="roomStatusDonutChart.chart"
+                                [labels]="roomStatusDonutChart.labels"
+                                [plotOptions]="roomStatusDonutChart.plotOptions"
+                            ></div>
                         </mat-card>
                     </div>
                 }
