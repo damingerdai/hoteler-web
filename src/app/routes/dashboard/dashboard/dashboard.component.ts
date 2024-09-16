@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
         show: false,
         chart: {
             type: 'donut',
+            height: '300px'
         },
         title: {
             text: '房间状态统计',
@@ -66,6 +67,7 @@ export class DashboardComponent implements OnInit {
         show: false,
         chart: {
             type: 'line',
+             height: '300px'
         },
         title: {
             text: '过去一周的入住客户数量变化',

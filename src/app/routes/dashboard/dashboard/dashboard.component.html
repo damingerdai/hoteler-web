@@ -17,9 +17,12 @@
                                     roomStatusDonutChart.title.text
                                 }}</mat-card-title>
                             </mat-card-header>
-                            <mat-card-content>
+                            <mat-card-content
+                                class="h-full flex flex-col-reverse"
+                            >
                                 <div
                                     apxChart
+                                    class="h-4/5"
                                     [series]="roomStatusDonutChart.series"
                                     [chart]="roomStatusDonutChart.chart"
                                     [labels]="roomStatusDonutChart.labels"
@@ -41,7 +44,7 @@
                                     pastWeekCustomerCountChart.title.text
                                 }}</mat-card-title>
                             </mat-card-header>
-                            <mat-card-content>
+                            <mat-card-content class="h-full">
                                 @defer (
                                     on viewport;
                                     when pastWeekCustomerCountChart.show
