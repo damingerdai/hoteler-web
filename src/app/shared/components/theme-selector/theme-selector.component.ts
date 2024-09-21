@@ -1,4 +1,4 @@
-import { afterNextRender, Component, Inject, inject } from '@angular/core';
+import { afterNextRender, ChangeDetectorRef, Component, Inject, inject } from '@angular/core';
 import { SiteTheme, SiteThemes, ThemeStorageService } from '../theme-storage/theme-storage.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,13 +9,11 @@ import { Meta } from '@angular/platform-browser';
 import { Platform } from '@angular/cdk/platform';
 import { DOCUMENT } from '@angular/common';
 import { StyleManagerService } from 'src/app/core/services/style-manager/style-manager.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-theme-selector',
   standalone: true,
-  providers: [
-    ThemeStorageService
-  ],
   imports: [MatButtonModule, MatTooltipModule, MatMenuModule, MatIconModule],
   templateUrl: './theme-selector.component.html',
   styleUrl: './theme-selector.component.scss'
@@ -31,6 +29,7 @@ export class ThemeSelectorComponent {
   private liveAnnouncer = inject(LiveAnnouncer);
   private metaService = inject(Meta);
   private platform = inject(Platform);
+  private cdr = inject(ChangeDetectorRef);
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -42,6 +41,13 @@ export class ThemeSelectorComponent {
     if (themeName && theme) {
       this.doSelectTheme(theme);
     }
+    this.themeStorage.onThemeUpdate.pipe(filter(t => !!t)).subscribe(t => {
+      const theme = this.themes.find(currentTheme => currentTheme.name === t.name);
+      if (theme) {
+        this.currentTheme = theme;
+      this.cdr.detectChanges();
+      }
+    });
     afterNextRender(() => {
       if (this.platform.isBrowser && this.platform.IOS && this.platform.SAFARI) {
         this.metaService.addTag({
@@ -49,6 +55,7 @@ export class ThemeSelectorComponent {
           content: 'yes'
         });
       }
+
     });
   }
 
