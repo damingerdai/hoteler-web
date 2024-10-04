@@ -7457,10 +7457,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngx-apexcharts@0.6.9:
-  version "0.6.9"
-  resolved "https://registry.yarnpkg.com/ngx-apexcharts/-/ngx-apexcharts-0.6.9.tgz#49c8386359c7523fa9abb14f6a7b65b73280f084"
-  integrity sha512-ejnfixiylD8V805jpx5Y2ncYDr+BrSNsbi9Z0pAmd2UI/PI09CZTWHeS2d7R7SMaUhyjIZ/WBW+T8CUycSmFTw==
+ngx-apexcharts@0.6.10:
+  version "0.6.10"
+  resolved "https://registry.yarnpkg.com/ngx-apexcharts/-/ngx-apexcharts-0.6.10.tgz#6454c9a4761923d0a53769be3e1d373f6e2a242f"
+  integrity sha512-jn126vFotZvv24kfBWeMoXAzra61G8jN4pg8ANoF3tMzAIpkzG8vOv2fnakL7Qwi0VgXaAP1WHF99LaqK6Bxkw==
   dependencies:
     tslib "^2.0.0"
 
