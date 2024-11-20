@@ -3,11 +3,12 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DirectivesModule } from './directives.module';
 @Component({
-  template: `
+    template: `
     <nav style="display: flex">
     <div flexSpacer></div>
     </nav>
-  `
+  `,
+    standalone: false
 })
 export class FlexSpacerDirectiveTestComponent { }
 

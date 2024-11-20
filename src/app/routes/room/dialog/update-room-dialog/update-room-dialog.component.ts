@@ -8,18 +8,17 @@ import { IRoom } from '../../../../core/models';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-update-room-dialog',
-  templateUrl: './update-room-dialog.component.html',
-  styleUrls: ['./update-room-dialog.component.scss'],
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-  ]
+    selector: 'app-update-room-dialog',
+    templateUrl: './update-room-dialog.component.html',
+    styleUrls: ['./update-room-dialog.component.scss'],
+    imports: [
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+    ]
 })
 export class UpdateRoomDialogComponent implements OnInit {
 

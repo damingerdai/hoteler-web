@@ -20,15 +20,14 @@ import {
 import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'app-skeleton-loader',
-  templateUrl: './skeleton-loader.component.html',
-  styleUrls: ['./skeleton-loader.component.scss'],
-  standalone: true,
-  imports: [
-    NgClass,
-    NgStyle,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-skeleton-loader',
+    templateUrl: './skeleton-loader.component.html',
+    styleUrls: ['./skeleton-loader.component.scss'],
+    imports: [
+        NgClass,
+        NgStyle,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkeletonLoaderComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
 

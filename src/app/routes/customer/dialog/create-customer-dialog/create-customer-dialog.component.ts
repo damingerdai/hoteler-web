@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -6,18 +6,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-create-customer-dialog',
-  templateUrl: './create-customer-dialog.component.html',
-  styleUrls: ['./create-customer-dialog.component.scss'],
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatDialogModule,
-    MatInputModule,
-    MatSelectModule,
-
-    ReactiveFormsModule
-  ]
+    selector: 'app-create-customer-dialog',
+    templateUrl: './create-customer-dialog.component.html',
+    styleUrls: ['./create-customer-dialog.component.scss'],
+    imports: [
+        MatButtonModule,
+        MatDialogModule,
+        MatInputModule,
+        MatSelectModule,
+        ReactiveFormsModule
+    ]
 })
 export class CreateCustomerDialogComponent {
 

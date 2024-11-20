@@ -54,20 +54,17 @@ const MENUS: IMenuItem[] = [
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss'],
-    standalone: true,
     imports: [
         RouterModule,
         NgTemplateOutlet,
         SharedMaterialModule,
         AvatarModule,
-
         LogoComponent,
         ThemePickerComponent,
         TitleCasePipe,
         FlexSpacerDirective,
         GithubComponent
-    ],
-    // changeDetection: ChangeDetectionStrategy.OnPush,
+    ]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];

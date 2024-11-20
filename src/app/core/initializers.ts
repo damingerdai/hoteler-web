@@ -1,4 +1,4 @@
-import { APP_INITIALIZER } from '@angular/core';
+import { inject, provideAppInitializer } from '@angular/core';
 import { FontfaceobserverService } from './bootstrap/fontfaceobserver.service';
 
 const FontfaceobserverServiceFactory = (fontfaceobserverService: FontfaceobserverService) => {
@@ -6,10 +6,5 @@ const FontfaceobserverServiceFactory = (fontfaceobserverService: Fontfaceobserve
 };
 
 export const appInitializerProviders = [
-  {
-    provide: APP_INITIALIZER,
-    useFactory: FontfaceobserverServiceFactory,
-    deps: [FontfaceobserverService],
-    multi: true,
-  },
+  provideAppInitializer((FontfaceobserverServiceFactory)(inject(FontfaceobserverService))),
 ];

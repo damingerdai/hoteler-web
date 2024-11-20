@@ -6,12 +6,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-theme-picker',
-  templateUrl: './theme-picker.component.html',
-  styleUrls: ['./theme-picker.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [MatTooltipModule, MatMenuModule, MatIconModule, MatButtonModule, ThemeSelectorComponent]
+    selector: 'app-theme-picker',
+    templateUrl: './theme-picker.component.html',
+    styleUrls: ['./theme-picker.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatTooltipModule, MatMenuModule, MatIconModule, MatButtonModule, ThemeSelectorComponent]
 })
 export class ThemePickerComponent {
 

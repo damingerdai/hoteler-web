@@ -10,21 +10,18 @@ import { Customers, IRoom } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/services/customers';
 
 @Component({
-  selector: 'app-add-customer-room-dialog',
-  templateUrl: './add-customer-room-dialog.component.html',
-  styleUrls: ['./add-customer-room-dialog.component.scss'],
-  standalone: true,
-  imports: [
-    CurrencyPipe,
-
-    MatButtonModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatDialogModule,
-
-    ReactiveFormsModule,
-  ]
+    selector: 'app-add-customer-room-dialog',
+    templateUrl: './add-customer-room-dialog.component.html',
+    styleUrls: ['./add-customer-room-dialog.component.scss'],
+    imports: [
+        CurrencyPipe,
+        MatButtonModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+    ]
 })
 export class AddCustomerRoomDialogComponent implements OnInit {
 

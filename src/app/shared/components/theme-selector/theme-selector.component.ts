@@ -12,11 +12,10 @@ import { StyleManagerService } from 'src/app/core/services/style-manager/style-m
 import { filter } from 'rxjs';
 
 @Component({
-  selector: 'app-theme-selector',
-  standalone: true,
-  imports: [MatButtonModule, MatTooltipModule, MatMenuModule, MatIconModule],
-  templateUrl: './theme-selector.component.html',
-  styleUrl: './theme-selector.component.scss'
+    selector: 'app-theme-selector',
+    imports: [MatButtonModule, MatTooltipModule, MatMenuModule, MatIconModule],
+    templateUrl: './theme-selector.component.html',
+    styleUrl: './theme-selector.component.scss'
 })
 export class ThemeSelectorComponent {
 

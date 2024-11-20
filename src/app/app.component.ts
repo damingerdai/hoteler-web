@@ -6,15 +6,14 @@ import { filter } from 'rxjs';
 import { LayoutModule } from './layout/layout.module';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  standalone: true,
-  imports: [
-    // LayoutModule,
-    RouterOutlet,
-    ToasterContainerComponent,
-  ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [
+        // LayoutModule,
+        RouterOutlet,
+        ToasterContainerComponent,
+    ]
 })
 export class AppComponent {
 

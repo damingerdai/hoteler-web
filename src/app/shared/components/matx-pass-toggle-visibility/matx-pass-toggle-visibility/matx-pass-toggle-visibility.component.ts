@@ -5,6 +5,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
     templateUrl: './matx-pass-toggle-visibility.component.html',
     styleUrl: './matx-pass-toggle-visibility.component.scss',
     encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class MatxPassToggleVisibilityComponent {
     @Input()

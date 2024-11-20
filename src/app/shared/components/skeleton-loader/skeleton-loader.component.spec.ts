@@ -5,8 +5,8 @@ import { SKELETON_LOADER_CONFIG } from './skeleton-loader-config.types';
 import { SkeletonLoaderComponent } from './skeleton-loader.component';
 
 @Component({
-  selector: 'app-container',
-  template: `
+    selector: 'app-container',
+    template: `
     <div>
       <div class="skeletons-defaults">
         <app-skeleton-loader></app-skeleton-loader>
@@ -63,10 +63,9 @@ import { SkeletonLoaderComponent } from './skeleton-loader.component';
       </div>
     </div>
   `,
-  standalone: true,
-  imports: [
-    SkeletonLoaderComponent
-  ]
+    imports: [
+        SkeletonLoaderComponent
+    ]
 })
 class ContainerComponent {
   animationWithFalsePassedViaBinding = false;

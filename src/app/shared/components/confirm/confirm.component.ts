@@ -11,8 +11,7 @@ interface IConfirmData {
     selector: 'app-confirm',
     templateUrl: './confirm.component.html',
     styleUrls: ['./confirm.component.scss'],
-    standalone: true,
-    imports: [MatButtonModule, MatDialogModule],
+    imports: [MatButtonModule, MatDialogModule]
 })
 export class ConfirmComponent {
     constructor(

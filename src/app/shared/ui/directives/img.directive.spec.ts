@@ -5,9 +5,10 @@ import { DirectivesModule } from './directives.module';
 
 
 @Component({
-  template: `
+    template: `
    <img src="https://images.ctfassets.net/ooa29xqb8tix/2KiUooJBmI26N6u5gr2rlm/e2bb070640fe2778e1a58d160335cbe7/React_Hooks_handbook_800x600_cover_new.png?w=400&q=50" />
-  `
+  `,
+    standalone: false
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 class TestApp { }

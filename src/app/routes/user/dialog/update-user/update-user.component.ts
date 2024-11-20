@@ -12,15 +12,14 @@ interface UpdateUserDialogData {
 }
 
 @Component({
-  selector: 'app-update-user',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    SharedMaterialModule,
-    SharedCdkModule,
-  ],
-  templateUrl: './update-user.component.html',
-  styleUrl: './update-user.component.scss'
+    selector: 'app-update-user',
+    imports: [
+        ReactiveFormsModule,
+        SharedMaterialModule,
+        SharedCdkModule,
+    ],
+    templateUrl: './update-user.component.html',
+    styleUrl: './update-user.component.scss'
 })
 export class UpdateUserComponent {
 

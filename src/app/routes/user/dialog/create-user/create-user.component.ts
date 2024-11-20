@@ -19,13 +19,12 @@ interface CreateUserDialogData {
     selector: 'app-create-user',
     templateUrl: './create-user.component.html',
     styleUrl: './create-user.component.scss',
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         MatxPassToggleVisibilityModule,
         SharedMaterialModule,
         SharedCdkModule,
-    ],
+    ]
 })
 export class CreateUserComponent {
     protected form: FormGroup;

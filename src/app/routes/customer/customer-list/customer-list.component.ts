@@ -14,23 +14,21 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-customer-list',
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.scss'],
-  standalone: true,
-  imports: [
-    BreadcrumbComponent,
-    LoadingShadeComponent,
-    BannerComponent,
-    CarouselComponent,
-    TagComponent,
-
-    MatButtonModule,
-    MatDividerModule,
-    MatTableModule,
-    MatCardModule,
-    MatChipsModule,
-  ]
+    selector: 'app-customer-list',
+    templateUrl: './customer-list.component.html',
+    styleUrls: ['./customer-list.component.scss'],
+    imports: [
+        BreadcrumbComponent,
+        LoadingShadeComponent,
+        BannerComponent,
+        CarouselComponent,
+        TagComponent,
+        MatButtonModule,
+        MatDividerModule,
+        MatTableModule,
+        MatCardModule,
+        MatChipsModule,
+    ]
 })
 export class CustomerListComponent implements OnInit {
 

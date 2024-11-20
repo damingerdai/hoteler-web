@@ -30,17 +30,17 @@
     },
     "private": true,
     "dependencies": {
-        "@angular/animations": "18.2.9",
+        "@angular/animations": "19.0.0",
         "@angular/cdk": "18.2.10",
-        "@angular/common": "18.2.9",
-        "@angular/compiler": "18.2.9",
-        "@angular/core": "18.2.9",
-        "@angular/forms": "18.2.9",
+        "@angular/common": "19.0.0",
+        "@angular/compiler": "19.0.0",
+        "@angular/core": "19.0.0",
+        "@angular/forms": "19.0.0",
         "@angular/material": "18.2.10",
-        "@angular/platform-browser": "18.2.9",
-        "@angular/platform-browser-dynamic": "18.2.9",
-        "@angular/router": "18.2.9",
-        "@angular/service-worker": "18.2.9",
+        "@angular/platform-browser": "19.0.0",
+        "@angular/platform-browser-dynamic": "19.0.0",
+        "@angular/router": "19.0.0",
+        "@angular/service-worker": "19.0.0",
         "angular-toaster": "1.6.1",
         "apexcharts": "~3.53.0",
         "ngx-apexcharts": "0.6.10",
@@ -51,18 +51,18 @@
         "rxjs": "7.8.1",
         "tfontfaceobserver": "^0.0.2",
         "tslib": "2.6.3",
-        "zone.js": "0.14.10"
+        "zone.js": "0.15.0"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "18.2.10",
+        "@angular-devkit/build-angular": "19.0.0",
         "@angular-eslint/builder": "18.4.0",
         "@angular-eslint/eslint-plugin": "18.4.0",
         "@angular-eslint/eslint-plugin-template": "18.4.0",
         "@angular-eslint/schematics": "18.4.0",
         "@angular-eslint/template-parser": "18.4.0",
-        "@angular/cli": "18.2.10",
-        "@angular/compiler-cli": "18.2.9",
-        "@angular/language-service": "18.2.9",
+        "@angular/cli": "19.0.0",
+        "@angular/compiler-cli": "19.0.0",
+        "@angular/language-service": "19.0.0",
         "@commitlint/cli": "18.6.1",
         "@commitlint/config-conventional": "18.6.3",
         "@tauri-apps/cli": "^1.6.0",
@@ -96,6 +96,6 @@
         "stylelint-scss": "^6.0.0",
         "tailwindcss": "^3.4.11",
         "ts-node": "10.9.2",
-        "typescript": "5.4.5"
+        "typescript": "5.6.3"
     }
 }

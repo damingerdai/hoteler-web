@@ -6,13 +6,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-customizer',
-  templateUrl: './customizer.component.html',
-  styleUrls: ['./customizer.component.scss'],
-  standalone: true,
-  imports: [
-    MatIconModule, MatMenuModule, MatTooltipModule, MatButtonModule, DragDropModule,
-  ]
+    selector: 'app-customizer',
+    templateUrl: './customizer.component.html',
+    styleUrls: ['./customizer.component.scss'],
+    imports: [
+        MatIconModule, MatMenuModule, MatTooltipModule, MatButtonModule, DragDropModule,
+    ]
 })
 export class CustomizerComponent implements OnInit {
 

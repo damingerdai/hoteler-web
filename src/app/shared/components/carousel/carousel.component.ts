@@ -6,16 +6,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss'],
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatIconModule,
-
-    CarouselItemDirective,
-  ]
+    selector: 'app-carousel',
+    templateUrl: './carousel.component.html',
+    styleUrls: ['./carousel.component.scss'],
+    imports: [
+        MatButtonModule,
+        MatIconModule,
+        CarouselItemDirective,
+    ]
 })
 export class CarouselComponent implements AfterContentInit {
 

@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { IRole } from '../models/roles';
 
 @Pipe({
-  name: 'userRoleDisplay',
+    name: 'userRoleDisplay',
+    standalone: false
 })
 export class UserRoleDisplayPipe implements PipeTransform {
   transform(roles?: IRole[]): string {

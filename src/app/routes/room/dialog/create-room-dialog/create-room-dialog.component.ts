@@ -6,17 +6,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-create-room-dialog',
-  templateUrl: './create-room-dialog.component.html',
-  styleUrls: ['./create-room-dialog.component.scss'],
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-  ]
+    selector: 'app-create-room-dialog',
+    templateUrl: './create-room-dialog.component.html',
+    styleUrls: ['./create-room-dialog.component.scss'],
+    imports: [
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+    ]
 })
 export class CreateRoomDialogComponent implements OnInit {
 

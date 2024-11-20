@@ -26,28 +26,26 @@ import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './room.component.html',
-  styleUrls: ['./room.component.scss'],
-  standalone: true,
-  imports: [
-    MatMenuModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTableModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatDividerModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    CurrencyPipe,
-
-    //SharedModule,
-    LoadingShadeComponent,
-    BreadcrumbComponent,
-    CustomizerComponent,
-    TagComponent,
-  ],
+    selector: 'app-menu',
+    templateUrl: './room.component.html',
+    styleUrls: ['./room.component.scss'],
+    imports: [
+        MatMenuModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTableModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatDividerModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        CurrencyPipe,
+        //SharedModule,
+        LoadingShadeComponent,
+        BreadcrumbComponent,
+        CustomizerComponent,
+        TagComponent,
+    ]
 })
 export class RoomComponent implements OnInit {
 

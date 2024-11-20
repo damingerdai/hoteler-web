@@ -35,7 +35,6 @@ const identityPasswordValidator: ValidatorFn = (
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         SharedMaterialModule,
@@ -43,7 +42,7 @@ const identityPasswordValidator: ValidatorFn = (
         MatxPassToggleVisibilityModule,
         UiModule,
         RouterLinkWithHref,
-    ],
+    ]
 })
 export class RegisterComponent implements OnInit {
     @ViewChild('btn', { read: ElementRef })

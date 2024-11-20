@@ -26,16 +26,15 @@ import { SettingsService } from 'src/app/core/services/settings/settings.service
 import { ToasterService } from 'angular-toaster';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss'],
-  standalone: true,
-  imports: [
-    BreadcrumbComponent,
-    TagComponent,
-    SharedMaterialModule,
-    SharedPipesModule,
-  ],
+    selector: 'app-user-list',
+    templateUrl: './user-list.component.html',
+    styleUrls: ['./user-list.component.scss'],
+    imports: [
+        BreadcrumbComponent,
+        TagComponent,
+        SharedMaterialModule,
+        SharedPipesModule,
+    ]
 })
 export class UserListComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];

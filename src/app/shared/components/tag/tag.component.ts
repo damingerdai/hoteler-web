@@ -7,8 +7,7 @@ import { MatRippleModule } from '@angular/material/core';
     templateUrl: './tag.component.html',
     styleUrl: './tag.component.scss',
     imports: [NgClass, MatRippleModule],
-    standalone: true,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent {
     @Input()

@@ -14,13 +14,12 @@ type ApexOptions2 = ApexOptions & { show: boolean };
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    standalone: true,
     imports: [
         NgxApexchartsModule,
         MatCardModule,
         LoadingShadeComponent,
         BreadcrumbComponent,
-    ],
+    ]
 })
 export class DashboardComponent implements OnInit {
     protected loading = false;

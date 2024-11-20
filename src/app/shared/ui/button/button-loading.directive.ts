@@ -5,13 +5,14 @@ import { ThemePalette } from '@angular/material/core';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Directive({
-  selector: `button[mat-button][loading],
+    selector: `button[mat-button][loading],
              button[mat-raised-button][loading],
              button[mat-stroked-button][loading],
              button[mat-flat-button][loading],
              button[mat-icon-button][loading],
              button[mat-fab][loading],
              button[mat-mini-fab][loading]`,
+    standalone: false
 })
 export class ButtonLoadingDirective implements OnChanges {
 

@@ -10,16 +10,15 @@ import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 import { UiModule } from 'src/app/shared/ui/ui.module';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    SharedMaterialModule,
-    UiModule,
-    RouterLinkWithHref,
-  ]
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    imports: [
+        ReactiveFormsModule,
+        SharedMaterialModule,
+        UiModule,
+        RouterLinkWithHref,
+    ]
 })
 export class LoginComponent implements OnInit {
 
