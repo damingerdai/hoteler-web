@@ -15,9 +15,6 @@ export class CarouselItemDirective implements FocusOptions {
   @HostBinding('attr.role') readonly role = 'listitem';
   @HostBinding('tabindex') tabindex = '-1';
 
-  constructor() {
-  }
-
   focus(): void {
     this.element.nativeElement.focus({ preventScroll: true });
   }

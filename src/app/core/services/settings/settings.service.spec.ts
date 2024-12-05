@@ -14,7 +14,7 @@ describe('SettingsService', () => {
         {
           provide: LocalStorageService,
           useValue: {
-            set: (a: string, b: any) => void 0,
+            set: () => void 0,
             get: (a) => a,
           }
         }
@@ -26,5 +26,6 @@ describe('SettingsService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+    expect(localStorageService).toBeTruthy();
   });
 });

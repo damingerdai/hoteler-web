@@ -9,9 +9,8 @@ import { By } from '@angular/platform-browser';
 import { runOnPushChangeDetection } from '../../testings/fixture';
 
 import { ErrorCodeComponent } from './error-code.component';
-import { RouterTestingModule } from '@angular/router/testing';
 import { provideRouter, RouterLinkWithHref } from '@angular/router';
-import { Component, input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   template: '<div>login</div>',
@@ -26,9 +25,6 @@ describe('ErrorCodeComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes([
-          { path: 'login', component: LoginComponent },
-        ]),
         ErrorCodeComponent,
       ],
       providers: [

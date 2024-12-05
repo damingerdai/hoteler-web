@@ -3,14 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { ToasterContainerComponent } from 'angular-toaster';
 import { filter } from 'rxjs';
-import { LayoutModule } from './layout/layout.module';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     imports: [
-        // LayoutModule,
         RouterOutlet,
         ToasterContainerComponent,
     ]

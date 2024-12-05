@@ -8,11 +8,6 @@ import { A11yModule } from '@angular/cdk/a11y';
 
 import { ConfirmComponent } from './confirm.component';
 
-/** Gets the currently-focused element while accounting for the shadow DOM. */
-function getActiveElement() {
-  const activeElement = document.activeElement as HTMLElement | null;
-  return (activeElement?.shadowRoot?.activeElement as HTMLElement) || activeElement;
-}
 describe('ConfirmComponent', () => {
 
   beforeEach(waitForAsync(() => {

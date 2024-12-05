@@ -11,7 +11,7 @@ export class ApiService {
     private httpClient: HttpClient
   ) { }
 
-  public post<T>(url: string, params: HttpParams | { [param: string]: string | string[] }, headers?: any): Observable<T> {
+  public post<T>(url: string, params: HttpParams | Record<string, string | string[]>, headers?: unknown): Observable<T> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -25,7 +25,7 @@ export class ApiService {
     return this.httpClient.post<T>(url, params, httpOptions);
   }
 
-  public put<T>(url: string, params: HttpParams | { [param: string]: string | string[] }, headers?: any): Observable<T> {
+  public put<T>(url: string, params: HttpParams | Record<string, string | string[]>, headers?: unknown): Observable<T> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -39,7 +39,7 @@ export class ApiService {
     return this.httpClient.put<T>(url, params, httpOptions);
   }
 
-  public get<T>(url: string, params?: any, headers?: any): Observable<T> {
+  public get<T>(url: string, params?: HttpParams | Record<string, string | number | boolean | readonly (string | number | boolean)[]>, headers?: unknown): Observable<T> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -50,6 +50,7 @@ export class ApiService {
         httpOptions.headers = httpOptions.headers.set(key, headers[key]);
       });
     }
+
     return this.httpClient.get<T>(url, { params });
   }
 

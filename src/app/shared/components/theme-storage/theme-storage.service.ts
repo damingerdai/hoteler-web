@@ -10,7 +10,7 @@ export interface SiteTheme {
 }
 
 
-export type SiteThemes = Array<SiteTheme>;
+export type SiteThemes = SiteTheme[];
 
 
 @Injectable({
@@ -58,8 +58,6 @@ export class ThemeStorageService {
 
 
   onThemeUpdate: EventEmitter<SiteTheme> = new EventEmitter<SiteTheme>();
-
-  constructor() { }
 
   storeTheme(theme: SiteTheme) {
     try {

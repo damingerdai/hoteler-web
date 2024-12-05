@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
@@ -20,7 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
         MatSelectModule,
     ]
 })
-export class UpdateRoomDialogComponent implements OnInit {
+export class UpdateRoomDialogComponent {
 
   private fb = inject(FormBuilder);
   public room: FormGroup;
@@ -47,9 +47,6 @@ export class UpdateRoomDialogComponent implements OnInit {
     });
 
     this.roomname.disable();
-  }
-
-  ngOnInit(): void {
   }
 
 }

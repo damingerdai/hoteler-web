@@ -23,6 +23,4 @@ export class BannerComponent {
   @Input()
   public text: string;
 
-  constructor() { }
-
 }

@@ -16,11 +16,11 @@ export class CustomerService {
   ) { }
 
   public create(customer: ICustomer): Observable<DataResponse<number>> {
-    return this.api.post<DataResponse<number>>('api/v1/customer', customer as any);
+    return this.api.post<DataResponse<number>>('api/v1/customer', customer as unknown as Record<string, string>);
   }
 
   public update(customer: ICustomer): Observable<DataResponse<number>> {
-    return this.api.put<DataResponse<number>>('api/v1/customer', customer as any);
+    return this.api.put<DataResponse<number>>('api/v1/customer', customer as unknown as Record<string, string>);
   }
 
   public list(): Observable<ListResponse<ICustomer>> {

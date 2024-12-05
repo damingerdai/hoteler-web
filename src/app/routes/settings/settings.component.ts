@@ -14,12 +14,4 @@ import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 })
 export class SettingsComponent {
 
-
-
-  constructor() {
-
-  }
-
-
-
 }

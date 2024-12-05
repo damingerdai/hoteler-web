@@ -7,6 +7,7 @@ import { ButtonLoadingDirective } from './button-loading.directive';
 import { ButtonModule } from './button.module';
 
 @Component({
+     
     selector: 'test-app',
     template: `
     <button mat-button [loading]="loading">Test Button</button>
@@ -15,8 +16,7 @@ import { ButtonModule } from './button.module';
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 class TestApp {
-
-  public loading: boolean = false;
+  public loading = false;
 }
 
 describe('ButtonLoadingDirective', () => {

@@ -4,13 +4,25 @@ import {
     MediaMatcher,
 } from '@angular/cdk/layout';
 import { Component, ViewChild } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
+import { NavbarComponent } from 'src/app/shared/components';
 
 @Component({
     selector: 'app-admin-layout',
     templateUrl: './admin-layout.component.html',
     styleUrls: ['./admin-layout.component.scss'],
-    standalone: false,
+    imports: [
+        MatDividerModule,
+        MatIconModule,
+        MatListModule,
+        MatSidenavModule,
+        NavbarComponent,
+        RouterModule
+    ]
 })
 export class AdminLayoutComponent {
     public isMobile: boolean;

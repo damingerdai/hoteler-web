@@ -11,7 +11,7 @@
         "tauri": "tauri",
         "start": "ng serve",
         "start:online": "yarn ng serve --proxy-config=src/proxy.conf.online.json --hmr",
-        "build": "ng build --configuration production",
+        "build": "ng build",
         "build:esbuild": "ng run hoteler-web:esbuild",
         "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
         "changelog:all": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
@@ -64,9 +64,11 @@
         "@types/jasmine": "4.6.4",
         "@types/jasminewd2": "2.0.13",
         "@types/node": "20.17.9",
+        "angular-eslint": "19.0.0",
         "autoprefixer": "^10.4.20",
         "conventional-changelog-cli": "4.1.0",
         "dotenv": "^16.4.5",
+        "eslint": "^9.15.0",
         "husky": "9.1.6",
         "is-ci": "3.0.1",
         "jasmine-core": "5.3.0",
@@ -88,6 +90,7 @@
         "stylelint-scss": "^6.0.0",
         "tailwindcss": "^3.4.11",
         "ts-node": "10.9.2",
-        "typescript": "5.6.3"
+        "typescript": "5.6.3",
+        "typescript-eslint": "8.16.0"
     }
 }

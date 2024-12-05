@@ -13,8 +13,8 @@ describe('BannerComponent', () => {
   }));
 
   it('text should be \'hello\'', () => {
-    let fixture = TestBed.createComponent(BannerComponent);
-    let component = fixture.componentInstance;
+    const fixture = TestBed.createComponent(BannerComponent);
+    const component = fixture.componentInstance;
     component.text = 'hello';
     fixture.detectChanges();
     const bannerEl = fixture.debugElement.query(By.css('.banner'));

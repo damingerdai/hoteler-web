@@ -1,4 +1,4 @@
-import { ANIMATION_MODULE_TYPE, AfterContentInit, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, Optional, QueryList, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ANIMATION_MODULE_TYPE, AfterContentInit, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, Optional, QueryList, ViewChild } from '@angular/core';
 import { CarouselItemDirective } from './carousel-item.directive';
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import { LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
