@@ -6,8 +6,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
-    declarations: [MatxPassToggleVisibilityComponent],
-    imports: [CommonModule, MatButtonModule, MatIconModule, MatRippleModule],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        MatRippleModule,
+        MatxPassToggleVisibilityComponent,
+    ],
     exports: [MatxPassToggleVisibilityComponent],
 })
 export class MatxPassToggleVisibilityModule {}

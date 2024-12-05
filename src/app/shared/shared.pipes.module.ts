@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { UserRoleDisplayPipe } from '../core/pipes';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [UserRoleDisplayPipe],
-  exports: [UserRoleDisplayPipe],
+    imports: [CommonModule, UserRoleDisplayPipe],
+    exports: [UserRoleDisplayPipe],
 })
 export class SharedPipesModule {}

@@ -1,11 +1,14 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'matx-pass-toggle-visibility',
     templateUrl: './matx-pass-toggle-visibility.component.html',
     styleUrl: './matx-pass-toggle-visibility.component.scss',
     encapsulation: ViewEncapsulation.None,
-    standalone: false
+    imports: [MatButtonModule, MatIconModule, MatRippleModule],
 })
 export class MatxPassToggleVisibilityComponent {
     @Input()

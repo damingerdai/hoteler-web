@@ -8,7 +8,7 @@ import { DirectivesModule } from './directives.module';
     <div flexSpacer></div>
     </nav>
   `,
-    standalone: false
+    
 })
 export class FlexSpacerDirectiveTestComponent { }
 

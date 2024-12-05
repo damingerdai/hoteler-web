@@ -37,6 +37,7 @@
                     }
                 ],
                 "@angular-eslint/no-empty-lifecycle-method": ["warn"],
+                "@angular-eslint/prefer-standalone": ["warn"],
                 "semi": ["error", "always"],
                 "quotes": ["error", "single"],
                 "no-unused-vars": ["warn"]

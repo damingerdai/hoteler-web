@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
     selector: 'app-common-layout',
     templateUrl: './common-layout.component.html',
     styleUrls: ['./common-layout.component.scss'],
-    standalone: false
+    standalone: false,
 })
-export class CommonLayoutComponent {
-
-}
+export class CommonLayoutComponent {}
