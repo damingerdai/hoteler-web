@@ -15,8 +15,7 @@ export class FlexSpacerDirectiveTestComponent { }
 describe('FlexSpacerDirective', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [DirectivesModule],
-      declarations: [ FlexSpacerDirectiveTestComponent ],
+      imports: [DirectivesModule, FlexSpacerDirectiveTestComponent],
       // schemas:      [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
   }));
