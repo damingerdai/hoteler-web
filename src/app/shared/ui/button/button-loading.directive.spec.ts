@@ -6,13 +6,14 @@ import { By } from '@angular/platform-browser';
 import { ButtonLoadingDirective } from './button-loading.directive';
 import { ButtonModule } from './button.module';
 
+// eslint-disable-next-line @angular-eslint/prefer-standalone
 @Component({
-     
+    standalone: false,
     selector: 'test-app',
     template: `
     <button mat-button [loading]="loading">Test Button</button>
   `,
-    
+
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 class TestApp {
@@ -22,8 +23,8 @@ class TestApp {
 describe('ButtonLoadingDirective', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [MatButtonModule, ButtonModule],
-      declarations: [ButtonLoadingDirective, TestApp],
+      imports: [MatButtonModule, ButtonModule, ButtonLoadingDirective],
+      declarations: [TestApp],
     });
 
     TestBed.compileComponents();
