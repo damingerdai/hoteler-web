@@ -10,7 +10,7 @@ import { Observable, Subject } from 'rxjs';
 
 export class SwUpdateServerMock {
 
-  public isEnabled: boolean = false;
+  public isEnabled = false;
 
   public available: Observable<VersionReadyEvent> = new Subject();
   public activated: Observable<VersionReadyEvent> = new Subject();

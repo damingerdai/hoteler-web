@@ -8,12 +8,12 @@ import { LocalStorageService } from '../local-storage';
 })
 export class SettingsService {
 
-  // eslint-disable-next-line no-underscore-dangle,id-blacklist,id-match
+   
   private _user: Partial<IUser>;
   private userSource = new Subject<Partial<IUser>>();
   public user$ = this.userSource.asObservable();
 
-  // eslint-disable-next-line no-underscore-dangle, id-blacklist, id-match
+   
   public set user(user: Partial<IUser>) {
     const exitUser = this.localStorageService.get<Partial<IUser>>('user') ?? {};
     this._user = {

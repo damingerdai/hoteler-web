@@ -10,6 +10,4 @@ import { ErrorCodeComponent } from 'src/app/shared/components';
     ]
 })
 export class ForbiddenComponent {
-
-  constructor() { }
 }

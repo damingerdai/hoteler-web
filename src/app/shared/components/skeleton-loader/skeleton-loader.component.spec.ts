@@ -1,5 +1,5 @@
 import { Component, PLATFORM_ID } from '@angular/core';
-import { TestBed, waitForAsync as waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as waitForAsync } from '@angular/core/testing';
 import { SKELETON_LOADER_CONFIG } from './skeleton-loader-config.types';
 
 import { SkeletonLoaderComponent } from './skeleton-loader.component';
@@ -73,9 +73,9 @@ class ContainerComponent {
 }
 
 describe('SkeletonLoaderComponent', () => {
-  let fixture: any;
+  let fixture: ComponentFixture<ContainerComponent>;
   beforeEach(() => {
-    // eslint-disable-next-line no-undef
+     
     spyOn(console, 'error');
   });
 

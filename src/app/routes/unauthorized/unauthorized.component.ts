@@ -11,6 +11,4 @@ import { ErrorCodeComponent } from 'src/app/shared/components';
 })
 export class UnauthorizedComponent {
 
-  constructor() { }
-
 }

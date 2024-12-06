@@ -1,10 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
-export type SkeletonLoaderConfigTheme = {
-  // This is required since ngStyle is using `any` as well
-  // More details in https://angular.io/api/common/NgStyle
-  [k: string]: any;
-} | null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type SkeletonLoaderConfigTheme = Record<string, any> | null;
 
 export interface SkeletonLoaderConfig {
   appearance: 'circle' | 'line' | 'custom-content' | '';

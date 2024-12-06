@@ -39,7 +39,5 @@ export class StyleManagerService {
       document.head.removeChild(existingLinkElement);
     }
   }
-
-  constructor() { }
 }
 

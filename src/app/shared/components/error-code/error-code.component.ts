@@ -15,6 +15,4 @@ export class ErrorCodeComponent {
     public title = input<string>('');
 
     public message = input<string>('');
-
-    constructor() {}
 }

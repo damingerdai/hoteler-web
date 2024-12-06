@@ -65,6 +65,7 @@ const materials = [
 })
 export class SharedMaterialModule {
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static forRoot(config: SharedMaterialModule): ModuleWithProviders<SharedMaterialModule> {
     return {
       ngModule: SharedMaterialModule,

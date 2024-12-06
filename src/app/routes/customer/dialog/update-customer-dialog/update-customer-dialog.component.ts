@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
@@ -18,7 +18,7 @@ import { ICustomer } from 'src/app/core/models';
         ReactiveFormsModule
     ]
 })
-export class UpdateCustomerDialogComponent implements OnInit {
+export class UpdateCustomerDialogComponent {
 
   public customer: FormGroup;
 
@@ -48,9 +48,6 @@ export class UpdateCustomerDialogComponent implements OnInit {
       cardId: [this.data.cardId, [Validators.required, Validators.pattern(/(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/)]],
       phone: [this.data.phone, [Validators.required, Validators.pattern(/^1[3-9]\d{9}$/)]]
     });
-  }
-
-  ngOnInit(): void {
   }
 
 }

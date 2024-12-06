@@ -118,9 +118,7 @@ export class ThemeSelectorComponent {
     const x = event.clientX;
     const y = event.clientY;
     const endRadius = Math.hypot(
-      // eslint-disable-next-line no-restricted-globals
       Math.max(x, innerWidth - x),
-      // eslint-disable-next-line no-restricted-globals
       Math.max(y, innerHeight - y)
     );
     const root = this.document.documentElement;
@@ -129,7 +127,7 @@ export class ThemeSelectorComponent {
       this.doSelectTheme(theme);
       return;
     }
-    // @ts-ignore
+    
     const transition = this.document.startViewTransition(() => {
       root.classList.remove(isDark ? 'dark' : 'light');
       root.classList.add(isDark ? 'light' : 'dark');

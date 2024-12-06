@@ -13,6 +13,4 @@ export class RoleService {
     public list(): Observable<ListResponse<IRole>> {
         return this.api.get<ListResponse<IRole>>('/api/v1/roles');
     }
-
-    constructor() {}
 }

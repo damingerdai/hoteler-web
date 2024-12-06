@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './admin-layout.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 describe('AdminLayoutComponent', () => {
   let component: AdminLayoutComponent;
@@ -9,9 +10,10 @@ describe('AdminLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminLayoutComponent ],
+      imports: [ AdminLayoutComponent, RouterModule ],
       providers: [
-        provideRouter([])
+        provideRouter([]),
+        provideAnimationsAsync()
       ]
     })
     .compileComponents();

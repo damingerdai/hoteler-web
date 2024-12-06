@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonLayoutComponent } from './common-layout.component';
+import { provideRouter, RouterModule } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 describe('CommonLayoutComponent', () => {
   let component: CommonLayoutComponent;
@@ -8,7 +10,11 @@ describe('CommonLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CommonLayoutComponent ]
+      imports: [ CommonLayoutComponent, RouterModule ],
+      providers: [
+        provideAnimationsAsync(),
+        provideRouter([]),
+      ]
     })
     .compileComponents();
 

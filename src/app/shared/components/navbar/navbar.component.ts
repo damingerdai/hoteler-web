@@ -6,8 +6,7 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { NgTemplateOutlet, TitleCasePipe } from '@angular/common';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -25,7 +24,7 @@ interface IMenuItem {
     displayName: string;
     slug: string;
     neededPermissions?: string | string[];
-    // eslint-disable-next-line no-unused-vars
+     
     withPermissions: boolean | ((user: Partial<IUser>) => boolean);
 }
 
@@ -56,12 +55,10 @@ const MENUS: IMenuItem[] = [
     styleUrls: ['./navbar.component.scss'],
     imports: [
         RouterModule,
-        NgTemplateOutlet,
         SharedMaterialModule,
         AvatarModule,
         LogoComponent,
         ThemePickerComponent,
-        TitleCasePipe,
         FlexSpacerDirective,
         GithubComponent
     ]
@@ -74,7 +71,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     protected menus = [] as IMenuItem[];
 
     @Input()
-    public showMenu: boolean = false;
+    public showMenu = false;
 
     protected isKikeIPhone5s: boolean;
 

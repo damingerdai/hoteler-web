@@ -105,6 +105,7 @@ export class LoginComponent implements OnInit {
                 },
                 error: (err) => {
                     this.loginForm.setErrors({
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         login: (err as any).error?.message ?? '登陆失败',
                     });
                     this.isLoading = false;

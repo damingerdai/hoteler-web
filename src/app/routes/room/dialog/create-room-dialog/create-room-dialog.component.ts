@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -17,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
         MatButtonModule,
     ]
 })
-export class CreateRoomDialogComponent implements OnInit {
+export class CreateRoomDialogComponent {
 
   private fb = inject(FormBuilder);
 
@@ -37,8 +37,5 @@ export class CreateRoomDialogComponent implements OnInit {
       roomname: ['', [Validators.required]],
       price: [0, [Validators.required, Validators.min(0), Validators.pattern('^[0-9]*$')]]
     });
-  }
-
-  ngOnInit(): void {
   }
 }

@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api/api.service';
@@ -21,7 +22,7 @@ export class RoomService {
   }
 
   public update(room: { id: number, roomname: string, price: string, status: number | string}): Observable<IResponse> {
-    return this.api.put<IResponse>('api/v1/room', room as any);
+    return this.api.put<IResponse>('api/v1/room', room as unknown as HttpParams);
   }
 
   public delete(id: number): Observable<IResponse> {

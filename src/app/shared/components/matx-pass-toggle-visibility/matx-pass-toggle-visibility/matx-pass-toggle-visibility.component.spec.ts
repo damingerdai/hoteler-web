@@ -8,7 +8,7 @@ describe('MatxPassToggleVisibilityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MatxPassToggleVisibilityComponent]
+      imports: [MatxPassToggleVisibilityComponent]
     })
     .compileComponents();
     

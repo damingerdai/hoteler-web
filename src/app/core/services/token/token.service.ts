@@ -8,9 +8,7 @@ import { UserTokenResponse } from '../../models';
 export class TokenService {
 
   private api: ApiService = inject(ApiService);
-
-  constructor() { }
-
+  
   public login(username: string, password: string) {
     return this.api.post<UserTokenResponse>('/api/v1/token', {}, {
       username,

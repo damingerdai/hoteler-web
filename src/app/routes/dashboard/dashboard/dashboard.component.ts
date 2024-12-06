@@ -73,8 +73,6 @@ export class DashboardComponent implements OnInit {
         },
     };
 
-    constructor() {}
-
     ngOnInit(): void {
         this.loading = true;
         this.roomApi.getRoomStatusStat().subscribe((res) => {

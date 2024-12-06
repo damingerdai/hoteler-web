@@ -1,16 +1,17 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CheckForUpdateService } from './core/pwa/check-for-update.service';
+import { RouterModule } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
+        RouterModule,
         AppComponent,
         SharedModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
@@ -18,6 +19,7 @@ describe('AppComponent', () => {
         })
       ],
       providers: [
+        provideAnimationsAsync(),
         {
           provide: CheckForUpdateService, usefactory: () => {
             const service = jasmine.createSpyObj<CheckForUpdateService>('CheckForUpdateService', ['close', 'check']);

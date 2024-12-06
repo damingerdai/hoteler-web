@@ -53,7 +53,7 @@ export class SkeletonLoaderComponent implements OnInit, AfterViewInit, OnDestroy
   @Input()
   theme: SkeletonLoaderConfigTheme;
 
-  items: Array<any>;
+  items: unknown[];
 
   constructor(@Inject(SKELETON_LOADER_CONFIG) @Optional() config?: SkeletonLoaderConfig) {
     const {

@@ -47,7 +47,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   protected destroyRef = inject(DestroyRef);
   protected toasterService = inject(ToasterService);
   protected currentUser: IUser;
-  protected loading: boolean = false;
+  protected loading = false;
 
   protected displayedColumns: string[] = [
     'id',
@@ -81,7 +81,7 @@ export class UserListComponent implements OnInit, OnDestroy {
           this.snackBar.open('获取用户失败', 'X');
         }
       },
-      (_err) => {
+      () => {
         this.snackBar.open('系统异常');
         this.loading = false;
       }
@@ -123,6 +123,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   public openUpdateUserDialog(user: IUser) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const dialogRef = this.dialog.open(UpdateUserComponent, {
       data: { roles: this.roles, user: {...user} },
       width: '400px',

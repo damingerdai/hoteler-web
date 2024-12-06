@@ -11,6 +11,4 @@ export class PageHeaderComponent {
   @Input()
   title: string;
 
-  constructor() { }
-
 }

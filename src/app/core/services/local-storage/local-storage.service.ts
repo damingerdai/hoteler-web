@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
 
-  constructor() { }
-
   get<T>(key: string): T | null {
     const value = localStorage.getItem(key);
     if (value) {
@@ -16,6 +14,7 @@ export class LocalStorageService {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   set(key: string, value: any): boolean {
     localStorage.setItem(key, JSON.stringify(value));
     return true;
