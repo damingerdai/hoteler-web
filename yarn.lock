@@ -7097,10 +7097,10 @@ ngx-avatars@^1.8.0:
     ts-md5 "^1.3.1"
     tslib "^2.6.3"
 
-ngx-dom-confetti@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/ngx-dom-confetti/-/ngx-dom-confetti-0.4.0.tgz#cf074a9b4fbf9895fc102cdc3cddc8552479f48a"
-  integrity sha512-6f50lxQZUbgARdlTdXEHdRXR9GYPN3CxzlzlZNjrgGejfjeAa+DrTJ9NVdA/tmJb4ef+ElqZhPiZcN9TEv0sYw==
+ngx-dom-confetti@0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/ngx-dom-confetti/-/ngx-dom-confetti-0.4.1.tgz#21f85ead18a200869d2cb23b6263fc5178ed6097"
+  integrity sha512-zPKMsHem+UMQvA3+MtTDRWW8Wc/PmoF1RlsGg+G3Tmrimaa8YfBHr9HDgC/75H9TtXLzII7xfrDchAK8lq0ihg==
   dependencies:
     tslib "^2.3.0"
 
