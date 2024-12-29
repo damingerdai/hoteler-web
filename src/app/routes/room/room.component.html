@@ -1,5 +1,5 @@
 <app-breadcrumb label="房间管理" url="/room" />
-<div class="flex flex-col p-4">
+<mmat-card class="flex flex-col p-4">
     <div class="w-full flex justify-start items-baseline">
         <form class="form-inline" [formGroup]="roomForm">
             <mat-form-field class="form-field" appearance="outline">
@@ -19,17 +19,102 @@
     @if (isLoading) {
         <app-loading-shade />
     } @else {
-        @if (layout === 'card') {
-            <div class="hoteler-row flex flex-wrap w-full m-t-8">
-                @for (room of rooms; track room.id; let i = $index) {
-                    <div class="hoteler-col p-8 room-card">
-                        <mat-card appearance="outlined">
-                            <mat-card-header>
-                                <mat-card-title>
-                                    {{ room.roomname }}
-                                </mat-card-title>
-                                <mat-card-subtitle>
-                                    @switch (room.status) {
+        <mat-tab-group>
+            <mat-tab label="卡片">
+                <div class="hoteler-row flex flex-wrap w-full m-t-8">
+                    @for (room of rooms; track room.id; let i = $index) {
+                        <div class="hoteler-col p-8 room-card">
+                            <mat-card appearance="outlined">
+                                <mat-card-header>
+                                    <mat-card-title>
+                                        {{ room.roomname }}
+                                    </mat-card-title>
+                                    <mat-card-subtitle>
+                                        @switch (room.status) {
+                                            @case (1) {
+                                                <app-tag color="primary"
+                                                    >空闲</app-tag
+                                                >
+                                            }
+                                            @case (2) {
+                                                <app-tag color="secondary"
+                                                    >占用</app-tag
+                                                >
+                                            }
+                                        }
+                                    </mat-card-subtitle>
+                                </mat-card-header>
+                                <img
+                                    class="p-4 p-b-0"
+                                    mat-card-image
+                                    [src]="
+                                        'https://picsum.photos/200/300?random=' +
+                                        i
+                                    "
+                                    [alt]="room.roomname"
+                                />
+                                <mat-card-actions>
+                                    <button
+                                        mat-button
+                                        color="primary"
+                                        [disabled]="room.status === 2"
+                                        (click)="addCustomerRoomDialog(room)"
+                                    >
+                                        入住
+                                    </button>
+
+                                    <button
+                                        mat-button
+                                        color="accent"
+                                        (click)="updateRoom(room)"
+                                    >
+                                        修改
+                                    </button>
+                                    <button
+                                        mat-button
+                                        color="warn"
+                                        (click)="deleteRoom(room.id)"
+                                    >
+                                        删除
+                                    </button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    }
+                </div>
+            </mat-tab>
+            <mat-tab label="表格">
+                <mat-card class="mat-elevation-z8 table-responsive room-list">
+                    @if (rooms?.length > 0) {
+                        <table
+                            mat-table
+                            [dataSource]="rooms"
+                            class="mat-elevation-z8 w-full"
+                        >
+                            <ng-container matColumnDef="no">
+                                <th mat-header-cell *matHeaderCellDef>No.</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.id }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="roomname">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    房间名
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.roomname }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="price">
+                                <th mat-header-cell *matHeaderCellDef>价格</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.price | currency }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="status">
+                                <th mat-header-cell *matHeaderCellDef>状态</th>
+                                <td mat-cell *matCellDef="let element">
+                                    @switch (element.status) {
                                         @case (1) {
                                             <app-tag color="primary"
                                                 >空闲</app-tag
@@ -41,132 +126,54 @@
                                             >
                                         }
                                     }
-                                </mat-card-subtitle>
-                            </mat-card-header>
-                            <img
-                                class="p-4 p-b-0"
-                                mat-card-image
-                                [src]="
-                                    'https://picsum.photos/200/300?random=' + i
-                                "
-                                [alt]="room.roomname"
-                            />
-                            <mat-card-actions>
-                                <button
-                                    mat-button
-                                    color="primary"
-                                    [disabled]="room.status === 2"
-                                    (click)="addCustomerRoomDialog(room)"
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef>操作</th>
+                                <td
+                                    mat-cell
+                                    *matCellDef="let element"
+                                    class="action-container"
                                 >
-                                    入住
-                                </button>
-
-                                <button
-                                    mat-button
-                                    color="accent"
-                                    (click)="updateRoom(room)"
-                                >
-                                    修改
-                                </button>
-                                <button
-                                    mat-button
-                                    color="warn"
-                                    (click)="deleteRoom(room.id)"
-                                >
-                                    删除
-                                </button>
-                            </mat-card-actions>
-                        </mat-card>
-                    </div>
-                }
-            </div>
-        }
-        @if (layout === 'table') {
-            <div class="mat-elevation-z8 table-responsive room-list">
-                @if (rooms?.length > 0) {
-                    <table
-                        mat-table
-                        [dataSource]="rooms"
-                        class="mat-elevation-z8 w-full"
-                    >
-                        <ng-container matColumnDef="no">
-                            <th mat-header-cell *matHeaderCellDef>No.</th>
-                            <td mat-cell *matCellDef="let element">
-                                {{ element.id }}
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="roomname">
-                            <th mat-header-cell *matHeaderCellDef>房间名</th>
-                            <td mat-cell *matCellDef="let element">
-                                {{ element.roomname }}
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="price">
-                            <th mat-header-cell *matHeaderCellDef>价格</th>
-                            <td mat-cell *matCellDef="let element">
-                                {{ element.price | currency }}
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="status">
-                            <th mat-header-cell *matHeaderCellDef>状态</th>
-                            <td mat-cell *matCellDef="let element">
-                                @switch (element.status) {
-                                    @case (1) {
-                                        <app-tag color="primary">空闲</app-tag>
-                                    }
-                                    @case (2) {
-                                        <app-tag color="secondary"
-                                            >占用</app-tag
-                                        >
-                                    }
-                                }
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="action">
-                            <th mat-header-cell *matHeaderCellDef>操作</th>
-                            <td
-                                mat-cell
-                                *matCellDef="let element"
-                                class="action-container"
-                            >
-                                <button
-                                    mat-raised-button
-                                    color="primary"
-                                    [disabled]="element.status === 2"
-                                    (click)="addCustomerRoomDialog(element)"
-                                >
-                                    入住
-                                </button>
-                                <button
-                                    mat-raised-button
-                                    color="accent"
-                                    (click)="updateRoom(element)"
-                                >
-                                    修改
-                                </button>
-                                <button
-                                    mat-raised-button
-                                    color="warn"
-                                    (click)="deleteRoom(element.id)"
-                                >
-                                    删除
-                                </button>
-                            </td>
-                        </ng-container>
-                        <tr
-                            mat-header-row
-                            *matHeaderRowDef="displayedColumns"
-                        ></tr>
-                        <tr
-                            mat-row
-                            *matRowDef="let row; columns: displayedColumns"
-                        ></tr>
-                    </table>
-                } @else {
-                    no data
-                }
-            </div>
-        }
+                                    <button
+                                        mat-raised-button
+                                        color="primary"
+                                        [disabled]="element.status === 2"
+                                        (click)="addCustomerRoomDialog(element)"
+                                    >
+                                        入住
+                                    </button>
+                                    <button
+                                        mat-raised-button
+                                        color="accent"
+                                        (click)="updateRoom(element)"
+                                    >
+                                        修改
+                                    </button>
+                                    <button
+                                        mat-raised-button
+                                        color="warn"
+                                        (click)="deleteRoom(element.id)"
+                                    >
+                                        删除
+                                    </button>
+                                </td>
+                            </ng-container>
+                            <tr
+                                mat-header-row
+                                *matHeaderRowDef="displayedColumns"
+                            ></tr>
+                            <tr
+                                mat-row
+                                *matRowDef="let row; columns: displayedColumns"
+                            ></tr>
+                        </table>
+                    } @else {
+                        no data
+                    }
+                </mat-card>
+            </mat-tab>
+        </mat-tab-group>
     }
-</div>
-<app-customizer (layoutChange)="layoutChange($event)"></app-customizer>
+    <app-customizer (layoutChange)="layoutChange($event)"></app-customizer>
+</mmat-card>
