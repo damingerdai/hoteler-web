@@ -81,6 +81,7 @@ export class AdminLayoutComponent {
             .observe([Breakpoints.XSmall])
             .subscribe((result) => {
                 this.isMobile = result.matches;
+                this.drawerOpened = !this.isMobile;
             });
     }
 
