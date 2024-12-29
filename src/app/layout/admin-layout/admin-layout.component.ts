@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from 'src/app/shared/components';
+import { FlexSpacerDirective } from 'src/app/shared/ui/directives/flex-spacer.directive';
 
 @Component({
     selector: 'app-admin-layout',
@@ -21,8 +22,9 @@ import { NavbarComponent } from 'src/app/shared/components';
         MatListModule,
         MatSidenavModule,
         NavbarComponent,
-        RouterModule
-    ]
+        FlexSpacerDirective,
+        RouterModule,
+    ],
 })
 export class AdminLayoutComponent {
     public isMobile: boolean;
