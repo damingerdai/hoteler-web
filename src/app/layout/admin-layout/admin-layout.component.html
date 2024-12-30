@@ -4,11 +4,11 @@
     (menuClick)="toggleDrawer()"
 ></app-navbar>
 <div class="h-full">
-    <mat-drawer-container class="layout-container" [hasBackdrop]="isMobile">
+    <mat-drawer-container class="layout-container" autosize>
         <mat-drawer
             class="h-full drawer"
             #drawer
-            [(opened)]="drawerOpened"
+            [opened]="drawerOpened"
             [mode]="mode"
         >
             <div class="flex flex-col h-full p-x-2">
