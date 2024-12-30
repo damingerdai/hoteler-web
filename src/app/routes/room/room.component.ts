@@ -3,24 +3,26 @@ import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import {
+    MatButtonToggleChange,
+    MatButtonToggleModule,
+} from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatTableModule } from '@angular/material/table';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatSelectModule } from '@angular/material/select';
 
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CustomizerComponent } from './customizer/customizer.component';
 import { RoomService } from 'src/app/core/services/room';
 import { IRoom, Rooms } from 'src/app/core/models';
 import { of } from 'rxjs';
 import { CustomerCheckinRecordService } from 'src/app/core/services/customer-checkin-record';
 import { CurrencyPipe } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 import {
     AddCustomerRoomDialogComponent,
     CreateRoomDialogComponent,
@@ -40,8 +42,8 @@ import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
     imports: [
         MatMenuModule,
         MatButtonModule,
+        MatButtonToggleModule,
         MatIconModule,
-        MatTabsModule,
         MatTableModule,
         MatCardModule,
         MatProgressSpinnerModule,
@@ -257,6 +259,10 @@ export class RoomComponent implements OnInit {
 
     public layoutChange(layout: string) {
         this.layout = layout;
+    }
+
+    public layoutChange2(e: MatButtonToggleChange) {
+        this.layout = e.value;
     }
 
     private fetchAllRooms() {
