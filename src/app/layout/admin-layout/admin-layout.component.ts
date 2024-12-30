@@ -1,9 +1,13 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import {
+    BreakpointObserver,
+    Breakpoints,
+    MediaMatcher,
+} from '@angular/cdk/layout';
+import { Component, ViewChild } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from 'src/app/shared/components';
 import { FlexSpacerDirective } from 'src/app/shared/ui/directives/flex-spacer.directive';
@@ -27,7 +31,7 @@ export class AdminLayoutComponent {
 
     protected drawerOpened = true;
 
-    // @ViewChild('drawer') drawer: MatDrawer;
+    @ViewChild('drawer') drawer: MatDrawer;
 
     protected menus = [
         {
@@ -76,7 +80,10 @@ export class AdminLayoutComponent {
         return this.isMobile ? 'over' : 'side';
     }
 
-    constructor(private breakpointObserver: BreakpointObserver) {
+    constructor(
+        private media: MediaMatcher,
+        private breakpointObserver: BreakpointObserver
+    ) {
         this.breakpointObserver
             .observe([Breakpoints.XSmall])
             .subscribe((result) => {
@@ -86,20 +93,20 @@ export class AdminLayoutComponent {
     }
 
     toggleDrawer() {
-        this.drawerOpened = !this.drawerOpened;
+        this.drawer.toggle();
     }
 
     openDrawer() {
-        this.drawerOpened = true;
+        this.drawer.open();
     }
 
     closeDrawer() {
-        this.drawerOpened = false;
+        this.drawer.close();
     }
 
     closeDrawerInMobile() {
         if (this.isMobile) {
-            this.drawerOpened = false;
+            this.drawer.close();
         }
     }
 }
