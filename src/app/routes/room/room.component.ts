@@ -16,7 +16,7 @@ import { CustomizerComponent } from './customizer/customizer.component';
 import { RoomService } from 'src/app/core/services/room';
 import { IRoom, Rooms } from 'src/app/core/models';
 import { of } from 'rxjs';
-import { CustomerCheckinRecordService } from 'src/app/core/services/customer-checkin-record';
+import { OrderService } from 'src/app/core/services/order';
 import { CurrencyPipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -79,7 +79,7 @@ export class RoomComponent implements OnInit {
         private dialog: MatDialog,
         private fb: FormBuilder,
         private roomApi: RoomService,
-        private customerCheckinRecordApi: CustomerCheckinRecordService,
+        private orderApi: OrderService,
         private snackBar: MatSnackBar
     ) {
         this.isLoading = true;
@@ -220,7 +220,7 @@ export class RoomComponent implements OnInit {
             });
     }
 
-    public addCustomerRoomDialog(room: IRoom) {
+    public addOrderalog(room: IRoom) {
         const dialogRef = this.dialog.open(AddCustomerRoomDialogComponent, {
             width: '400px',
             data: room,
@@ -243,7 +243,7 @@ export class RoomComponent implements OnInit {
                     res.endDate = endDate;
                     return res;
                 }),
-                switchMap((res) => this.customerCheckinRecordApi.create(res))
+                switchMap((res) => this.orderApi.create(res))
             )
             .subscribe((res) => {
                 if (res.status === 200) {

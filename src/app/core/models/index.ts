@@ -1,5 +1,5 @@
 export * from './customer';
-export * from './customer-cehckin-record';
+export * from './order';
 export * from './permission';
 export * from './response';
 export * from './room';
