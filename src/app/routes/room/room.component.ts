@@ -253,6 +253,8 @@ export class RoomComponent implements OnInit {
                         verticalPosition: 'top',
                     });
                     this.fetchAllRooms();
+                } else {
+                    this.snackBar.open('入住失败，请稍后再试');
                 }
             });
     }
