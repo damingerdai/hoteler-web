@@ -1,59 +1,59 @@
 <h2 mat-dialog-title>创建客户</h2>
 <mat-dialog-content class="mat-typography">
-  <form [formGroup]="customer">
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>用户</mat-label>
-      <input matInput formControlName="name" required />
-      @if (name?.errors?.required) {
-        <mat-error> 请输入用户名 </mat-error>
-      }
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>性别</mat-label>
-      <mat-select formControlName="gender">
-        <mat-option value="M">男</mat-option>
-        <mat-option value="F">女</mat-option>
-      </mat-select>
-      @if (gender?.errors?.required) {
-        <mat-error> 请选择性别 </mat-error>
-      }
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>身份证号码</mat-label>
-      <input matInput formControlName="cardId" required />
-      @if (cardId.errors) {
-        <mat-error>
-          @if (cardId.errors.required) {
-            请输入身份证号码
-          } @else if (cardId.errors?.pattern) {
-            请输入正确的身份证号码
-          }
-        </mat-error>
-      }
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>联系方式</mat-label>
-      <input matInput formControlName="phone" required />
-      @if (phone.errors) {
-        <mat-error>
-          @if (phone.errors?.required) {
-            请输入联系方式
-          } @else if (phone.errors?.pattern) {
-            请输入正确的联系方式
-          }
-        </mat-error>
-      }
-    </mat-form-field>
-  </form>
+    <form [formGroup]="customer">
+        <mat-form-field appearance="outline" class="w-full mt-1">
+            <mat-label>用户</mat-label>
+            <input matInput formControlName="name" required />
+            @if (name?.errors?.required) {
+                <mat-error> 请输入用户名 </mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full mt-1">
+            <mat-label>性别</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option value="M">男</mat-option>
+                <mat-option value="F">女</mat-option>
+            </mat-select>
+            @if (gender?.errors?.required) {
+                <mat-error> 请选择性别 </mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full mt-1">
+            <mat-label>身份证号码</mat-label>
+            <input matInput formControlName="cardId" required />
+            @if (cardId.errors) {
+                <mat-error>
+                    @if (cardId.errors.required) {
+                        请输入身份证号码
+                    } @else if (cardId.errors?.pattern) {
+                        请输入正确的身份证号码
+                    }
+                </mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full mt-1">
+            <mat-label>联系方式</mat-label>
+            <input matInput formControlName="phone" required />
+            @if (phone.errors) {
+                <mat-error>
+                    @if (phone.errors?.required) {
+                        请输入联系方式
+                    } @else if (phone.errors?.pattern) {
+                        请输入正确的联系方式
+                    }
+                </mat-error>
+            }
+        </mat-form-field>
+    </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close cdkFocusInitial>取消</button>
-  <button
-    mat-button
-    color="primary"
-    [mat-dialog-close]="customer.value"
-    [disabled]="customer.invalid"
-  >
-    确定
-  </button>
+    <button mat-button mat-dialog-close cdkFocusInitial>取消</button>
+    <button
+        mat-button
+        color="primary"
+        [mat-dialog-close]="customer.value"
+        [disabled]="customer.invalid"
+    >
+        确定
+    </button>
 </mat-dialog-actions>
