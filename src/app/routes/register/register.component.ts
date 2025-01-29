@@ -118,4 +118,8 @@ export class RegisterComponent implements OnInit {
                 }
             });
     }
+
+    public test() {
+        console.log('test', this.btn);
+    }
 }

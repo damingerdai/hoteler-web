@@ -70,6 +70,7 @@
                     <mat-error>两次密码不一致</mat-error>
                 }
                 <button
+                    #btn
                     class="w-full"
                     mat-flat-button
                     color="primary"
@@ -81,13 +82,13 @@
             </form>
         </mat-card-content>
         <mat-card-actions>
-            <div class="flex justify-center px-2">
+            <div class="flex justify-start w-full px-2 gap-2">
                 <span
                     class="has-account inline-flex items-center justify-center"
                 >
                     已经有账号了?</span
                 >
-                <a mat-button routerLink="/login" class="p-0">登录</a>
+                <a mat-button routerLink="/login">登录</a>
             </div>
         </mat-card-actions>
     </mat-card>
