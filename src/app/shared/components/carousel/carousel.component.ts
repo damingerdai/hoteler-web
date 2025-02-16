@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
     imports: [
         MatButtonModule,
         MatIconModule,
-        CarouselItemDirective,
+        // CarouselItemDirective,
     ]
 })
 export class CarouselComponent implements AfterContentInit {

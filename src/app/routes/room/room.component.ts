@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CustomizerComponent } from './customizer/customizer.component';
 import { RoomService } from 'src/app/core/services/room';
 import { IRoom, Rooms } from 'src/app/core/models';
 import { of } from 'rxjs';
@@ -54,7 +53,7 @@ import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
         //SharedModule,
         LoadingShadeComponent,
         BreadcrumbComponent,
-        CustomizerComponent,
+        // CustomizerComponent,
         TagComponent,
     ],
 })
