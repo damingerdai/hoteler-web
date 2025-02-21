@@ -8532,9 +8532,7 @@ stylelint-config-standard@^36.0.0:
     stylelint-config-recommended "^14.0.1"
 
 stylelint-scss@^6.0.0, stylelint-scss@^6.4.0:
-  version "6.10.0"
-  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-6.10.0.tgz#ba5b807793e145421e9879dd15ae672af6820a45"
-  integrity sha512-y03if6Qw9xBMoVaf7tzp5BbnYhYvudIKzURkhSHzcHG0bW0fAYvQpTUVJOe7DyhHaxeThBil4ObEMvGbV7+M+w==
+  version "6.11.1"
   dependencies:
     css-tree "^3.0.1"
     is-plain-object "^5.0.0"
