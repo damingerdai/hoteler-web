@@ -42,7 +42,7 @@
         "@angular/router": "19.1.6",
         "@angular/service-worker": "19.1.6",
         "angular-toaster": "1.6.1",
-        "apexcharts": "4.3.0",
+        "apexcharts": "4.5.0",
         "ngx-apexcharts": "0.7.0",
         "ngx-avatars": "^1.8.0",
         "ngx-dom-confetti": "0.5.1",
