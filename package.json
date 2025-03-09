@@ -64,7 +64,7 @@
         "@types/jasmine": "5.1.6",
         "@types/jasminewd2": "2.0.13",
         "@types/node": "22.10.5",
-        "angular-eslint": "19.1.0",
+        "angular-eslint": "19.2.1",
         "autoprefixer": "^10.4.20",
         "conventional-changelog-cli": "5.0.0",
         "dotenv": "^16.4.5",
