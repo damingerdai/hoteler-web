@@ -59,7 +59,14 @@ jobs:
               uses: Azure/k8s-set-context@v4
               with:
                   kubeconfig: ${{ secrets.KUBE_CONFIG }}
+            - name: Extract tag name
+              id: extract_tag
+              run: |
+                  TAG_NAME=${GITHUB_REF#refs/tags/}
+                  echo "Extracted tag name: $TAG_NAME"
+                  echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+
             - name: Deploy to k3s
               run: |-
-                  kubectl set image deployment/hoteler-web hoteler-web=ghcr.io/damingerdai/hoteler-web:${{ github.sha }} -n hoteler-namespace
+                  kubectl set image deployment/hoteler-web hoteler-web=ghcr.io/damingerdai/hoteler-web:${{ steps.extract_tag.outputs.tag_name }} -n hoteler-namespace
                   kubectl rollout status deployment/hoteler-web -n hoteler-namespace
