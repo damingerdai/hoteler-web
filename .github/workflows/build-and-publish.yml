@@ -9,6 +9,7 @@ name: Build and Publish
 #       - "yarn.lock"
 on:
     push:
+        branches: [master]
         tags:
             - v*
 
@@ -20,6 +21,18 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
+            - name: Docker meta
+              id: meta
+              uses: docker/metadata-action@v5
+              with:
+                  images: ghcr.io/damingerdai/hoteler
+                  tags: |
+                      type=semver,pattern={{raw}}
+                      type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'master') }}
+                      type=ref,event=tag
+                      type=sha,prefix=
+              env:
+                  DOCKER_METADATA_SHORT_SHA_LENGTH: 40
 
             - name: Set up Docker Buildx
               id: buildx
@@ -43,8 +56,7 @@ jobs:
               id: docker_build
               with:
                   context: .
-                  tags: |
-                      ghcr.io/damingerdai/hoteler-web:${{ steps.extract_tag.outputs.tag_name }}
+                  tags: ${{ steps.meta.outputs.tags }}
                   push: ${{ github.ref == 'refs/heads/master' }}
 
             - name: Image digest
