@@ -79,6 +79,7 @@ jobs:
                   echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
 
             - name: Deploy to k3s
+              if: github.ref == 'refs/heads/master'
               run: |-
                   kubectl set image deployment/hoteler-web hoteler-web=ghcr.io/damingerdai/hoteler-web:${{ steps.extract_tag.outputs.tag_name }} -n hoteler-namespace
                   kubectl rollout status deployment/hoteler-web -n hoteler-namespace
