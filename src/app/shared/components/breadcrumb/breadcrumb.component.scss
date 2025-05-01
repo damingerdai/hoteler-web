@@ -1,8 +1,5 @@
 nav {
-  padding: {
-    left: 16px;
-    right: 16px;
-  }
+  padding: 16px;
 
   .hoteler-breadcrumb {
     display: flex;
@@ -24,6 +21,8 @@ nav {
         margin: 0 0 64px;
         color: currentColor;
         text-decoration: none;
+        font-weight: 700;
+        font-size: 24px;
 
         &:hover {
           color: currentColor;
