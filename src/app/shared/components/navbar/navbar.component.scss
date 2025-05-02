@@ -1,4 +1,13 @@
-mat-toolbar {
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-primary),
+  ));
+}
+
+.navbar-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -16,11 +25,28 @@ mat-toolbar {
     vertical-align: middle;
   }
 
+  a.hoteler-button {
+    &:hover {
+      background: {
+        color: rgba(0, 0, 0, .4);
+      };
+
+      color: var(--mat-sys-on-tertiary-container);
+    }
+  }
+
   .hoteler-button {
     .avatars {
       position: relative;
       top: -3px;
       left: -3px;
+
+      .avatar-container {
+        .avatar-content{
+          background-color: var(--mat-sys-primary);
+          color: var(--mat-sys-on-primary);
+        }
+      }
     }
   }
 

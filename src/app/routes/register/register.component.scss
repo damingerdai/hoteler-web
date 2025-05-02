@@ -6,16 +6,8 @@
         }
 
         .mat-mdc-card-header {
-            display: block;
+            justify-content: center;
             padding: 16px;
-        }
-
-        mat-card-actions {
-          div {
-            .has-account {
-              font-size: var(--mdc-text-button-label-text-size, var(--mat-app-label-large-size));
-            }
-          }
         }
     }
 }

@@ -1,8 +1,0 @@
-@use 'sass:map';
-@use '@angular/material' as mat;
-
-@mixin hoteler-settings-theme($theme) {
-  app-settings {
-    color: mat.get-theme-color($theme, on-surface);
-  }
-}
