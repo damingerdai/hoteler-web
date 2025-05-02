@@ -11,42 +11,24 @@
 @use './styles/reboot';
 @use './styles/view-transition';
 
-// @use './styles/helpers';
 @import './styles/tailwind.css';
 
-$theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
-  )
-));
-
-// Include material core styles.
-@include mat.elevation-classes;
-@include mat.app-background;
-@include mat.color-variants-backwards-compatibility($theme);
-@include app-theme.hoteler-app-theme($theme);
-
-:root {
-  @include mat.all-component-themes($theme);
-}
 
 html {
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
 
-  @include mat.theme((color: (theme-type: light,
-        primary: mat.$azure-palette,
-        tertiary: mat.$blue-palette,
-      ),
-      typography: Roboto,
-      density: 0,
-    ));
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+
+  @include app-theme.hoteler-app-theme;
 
   @include cdk.a11y-visually-hidden;
-
-  body {
-    margin: 0;
-  }
 }

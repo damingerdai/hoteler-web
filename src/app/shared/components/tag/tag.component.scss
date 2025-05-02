@@ -11,4 +11,26 @@
   min-height: 32px;
   height: 1px;
   margin: 4px;
+  color: var(--mat-sys-on-surface);
+  background: var(--mat-sys-surface);
+
+  &.tag-primary {
+    background: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
+  }
+
+  &.tag-secondary {
+    background: var(--mat-sys-secondary);
+    color: var(--mat-sys-on-secondary);
+  }
+
+  &.tag-tertiary {
+    background: var(--mat-sys-tertiary);
+    color: var(--mat-sys-on-tertiary);
+  }
+
+  &.tag-error {
+    background: var(--mat-sys-error);
+    color: var(--mat-sys-on-error);
+  }
 }

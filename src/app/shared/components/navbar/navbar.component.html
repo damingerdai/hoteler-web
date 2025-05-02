@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" aria-label="Top Toolbar">
+<mat-toolbar class="navbar-header" color="primary" aria-label="Top Toolbar">
     @if (showMenu) {
         <button
             mat-icon-button
@@ -34,7 +34,13 @@
             [matMenuTriggerFor]="menu"
             aria-label="user profile"
         >
-            <ngx-avatars class="avatars" [name]="username" size="30" />
+            <ngx-avatars
+                class="avatars"
+                [name]="username"
+                size="30"
+                bgColor="var(--mat-sys-on-primary-container)"
+                fgColor="var(--mat-sys-primary-container)"
+            />
         </button>
     }
     <mat-menu #menu="matMenu">

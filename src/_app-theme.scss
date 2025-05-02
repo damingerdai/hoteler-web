@@ -1,32 +1,7 @@
-@use 'sass:map';
-@use '@angular/material' as mat;
 @use './styles/apexcharts' as apexcharts-theme;
 @use './styles/input' as input-theme;
-@use './app/layout/admin-layout/admin-layout-theme';
-@use './app/routes/customer/customer-list/customer-list-theme';
-@use './app/routes/login/login-theme';
-@use './app//routes/register/register-theme';
-@use './app/routes/room/room-theme';
-@use './app/routes/settings/settings-theme';
-@use './app/shared/components/banner/banner-theme';
-@use './app/shared/components/error-code/error-code-theme';
-@use './app//shared/components//navbar/navbar-theme';
-@use './app/shared/components/page-header/page-header-theme';
-@use './app/shared/components/tag/tag-theme';
 
-
-@mixin hoteler-app-theme($theme) {
-
-  @include admin-layout-theme.hoteler-admin-layout-theme($theme);
-  @include customer-list-theme.hoteler-customer-list-theme($theme);
-  @include login-theme.hoteler-login-theme($theme);
-  @include register-theme.hoteler-register-theme($theme);
-  @include room-theme.hoteler-room-theme($theme);
-  @include settings-theme.hoteler-settings-theme($theme);
-  @include banner-theme.hoteler-banner-theme($theme);
-  @include error-code-theme.hoteler-error-code-theme($theme);
-  @include navbar-theme.hoteler-navbar-theme($theme);
-  @include page-header-theme.hoteler-page-header-theme($theme);
-  @include apexcharts-theme.hoteler-apexcharts-theme($theme);
-  @include tag-theme.hoteler-tag-theme($theme);
+@mixin hoteler-app-theme() {
+  @include apexcharts-theme.hoteler-apexcharts-theme;
+  @include input-theme.hoteler-input-theme;
 }

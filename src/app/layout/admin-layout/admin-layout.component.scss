@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 :host {
     position: absolute;
     display: flex;
@@ -24,5 +26,24 @@ app-navbar {
         max-width: 180px !important;
         border-right: 1px solid #eee;
         box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
+
+        mat-icon {
+            color: var(--mat-sys-on-surface);
+        }
+
+        .active {
+            color: var(--mat-sys-primary) !important;
+
+            mat-icon {
+                color: var(--mat-sys-primary);
+            }
+
+            @include mat.list-overrides((
+                list-item-label-text-color: var(--mat-sys-primary),
+                list-item-focus-label-text-color: var(--mat-sys-primary),
+                list-item-hover-label-text-color: var(--mat-sys-primary),
+            ));   
+
+        }
     }
 }
