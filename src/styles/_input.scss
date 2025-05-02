@@ -1,6 +1,6 @@
-@use '@angular/material' as mat;
-
-@mixin hoteler-input-theme() {
+// This file contains the styles for the input fields in the Hotelier theme.
+// It includes styles for autofill, focus, and hover states.
+@mixin hoteler-input-theme {
   input {
     &:-internal-autofill-selected {
       background: {

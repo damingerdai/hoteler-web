@@ -1,7 +1,4 @@
-@use 'sass:map';
-@use '@angular/material' as mat;
-
-@mixin hoteler-apexcharts-theme() {
+@mixin hoteler-apexcharts-theme {
   .apexcharts-title-text {
     color: var(--mat-sys-on-surface) !important;
     fill: var(--mat-sys-on-surface) !important;
@@ -18,7 +15,6 @@
   }
 
   .apexcharts-legend-text {
-    // background: mat.get-color-from-palette($background, background) !important;
     color: var(--mat-sys-on-surface) !important;
   }
 }
