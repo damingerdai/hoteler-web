@@ -3,5 +3,6 @@
 
 @mixin hoteler-app-theme() {
   @include apexcharts-theme.hoteler-apexcharts-theme;
-  @include input-theme.hoteler-input-theme;
+
+  // @include input-theme.hoteler-input-theme;
 }

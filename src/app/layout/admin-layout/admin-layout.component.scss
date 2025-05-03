@@ -38,12 +38,9 @@ app-navbar {
                 color: var(--mat-sys-primary);
             }
 
-            @include mat.list-overrides((
-                list-item-label-text-color: var(--mat-sys-primary),
-                list-item-focus-label-text-color: var(--mat-sys-primary),
-                list-item-hover-label-text-color: var(--mat-sys-primary),
-            ));   
-
+            p {
+                color: var(--mat-sys-primary);
+            }
         }
     }
 }
