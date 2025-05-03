@@ -88,5 +88,5 @@ jobs:
                   script: |-
                       cd /root/Workspace/hoteler; \
                       docker load -i hoteler-web.tar; \
-                      kubectl set image deployment/hoteler-api hoteler-api=${{ env.REGISTRY_NAME }}/damingerdai/hoteler-web:${{ github.sha }} -n hoteler-namespace \
-                      kubectl rollout status deployment/hoteler-api -n hoteler-namespace
+                      kubectl set image deployment/hoteler-web hoteler-web=${{ env.REGISTRY_NAME }}/damingerdai/hoteler-web:${{ github.sha }} -n hoteler-namespace \
+                      kubectl rollout status deployment/hoteler-web -n hoteler-namespace
