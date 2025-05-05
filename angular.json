@@ -248,12 +248,47 @@
                     "options": {
                         "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
                     }
+                },
+                "cypress-run": {
+                    "builder": "@cypress/schematic:cypress",
+                    "options": {
+                        "devServerTarget": "hoteler-web:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "hoteler-web:serve:production"
+                        }
+                    }
+                },
+                "cypress-open": {
+                    "builder": "@cypress/schematic:cypress",
+                    "options": {
+                        "watch": true,
+                        "headless": false
+                    }
+                },
+                "e2e": {
+                    "builder": "@cypress/schematic:cypress",
+                    "options": {
+                        "devServerTarget": "hoteler-web:serve",
+                        "watch": true,
+                        "headless": false
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "hoteler-web:serve:production"
+                        }
+                    }
                 }
             }
         }
     },
     "cli": {
         "analytics": "af964c41-d2b6-43e3-bd4e-5ebda121c977",
-        "schematicCollections": ["angular-eslint"]
+        "schematicCollections": [
+            "@cypress/schematic",
+            "angular-eslint",
+            "@schematics/angular"
+        ]
     }
 }
