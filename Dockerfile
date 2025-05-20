@@ -8,7 +8,7 @@ RUN yarn config set strict-ssl false
 WORKDIR /app
 
 COPY package.json yarn.lock /app/
-RUN yarn install
+RUN CYPRESS_INSTALL_BINARY=0 yarn install --frozen-lockfile
 
 COPY . .
 RUN yarn build
