@@ -1,4 +1,4 @@
-import { afterNextRender, ChangeDetectorRef, Component, Inject, inject } from '@angular/core';
+import { afterNextRender, ChangeDetectorRef, Component, Inject, inject, DOCUMENT } from '@angular/core';
 import { SiteTheme, SiteThemes, ThemeStorageService } from '../theme-storage/theme-storage.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -7,7 +7,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Meta } from '@angular/platform-browser';
 import { Platform } from '@angular/cdk/platform';
-import { DOCUMENT } from '@angular/common';
+
 import { StyleManagerService } from 'src/app/core/services/style-manager/style-manager.service';
 import { filter } from 'rxjs';
 
