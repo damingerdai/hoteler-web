@@ -7354,13 +7354,13 @@ ngx-apexcharts@0.8.0:
   dependencies:
     tslib "^2.0.0"
 
-ngx-avatars@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/ngx-avatars/-/ngx-avatars-1.8.0.tgz"
-  integrity sha512-ElfhznonASAwKoV6QQNVO2tdSb5EEmwqrgRCvmIUTXEjtdG6E1cZ0N7MYyz9BojXhT5ThRz8FO5tX9Jalm90pA==
+ngx-avatars@^1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/ngx-avatars/-/ngx-avatars-1.9.3.tgz#f97e8b6ce8090f0e949be8330f9a35f505e69031"
+  integrity sha512-6KcfxTvNv2GIGaqe2o+PenE+wYN8zGAi8rer9IM1lgrkquPq/4dy4nogf4UZ99GrqkgasY5ivXCZLQQzOaOy0Q==
   dependencies:
     ts-md5 "^1.3.1"
-    tslib "^2.6.3"
+    tslib "^2.8.1"
 
 ngx-dom-confetti@0.5.1:
   version "0.5.1"
@@ -9400,7 +9400,7 @@ ts-node@10.9.2:
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
 
-tslib@2.8.1, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.6.3:
+tslib@2.8.1, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.8.1:
   version "2.8.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==

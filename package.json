@@ -46,7 +46,7 @@
         "angular-toaster": "1.8.1",
         "apexcharts": "4.5.0",
         "ngx-apexcharts": "0.8.0",
-        "ngx-avatars": "^1.8.0",
+        "ngx-avatars": "^1.9.3",
         "ngx-dom-confetti": "0.5.1",
         "ngx-is-standalone": "0.3.0",
         "perf-marks": "^1.14.2",
