@@ -7,6 +7,7 @@ import {
     Renderer2,
     SimpleChanges,
     ViewContainerRef,
+    inject,
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { ThemePalette } from '@angular/material/core';
@@ -22,6 +23,10 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
              button[mat-mini-fab][loading]`,
 })
 export class ButtonLoadingDirective implements OnChanges {
+    private matButton = inject(MatButton);
+    private viewContainerRef = inject(ViewContainerRef);
+    private renderer = inject(Renderer2);
+
     private spinner!: ComponentRef<MatProgressSpinner> | null;
 
     @Input()
@@ -44,12 +49,6 @@ export class ButtonLoadingDirective implements OnChanges {
 
     @Input()
     color: ThemePalette;
-
-    constructor(
-        private matButton: MatButton,
-        private viewContainerRef: ViewContainerRef,
-        private renderer: Renderer2
-    ) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         if (!changes.loading) {

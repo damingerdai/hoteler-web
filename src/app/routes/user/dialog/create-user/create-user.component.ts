@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
     FormBuilder,
     FormGroup,
@@ -24,16 +24,18 @@ interface CreateUserDialogData {
         MatxPassToggleVisibilityModule,
         SharedMaterialModule,
         SharedCdkModule,
-    ]
+    ],
 })
 export class CreateUserComponent {
+    private data = inject<CreateUserDialogData>(MAT_DIALOG_DATA);
+    private fb = inject(FormBuilder);
+
     protected form: FormGroup;
     protected roles: Roles;
 
-    constructor(
-        @Inject(MAT_DIALOG_DATA) private data: CreateUserDialogData,
-        private fb: FormBuilder
-    ) {
+    constructor() {
+        const data = this.data;
+
         this.roles = data.roles ?? [];
         this.form = this.fb.group({
             username: ['', [Validators.required]],

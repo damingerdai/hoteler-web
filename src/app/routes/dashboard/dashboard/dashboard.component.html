@@ -45,10 +45,7 @@
                                 }}</mat-card-title>
                             </mat-card-header>
                             <mat-card-content class="h-full">
-                                @defer (
-                                    on viewport;
-                                    when pastWeekCustomerCountChart.show
-                                ) {
+                                @defer {
                                     <div
                                         apxChart
                                         [series]="

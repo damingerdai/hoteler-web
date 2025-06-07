@@ -5,9 +5,9 @@ import {
     OnDestroy,
     OnInit,
     Output,
+    inject,
 } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser, Permission } from 'src/app/core/models';
@@ -24,7 +24,7 @@ interface IMenuItem {
     displayName: string;
     slug: string;
     neededPermissions?: string | string[];
-     
+
     withPermissions: boolean | ((user: Partial<IUser>) => boolean);
 }
 
@@ -60,10 +60,16 @@ const MENUS: IMenuItem[] = [
         LogoComponent,
         ThemePickerComponent,
         FlexSpacerDirective,
-        GithubComponent
-    ]
+        GithubComponent,
+    ],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+    private breakpointObserver = inject(BreakpointObserver);
+    private settings = inject(SettingsService);
+    private router = inject(Router);
+    // TODO: remove it
+    // private sanitizer = inject(DomSanitizer);
+
     private subscriptions: Subscription[] = [];
 
     protected _user: IUser;
@@ -101,12 +107,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     @Output()
     public menuClick = new EventEmitter<void>();
 
-    constructor(
-        private breakpointObserver: BreakpointObserver,
-        private settings: SettingsService,
-        private router: Router,
-        private sanitizer: DomSanitizer
-    ) {
+    constructor() {
         this.isKikeIPhone5s = false;
         const subscription = this.settings.user$.subscribe((user) =>
             this.processUser(user)

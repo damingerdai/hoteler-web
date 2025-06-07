@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
@@ -11,11 +11,8 @@ interface IConfirmData {
     selector: 'app-confirm',
     templateUrl: './confirm.component.html',
     styleUrls: ['./confirm.component.scss'],
-    imports: [MatButtonModule, MatDialogModule]
+    imports: [MatButtonModule, MatDialogModule],
 })
 export class ConfirmComponent {
-    constructor(
-        @Inject(MAT_DIALOG_DATA)
-        public data: IConfirmData
-    ) {}
+    data = inject<IConfirmData>(MAT_DIALOG_DATA);
 }

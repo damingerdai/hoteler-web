@@ -14,51 +14,51 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 describe('AddCustomerRoomDialogComponent', () => {
-  let component: AddCustomerRoomDialogComponent;
-  let fixture: ComponentFixture<AddCustomerRoomDialogComponent>;
+    let component: AddCustomerRoomDialogComponent;
+    let fixture: ComponentFixture<AddCustomerRoomDialogComponent>;
 
-  beforeEach((async () => {
-   await TestBed.configureTestingModule({
-      imports: [ TestApp, AddCustomerRoomDialogComponent ],
-      declarations: [],
-      providers: [
-        {
-          provide: MAT_DIALOG_DATA,
-          useValue: {
-            id: '1',
-            roomname: 'test-room',
-            price: 200,
-            status: 'inused',
-          },
-        },
-      ],
-    }).compileComponents();
-  }));
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [TestApp, AddCustomerRoomDialogComponent],
+            declarations: [],
+            providers: [
+                {
+                    provide: MAT_DIALOG_DATA,
+                    useValue: {
+                        id: '1',
+                        roomname: 'test-room',
+                        price: 200,
+                        status: 'inused',
+                    },
+                },
+            ],
+        }).compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AddCustomerRoomDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AddCustomerRoomDialogComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
 @NgModule({
-  exports: [
-    CommonModule,
-    NoopAnimationsModule,
-    ApiTestingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-  ],
+    exports: [
+        CommonModule,
+        NoopAnimationsModule,
+        ApiTestingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+    ],
 })
 class TestApp {}

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../api/api.service';
 import { DataResponse, IResponse, IUser, ListResponse } from '../../models';
@@ -7,7 +7,7 @@ import { DataResponse, IResponse, IUser, ListResponse } from '../../models';
     providedIn: 'root',
 })
 export class UserService {
-    constructor(private api: ApiService) {}
+    private api = inject(ApiService);
 
     public createUser(
         username: string,

@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    OnInit,
+    ViewChild,
+    inject,
+} from '@angular/core';
 import {
     AbstractControl,
     FormBuilder,
@@ -42,9 +48,15 @@ const identityPasswordValidator: ValidatorFn = (
         MatxPassToggleVisibilityModule,
         UiModule,
         RouterLinkWithHref,
-    ]
+    ],
 })
 export class RegisterComponent implements OnInit {
+    private fb = inject(FormBuilder);
+    private snackBar = inject(MatSnackBar);
+    private userApi = inject(UserService);
+    private router = inject(Router);
+    private ngxDomConfettiService = inject(NgxDomConfettiService);
+
     @ViewChild('btn', { read: ElementRef })
     btn!: ElementRef<HTMLButtonElement>;
 
@@ -66,13 +78,7 @@ export class RegisterComponent implements OnInit {
         return this.form.get('confirmPassword');
     }
 
-    constructor(
-        private fb: FormBuilder,
-        private snackBar: MatSnackBar,
-        private userApi: UserService,
-        private router: Router,
-        private ngxDomConfettiService: NgxDomConfettiService
-    ) {
+    constructor() {
         this.form = this.fb.group(
             {
                 username: ['', [Validators.required]],

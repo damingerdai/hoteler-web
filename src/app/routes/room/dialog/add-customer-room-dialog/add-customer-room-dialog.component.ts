@@ -1,6 +1,11 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import {
+    FormBuilder,
+    FormGroup,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
@@ -21,45 +26,43 @@ import { CustomerService } from 'src/app/core/services/customers';
         MatSelectModule,
         MatDialogModule,
         ReactiveFormsModule,
-    ]
+    ],
 })
 export class AddCustomerRoomDialogComponent implements OnInit {
+    private fb = inject(FormBuilder);
+    private customerApi = inject(CustomerService);
+    data = inject<IRoom>(MAT_DIALOG_DATA);
 
-  protected get checkInTime(): FormGroup {
-    return this.form.get('checkInTime') as FormGroup;
-  }
+    protected get checkInTime(): FormGroup {
+        return this.form.get('checkInTime') as FormGroup;
+    }
 
-  protected minDate = new Date();
+    protected minDate = new Date();
 
+    public customers: Customers = [];
+    public form: FormGroup;
 
-  public customers: Customers = [];
-  public form: FormGroup;
+    constructor() {
+        const data = this.data;
 
+        const currentDate = new Date();
+        const nextDate = new Date(currentDate.getTime() + 1000 * 60 * 60 * 24);
+        this.form = this.fb.group({
+            customerId: [null, [Validators.required]],
+            roomId: [data.id, [Validators.required]],
+            checkInTime: this.fb.group({
+                beginDate: [currentDate, [Validators.required]],
+                endDate: [nextDate, [Validators.required]],
+            }),
+        });
+        this.form.get('roomId').disable({ onlySelf: true, emitEvent: true });
+    }
 
-  constructor(
-    private fb: FormBuilder,
-    private customerApi: CustomerService,
-    @Inject(MAT_DIALOG_DATA) public data: IRoom
-  ) {
-    const currentDate = new Date();
-    const nextDate = new Date(currentDate.getTime() + 1000 * 60 * 60 * 24);
-    this.form = this.fb.group({
-      customerId: [null, [Validators.required]],
-      roomId: [data.id, [Validators.required]],
-      checkInTime: this.fb.group({
-        beginDate: [currentDate, [Validators.required]],
-        endDate: [nextDate, [Validators.required]]
-      })
-    });
-    this.form.get('roomId').disable({ onlySelf: true, emitEvent: true });
-  }
-
-  ngOnInit(): void {
-    this.customerApi.list().subscribe(res => {
-      if (res.status === 200) {
-        this.customers = res.data;
-      }
-    });
-  }
-
+    ngOnInit(): void {
+        this.customerApi.list().subscribe((res) => {
+            if (res.status === 200) {
+                this.customers = res.data;
+            }
+        });
+    }
 }

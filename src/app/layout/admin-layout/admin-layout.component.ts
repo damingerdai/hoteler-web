@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -23,6 +23,8 @@ import { FlexSpacerDirective } from 'src/app/shared/ui/directives/flex-spacer.di
     ],
 })
 export class AdminLayoutComponent {
+    private breakpointObserver = inject(BreakpointObserver);
+
     public isMobile: boolean;
 
     protected drawerOpened = true;
@@ -76,7 +78,7 @@ export class AdminLayoutComponent {
         return this.isMobile ? 'over' : 'side';
     }
 
-    constructor(private breakpointObserver: BreakpointObserver) {
+    constructor() {
         this.breakpointObserver
             .observe([Breakpoints.XSmall])
             .subscribe((result) => {

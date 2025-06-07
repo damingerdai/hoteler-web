@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ENTER, MAC_ENTER } from '@angular/cdk/keycodes';
 import {
     FormBuilder,
@@ -26,6 +26,12 @@ import { UiModule } from 'src/app/shared/ui/ui.module';
     ],
 })
 export class LoginComponent implements OnInit {
+    private fb = inject(FormBuilder);
+    private settings = inject(SettingsService);
+    private tokenApi = inject(TokenService);
+    private userApi = inject(UserService);
+    private router = inject(Router);
+
     public hide = true;
 
     public isLoading = false;
@@ -42,13 +48,7 @@ export class LoginComponent implements OnInit {
         return this.loginForm.get('password');
     }
 
-    constructor(
-        private fb: FormBuilder,
-        private settings: SettingsService,
-        private tokenApi: TokenService,
-        private userApi: UserService,
-        private router: Router
-    ) {
+    constructor() {
         this.loginForm = this.fb.group({
             username: ['', [Validators.required]],
             password: ['', [Validators.required]],

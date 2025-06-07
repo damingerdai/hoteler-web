@@ -1,6 +1,6 @@
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
@@ -58,6 +58,12 @@ import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
     ],
 })
 export class RoomComponent implements OnInit {
+    private dialog = inject(MatDialog);
+    private fb = inject(FormBuilder);
+    private roomApi = inject(RoomService);
+    private orderApi = inject(OrderService);
+    private snackBar = inject(MatSnackBar);
+
     public layout = 'card';
 
     public displayedColumns: string[] = [
@@ -74,13 +80,7 @@ export class RoomComponent implements OnInit {
 
     public isLoading: boolean;
 
-    constructor(
-        private dialog: MatDialog,
-        private fb: FormBuilder,
-        private roomApi: RoomService,
-        private orderApi: OrderService,
-        private snackBar: MatSnackBar
-    ) {
+    constructor() {
         this.isLoading = true;
         this.roomForm = this.fb.group({
             status: [0],
