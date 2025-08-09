@@ -3840,10 +3840,10 @@ angular-eslint@20.1.1:
     "@typescript-eslint/types" "^8.0.0"
     "@typescript-eslint/utils" "^8.0.0"
 
-angular-toaster@1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/angular-toaster/-/angular-toaster-1.8.1.tgz#b4cef76fb92cac1d4bb448c91d74af58c68fd4ba"
-  integrity sha512-NL0SzLTfkBjz6hHyI1EoiN3bj8qtktB4SljCSEjYmB9eznJoM2HHhwlRx1+IkTk23B71nY41LU9y0IUvTMcQGQ==
+angular-toaster@1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/angular-toaster/-/angular-toaster-1.8.2.tgz#c6931bfe608c3b9a36efe7cc5e7d9179a7ff662c"
+  integrity sha512-Rj9qVitX/rH5jqFLvzmvvydumeen1v3bgT/mpngqUPZFZtuKup3DiKzMBSrVIShN2UnKQ81o/p+SuVfksDGsRw==
   dependencies:
     tslib "^2.3.0"
 
