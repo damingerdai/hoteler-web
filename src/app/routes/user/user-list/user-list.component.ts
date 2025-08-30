@@ -88,6 +88,10 @@ export class UserListComponent implements OnInit, OnDestroy {
     );
   }
 
+  sortRoles(roles: Roles) {
+    return roles.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
   public openCreateUserDialog() {
     const dialogRef = this.dialog.open(CreateUserComponent, {
       data: { roles: this.roles },
