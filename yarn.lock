@@ -4005,10 +4005,10 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apexcharts@4.5.0:
-  version "4.5.0"
-  resolved "https://registry.npmjs.org/apexcharts/-/apexcharts-4.5.0.tgz"
-  integrity sha512-E7ZkrVqPNBUWy/Rmg8DEIqHNBmElzICE/oxOX5Ekvs2ICQUOK/VkEkMH09JGJu+O/EA0NL31hxlmF+wrwrSLaQ==
+apexcharts@5.3.5:
+  version "5.3.5"
+  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-5.3.5.tgz#5297861fdc8585c26bec3605b2d62638cc226b8d"
+  integrity sha512-I04DY/WBZbJgJD2uixeV5EzyiL+J5LgKQXEu8rctqAwyRmKv44aDVeofJoLdTJe3ao4r2KEQfCgtVzXn6pqirg==
   dependencies:
     "@svgdotjs/svg.draggable.js" "^3.0.4"
     "@svgdotjs/svg.filter.js" "^3.0.8"
@@ -7874,10 +7874,10 @@ neo-async@^2.6.2:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngx-apexcharts@0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/ngx-apexcharts/-/ngx-apexcharts-0.8.3.tgz#08ff5d5c6c70a43e801da062dffc1bac11534a1e"
-  integrity sha512-J+SeKgI5KHIg3h9rI5n2evS5TT2k6r2qeAD3364P2rtzWxL2CQYy9mjROkR8apqqjHc+3w7+0TobFo2gm//8+Q==
+ngx-apexcharts@0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/ngx-apexcharts/-/ngx-apexcharts-0.8.4.tgz#d5e00175db8b6bf716ac7c903ba3b61b2d1583a7"
+  integrity sha512-FOkSm1kZi4TiB9fhdOzW59U6vcwctKsGlvFXHRgmFfFI6WIdV/Ic5B3v2CtWu4Bp7SYL/kH2HyigABR/LGfqnw==
   dependencies:
     tslib "^2.0.0"
 
