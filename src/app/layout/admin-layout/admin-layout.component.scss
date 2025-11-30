@@ -5,6 +5,10 @@
     display: flex;
     inset: 64px 0 0;
     flex-direction: column;
+
+    @media (max-width: 599px) {
+        inset: 56px 0 0;
+    }
 }
 
 app-navbar {

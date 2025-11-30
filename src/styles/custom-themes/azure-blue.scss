@@ -1,9 +1,10 @@
 @use '@angular/material' as mat;
 
 html {
+  color-scheme: light dark;
   @include mat.theme((
     color: (
-      theme-type: light,
+      // theme-type: light,
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette,
     ),

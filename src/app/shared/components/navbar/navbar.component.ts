@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { LogoComponent } from '../logo/logo.component';
 import { GithubComponent } from '../icons/github/github.component';
 import { AvatarModule } from 'ngx-avatars';
+import { ToggleButtonComponent } from '../toggle-button/toggle-button.component';
 
 interface IMenuItem {
     displayName: string;
@@ -57,6 +58,8 @@ const MENUS: IMenuItem[] = [
         RouterModule,
         SharedMaterialModule,
         AvatarModule,
+
+        ToggleButtonComponent,
         LogoComponent,
         ThemePickerComponent,
         FlexSpacerDirective,

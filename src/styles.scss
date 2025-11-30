@@ -15,12 +15,13 @@
 
 
 html {
+  color-scheme: light dark;
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
 
   @include mat.theme((
     color: (
-      theme-type: light,
+      // theme-type: light,
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette,
     ),
@@ -30,5 +31,7 @@ html {
 
   @include app-theme.hoteler-app-theme;
 
-  @include cdk.a11y-visually-hidden;
+  @include cdk.a11y-visually-hidden;;
 }
+
+ 
