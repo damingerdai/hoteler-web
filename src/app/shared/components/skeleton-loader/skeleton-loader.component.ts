@@ -16,13 +16,12 @@ import {
     SkeletonLoaderConfigTheme,
     SKELETON_LOADER_CONFIG,
 } from './skeleton-loader-config.types';
-import { NgStyle } from '@angular/common';
+
 
 @Component({
     selector: 'app-skeleton-loader',
     templateUrl: './skeleton-loader.component.html',
     styleUrls: ['./skeleton-loader.component.scss'],
-    imports: [NgStyle],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkeletonLoaderComponent
