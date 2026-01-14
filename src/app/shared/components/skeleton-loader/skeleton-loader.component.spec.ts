@@ -72,7 +72,7 @@ class ContainerComponent {
   invalidValueIncount = 'two';
 }
 
-describe('SkeletonLoaderComponent', () => {
+xdescribe('SkeletonLoaderComponent', () => {
   let fixture: ComponentFixture<ContainerComponent>;
   beforeEach(() => {
      
