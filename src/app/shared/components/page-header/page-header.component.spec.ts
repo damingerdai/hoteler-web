@@ -1,5 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
 
 import { PageHeaderComponent } from './page-header.component';
 
@@ -7,18 +8,15 @@ describe('PageHeaderComponent', () => {
   let component: PageHeaderComponent;
   let fixture: ComponentFixture<PageHeaderComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+ beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [ PageHeaderComponent ]
-    })
-    .compileComponents();
-  }));
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(PageHeaderComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
