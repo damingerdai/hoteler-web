@@ -1,77 +1,89 @@
-<div class="login flex w-full h-full">
-    <mat-card appearance="outlined" class="login-card mat-elevation-z4 m-auto">
-        <mat-card-header>
-            <mat-card-title class="text-center">
-                Hoteler 系统登录
-            </mat-card-title>
-        </mat-card-header>
+<div class="login-container">
+    <mat-card class="login-card" appearance="raised">
+        <div class="card-header-visual">
+            <mat-icon color="primary" class="app-logo">hotel</mat-icon>
+            <h1 class="mat-headline-medium">Hoteler</h1>
+            <p class="mat-body-medium text-secondary">
+                欢迎回来，请登录您的账号
+            </p>
+        </div>
+
         <mat-card-content>
-            <form class="form-field-full" [formGroup]="loginForm">
-                <mat-form-field appearance="outline">
+            <form
+                [formGroup]="loginForm"
+                (ngSubmit)="login()"
+                class="login-form"
+            >
+                <mat-form-field appearance="outline" class="full-width">
                     <mat-label>用户名</mat-label>
                     <input
                         matInput
-                        placeholder="用户名"
+                        placeholder="请输入用户名"
                         formControlName="username"
                         required
                     />
-                    @if (username.invalid) {
-                        <mat-error>请输入用户名</mat-error>
+                    <mat-icon matPrefix>person_outline</mat-icon>
+                    @if (username.invalid && username.touched) {
+                        <mat-error>用户名是必填项</mat-error>
                     }
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+
+                <mat-form-field appearance="outline" class="full-width">
                     <mat-label>密码</mat-label>
                     <input
                         matInput
-                        placeholder="密码"
                         [type]="hide ? 'password' : 'text'"
                         formControlName="password"
+                        placeholder="请输入密码"
+                        required
                     />
+                    <mat-icon matPrefix>lock_open</mat-icon>
                     <button
                         type="button"
                         mat-icon-button
                         matSuffix
                         (click)="toggleVisibilityIcon($event)"
-                        [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide"
+                        [attr.aria-label]="'切换密码可见性'"
                     >
-                        <mat-icon class="visibility">{{
+                        <mat-icon>{{
                             hide ? 'visibility_off' : 'visibility'
                         }}</mat-icon>
                     </button>
-                    @if (password.invalid) {
-                        <mat-error> 请输入密码 </mat-error>
+                    @if (password.invalid && password.touched) {
+                        <mat-error>密码是必填项</mat-error>
                     }
                 </mat-form-field>
-                @if (loginForm.errors) {
-                    <div class="error">
-                        <mat-error>
-                            {{ loginForm.errors.login }}
-                        </mat-error>
+
+                @if (loginForm.errors?.['login']) {
+                    <div class="error-container mat-body-small">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>{{ loginForm.errors?.['login'] }}</span>
                     </div>
                 }
+
                 <button
-                    class="w-full"
                     mat-flat-button
-                    type="submit"
                     color="primary"
-                    [loading]="isLoading"
-                    [disabled]="loginForm.invalid"
-                    (click)="login()"
+                    class="login-button"
+                    type="submit"
+                    [disabled]="loginForm.invalid || isLoading"
                 >
-                    登录
+                    @if (!isLoading) {
+                        <span>立即登录</span>
+                    } @else {
+                        <mat-spinner diameter="24"></mat-spinner>
+                    }
                 </button>
             </form>
         </mat-card-content>
-        <mat-card-actions>
-            <div class="flex justify-center px-2">
-                <span class="no-account inline-flex items-center justify-center"
-                    >没有账号?</span
-                >
-                <a mat-button routerLink="/register" class="p-0"
-                    >点此创建一个</a
+
+        <mat-card-footer class="login-footer">
+            <div class="footer-content">
+                <span>还没有账号？</span>
+                <a mat-button color="primary" routerLink="/register"
+                    >立即注册</a
                 >
             </div>
-        </mat-card-actions>
+        </mat-card-footer>
     </mat-card>
 </div>

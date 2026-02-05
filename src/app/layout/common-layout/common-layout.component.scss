@@ -14,7 +14,9 @@
 
 
   .layout-container {
-    background-image: radial-gradient(at 97% 21%, hsla(125deg, 98%, 72%, .3) 0, transparent 50%), radial-gradient(at 52% 99%, hsla(354deg, 98%, 61%, .3) 0, transparent 50%), radial-gradient(at 10% 29%, hsla(256deg, 96%, 67%, .3) 0, transparent 50%), radial-gradient(at 97% 96%, hsla(38deg, 60%, 74%, .3) 0, transparent 50%), radial-gradient(at 33% 50%, hsla(222deg, 67%, 73%, .3) 0, transparent 50%), radial-gradient(at 79% 53%, hsla(343deg, 68%, 79%, .3) 0, transparent 50%);
+    background: linear-gradient(135deg, var(--mat-sys-surface-container-low), var(--mat-sys-surface-container-high));
+
+    // background-image: radial-gradient(at 97% 21%, hsla(125deg, 98%, 72%, .3) 0, transparent 50%), radial-gradient(at 52% 99%, hsla(354deg, 98%, 61%, .3) 0, transparent 50%), radial-gradient(at 10% 29%, hsla(256deg, 96%, 67%, .3) 0, transparent 50%), radial-gradient(at 97% 96%, hsla(38deg, 60%, 74%, .3) 0, transparent 50%), radial-gradient(at 33% 50%, hsla(222deg, 67%, 73%, .3) 0, transparent 50%), radial-gradient(at 79% 53%, hsla(343deg, 68%, 79%, .3) 0, transparent 50%);
   }
 }
 

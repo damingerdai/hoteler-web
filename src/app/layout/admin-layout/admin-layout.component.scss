@@ -25,6 +25,7 @@ app-navbar {
     display: flex;
     flex: 1;
     flex-direction: column;
+     background: linear-gradient(135deg, var(--mat-sys-surface-container-low), var(--mat-sys-surface-container-high));
 
     .drawer {
         max-width: 180px !important;
