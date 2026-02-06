@@ -1,13 +1,87 @@
-.register {
-    &-card {
-        max-width: 350px;
-        margin: {
-            top: 200px;
-        }
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 16px;
 
-        .mat-mdc-card-header {
-            justify-content: center;
-            padding: 16px;
-        }
+  .register-card {
+    max-width: 460px;
+    width: 100%;
+    padding: 24px;
+    border-radius: 28px; 
+    box-shadow: var(--mat-sys-level2-shadow);
+  }
+
+  .card-header-visual {
+    text-align: center;
+    margin-bottom: 32px;
+
+    .app-logo {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 12px;
+      background-color: var(--mat-sys-primary-container);
+      color: var(--mat-sys-on-primary-container);
+      border-radius: 12px;
+      padding: 8px;
+      box-sizing: content-box;
     }
+
+    h1 {
+      margin: 0;
+      font-weight: 600;
+      color: var(--mat-sys-on-surface);
+    }
+
+    .text-secondary {
+      color: var(--mat-sys-on-surface-variant);
+      margin-top: 8px;
+    }
+  }
+
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .full-width {
+      width: 100%;
+    }
+  }
+
+  .register-button {
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 100px;
+    box-shadow: var(--mat-sys-level1-shadow);
+  }
+
+  .register-footer {
+    margin-top: 24px;
+    padding-bottom: 16px;
+    background: transparent;
+
+    .footer-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      gap: 4px;
+      color: var(--mat-sys-on-surface-variant);
+    }
+  }
+}
+
+// 适配小屏幕
+@media (max-width: 480px) {
+  .register-card {
+    border-radius: 0;
+    min-height: 100vh;
+    box-shadow: none;
+    padding: 40px 20px;
+  }
 }

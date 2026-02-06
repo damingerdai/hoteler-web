@@ -1,56 +1,67 @@
-<div class="register w-full">
-    <mat-card
-        appearance="outlined"
-        class="register-card mat-elevation-z4 m-auto"
-    >
-        <mat-card-header>
-            <mat-card-title class="text-center">
-                Hoteler 系统注册
-            </mat-card-title>
-        </mat-card-header>
+<div class="register-container">
+    <mat-card class="register-card" appearance="raised">
+        <div class="card-header-visual">
+            <mat-icon color="primary" class="app-logo"
+                >person_add_alt_1</mat-icon
+            >
+            <h1 class="mat-headline-medium">创建 Hoteler 账号</h1>
+            <p class="mat-body-medium text-secondary">
+                加入我们，开启您的智能酒店管理之旅
+            </p>
+        </div>
+
         <mat-card-content>
             <form
-                class="form-field-full"
                 [formGroup]="form"
-                (submit)="register()"
+                (ngSubmit)="register()"
+                class="register-form"
             >
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="full-width">
                     <mat-label>用户名</mat-label>
                     <input
                         matInput
-                        placeholder="用户名"
+                        placeholder="建议使用常用邮箱或手机号"
                         formControlName="username"
+                        required
                     />
-                    @if (username.invalid) {
-                        <mat-error>请输入用户名</mat-error>
+                    <mat-icon matPrefix>account_circle</mat-icon>
+                    @if (username.invalid && username.touched) {
+                        <mat-error>请输入有效的用户名</mat-error>
                     }
                 </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>密码</mat-label>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>设置密码</mat-label>
                     <input
                         matInput
-                        placeholder="密码"
                         [type]="togglePassword.type"
                         formControlName="password"
+                        placeholder="请输入密码"
+                        required
                     />
+                    <mat-icon matPrefix>password</mat-icon>
                     <matx-pass-toggle-visibility #togglePassword matSuffix />
-                    @if (password.invalid) {
-                        <mat-error>请输入密码</mat-error>
+                    @if (password.invalid && password.touched) {
+                        <mat-error>密码是必填项</mat-error>
                     }
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+
+                <mat-form-field appearance="outline" class="full-width">
                     <mat-label>确认密码</mat-label>
                     <input
                         matInput
-                        placeholder="密码"
                         [type]="hideConfirmPassword ? 'password' : 'text'"
                         formControlName="confirmPassword"
+                        placeholder="请再次输入密码以确认"
+                        required
                     />
+                    <mat-icon matPrefix>verified_user</mat-icon>
                     <button
+                        type="button"
                         mat-icon-button
                         matSuffix
-                        [attr.aria-label]="'Hide confirm password'"
                         (click)="toggleVisibilityConfirmPasswordIcon($event)"
+                        [attr.aria-label]="'切换密码可见性'"
                     >
                         <mat-icon>{{
                             hideConfirmPassword
@@ -58,38 +69,41 @@
                                 : 'visibility'
                         }}</mat-icon>
                     </button>
-                    @if (confirmPassword.invalid) {
-                        <mat-error> 请再次输入密码 </mat-error>
+
+                    @if (
+                        password.valid &&
+                        confirmPassword.valid &&
+                        form.errors?.['identityPassword']
+                    ) {
+                        <mat-error>两次输入的密码不一致</mat-error>
+                    } @else if (
+                        confirmPassword.invalid && confirmPassword.touched
+                    ) {
+                        <mat-error>请再次输入密码</mat-error>
                     }
                 </mat-form-field>
-                @if (
-                    password.valid &&
-                    confirmPassword.valid &&
-                    form.errors?.identityPassword
-                ) {
-                    <mat-error>两次密码不一致</mat-error>
-                }
+
                 <button
-                    #btn
-                    class="w-full"
                     mat-flat-button
                     color="primary"
-                    [disabled]="form.invalid"
-                    [loading]="isLoading"
+                    class="register-button"
+                    type="submit"
+                    [disabled]="form.invalid || isLoading"
                 >
-                    注册
+                    @if (!isLoading) {
+                        <span>立即注册</span>
+                    } @else {
+                        <mat-spinner diameter="24"></mat-spinner>
+                    }
                 </button>
             </form>
         </mat-card-content>
-        <mat-card-actions>
-            <div class="flex justify-start w-full px-2 gap-2">
-                <span
-                    class="has-account inline-flex items-center justify-center"
-                >
-                    已经有账号了?</span
-                >
-                <a mat-button routerLink="/login">登录</a>
+
+        <mat-card-footer class="register-footer">
+            <div class="footer-content">
+                <span>已经有账号了?</span>
+                <a mat-button color="primary" routerLink="/login">返回登录</a>
             </div>
-        </mat-card-actions>
+        </mat-card-footer>
     </mat-card>
 </div>
