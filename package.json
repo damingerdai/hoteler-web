@@ -47,7 +47,7 @@
         "apexcharts": "5.3.0",
         "ngx-apexcharts": "0.9.0",
         "ngx-avatars": "^1.9.3",
-        "ngx-dom-confetti": "0.5.1",
+        "ngx-dom-confetti": "^0.6.0",
         "ngx-is-standalone": "0.3.0",
         "perf-marks": "^1.14.2",
         "rxjs": "7.8.1",
