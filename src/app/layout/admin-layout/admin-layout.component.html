@@ -10,13 +10,16 @@
             #drawer
             [opened]="drawerOpened"
             [mode]="mode"
+            [disableClose]="mode === 'side'"
         >
-            <div class="flex flex-col h-full p-x-2">
+            <div class="drawer-content">
                 @for (menu of menus; track $index) {
                     @if (menu.type === 'menu') {
-                        <mat-nav-list>
+                        <mat-nav-list class="nav-list">
                             @if (menu.header) {
-                                <h3 matSubheader>{{ menu.header }}</h3>
+                                <div matSubheader class="nav-subheader">
+                                    {{ menu.header }}
+                                </div>
                             }
                             @for (item of menu.items; track item.link) {
                                 <a
@@ -28,17 +31,19 @@
                                     <mat-icon matListItemIcon>
                                         {{ item.icon }}
                                     </mat-icon>
-                                    <p mat-line>{{ item.line }}</p>
+                                    <span matListItemTitle>{{
+                                        item.line
+                                    }}</span>
                                 </a>
                             }
                         </mat-nav-list>
                     } @else if (menu.type === 'divider') {
-                        <mat-divider></mat-divider>
+                        <mat-divider class="my-2"></mat-divider>
                     }
                 }
                 <div flexSpacer></div>
                 <mat-divider />
-                <mat-nav-list>
+                <mat-nav-list class="nav-list bottom-nav">
                     <a
                         mat-list-item
                         routerLink="settings"
@@ -46,7 +51,7 @@
                         (click)="closeDrawerInMobile()"
                     >
                         <mat-icon matListItemIcon>settings</mat-icon>
-                        <p mat-line>设置</p>
+                        <span matListItemTitle>设置</span>
                     </a>
                 </mat-nav-list>
             </div>
