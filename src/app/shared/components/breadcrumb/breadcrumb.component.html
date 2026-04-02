@@ -1,6 +1,21 @@
-<nav aria-label="breadcrumb" class="w-full flex items-center">
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
     <ol class="hoteler-breadcrumb">
         <li class="hoteler-breadcrumb-item">
+            <a mat-icon-button [routerLink]="['/']" class="home-link">
+                <mat-icon>home</mat-icon>
+            </a>
+        </li>
+
+        @if (parentLabel()) {
+            <mat-icon class="separator">chevron_right</mat-icon>
+            <li class="hoteler-breadcrumb-item">
+                <span class="parent-text">{{ parentLabel() }}</span>
+            </li>
+        }
+
+        <mat-icon class="separator">chevron_right</mat-icon>
+
+        <li class="hoteler-breadcrumb-item active">
             <a class="link" [routerLink]="[url()]">{{ label() }}</a>
         </li>
     </ol>

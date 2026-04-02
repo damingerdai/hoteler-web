@@ -13,7 +13,6 @@ import { UserService } from 'src/app/core/services/user/user.service';
 import {
   BreadcrumbComponent,
   ConfirmComponent,
-  TagComponent,
 } from 'src/app/shared/components';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 import { SharedPipesModule } from 'src/app/shared/shared.pipes.module';
@@ -24,6 +23,9 @@ import { Subscription, filter, switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { ToasterService } from 'angular-toaster';
+import { UpperCasePipe } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
     selector: 'app-user-list',
@@ -31,9 +33,11 @@ import { ToasterService } from 'angular-toaster';
     styleUrls: ['./user-list.component.scss'],
     imports: [
         BreadcrumbComponent,
-        TagComponent,
+        MatProgressSpinnerModule,
+        MatProgressBarModule,
         SharedMaterialModule,
         SharedPipesModule,
+        UpperCasePipe
     ]
 })
 export class UserListComponent implements OnInit, OnDestroy {
@@ -77,6 +81,7 @@ export class UserListComponent implements OnInit, OnDestroy {
         this.loading = false;
         if (res.status === 200) {
           this.users = res.data;
+          console.log(this.users);
         } else {
           this.snackBar.open('获取用户失败', 'X');
         }

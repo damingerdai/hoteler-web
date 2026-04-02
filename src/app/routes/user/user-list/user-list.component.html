@@ -1,4 +1,137 @@
-<app-breadcrumb label="用户管理" url="/admin/users" />
+<div class="page-container">
+    <app-breadcrumb
+        [url]="'/admin/users'"
+        [label]="'用户管理'"
+        [parentLabel]="'管理员'"
+    ></app-breadcrumb>
+    <header class="page-header">
+        <div class="title-section">
+            <h1 class="mat-headline-medium">用户列表</h1>
+            <p class="mat-body-medium secondary-text">
+                管理系统内的所有账户权限及状态
+            </p>
+        </div>
+        <div class="action-section">
+            <button mat-flat-button color="primary">
+                <mat-icon>add</mat-icon>
+                创建用户
+            </button>
+        </div>
+    </header>
+
+    <mat-card class="user-table-card" appearance="outlined">
+        @if (loading) {
+            <mat-progress-bar
+                mode="indeterminate"
+                color="primary"
+            ></mat-progress-bar>
+        }
+        <mat-card-content class="user-table-card-content">
+            <div class="table-tools">
+                <mat-form-field
+                    appearance="outline"
+                    subscriptSizing="dynamic"
+                    class="search-field"
+                >
+                    <mat-icon matPrefix>search</mat-icon>
+                    <mat-label>搜索用户...</mat-label>
+                    <input matInput />
+                </mat-form-field>
+            </div>
+
+            @if (users.length > 0) {
+                <table mat-table [dataSource]="users" class="user-table">
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef>主键</th>
+                        <td mat-cell *matCellDef="let user">
+                            <span class="id-badge">{{
+                                user.id.toString().slice(-6)
+                            }}</span>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="username">
+                        <th mat-header-cell *matHeaderCellDef>名字</th>
+                        <td mat-cell *matCellDef="let user">
+                            <div class="user-info">
+                                <div class="avatar">
+                                    {{ user.username[0] | uppercase }}
+                                </div>
+                                <span class="user-name">{{
+                                    user.username
+                                }}</span>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="roles">
+                        <th mat-header-cell *matHeaderCellDef>角色</th>
+                        <td mat-cell *matCellDef="let user">
+                            <div class="role-tags">
+                                @for (
+                                    role of sortRoles(user.roles);
+                                    track role.id
+                                ) {
+                                    <span
+                                        class="role-chip"
+                                        [class.admin]="role.name === 'admin'"
+                                        >{{ role.name }}</span
+                                    >
+                                }
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef>操作</th>
+                        <td mat-cell *matCellDef="let user">
+                            <button
+                                mat-icon-button
+                                color="primary"
+                                matTooltip="编辑用户"
+                                (click)="openUpdateUserDialog(user)"
+                            >
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button
+                                mat-icon-button
+                                color="warn"
+                                matTooltip="删除用户"
+                                (click)="openDeleteUserDialog(user.id)"
+                            >
+                                <mat-icon>delete_outline</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr
+                        mat-row
+                        *matRowDef="let row; columns: displayedColumns"
+                        class="clickable-row"
+                    ></tr>
+                </table>
+            } @else if (!loading) {
+                <div class="empty-state">
+                    <mat-icon>group_off</mat-icon>
+                    <p>未找到相关用户</p>
+                </div>
+            } @else {
+                <div class="skeleton-container">
+                    @for (i of [1, 2, 3, 4]; track $index) {
+                        <div class="skeleton-row">
+                            <div class="skeleton-item avatar"></div>
+                            <div class="skeleton-item text"></div>
+                            <div class="skeleton-item text"></div>
+                        </div>
+                    }
+                </div>
+            }
+            <!-- <mat-paginator [pageSizeOptions]="[10, 20]" aria-label="选择页码"></mat-paginator> -->
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<!-- <app-breadcrumb label="用户管理" url="/admin/users" />
 <div class="p-4">
     <div class="flex w-full justify-content-end">
         <button
@@ -112,4 +245,4 @@
             </div>
         }
     </div>
-</div>
+</div> -->
