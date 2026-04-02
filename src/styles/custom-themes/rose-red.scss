@@ -1,14 +1,21 @@
 @use '@angular/material' as mat;
 
+$rose-red-theme: mat.define-theme((
+  color: (
+    primary: mat.$rose-palette,
+    tertiary: mat.$red-palette,
+  ),
+  typography: (
+    brand-family: 'Roboto',
+    plain-family: 'Roboto',
+  ),
+  density: (
+    scale: 0
+  ),
+));
+
 html {
   color-scheme: light dark;
-  @include mat.theme((
-    color: (
-      // theme-type: light,
-      primary: mat.$rose-palette,
-      tertiary: mat.$red-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme($rose-red-theme);
+  @include mat.typography-hierarchy($rose-red-theme);
 }

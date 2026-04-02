@@ -1,55 +1,82 @@
-<form [formGroup]="form">
-    <h2 mat-dialog-title>创建用户</h2>
-    <mat-dialog-content class="content">
-        <mat-form-field
-            class="w-full form-filed-full m-t-4"
-            appearance="outline"
-        >
-            <mat-label>用户名</mat-label>
-            <input matInput placeholder="用户名" formControlName="username" />
-        </mat-form-field>
-        <mat-form-field
-            class="w-full form-filed-full m-t-4"
-            appearance="outline"
-        >
-            <mat-label>密码</mat-label>
-            <input
-                matInput
-                [type]="toogle.type"
-                placeholder="密码"
-                formControlName="password"
-            />
-            <matx-pass-toggle-visibility #toogle matSuffix />
-        </mat-form-field>
-        <mat-form-field
-            class="w-full form-field-full m-t-4"
-            appearance="outline"
-        >
-            <mat-label>角色</mat-label>
-            <mat-select multiple formControlName="roles">
-                @for (role of roles; track role.id) {
-                    <mat-option [value]="role.name">{{ role.name }}</mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-        <button
-            mat-button
-            mat-dialog-close
-            cdkFocusInitial
-            (click)="onNoClick()"
-        >
-            取消
-        </button>
-        <button
-            mat-button
-            [disabled]="form.invalid"
-            color="primary"
-            type="submit"
-            [mat-dialog-close]="form.getRawValue()"
-        >
-            确定
-        </button>
-    </mat-dialog-actions>
-</form>
+<div class="dialog-container">
+    <div mat-dialog-title class="dialog-header">
+        <div class="title-with-icon">
+            <mat-icon color="primary">person_add</mat-icon>
+            <span>创建新用户</span>
+        </div>
+        <p class="mat-body-medium secondary-text">
+            为系统添加新的账号并分配初始权限
+        </p>
+    </div>
+    <form [formGroup]="form">
+        <mat-dialog-content class="dialog-content-wrapper">
+            <mat-form-field
+                class="w-full form-filed-full mt-4 full-width"
+                appearance="outline"
+            >
+                <mat-label>用户名</mat-label>
+                <mat-icon matPrefix>person_outline</mat-icon>
+                <input
+                    matInput
+                    placeholder="请输入用户名"
+                    formControlName="username"
+                />
+                <mat-hint>建议使用英文名或工号</mat-hint>
+            </mat-form-field>
+            <mat-form-field
+                class="w-full form-filed-full mt-4 full-width"
+                appearance="outline"
+            >
+                <mat-label>初始密码</mat-label>
+                <mat-icon matPrefix>lock_open</mat-icon>
+                <input
+                    matInput
+                    [type]="toogle.type"
+                    placeholder="请输入密码"
+                    formControlName="password"
+                />
+                <matx-pass-toggle-visibility #toogle matSuffix />
+                <mat-hint>至少包含 6 位字符</mat-hint>
+            </mat-form-field>
+            <mat-form-field
+                class="w-full form-field-full mt-4 full-width"
+                appearance="outline"
+            >
+                <mat-label>所属角色</mat-label>
+                <mat-icon matPrefix>badge</mat-icon>
+                <mat-select
+                    multiple
+                    formControlName="roles"
+                    placeholder="请选择角色"
+                >
+                    @for (role of roles; track role.id) {
+                        <mat-option [value]="role.name">
+                            <span class="option-text">{{ role.name }}</span>
+                        </mat-option>
+                    }
+                </mat-select>
+                <mat-hint>可多选，至少包含一个基础权限</mat-hint>
+            </mat-form-field>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end" class="dialog-actions">
+            <button
+                mat-button
+                mat-dialog-close
+                color="secondary"
+                cdkFocusInitial
+                (click)="onNoClick()"
+            >
+                取消
+            </button>
+            <button
+                mat-flat-button
+                [disabled]="form.invalid"
+                color="primary"
+                type="submit"
+                [mat-dialog-close]="form.getRawValue()"
+            >
+                立即创建
+            </button>
+        </mat-dialog-actions>
+    </form>
+</div>

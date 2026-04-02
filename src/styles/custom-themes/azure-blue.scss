@@ -1,15 +1,22 @@
 @use '@angular/material' as mat;
 
+$azure-blue-theme: mat.define-theme((
+  color: (
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  typography: (
+    brand-family: 'Roboto',
+    plain-family: 'Roboto',
+  ),
+  density: (
+    scale: 0
+  ),
+));
+
 html {
   color-scheme: light dark;
-  @include mat.theme((
-    color: (
-      // theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme($azure-blue-theme);
+  @include mat.typography-hierarchy($azure-blue-theme);
 }
 

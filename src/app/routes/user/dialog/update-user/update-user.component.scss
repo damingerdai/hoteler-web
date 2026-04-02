@@ -20,8 +20,11 @@
 
         .secondary-text {
             margin-top: 4px;
+            font: var(--mat-sys-body-small-font);
+            letter-spacing: var(--mat-sys-body-small-tracking);
             color: var(--mat-sys-on-surface-variant);
             font-weight: 400;
+            font-size: 14px;
         }
     }
 
@@ -51,4 +54,8 @@
             }
         }
     }
+}
+
+.option-text {
+    text-transform: capitalize;
 }
