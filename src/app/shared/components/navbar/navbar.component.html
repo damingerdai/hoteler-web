@@ -1,11 +1,6 @@
-<mat-toolbar class="navbar-header" color="primary" aria-label="Top Toolbar">
+<mat-toolbar class="navbar-header" aria-label="Top Toolbar">
     @if (showMenu) {
-        <button
-            mat-icon-button
-            color="primary"
-            aria-label="hamburger menu"
-            (click)="toggle()"
-        >
+        <button mat-icon-button aria-label="hamburger menu" (click)="toggle()">
             <mat-icon>menu</mat-icon>
         </button>
     }
@@ -16,43 +11,44 @@
         }
     </a>
     <spacer />
-    <app-toggle-button />
-    <app-theme-picker />
-    @if (showGithubLogo) {
-        <a
-            mat-icon-button
-            class="hoteler-button"
-            href="https://github.com/damingerdai/hoteler"
-            aria-label="GitHub Repository"
-        >
-            <app-github matButtonIcon />
-        </a>
-    }
-    @if (username) {
-        <button
-            mat-icon-button
-            class="hoteler-button"
-            [matMenuTriggerFor]="menu"
-            aria-label="user profile"
-        >
-            <ngx-avatars
-                class="avatars"
-                [name]="username"
-                size="30"
-                [textSizeRatio]="2"
-                bgColor="var(--mat-sys-on-primary-container)"
-                fgColor="var(--mat-sys-primary-container)"
-            />
-        </button>
-    }
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="logout()">
-            <mat-icon>exit_to_app</mat-icon>
-            <span>登出</span>
-        </button>
-        <button mat-menu-item routerLink="settings">
-            <mat-icon aria-label="settings icons">settings</mat-icon>
-            <span>设置</span>
-        </button>
-    </mat-menu>
+    <div class="actions-group">
+        <app-toggle-button />
+        <app-theme-picker />
+        @if (showGithubLogo) {
+            <a
+                mat-icon-button
+                href="https://github.com/damingerdai/hoteler"
+                aria-label="GitHub Repository"
+            >
+                <app-github matButtonIcon />
+            </a>
+        }
+        @if (username) {
+            <button
+                mat-icon-button
+                class="hoteler-button"
+                [matMenuTriggerFor]="menu"
+                aria-label="user profile"
+            >
+                <ngx-avatars
+                    class="avatars"
+                    [name]="username"
+                    size="30"
+                    [textSizeRatio]="2"
+                    bgColor="var(--mat-sys-on-primary-container)"
+                    fgColor="var(--mat-sys-primary-container)"
+                />
+            </button>
+        }
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>登出</span>
+            </button>
+            <button mat-menu-item routerLink="settings">
+                <mat-icon aria-label="settings icons">settings</mat-icon>
+                <span>设置</span>
+            </button>
+        </mat-menu>
+    </div>
 </mat-toolbar>

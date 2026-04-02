@@ -1,56 +1,56 @@
 @use '@angular/material' as mat;
 
-mat-toolbar {
-  background: {
-    color: var(--mat-sys-primary-container)
-  };
-
-  color: var(--mat-sys-primary);
-}
-
 .navbar-header {
+  // 1. 使用 Surface Container 替代厚重的 Primary Container
+  background-color: var(--mat-sys-surface-container) !important;
+  color: var(--mat-sys-on-surface);
+  
+  // 2. 增加底部极细的分割线，保持整洁
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+  
+  // 3. 布局优化
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  padding: 8px 16px;
+  padding: 0 16px; 
+  height: 64px; // M3 标准高度
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
 
-  .logo {
-    height: 26px;
-    margin-right: 6px;
-    vertical-align: middle;
-  }
-
-  .hoteler-angular-logo {
-    height: 21px;
-    margin: 0 7px 2px;
-    vertical-align: middle;
-  }
-
-  a.hoteler-button {
-    &:hover {
-      background: {
-        color: rgba(0, 0, 0, .4);
-      };
-
-      color: var(--mat-sys-on-tertiary-container);
-    }
-  }
-
+  // Logo 和 品牌文字
   .hoteler-button {
-    .avatars {
-      position: relative;
-      top: -3px;
-      left: -3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    letter-spacing: 0.25px;
+    color: var(--mat-sys-primary); // 让品牌名使用主色，更醒目
+  }
 
+  // 按钮 Hover 效果优化：不要使用 rgba(0,0,0,.4)，改用 M3 交互状态
+  a.hoteler-button, button.hoteler-button {
+    &:hover {
+      background-color: var(--mat-sys-surface-container-highest);
+      color: var(--mat-sys-primary);
     }
   }
 
-  .mat-mdc-button-base:not(:disabled) {
-    color: inherit;
+  // 头像微调
+  .avatars {
+    border: 2px solid var(--mat-sys-outline-variant);
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 
-.navbar-link {
-  flex: 1;
-  text-decoration: inherit;
+// 针对 mat-icon-button 的颜色对齐
+.navbar-header mat-icon {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.actions-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
