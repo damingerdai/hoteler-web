@@ -36,19 +36,22 @@
 
     @for $i from 1 through $shadow-count {
         $current-step: math.div($i * $length, $shadow-count);
-        $current-color: if(
-            not $fade,
-            $color,
-            if(
-                meta.type-of($fade) == 'color',
-                color.mix(
+        $current-color: null;
+
+        @if not $fade {
+            $current-color: $color;
+        } @else {
+            @if meta.type-of($fade) == 'color' {
+                $current-color: color.mix(
                     $fade,
                     $color,
                     math.percentage(math.div($i, $shadow-count))
-                ),
-                color.rgba($color, 1 - math.div($i, $shadow-count))
-            )
-        );
+                );
+            } @else {
+                $current-color: color.scale($color, $alpha: -(math.div($i, $shadow-count)));
+            }
+        }
+
         $shadows: list.append(
             $shadows,
             (math.sin(0deg + $direction) * $current-step)
