@@ -12,7 +12,11 @@
             </p>
         </div>
         <div class="action-section">
-            <button mat-flat-button color="primary">
+            <button
+                mat-flat-button
+                color="primary"
+                (click)="openCreateUserDialog()"
+            >
                 <mat-icon>add</mat-icon>
                 创建用户
             </button>

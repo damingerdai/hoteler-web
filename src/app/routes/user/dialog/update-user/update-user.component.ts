@@ -5,11 +5,15 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { IUser } from 'src/app/core/models';
 import { Roles } from 'src/app/core/models/roles';
-import { SharedCdkModule } from 'src/app/shared/shared.cdk.module';
-import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 
 interface UpdateUserDialogData {
     roles: Roles;
@@ -18,7 +22,16 @@ interface UpdateUserDialogData {
 
 @Component({
     selector: 'app-update-user',
-    imports: [ReactiveFormsModule, SharedMaterialModule, SharedCdkModule],
+   imports: [
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatIconModule,
+    MatTooltipModule
+  ],
     templateUrl: './update-user.component.html',
     styleUrl: './update-user.component.scss',
 })
@@ -36,7 +49,7 @@ export class UpdateUserComponent {
         this.roles = data.roles ?? [];
         this.user = data.user;
         this.form = this.fb.group({
-            username: [this.user.username, [Validators.required]],
+            username: [{ value: this.user.username, disabled: true }, [Validators.required]],
             // password: [this.user, [Validators.required]],
             roles: [this.user.roles.map((r) => r.name), [Validators.required]],
         });

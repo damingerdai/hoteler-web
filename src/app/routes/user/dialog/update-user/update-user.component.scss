@@ -1,0 +1,54 @@
+.dialog-container {
+    .dialog-header {
+        margin: 0 !important;
+        padding: 16px 24px 8px !important;
+
+        .title-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--mat-sys-on-surface);
+
+            mat-icon {
+                // 这里的颜色会跟随你定义的 primary 自动变色
+                font-size: 28px;
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        .secondary-text {
+            margin-top: 4px;
+            color: var(--mat-sys-on-surface-variant);
+            font-weight: 400;
+        }
+    }
+
+    form {
+        .dialog-content-wrapper {
+            padding-top: 16px !important;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .full-width {
+                width: 100%;
+            }
+
+            .mat-mdc-form-field-hint {
+                color: var(--mat-sys-outline);
+            }
+        }
+
+        .dialog-actions {
+            padding: 16px 24px !important;
+            gap: 8px;
+
+            button {
+                border-radius: 8px;
+                padding: 0 20px;
+            }
+        }
+    }
+}
