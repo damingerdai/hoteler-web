@@ -1,0 +1,56 @@
+@use '@angular/material' as mat;
+
+.page-container {
+    padding: 0 24px 24px;
+    background-color: var(--mat-sys-surface);
+    min-height: 100%;
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 24px;
+
+        .title-section {
+            h1 {
+                margin: 0;
+                color: var(--mat-sys-on-surface);
+                font-weight: 700;
+            }
+
+            .secondary-text {
+                color: var(--mat-sys-on-surface-variant);
+                margin: 4px 0 0;
+            }
+        }
+    }
+
+    .order-table-card {
+        border-radius: 16px;
+        border: 1px solid var(--mat-sys-outline-variant);
+        background-color: var(--mat-sys-surface-container-low);
+
+        .order-table-card-content {
+            .table-tools {
+                padding: 16px 0;
+
+                .search-field {
+                    width: 300px;
+                }
+            }
+
+            .order-table {
+                width: 100%;
+                background: transparent;
+
+                // 表头样式
+                th.mat-mdc-header-cell {
+                    font-weight: 600;
+                    color: var(--mat-sys-on-surface-variant);
+                    background-color: var(--mat-sys-surface-container-highest);
+                }
+            }
+        }
+    }
+
+}

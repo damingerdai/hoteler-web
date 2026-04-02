@@ -3,6 +3,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { Orders } from 'src/app/core/models';
 import { OrderService } from 'src/app/core/services/order/order.service';
@@ -15,8 +17,10 @@ import { BreadcrumbComponent } from 'src/app/shared/components';
         BreadcrumbComponent,
         MatButtonModule,
         MatDividerModule,
+        MatInputModule,
         MatCardModule,
         MatTableModule,
+        MatIconModule,
     ],
     templateUrl: './orders.component.html',
     styleUrl: './orders.component.scss',

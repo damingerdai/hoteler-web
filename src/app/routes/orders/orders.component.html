@@ -1,44 +1,75 @@
-<app-breadcrumb label="订单管理" url="/orders" />
-<div class="p-4">
-    <div class="flex justify-end py-1">
-        <button mat-button>添加订单</button>
-    </div>
-    <mat-divider />
-    <div class="p-4">
-        <table mat-table [dataSource]="orders" class="mat-elevation-z8">
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef>订单号</th>
-                <td mat-cell *matCellDef="let order">{{ order.id }}</td>
-            </ng-container>
-            <ng-container matColumnDef="customerId">
-                <th mat-header-cell *matHeaderCellDef>客户</th>
-                <td mat-cell *matCellDef="let order">
-                    {{ order.customer.name }}
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="roomId">
-                <th mat-header-cell *matHeaderCellDef>房间</th>
-                <td mat-cell *matCellDef="let order">
-                    {{ order.room.roomname }}
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="beginDate">
-                <th mat-header-cell *matHeaderCellDef>开始时间</th>
-                <td mat-cell *matCellDef="let order">
-                    {{
-                        order.beginDate | date: 'yyyy-MM-dd HH:mm:ss' : '+0800'
-                    }}
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="endDate">
-                <th mat-header-cell *matHeaderCellDef>结束时间</th>
-                <td mat-cell *matCellDef="let order">
-                    {{ order.endDate | date: 'yyyy-MM-dd HH:mm:ss' : '+0800' }}
-                </td>
-            </ng-container>
+<div class="page-container">
+    <app-breadcrumb label="订单管理" url="/orders" parentLabel="管理员" />
+    <header class="page-header">
+        <div class="title-section">
+            <h1 class="mat-headline-medium">订单管理</h1>
+            <p class="mat-body-medium secondary-text">
+                管理客户的预订订单，查看订单详情和状态
+            </p>
+        </div>
+        <div class="action-section">
+            <button mat-flat-button color="primary">
+                <mat-icon>add</mat-icon>
+                添加订单
+            </button>
+        </div>
+    </header>
+    <mat-card class="order-table-card" appearance="outlined">
+        <mat-card-content class="order-table-card-content">
+            <div class="table-tools">
+                <mat-form-field
+                    appearance="outline"
+                    subscriptSizing="dynamic"
+                    class="search-field"
+                >
+                    <mat-icon matPrefix>search</mat-icon>
+                    <mat-label>搜索订单...</mat-label>
+                    <input matInput />
+                </mat-form-field>
+            </div>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-    </div>
+            <table mat-table [dataSource]="orders" class="order-table">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>订单号</th>
+                    <td mat-cell *matCellDef="let order">{{ order.id }}</td>
+                </ng-container>
+                <ng-container matColumnDef="customerId">
+                    <th mat-header-cell *matHeaderCellDef>客户</th>
+                    <td mat-cell *matCellDef="let order">
+                        {{ order.customer.name }}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="roomId">
+                    <th mat-header-cell *matHeaderCellDef>房间</th>
+                    <td mat-cell *matCellDef="let order">
+                        {{ order.room.roomname }}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="beginDate">
+                    <th mat-header-cell *matHeaderCellDef>开始时间</th>
+                    <td mat-cell *matCellDef="let order">
+                        {{
+                            order.beginDate
+                                | date: 'yyyy-MM-dd HH:mm:ss' : '+0800'
+                        }}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="endDate">
+                    <th mat-header-cell *matHeaderCellDef>结束时间</th>
+                    <td mat-cell *matCellDef="let order">
+                        {{
+                            order.endDate
+                                | date: 'yyyy-MM-dd HH:mm:ss' : '+0800'
+                        }}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
 </div>

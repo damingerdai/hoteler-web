@@ -26,9 +26,9 @@
     }
 
     .user-table-card {
-        border-radius: 16px; // 现代大圆角
+        border-radius: 16px;
         border: 1px solid var(--mat-sys-outline-variant);
-        background-color: var(--mat-sys-surface-container-low); // 稍微深一点的背景区分
+        background-color: var(--mat-sys-surface-container-low);
 
         .user-table-card-content {
             .table-tools {
@@ -38,77 +38,75 @@
                     width: 300px;
                 }
             }
-        }
 
-        .user-table {
-            width: 100%;
-            background: transparent;
+            .user-table {
+                width: 100%;
+                background: transparent;
 
-            // 表头样式
-            th.mat-mdc-header-cell {
-                font-weight: 600;
-                color: var(--mat-sys-on-surface-variant);
-                background-color: var(--mat-sys-surface-container-highest);
-            }
+                // 表头样式
+                th.mat-mdc-header-cell {
+                    font-weight: 600;
+                    color: var(--mat-sys-on-surface-variant);
+                    background-color: var(--mat-sys-surface-container-highest);
+                }
 
-            // 用户头像与信息对齐
-            .user-info {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-
-                .avatar {
-                    width: 32px;
-                    height: 32px;
-                    border-radius: 8px;
-                    background-color: var(--mat-sys-primary-container);
-                    color: var(--mat-sys-on-primary-container);
+                // 用户头像与信息对齐
+                .user-info {
                     display: flex;
                     align-items: center;
-                    justify-content: center;
-                    font-weight: bold;
-                    font-size: 14px;
-                }
+                    gap: 12px;
 
-                .user-name {
-                    font-weight: 500;
-                    color: var(--mat-sys-on-surface);
-                }
-            }
+                    .avatar {
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 8px;
+                        background-color: var(--mat-sys-primary-container);
+                        color: var(--mat-sys-on-primary-container);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: bold;
+                        font-size: 14px;
+                    }
 
-            .role-tags {
-                display: flex;
-                gap: 8px;
-                align-items: center;
-
-                // 角色标签：利用 Tertiary 颜色
-                .role-chip {
-                    padding: 2px 10px;
-                    border-radius: 12px;
-                    font-size: 12px;
-                    font-weight: 500;
-                    background-color: var(--mat-sys-surface-variant);
-                    color: var(--mat-sys-on-surface-variant);
-
-                    &.admin {
-                        // 自动适配各主题的辅助色 (Blue/Orange/Violet/Red)
-                        background-color: var(--mat-sys-tertiary-container);
-                        color: var(--mat-sys-on-tertiary-container);
+                    .user-name {
+                        font-weight: 500;
+                        color: var(--mat-sys-on-surface);
                     }
                 }
-            }
+
+                .role-tags {
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+
+                    // 角色标签：利用 Tertiary 颜色
+                    .role-chip {
+                        padding: 2px 10px;
+                        border-radius: 12px;
+                        font-size: 12px;
+                        font-weight: 500;
+                        background-color: var(--mat-sys-surface-variant);
+                        color: var(--mat-sys-on-surface-variant);
+
+                        &.admin {
+                            // 自动适配各主题的辅助色 (Blue/Orange/Violet/Red)
+                            background-color: var(--mat-sys-tertiary-container);
+                            color: var(--mat-sys-on-tertiary-container);
+                        }
+                    }
+                }
 
 
 
-            // 悬停交互
-            tr.clickable-row:hover {
-                background-color: var(--mat-sys-surface-container-high);
-                cursor: pointer;
-                transition: background 0.2s ease;
+                // 悬停交互
+                tr.clickable-row:hover {
+                    background-color: var(--mat-sys-surface-container-high);
+                    cursor: pointer;
+                    transition: background 0.2s ease;
+                }
             }
         }
-
-
     }
 }
 
