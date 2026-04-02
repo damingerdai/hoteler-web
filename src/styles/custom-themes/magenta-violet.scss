@@ -1,21 +1,14 @@
 @use '@angular/material' as mat;
 
-$magenta-violet-theme: mat.define-theme((
-  color: (
-    primary: mat.$magenta-palette,
-    tertiary: mat.$violet-palette,
-  ),
-  typography: (
-    brand-family: 'Roboto',
-    plain-family: 'Roboto',
-  ),
-  density: (
-    scale: 0
-  ),
-));
-
 html {
   color-scheme: light dark;
-  @include mat.theme($magenta-violet-theme);
-  @include mat.typography-hierarchy($magenta-violet-theme);
+  @include mat.theme((
+    color: (
+      // theme-type: light,
+      primary: mat.$rose-palette,
+      tertiary: mat.$red-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
 }

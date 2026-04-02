@@ -5,11 +5,14 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { Roles } from 'src/app/core/models/roles';
 import { MatxPassToggleVisibilityModule } from 'src/app/shared/components/matx-pass-toggle-visibility/matx-pass-toggle-visibility.module';
-import { SharedCdkModule } from 'src/app/shared/shared.cdk.module';
-import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 
 interface CreateUserDialogData {
     roles: Roles;
@@ -22,8 +25,12 @@ interface CreateUserDialogData {
     imports: [
         ReactiveFormsModule,
         MatxPassToggleVisibilityModule,
-        SharedMaterialModule,
-        SharedCdkModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatIconModule,
     ],
 })
 export class CreateUserComponent {

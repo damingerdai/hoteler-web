@@ -1,49 +1,100 @@
-<div class="settings_wrapper flex justify-center p-8 text-center h-full">
-    <div class="settings">
-        <h1 class="mat-h1">设置</h1>
-        <mat-card appearance="outlined" class="mat-card">
-            <mat-card-content class="content">
-                <h2 class="mat-h2">主题</h2>
-                <app-theme-selector />
-            </mat-card-content>
-        </mat-card>
-        <h1 class="mat-h1 mt-2">技术</h1>
-        <mat-card appearance="outlined" class="mat-card">
-            <mat-card-content class="content">
-                <h2 class="mat-h2">前端</h2>
-                <mat-nav-list>
-                    <a mat-list-item href="https://angular.io" target="_blank">
-                        Angular
-                    </a>
-                    <a
-                        mat-list-item
-                        href="https://material.angular.io"
-                        target="_blank"
-                    >
-                        Angular Material</a
-                    >
-                </mat-nav-list>
-                <h2 class="mat-h2">后端</h2>
-                <mat-nav-list>
-                    <a
-                        mat-list-item
-                        href="https://spring.io/projects/spring-boot"
-                        target="_blank"
-                    >
-                        Spring Boot
-                    </a>
-                </mat-nav-list>
-                <h2 class="mat-h2">数据库</h2>
-                <mat-nav-list>
-                    <a
-                        mat-list-item
-                        href="https://www.postgresql.org"
-                        target="_blank"
-                    >
-                        PostgreSQL
-                    </a>
-                </mat-nav-list>
-            </mat-card-content>
-        </mat-card>
+<div class="page-container settings-page">
+    <app-breadcrumb
+        [url]="'/settings'"
+        [label]="'系统设置'"
+        [parentLabel]="'管理员'"
+    ></app-breadcrumb>
+    <header class="page-header">
+        <div class="title-section">
+            <h1 class="mat-headline-medium">系统设置</h1>
+            <p class="mat-body-medium secondary-text">
+                管理您的个性化偏好与了解系统技术栈
+            </p>
+        </div>
+    </header>
+
+    <div class="settings-grid">
+        <section class="settings-section">
+            <div class="section-header">
+                <mat-icon color="primary">palette</mat-icon>
+                <h2 class="mat-title-medium">个性化界面</h2>
+            </div>
+
+            <mat-card appearance="outlined" class="settings-card">
+                <mat-card-content>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <span class="mat-body-large">系统主题</span>
+                            <p class="mat-body-small secondary-text">
+                                选择最适合您的色彩方案，支持 Azure, Rose, Cyan
+                                和 Magenta
+                            </p>
+                        </div>
+                        <div class="setting-action">
+                            <app-theme-selector></app-theme-selector>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </section>
+
+        <section class="settings-section mt-8">
+            <div class="section-header">
+                <mat-icon color="primary">terminal</mat-icon>
+                <h2 class="mat-title-medium">技术支撑</h2>
+            </div>
+
+            <mat-card appearance="outlined" class="settings-card">
+                <mat-card-content class="tech-stack-content">
+                    <div class="tech-group">
+                        <h3 class="mat-label-large primary-text">前端架构</h3>
+                        <mat-nav-list dense>
+                            <a
+                                mat-list-item
+                                href="https://angular.io"
+                                target="_blank"
+                            >
+                                <mat-icon matListItemIcon>code</mat-icon>
+                                <div matListItemTitle>Angular</div>
+                            </a>
+                            <a
+                                mat-list-item
+                                href="https://material.angular.io"
+                                target="_blank"
+                            >
+                                <mat-icon matListItemIcon>brush</mat-icon>
+                                <div matListItemTitle>Angular Material</div>
+                            </a>
+                        </mat-nav-list>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="tech-group mt-4">
+                        <h3 class="mat-label-large primary-text">后端服务</h3>
+                        <mat-nav-list dense>
+                            <a
+                                mat-list-item
+                                href="https://spring.io"
+                                target="_blank"
+                            >
+                                <mat-icon matListItemIcon
+                                    >settings_input_component</mat-icon
+                                >
+                                <div matListItemTitle>Spring Boot</div>
+                            </a>
+                            <a
+                                mat-list-item
+                                href="https://postgresql.org"
+                                target="_blank"
+                            >
+                                <mat-icon matListItemIcon>storage</mat-icon>
+                                <div matListItemTitle>PostgreSQL</div>
+                            </a>
+                        </mat-nav-list>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </section>
     </div>
 </div>
