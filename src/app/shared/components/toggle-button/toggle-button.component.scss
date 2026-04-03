@@ -1,5 +1,14 @@
-.button {
-    color: var(--mat-primary);
+.theme-icon {
+  color: var(--mat-sys-primary);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
- 
+button:active .theme-icon {
+  transform: scale(0.8) rotate(-15deg);
+}
+
+:host-context(.dark-theme) {
+  .theme-icon {
+    color: var(--mat-sys-tertiary);
+  }
+}
