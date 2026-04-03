@@ -1,35 +1,113 @@
 @use "../../../../styles/breakpoints";
 
-:host {
-  .dashboard {
-    .hoteler-row {
-      .hoteler-col {
-        position: relative;
-        width: 100%;
+.dashboard-container {
+  padding: 12px 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
-        &:not(&:first-child) {
-          padding: {
-            top: 8px;
-          }
-        }
+  @include breakpoints.respond-above(md) {
+    padding: 16px 24px;
+  }
+}
 
-        @include breakpoints.respond-above(xs) {
-          flex: 0 0 50%;
-          width: 50%;
+.dashboard-content {
+  margin-top: 16px;
+  flex: 1;
 
-          &:not(&:first-child) {
-            padding: {
-              top: unset;
-            }
-          }
-        }
+  .loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+}
+
+.stats-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr; // 手机端单列
+
+  @include breakpoints.respond-above(md) {
+    gap: 24px;
+    grid-template-columns: repeat(2, 1fr); // 平板和桌面端双列
+  }
+
+  @include breakpoints.respond-above(xl) {
+    // 如果以后图表多了，可以在超大屏幕开启三列
+    // grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+.chart-card {
+  border-radius: 24px !important; // M3 卡片标志性大圆角
+  background-color: var(--mat-sys-surface-container-low) !important;
+  border-color: var(--mat-sys-outline-variant) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    // 悬停时轻微提升
+    transform: translateY(-4px);
+    box-shadow: var(--mat-sys-level2-shadow);
+    background-color: var(--mat-sys-surface-container) !important;
+  }
+
+  mat-card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px 16px !important;
+
+    .mat-mdc-card-title {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--mat-sys-on-surface);
+      font-size: 1.1rem !important;
+      line-height: 1.4 !important;
+
+      @include breakpoints.respond-above(md) {
+        font-size: 1.25rem !important;
       }
     }
 
-    .mat-mdc-card {
-      height: 100%;
-      margin: 8px;
+    .mat-mdc-card-subtitle {
+      font-size: 0.85rem;
+      margin-top: 2px !important;
+    }
+
+    .secondary-text {
+      color: var(--mat-sys-on-surface-variant);
+    }
+
+    mat-icon {
+      background-color: var(--mat-sys-primary-container);
+      color: var(--mat-sys-on-primary-container);
       padding: 8px;
+      border-radius: 12px;
     }
   }
+
+  .chart-content {
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include breakpoints.respond-above(md) {
+      min-height: 300px;
+    }
+
+    // 让 ApexCharts 容器撑满
+    div[apxchart] {
+      width: 100%;
+    }
+  }
+}
+
+.chart-placeholder {
+  color: var(--mat-sys-outline);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }

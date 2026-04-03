@@ -1,69 +1,66 @@
-<div class="w-full">
+<div class="dashboard-container">
     <app-breadcrumb label="仪表盘" url="/dashboard" />
-    <main class="dashboard">
+
+    <main class="dashboard-content">
         @if (loading) {
-            <div class="h-full">
+            <div class="loading-wrapper">
                 <app-loading-shade />
             </div>
         } @else {
-            <div class="hoteler-row flex flex-row flex-wrap">
+            <div class="stats-grid">
                 @if (roomStatusDonutChart.show) {
-                    <div
-                        class="hoteler-col flex justify-content-center h-[400px]"
-                    >
-                        <mat-card appearance="outlined" class="w-full">
-                            <mat-card-header>
-                                <mat-card-title>{{
-                                    roomStatusDonutChart.title.text
-                                }}</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content
-                                class="h-full flex flex-col-reverse"
+                    <mat-card appearance="outlined" class="chart-card">
+                        <mat-card-header>
+                            <mat-icon mat-card-avatar color="primary"
+                                >pie_chart</mat-icon
                             >
+                            <mat-card-title>{{
+                                roomStatusDonutChart.title.text
+                            }}</mat-card-title>
+                            <mat-card-subtitle
+                                >实时房间使用状态概览</mat-card-subtitle
+                            >
+                        </mat-card-header>
+                        <mat-card-content class="chart-content">
+                            <div
+                                apxChart
+                                [series]="roomStatusDonutChart.series"
+                                [chart]="roomStatusDonutChart.chart"
+                                [labels]="roomStatusDonutChart.labels"
+                                [plotOptions]="roomStatusDonutChart.plotOptions"
+                            ></div>
+                        </mat-card-content>
+                    </mat-card>
+                }
+
+                @if (pastWeekCustomerCountChart.show) {
+                    <mat-card appearance="outlined" class="chart-card">
+                        <mat-card-header>
+                            <mat-icon mat-card-avatar color="primary"
+                                >trending_up</mat-icon
+                            >
+                            <mat-card-title>{{
+                                pastWeekCustomerCountChart.title.text
+                            }}</mat-card-title>
+                            <mat-card-subtitle
+                                >过去 7 天的业务增长趋势</mat-card-subtitle
+                            >
+                        </mat-card-header>
+                        <mat-card-content class="chart-content">
+                            @defer (on viewport) {
                                 <div
                                     apxChart
-                                    class="h-4/5"
-                                    [series]="roomStatusDonutChart.series"
-                                    [chart]="roomStatusDonutChart.chart"
-                                    [labels]="roomStatusDonutChart.labels"
-                                    [plotOptions]="
-                                        roomStatusDonutChart.plotOptions
-                                    "
+                                    [series]="pastWeekCustomerCountChart.series"
+                                    [chart]="pastWeekCustomerCountChart.chart"
+                                    [xaxis]="pastWeekCustomerCountChart.xaxis"
                                 ></div>
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
-                }
-                @if (pastWeekCustomerCountChart.show) {
-                    <div
-                        class="hoteler-col flex justify-content-center h-[400px]"
-                    >
-                        <mat-card appearance="outlined" class="w-full">
-                            <mat-card-header>
-                                <mat-card-title>{{
-                                    pastWeekCustomerCountChart.title.text
-                                }}</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="h-full">
-                                @defer {
-                                    <div
-                                        apxChart
-                                        [series]="
-                                            pastWeekCustomerCountChart.series
-                                        "
-                                        [chart]="
-                                            pastWeekCustomerCountChart.chart
-                                        "
-                                        [xaxis]="
-                                            pastWeekCustomerCountChart.xaxis
-                                        "
-                                    ></div>
-                                } @placeholder {
-                                    <div>过去一周的入住客户数量变化</div>
-                                }
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
+                            } @placeholder {
+                                <div class="chart-placeholder">
+                                    加载趋势图中...
+                                </div>
+                            }
+                        </mat-card-content>
+                    </mat-card>
                 }
             </div>
         }

@@ -5,6 +5,7 @@ import { RoomService } from 'src/app/core/services/room';
 import { BreadcrumbComponent } from 'src/app/shared/components';
 import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 type ApexOptions2 = ApexOptions & { show: boolean };
 
@@ -15,6 +16,7 @@ type ApexOptions2 = ApexOptions & { show: boolean };
     imports: [
         NgxApexchartsModule,
         MatCardModule,
+        MatIconModule,
         LoadingShadeComponent,
         BreadcrumbComponent,
     ],
