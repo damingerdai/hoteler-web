@@ -20,6 +20,7 @@ import { LogoComponent } from '../logo/logo.component';
 import { GithubComponent } from '../icons/github/github.component';
 import { AvatarModule } from 'ngx-avatars';
 import { ToggleButtonComponent } from '../toggle-button/toggle-button.component';
+import { ProfileMenuComponent } from '../profile-menu/profile-menu.component';
 
 interface IMenuItem {
     displayName: string;
@@ -58,7 +59,7 @@ const MENUS: IMenuItem[] = [
         RouterModule,
         SharedMaterialModule,
         AvatarModule,
-
+        ProfileMenuComponent,
         ToggleButtonComponent,
         LogoComponent,
         ThemePickerComponent,
@@ -90,6 +91,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     public get username() {
         return this._user?.username;
+    }
+
+    public get role() {
+        return this._user?.roles?.[0]?.name;
     }
 
     public get isAdmin() {
@@ -158,8 +163,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     !item.neededPermissions ||
                     (Array.isArray(item.neededPermissions)
                         ? item.neededPermissions?.some((p) =>
-                              permissions.includes(p)
-                          )
+                            permissions.includes(p)
+                        )
                         : permissions.includes(item.neededPermissions));
             } else if (typeof item.neededPermissions === 'function') {
                 item.withPermissions = item.withPermissions({

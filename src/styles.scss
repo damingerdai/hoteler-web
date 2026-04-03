@@ -19,19 +19,56 @@ html {
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
 
-  @include mat.theme((
-    color: (
-      // theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme((color: ( // theme-type: light,
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
 
   @include app-theme.hoteler-app-theme;
 
-  @include cdk.a11y-visually-hidden;;
-}
+  @include cdk.a11y-visually-hidden;
 
- 
+  // TODO: 这里的样式应该放在组件内部的theme中，暂时放在这里是为了快速迭代，后续需要迁移到组件内部
+  .profile-menu-m3 {
+    --mat-menu-container-shape: 20px; // 圆角
+    --mat-menu-container-color: var(--mat-sys-surface-container); // 背景色
+    --mat-menu-item-label-text-size: 14px;
+
+    // 菜单内部自定义内容样式
+    .menu-header {
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      cursor: default;
+
+      .user-info {
+        text-align: center;
+
+        .username {
+          font-weight: 600;
+          color: var(--mat-sys-on-surface);
+        }
+
+        .role {
+          font-size: 12px;
+          color: var(--mat-sys-on-surface-variant);
+        }
+      }
+    }
+
+    .menu-body {
+      padding: 8px;
+
+      --mat-menu-item-container-shape: 12px;
+
+      .warn-text {
+        color: var(--mat-sys-error);
+      }
+    }
+  }
+}

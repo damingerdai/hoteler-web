@@ -1,0 +1,44 @@
+<button
+    mat-icon-button
+    class="profile-button"
+    [matMenuTriggerFor]="menu"
+    aria-label="打开用户菜单"
+>
+    <ngx-avatars
+        class="avatars"
+        [name]="username()"
+        size="32"
+        bgColor="var(--mat-sys-primary-container)"
+        fgColor="var(--mat-sys-on-primary-container)"
+    />
+</button>
+
+<mat-menu #menu="matMenu" class="profile-menu-m3" xPosition="before">
+    <div class="menu-header" role="none">
+        <ngx-avatars
+            [name]="username()"
+            size="48"
+            bgColor="var(--mat-sys-surface-container-high)"
+            fgColor="var(--mat-sys-primary)"
+        />
+        <div class="user-info">
+            <div class="username">{{ username() }}</div>
+            @if (roleDisplayName()) {
+                <div class="role secondary-text">{{ roleDisplayName() }}</div>
+            }
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="menu-body">
+        <a mat-menu-item routerLink="settings">
+            <mat-icon>settings</mat-icon>
+            <span>个人设置</span>
+        </a>
+        <button mat-menu-item (click)="onLogout()">
+            <mat-icon color="warn">exit_to_app</mat-icon>
+            <span class="warn-text">安全登出</span>
+        </button>
+    </div>
+</mat-menu>

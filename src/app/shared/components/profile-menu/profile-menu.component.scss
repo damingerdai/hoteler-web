@@ -1,0 +1,15 @@
+.profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .avatars {
+    border: 2px solid var(--mat-sys-outline-variant);
+    transition: all 0.2s ease;
+  }
+
+  &:hover .avatars {
+    border-color: var(--mat-sys-primary);
+    transform: scale(1.05);
+  }
+}

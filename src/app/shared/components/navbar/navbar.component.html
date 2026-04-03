@@ -24,31 +24,11 @@
             </a>
         }
         @if (username) {
-            <button
-                mat-icon-button
-                class="hoteler-button"
-                [matMenuTriggerFor]="menu"
-                aria-label="user profile"
-            >
-                <ngx-avatars
-                    class="avatars"
-                    [name]="username"
-                    size="30"
-                    [textSizeRatio]="2"
-                    bgColor="var(--mat-sys-on-primary-container)"
-                    fgColor="var(--mat-sys-primary-container)"
-                />
-            </button>
+            <app-profile-menu
+                [username]="username"
+                [role]="role"
+                (logout)="logout()"
+            />
         }
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="logout()">
-                <mat-icon>exit_to_app</mat-icon>
-                <span>登出</span>
-            </button>
-            <button mat-menu-item routerLink="settings">
-                <mat-icon aria-label="settings icons">settings</mat-icon>
-                <span>设置</span>
-            </button>
-        </mat-menu>
     </div>
 </mat-toolbar>
