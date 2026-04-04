@@ -21,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
+import { EmptyStateComponent } from 'src/app/shared/components/empty-state';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-customer-list',
@@ -32,11 +34,13 @@ import { MatButtonModule } from '@angular/material/button';
         BannerComponent,
         CarouselComponent,
         TagComponent,
+        EmptyStateComponent,
         MatButtonModule,
         MatDividerModule,
         MatTableModule,
         MatCardModule,
         MatChipsModule,
+        MatIconModule
     ],
 })
 export class CustomerListComponent implements OnInit {
