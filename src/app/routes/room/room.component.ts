@@ -33,6 +33,7 @@ import {
     TagComponent,
 } from 'src/app/shared/components';
 import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
+import { EmptyStateComponent } from 'src/app/shared/components/empty-state';
 
 @Component({
     selector: 'app-menu',
@@ -55,6 +56,7 @@ import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
         BreadcrumbComponent,
         // CustomizerComponent,
         TagComponent,
+        EmptyStateComponent,
     ],
 })
 export class RoomComponent implements OnInit {

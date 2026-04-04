@@ -31,71 +31,74 @@
                 <mat-button-toggle value="table">表格</mat-button-toggle>
             </mat-button-toggle-group>
         </div>
-        @if (layout === 'card') {
-            <div class="hoteler-row flex flex-wrap w-full mt-2">
-                @for (room of rooms; track room.id; let i = $index) {
-                    <div class="hoteler-col p-2 room-card">
-                        <mat-card appearance="outlined">
-                            <mat-card-header>
-                                <mat-card-title>
-                                    {{ room.roomname }}
-                                </mat-card-title>
-                                <mat-card-subtitle>
-                                    @switch (room.status) {
-                                        @case (1) {
-                                            <app-tag color="primary"
-                                                >空闲</app-tag
-                                            >
-                                        }
-                                        @case (2) {
-                                            <app-tag color="secondary"
-                                                >占用</app-tag
-                                            >
-                                        }
-                                    }
-                                </mat-card-subtitle>
-                            </mat-card-header>
-                            <img
-                                class="p-4 p-b-0"
-                                mat-card-image
-                                [src]="
-                                    'https://picsum.photos/200/300?random=' + i
-                                "
-                                [alt]="room.roomname"
-                            />
-                            <mat-card-actions>
-                                <button
-                                    mat-button
-                                    color="primary"
-                                    [disabled]="room.status === 2"
-                                    (click)="addOrderalog(room)"
-                                >
-                                    入住
-                                </button>
 
-                                <button
-                                    mat-button
-                                    color="accent"
-                                    (click)="updateRoom(room)"
-                                >
-                                    修改
-                                </button>
-                                <button
-                                    mat-button
-                                    color="warn"
-                                    (click)="deleteRoom(room.id)"
-                                >
-                                    删除
-                                </button>
-                            </mat-card-actions>
-                        </mat-card>
-                    </div>
-                }
-            </div>
-        }
-        @if (layout === 'table') {
-            <mat-card class="mat-elevation-z8 table-responsive room-list mt-2">
-                @if (rooms?.length > 0) {
+        @if (rooms.length > 0) {
+            @if (layout === 'card') {
+                <div class="hoteler-row flex flex-wrap w-full mt-2">
+                    @for (room of rooms; track room.id; let i = $index) {
+                        <div class="hoteler-col p-2 room-card">
+                            <mat-card appearance="outlined">
+                                <mat-card-header>
+                                    <mat-card-title>
+                                        {{ room.roomname }}
+                                    </mat-card-title>
+                                    <mat-card-subtitle>
+                                        @switch (room.status) {
+                                            @case (1) {
+                                                <app-tag color="primary"
+                                                    >空闲</app-tag
+                                                >
+                                            }
+                                            @case (2) {
+                                                <app-tag color="secondary"
+                                                    >占用</app-tag
+                                                >
+                                            }
+                                        }
+                                    </mat-card-subtitle>
+                                </mat-card-header>
+                                <img
+                                    class="p-4 p-b-0"
+                                    mat-card-image
+                                    [src]="
+                                        'https://picsum.photos/200/300?random=' +
+                                        i
+                                    "
+                                    [alt]="room.roomname"
+                                />
+                                <mat-card-actions>
+                                    <button
+                                        mat-button
+                                        color="primary"
+                                        [disabled]="room.status === 2"
+                                        (click)="addOrderalog(room)"
+                                    >
+                                        入住
+                                    </button>
+
+                                    <button
+                                        mat-button
+                                        color="accent"
+                                        (click)="updateRoom(room)"
+                                    >
+                                        修改
+                                    </button>
+                                    <button
+                                        mat-button
+                                        color="warn"
+                                        (click)="deleteRoom(room.id)"
+                                    >
+                                        删除
+                                    </button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    }
+                </div>
+            } @else if (layout === 'table') {
+                <mat-card
+                    class="mat-elevation-z8 table-responsive room-list mt-2"
+                >
                     <table
                         mat-table
                         [dataSource]="rooms"
@@ -174,10 +177,19 @@
                             *matRowDef="let row; columns: displayedColumns"
                         ></tr>
                     </table>
-                } @else {
-                    no data
-                }
-            </mat-card>
+                </mat-card>
+            }
+        } @else {
+            <app-empty-state
+                icon="bed"
+                title="暂无房间数据"
+                description="当前酒店还没有录入房间信息，您可以立即创建一个新房间。"
+            >
+                <button action mat-flat-button (click)="createRoom()">
+                    <mat-icon>add</mat-icon>
+                    创建首个房间
+                </button>
+            </app-empty-state>
         }
     }
 </div>

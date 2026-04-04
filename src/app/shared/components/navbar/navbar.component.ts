@@ -13,7 +13,6 @@ import { Subscription } from 'rxjs';
 import { IUser, Permission } from 'src/app/core/models';
 import { SettingsService } from '../../../core/services/settings/settings.service';
 import { SharedMaterialModule } from '../../shared.material.module';
-import { ThemePickerComponent } from '../theme-picker/theme-picker.component';
 import { FlexSpacerDirective } from '../../ui/directives/flex-spacer.directive';
 import { environment } from 'src/environments/environment';
 import { LogoComponent } from '../logo/logo.component';
@@ -62,7 +61,6 @@ const MENUS: IMenuItem[] = [
         ProfileMenuComponent,
         ToggleButtonComponent,
         LogoComponent,
-        ThemePickerComponent,
         FlexSpacerDirective,
         GithubComponent,
     ],

@@ -1,0 +1,11 @@
+<div class="empty-state-container">
+    <div class="icon-wrapper">
+        <mat-icon>{{ icon() }}</mat-icon>
+    </div>
+    <h2 class="mat-headline-small">{{ title() }}</h2>
+    <p class="mat-body-medium secondary-text">{{ description() }}</p>
+
+    <div class="actions">
+        <ng-content select="[action]"></ng-content>
+    </div>
+</div>
