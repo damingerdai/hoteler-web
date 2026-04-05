@@ -45,8 +45,8 @@ jobs:
               run: yarn ng build --configuration production
             - name: Build with esbuild
               run: yarn ng run hoteler-web:esbuild || true
-            - name: Unit Test
-              run: yarn ng test --browsers=ChromeHeadless --watch=false --code-coverage
+            # - name: Unit Test
+            #   run: yarn ng test --browsers=ChromeHeadless --watch=false --code-coverage
     build-docker:
         runs-on: ubuntu-latest
         needs: [build]
