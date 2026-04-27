@@ -72,8 +72,7 @@
                         "extractLicenses": true,
                         "sourceMap": true,
                         "optimization": true,
-                        "namedChunks": true,
-                        "serviceWorker": "ngsw-config.json"
+                        "namedChunks": true
                     },
                     "configurations": {
                         "production": {

@@ -13,7 +13,6 @@ import { routes } from './app.route';
 import { httpInterceptorProviders } from './core/interceptors';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { appInitializerProviders } from './core/initializers';
-import { provideServiceWorker } from '@angular/service-worker';
 import { provideAngularToaster } from 'angular-toaster';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
@@ -34,10 +33,6 @@ export const appConfig: ApplicationConfig = {
             useValue: { duration: 2500 },
         },
         appInitializerProviders,
-        provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000',
-        }),
         provideHttpClient(withInterceptorsFromDi()),
         provideNativeDateAdapter(),
         provideAngularToaster(),
