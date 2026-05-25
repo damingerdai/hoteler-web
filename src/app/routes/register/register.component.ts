@@ -103,9 +103,12 @@ export class RegisterComponent implements OnInit {
     }
 
     public register() {
+        if (this.isLoading) {
+            return;
+        };
         this.isLoading = true;
         this.userApi
-            .createUser(this.username.value, this.password.value)
+            .createUser(this.username!.value, this.password!.value)
             .subscribe((res) => {
                 if (res.status === 200) {
                     this.snackBar.open('注册成功', 'X');
@@ -115,6 +118,7 @@ export class RegisterComponent implements OnInit {
                     if (el) {
                         this.ngxDomConfettiService.open(el);
                     }
+                    
                     timer(1500).subscribe(() =>
                         this.router.navigateByUrl('login')
                     );
