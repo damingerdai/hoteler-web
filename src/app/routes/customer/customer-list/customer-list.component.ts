@@ -5,7 +5,6 @@ import { filter, map, switchMap } from 'rxjs/operators';
 import { Customers, ICustomer } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/services/customers';
 import {
-    BannerComponent,
     BreadcrumbComponent,
     CarouselComponent,
     ConfirmComponent,
@@ -18,11 +17,10 @@ import {
 import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { EmptyStateComponent } from 'src/app/shared/components/empty-state';
 import { MatIconModule } from '@angular/material/icon';
+import { CustomerCardComponent } from '../customer-card/customer-card.component';
 
 @Component({
     selector: 'app-customer-list',
@@ -31,16 +29,14 @@ import { MatIconModule } from '@angular/material/icon';
     imports: [
         BreadcrumbComponent,
         LoadingShadeComponent,
-        BannerComponent,
         CarouselComponent,
         TagComponent,
         EmptyStateComponent,
         MatButtonModule,
         MatDividerModule,
         MatTableModule,
-        MatCardModule,
-        MatChipsModule,
-        MatIconModule
+        MatIconModule,
+        CustomerCardComponent
     ],
 })
 export class CustomerListComponent implements OnInit {

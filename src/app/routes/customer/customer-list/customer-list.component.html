@@ -108,83 +108,11 @@
                 <div class="flex flex-wrap w-full m-t-8">
                     @for (customer of customers; track customer.id) {
                         <div class="hoteler-col p-8">
-                            <mat-card
-                                appearance="outlined"
-                                class="mat-card customer-card"
-                            >
-                                <mat-card-header>
-                                    <mat-card-title>
-                                        {{ customer.name }}
-                                    </mat-card-title>
-                                    <mat-card-subtitle>
-                                        性别：
-                                        @switch (customer.gender) {
-                                            @case ('M') {
-                                                <mat-chip
-                                                    color="primary"
-                                                    class="bg-orange-90"
-                                                    >男</mat-chip
-                                                >
-                                            }
-                                            @case ('F') {
-                                                <mat-chip
-                                                    color="tertiary"
-                                                    class="bg-blue-90"
-                                                    >女</mat-chip
-                                                >
-                                            }
-                                            @default {
-                                                <mat-chip
-                                                    color="error"
-                                                    class="bg-red-80"
-                                                    >未知性别</mat-chip
-                                                >
-                                            }
-                                        }
-                                    </mat-card-subtitle>
-                                </mat-card-header>
-                                <mat-card-content>
-                                    <p class="card-id">
-                                        身份证号码:
-                                        {{ processCustomerCardId(customer) }}
-                                    </p>
-                                    <p class="phone">
-                                        手机号码:
-                                        {{ processCustomerPhone(customer) }}
-                                    </p>
-                                </mat-card-content>
-                                @switch (customer.gender) {
-                                    @case ('M') {
-                                        <app-banner
-                                            bannerClass="bg-orange-90"
-                                            text="男"
-                                        ></app-banner>
-                                    }
-                                    @case ('F') {
-                                        <app-banner
-                                            bannerClass="bg-blue-90"
-                                            text="女"
-                                        ></app-banner>
-                                    }
-                                }
-
-                                <mat-card-actions>
-                                    <button
-                                        mat-button
-                                        color="accent"
-                                        (click)="updateCustomer(customer)"
-                                    >
-                                        修改
-                                    </button>
-                                    <button
-                                        mat-button
-                                        color="warn"
-                                        (click)="deleteCustomer(customer.id)"
-                                    >
-                                        删除
-                                    </button>
-                                </mat-card-actions>
-                            </mat-card>
+                            <app-customer-card
+                                [customer]="customer"
+                                (update)="updateCustomer($event)"
+                                (delete)="deleteCustomer($event)"
+                            />
                         </div>
                     }
                 </div>
@@ -193,68 +121,11 @@
                     <app-carousel>
                         @for (customer of customers; track customer.id) {
                             <div class="hoteler-col p-8" appCarouselItem>
-                                <mat-card
-                                    appearance="outlined"
-                                    class="mat-card customer-card"
-                                >
-                                    <mat-card-header>
-                                        <mat-card-title>
-                                            {{ customer.name }}
-                                        </mat-card-title>
-                                        <mat-card-subtitle>
-                                            @switch (customer.gender) {
-                                                @case ('M') {
-                                                    <app-tag color="primary"
-                                                        >男</app-tag
-                                                    >
-                                                }
-                                                @case ('F') {
-                                                    <app-tag color="tertiary"
-                                                        >女</app-tag
-                                                    >
-                                                }
-                                                @default {
-                                                    <app-tag color="error"
-                                                        >未知性别</app-tag
-                                                    >
-                                                }
-                                            }
-                                        </mat-card-subtitle>
-                                    </mat-card-header>
-                                    <mat-card-content>
-                                        <p class="card-id">
-                                            身份证号码:
-                                            {{
-                                                processCustomerCardId(customer)
-                                            }}
-                                        </p>
-                                        <p class="phone">
-                                            手机号码:
-                                            {{ processCustomerPhone(customer) }}
-                                        </p>
-                                    </mat-card-content>
-                                    <app-banner
-                                        [text]="customer.gender"
-                                    ></app-banner>
-                                    <mat-card-actions>
-                                        <button
-                                            mat-button
-                                            color="accent"
-                                            (click)="updateCustomer(customer)"
-                                        >
-                                            修改
-                                        </button>
-                                        <button
-                                            mat-button
-                                            color="warn"
-                                            (click)="
-                                                deleteCustomer(customer.id)
-                                            "
-                                        >
-                                            删除
-                                        </button>
-                                    </mat-card-actions>
-                                </mat-card>
+                                <app-customer-card
+                                    [customer]="customer"
+                                    (update)="updateCustomer($event)"
+                                    (delete)="deleteCustomer($event)"
+                                />
                             </div>
                         }
                     </app-carousel>
