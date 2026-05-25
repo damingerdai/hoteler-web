@@ -1,0 +1,55 @@
+<mat-card appearance="outlined" class="room-card-container" matRipple>
+    <div class="image-wrapper">
+        <img class="cover-image" [src]="imageUrl" [alt]="room.roomname" />
+        <div class="status-overlay">
+            <app-tag [color]="statusTagColor">
+                <mat-icon class="status-icon">{{
+                    room.status === 1 ? 'check_circle_outline' : 'block'
+                }}</mat-icon>
+                <span>{{ statusText }}</span>
+            </app-tag>
+        </div>
+    </div>
+
+    <div class="card-header">
+        <div class="header-details">
+            <h3 class="room-name">{{ room.roomname }}</h3>
+            <div class="price-container">
+                <span class="currency-symbol">¥</span>
+                <span class="price-value">{{ room.price }}</span>
+                <span class="price-unit">/晚</span>
+            </div>
+        </div>
+    </div>
+
+    <mat-card-content class="card-content">
+        <div class="info-row">
+            <mat-icon class="info-icon">meeting_room</mat-icon>
+            <div class="info-text">
+                <span class="info-label">房间编号</span>
+                <span class="info-value">#{{ room.id }}</span>
+            </div>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions class="card-actions">
+        <button
+            mat-flat-button
+            color="primary"
+            class="btn-checkin"
+            [disabled]="room.status === 2"
+            (click)="onCheckIn()"
+        >
+            <mat-icon>key</mat-icon>
+            <span>入住</span>
+        </button>
+        <button mat-button class="btn-edit" (click)="onUpdate()">
+            <mat-icon>edit</mat-icon>
+            <span>修改</span>
+        </button>
+        <button mat-button color="warn" class="btn-delete" (click)="onDelete()">
+            <mat-icon>delete_outline</mat-icon>
+            <span>删除</span>
+        </button>
+    </mat-card-actions>
+</mat-card>

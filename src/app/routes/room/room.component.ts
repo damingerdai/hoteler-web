@@ -34,6 +34,7 @@ import {
 } from 'src/app/shared/components';
 import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 import { EmptyStateComponent } from 'src/app/shared/components/empty-state';
+import { RoomCardComponent } from './room-card/room-card.component';
 
 @Component({
     selector: 'app-menu',
@@ -57,6 +58,7 @@ import { EmptyStateComponent } from 'src/app/shared/components/empty-state';
         // CustomizerComponent,
         TagComponent,
         EmptyStateComponent,
+        RoomCardComponent,
     ],
 })
 export class RoomComponent implements OnInit {

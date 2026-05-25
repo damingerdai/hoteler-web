@@ -1,0 +1,203 @@
+:host {
+    display: block;
+    height: 100%;
+}
+
+.room-card-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 16px;
+    border: 1px solid var(--mat-sys-outline-variant);
+    background-color: var(--mat-sys-surface-container-low);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background-color 0.2s ease,
+                border-color 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        background-color: var(--mat-sys-surface-container-lowest);
+        border-color: var(--mat-sys-primary);
+
+        .image-wrapper .cover-image {
+            transform: scale(1.05);
+        }
+    }
+
+    .image-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background-color: var(--mat-sys-surface-container-highest);
+
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .status-overlay {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 2;
+
+            ::ng-deep .tag {
+                padding: 4px 10px;
+                min-height: 26px;
+                height: 26px;
+                border-radius: 8px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                margin: 0;
+                gap: 4px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+                backdrop-filter: blur(4px);
+
+                .status-icon {
+                    font-size: 16px;
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
+
+        .header-details {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            width: 100%;
+            gap: 8px;
+
+            .room-name {
+                margin: 0;
+                font-size: 1.125rem;
+                font-weight: 600;
+                color: var(--mat-sys-on-surface);
+                letter-spacing: 0.15px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .price-container {
+                display: flex;
+                align-items: baseline;
+                color: var(--mat-sys-primary);
+                font-weight: 700;
+
+                .currency-symbol {
+                    font-size: 0.875rem;
+                    margin-right: 2px;
+                }
+
+                .price-value {
+                    font-size: 1.25rem;
+                }
+
+                .price-unit {
+                    font-size: 0.75rem;
+                    color: var(--mat-sys-on-surface-variant);
+                    font-weight: 400;
+                    margin-left: 2px;
+                }
+            }
+        }
+    }
+
+    .card-content {
+        padding: 0 16px 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            .info-icon {
+                color: var(--mat-sys-on-surface-variant);
+                font-size: 20px;
+                width: 20px;
+                height: 20px;
+            }
+
+            .info-text {
+                display: flex;
+                flex-direction: column;
+
+                .info-label {
+                    font-size: 0.75rem;
+                    color: var(--mat-sys-on-surface-variant);
+                    font-weight: 500;
+                }
+
+                .info-value {
+                    font-size: 0.875rem;
+                    color: var(--mat-sys-on-surface);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .card-actions {
+        display: flex;
+        justify-content: flex-end;
+        padding: 8px 12px;
+        gap: 4px;
+
+        button {
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 64px;
+
+            mat-icon {
+                font-size: 18px;
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        .btn-checkin {
+            padding: 0 16px;
+            height: 36px;
+        }
+
+        .btn-edit {
+            color: var(--mat-sys-primary);
+
+            &:hover {
+                background-color: var(--mat-sys-primary-container);
+            }
+        }
+
+        .btn-delete {
+            color: var(--mat-sys-error);
+
+            &:hover {
+                background-color: var(--mat-sys-error-container);
+            }
+        }
+    }
+}

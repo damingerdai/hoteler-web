@@ -37,61 +37,13 @@
                 <div class="hoteler-row flex flex-wrap w-full mt-2">
                     @for (room of rooms; track room.id; let i = $index) {
                         <div class="hoteler-col p-2 room-card">
-                            <mat-card appearance="outlined">
-                                <mat-card-header>
-                                    <mat-card-title>
-                                        {{ room.roomname }}
-                                    </mat-card-title>
-                                    <mat-card-subtitle>
-                                        @switch (room.status) {
-                                            @case (1) {
-                                                <app-tag color="primary"
-                                                    >空闲</app-tag
-                                                >
-                                            }
-                                            @case (2) {
-                                                <app-tag color="secondary"
-                                                    >占用</app-tag
-                                                >
-                                            }
-                                        }
-                                    </mat-card-subtitle>
-                                </mat-card-header>
-                                <img
-                                    class="p-4 p-b-0"
-                                    mat-card-image
-                                    [src]="
-                                        'https://picsum.photos/200/300?random=' +
-                                        i
-                                    "
-                                    [alt]="room.roomname"
-                                />
-                                <mat-card-actions>
-                                    <button
-                                        mat-button
-                                        color="primary"
-                                        [disabled]="room.status === 2"
-                                        (click)="addOrderalog(room)"
-                                    >
-                                        入住
-                                    </button>
-
-                                    <button
-                                        mat-button
-                                        color="accent"
-                                        (click)="updateRoom(room)"
-                                    >
-                                        修改
-                                    </button>
-                                    <button
-                                        mat-button
-                                        color="warn"
-                                        (click)="deleteRoom(room.id)"
-                                    >
-                                        删除
-                                    </button>
-                                </mat-card-actions>
-                            </mat-card>
+                            <app-room-card
+                                [room]="room"
+                                [imageIndex]="i"
+                                (checkIn)="addOrderalog($event)"
+                                (update)="updateRoom($event)"
+                                (delete)="deleteRoom($event)"
+                            />
                         </div>
                     }
                 </div>
