@@ -206,13 +206,14 @@
     },
     "schematics": {
         "@schematics/angular:component": {
-            "type": "component"
+            "flat": true,
+            "type": ""
         },
         "@schematics/angular:directive": {
-            "type": "directive"
+            "type": ""
         },
         "@schematics/angular:service": {
-            "type": "service"
+            "type": ""
         },
         "@schematics/angular:guard": {
             "typeSeparator": "."
