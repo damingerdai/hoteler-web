@@ -272,7 +272,7 @@ export class RoomComponent implements OnInit {
 
     private fetchAllRooms() {
         this.isLoading = true;
-        const status = this.roomForm.get('status').value;
+        const status = this.roomForm.get('status')?.value;
         of(status)
             .pipe(
                 map((res) =>

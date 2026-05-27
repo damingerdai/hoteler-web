@@ -20,7 +20,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { EmptyStateComponent } from 'src/app/shared/components/empty-state';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleChange, MatButtonToggleModule } from '@angular/material/button-toggle';
 import { CustomerCardComponent } from '../customer-card/customer-card.component';
+
 
 @Component({
     selector: 'app-customer-list',
@@ -36,6 +38,7 @@ import { CustomerCardComponent } from '../customer-card/customer-card.component'
         MatDividerModule,
         MatTableModule,
         MatIconModule,
+        MatButtonToggleModule,
         CustomerCardComponent
     ],
 })
@@ -177,6 +180,10 @@ export class CustomerListComponent implements OnInit {
             /^(\d{4})(\d*)((\dX{4})|(\d{3}X))$/,
             (a, b, c, d) => b + c.replace(/\d/g, '*') + d
         );
+    }
+
+     public layoutChange(e: MatButtonToggleChange) {
+        this.layout = e.value;
     }
 
     private fetchCustomers() {

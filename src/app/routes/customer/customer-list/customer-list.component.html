@@ -9,6 +9,18 @@
     @if (isLoading) {
         <app-loading-shade />
     } @else {
+        <div class="flex justify-start">
+            <mat-button-toggle-group
+                name="layout"
+                aria-label="Switch Layout"
+                hideSingleSelectionIndicator="true"
+                [value]="layout"
+                (change)="layoutChange($event)"
+            >
+                <mat-button-toggle value="card">卡片</mat-button-toggle>
+                <mat-button-toggle value="table">表格</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
         @if (customers.length > 0) {
             @if (layout === 'table') {
                 <div class="mat-elevation-z8 table-responsive m-t-16">
