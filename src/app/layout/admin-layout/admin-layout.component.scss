@@ -5,6 +5,7 @@
     display: flex;
     inset: 64px 0 0;
     flex-direction: column;
+    overflow: hidden;
 
     @media (max-width: 599px) {
         inset: 56px 0 0;
@@ -19,12 +20,16 @@ app-navbar {
     z-index: 2;
 }
 
+.layout-body {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+
 .layout-container {
     position: absolute;
     inset: 0;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+    height: 100%;
     background: linear-gradient(135deg, var(--mat-sys-surface-container-low), var(--mat-sys-surface-container-high));
 
     .drawer {
@@ -36,7 +41,9 @@ app-navbar {
             display: flex;
             flex-direction: column;
             height: 100%;
+            min-height: 0;
             padding: 12px;
+            overflow-y: auto;
         }
 
         .nav-list {
@@ -89,11 +96,13 @@ app-navbar {
 }
 
 .mat-drawer-container {
-  background-color: var(--mat-sys-surface);
+    background-color: var(--mat-sys-surface);
 }
 
-.mat-drawer-content {
-  border-radius: 24px 0 0 24px;
-  background-color: var(--mat-sys-surface);
-  overflow: hidden;
+.main-content {
+    height: 100%;
+    min-height: 0;
+    border-radius: 24px 0 0 24px;
+    background-color: var(--mat-sys-surface);
+    overflow: hidden auto;
 }
