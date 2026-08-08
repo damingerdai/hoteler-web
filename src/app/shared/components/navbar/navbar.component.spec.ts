@@ -9,40 +9,39 @@ import { SettingsService } from 'src/app/core/services/settings/settings.service
 import { NavbarComponent } from './navbar.component';
 import { ThemeStorageService } from '../theme-storage/theme-storage.service';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-
+import {
+    provideHttpClient,
+    withInterceptorsFromDi,
+    withXhr,
+} from '@angular/common/http';
 
 describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+    let component: NavbarComponent;
+    let fixture: ComponentFixture<NavbarComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [
-        MatMenuModule,
-        NavbarComponent
-      ],
-      providers: [
-        SettingsService,
-        LocalStorageService,
-        ThemeStorageService,
-        provideRouter([]),
-        provideHttpClient(withInterceptorsFromDi()),
-        provideHttpClientTesting()
-      ]
-    })
-      .compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
+            imports: [MatMenuModule, NavbarComponent],
+            providers: [
+                SettingsService,
+                LocalStorageService,
+                ThemeStorageService,
+                provideRouter([]),
+                provideHttpClient(withXhr(), withInterceptorsFromDi()),
+                provideHttpClientTesting(),
+            ],
+        }).compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(NavbarComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

@@ -1,5 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormGroup,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,27 +20,32 @@ import { MatInputModule } from '@angular/material/input';
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-    ]
+    ],
 })
 export class CreateRoomDialogComponent {
+    private fb = inject(FormBuilder);
 
-  private fb = inject(FormBuilder);
+    public room: FormGroup;
 
-  public room: FormGroup;
+    public get roomname() {
+        return this.room.get('roomname');
+    }
 
-  public get roomname() {
-    return this.room.get('roomname');
-  }
+    public get price() {
+        return this.room.get('price');
+    }
 
-  public get price() {
-    return this.room.get('price');
-  }
-
-  constructor(
-  ) {
-    this.room = this.fb.group({
-      roomname: ['', [Validators.required]],
-      price: [0, [Validators.required, Validators.min(0), Validators.pattern('^[0-9]*$')]]
-    });
-  }
+    constructor() {
+        this.room = this.fb.group({
+            roomname: ['', [Validators.required]],
+            price: [
+                0,
+                [
+                    Validators.required,
+                    Validators.min(0),
+                    Validators.pattern('^[0-9]*$'),
+                ],
+            ],
+        });
+    }
 }

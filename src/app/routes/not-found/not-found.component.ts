@@ -5,10 +5,6 @@ import { ErrorCodeComponent } from 'src/app/shared/components';
     selector: 'app-not-found',
     templateUrl: './not-found.component.html',
     styleUrls: ['./not-found.component.scss'],
-    imports: [
-        ErrorCodeComponent,
-    ]
+    imports: [ErrorCodeComponent],
 })
-export class NotFoundComponent {
-
-}
+export class NotFoundComponent {}

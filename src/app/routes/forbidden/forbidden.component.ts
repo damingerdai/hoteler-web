@@ -5,9 +5,6 @@ import { ErrorCodeComponent } from 'src/app/shared/components';
     selector: 'app-forbidden',
     templateUrl: './forbidden.component.html',
     styleUrls: ['./forbidden.component.scss'],
-    imports: [
-        ErrorCodeComponent,
-    ]
+    imports: [ErrorCodeComponent],
 })
-export class ForbiddenComponent {
-}
+export class ForbiddenComponent {}
