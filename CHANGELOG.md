@@ -48,7 +48,7 @@
 - refactor: 重构设置页面的设计 ([25a7062](https://github.com/damingerdai/hoteler-web/commit/25a7062))
 - build: bump lib from es2018 to es2022 (#1454) ([775f09f](https://github.com/damingerdai/hoteler-web/commit/775f09f)), closes [#1454](https://github.com/damingerdai/hoteler-web/issues/1454)
 - build: bump ngx-dom-confetti to v0.6.0 ([c100f92](https://github.com/damingerdai/hoteler-web/commit/c100f92))
-- build: bump node 24.14.1 ([96ac535](https://github.com/damingerdai/hoteler-web/commit/96ac535))
+- build: bump node 24.19.0 ([96ac535](https://github.com/damingerdai/hoteler-web/commit/96ac535))
 - build: remove esbuild build way ([58e7ec5](https://github.com/damingerdai/hoteler-web/commit/58e7ec5))
 - build(deps): migrate package manager from yarn to npm (#1479) ([adc8571](https://github.com/damingerdai/hoteler-web/commit/adc8571)), closes [#1479](https://github.com/damingerdai/hoteler-web/issues/1479)
 - ci: skip unit test check ([ab80ae9](https://github.com/damingerdai/hoteler-web/commit/ab80ae9))
