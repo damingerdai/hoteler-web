@@ -11,7 +11,7 @@ export class ApiService {
     public post<T>(
         url: string,
         params: HttpParams | Record<string, string | string[]>,
-        headers?: unknown
+        headers?: Record<string, string>
     ): Observable<T> {
         const httpOptions = {
             headers: new HttpHeaders({
@@ -32,7 +32,7 @@ export class ApiService {
     public put<T>(
         url: string,
         params: HttpParams | Record<string, string | string[]>,
-        headers?: unknown
+        headers?: Record<string, string>
     ): Observable<T> {
         const httpOptions = {
             headers: new HttpHeaders({
@@ -61,7 +61,7 @@ export class ApiService {
                   | boolean
                   | readonly (string | number | boolean)[]
               >,
-        headers?: unknown
+        headers?: Record<string, string>
     ): Observable<T> {
         const httpOptions = {
             headers: new HttpHeaders({

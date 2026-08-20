@@ -9,24 +9,24 @@ import { LocalStorageService } from '../local-storage';
 export class SettingsService {
     private localStorageService = inject(LocalStorageService);
 
-    private _user: Partial<IUser>;
+    private _user: Partial<IUser> = {};
     private userSource = new Subject<Partial<IUser>>();
     public user$ = this.userSource.asObservable();
 
-    public set user(user: Partial<IUser>) {
+    public set user(user: Partial<IUser> | null) {
         const exitUser =
             this.localStorageService.get<Partial<IUser>>('user') ?? {};
         this._user = {
             ...exitUser,
-            ...user,
+            ...(user ?? {}),
         };
         this.localStorageService.set('user', user);
-        this.userSource.next(user);
+        this.userSource.next(user ?? {});
     }
 
     public get user() {
         if (!this._user) {
-            this._user = this.localStorageService.get<Partial<IUser>>('user');
+            this._user = this.localStorageService.get<Partial<IUser>>('user') ?? {};
         }
         if (!this._user) {
             this._user = {};

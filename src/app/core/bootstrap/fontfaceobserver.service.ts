@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 import { Observer } from 'tfontfaceobserver';
 import { StyleManagerService } from '../services/style-manager/style-manager.service';
 
@@ -10,7 +10,7 @@ export class FontfaceobserverService {
     private styleManager = inject(StyleManagerService);
 
     load() {
-        const fontLoadFunc = (observer) => {
+        const fontLoadFunc = (observer: Subscriber<void>) => {
             new Observer('Material Icons')
                 .load({
                     timeout: 1000,
