@@ -1,3 +1,10 @@
+## <small>0.0.5 (2026-08-20)</small>
+
+- chore(deps): upgrade to Angular 22 and migrate to @angular/build (#1487) ([6428eb2](https://github.com/damingerdai/hoteler-web/commit/6428eb2)), closes [#1487](https://github.com/damingerdai/hoteler-web/issues/1487)
+- fix: enable scrolling in admin layout when content overflows ([b1b0095](https://github.com/damingerdai/hoteler-web/commit/b1b0095))
+- fix(deps): update dependency apexcharts to v5.16.0 (#1469) ([cfa1a27](https://github.com/damingerdai/hoteler-web/commit/cfa1a27)), closes [#1469](https://github.com/damingerdai/hoteler-web/issues/1469)
+- feat: add layout toggle and improve form control safety ([857ee22](https://github.com/damingerdai/hoteler-web/commit/857ee22))
+
 ## <small>0.0.4 (2026-05-25)</small>
 
 - chore: bump angular to 21.2 ([d89b124](https://github.com/damingerdai/hoteler-web/commit/d89b124))
