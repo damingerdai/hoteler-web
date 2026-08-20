@@ -1,5 +1,9 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    inject,
+} from '@angular/core';
 import {
     FormBuilder,
     FormGroup,

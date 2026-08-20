@@ -2,6 +2,7 @@ import { ApplicationConfig } from '@angular/core';
 import {
     provideHttpClient,
     withInterceptorsFromDi,
+    withXhr,
 } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {
@@ -33,7 +34,7 @@ export const appConfig: ApplicationConfig = {
             useValue: { duration: 2500 },
         },
         appInitializerProviders,
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideNativeDateAdapter(),
         provideAngularToaster(),
     ],

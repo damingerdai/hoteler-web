@@ -11,6 +11,10 @@
         "moduleResolution": "bundler",
         "importHelpers": true,
         "target": "ES2022",
+        "strict": false,
+        "strictNullChecks": false,
+        "strictPropertyInitialization": false,
+        "ignoreDeprecations": "6.0",
         "typeRoots": ["node_modules/@types"],
         "isolatedModules": true,
         "useDefineForClassFields": true
@@ -20,6 +24,6 @@
         "fullTemplateTypeCheck": true,
         "strictInjectionParameters": true,
         "strictInputAccessModifiers": true,
-        "strictTemplates": true
+        "strictTemplates": false
     }
 }

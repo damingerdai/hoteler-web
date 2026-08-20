@@ -161,8 +161,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     !item.neededPermissions ||
                     (Array.isArray(item.neededPermissions)
                         ? item.neededPermissions?.some((p) =>
-                            permissions.includes(p)
-                        )
+                              permissions.includes(p)
+                          )
                         : permissions.includes(item.neededPermissions));
             } else if (typeof item.neededPermissions === 'function') {
                 item.withPermissions = item.withPermissions({

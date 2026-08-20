@@ -1,4 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    inject,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter, map, switchMap } from 'rxjs/operators';
@@ -20,9 +24,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { EmptyStateComponent } from 'src/app/shared/components/empty-state';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonToggleChange, MatButtonToggleModule } from '@angular/material/button-toggle';
+import {
+    MatButtonToggleChange,
+    MatButtonToggleModule,
+} from '@angular/material/button-toggle';
 import { CustomerCardComponent } from '../customer-card/customer-card.component';
-
 
 @Component({
     selector: 'app-customer-list',
@@ -39,7 +45,7 @@ import { CustomerCardComponent } from '../customer-card/customer-card.component'
         MatTableModule,
         MatIconModule,
         MatButtonToggleModule,
-        CustomerCardComponent
+        CustomerCardComponent,
     ],
 })
 export class CustomerListComponent implements OnInit {
@@ -182,7 +188,7 @@ export class CustomerListComponent implements OnInit {
         );
     }
 
-     public layoutChange(e: MatButtonToggleChange) {
+    public layoutChange(e: MatButtonToggleChange) {
         this.layout = e.value;
     }
 

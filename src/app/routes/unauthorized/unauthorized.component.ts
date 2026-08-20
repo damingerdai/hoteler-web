@@ -5,10 +5,6 @@ import { ErrorCodeComponent } from 'src/app/shared/components';
     selector: 'app-unauthorized',
     templateUrl: './unauthorized.component.html',
     styleUrls: ['./unauthorized.component.scss'],
-    imports: [
-        ErrorCodeComponent,
-    ]
+    imports: [ErrorCodeComponent],
 })
-export class UnauthorizedComponent {
-
-}
+export class UnauthorizedComponent {}

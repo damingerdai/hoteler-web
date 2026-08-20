@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { IRoom } from 'src/app/core/models';
-import { CurrencyPipe, NgClass } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,8 +11,6 @@ import { TagComponent } from 'src/app/shared/components';
     templateUrl: './room-card.component.html',
     styleUrl: './room-card.component.scss',
     imports: [
-        NgClass,
-        CurrencyPipe,
         MatCardModule,
         MatButtonModule,
         MatIconModule,

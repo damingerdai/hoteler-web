@@ -22,16 +22,16 @@ interface UpdateUserDialogData {
 
 @Component({
     selector: 'app-update-user',
-   imports: [
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatIconModule,
-    MatTooltipModule
-  ],
+    imports: [
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatIconModule,
+        MatTooltipModule,
+    ],
     templateUrl: './update-user.component.html',
     styleUrl: './update-user.component.scss',
 })
@@ -49,7 +49,10 @@ export class UpdateUserComponent {
         this.roles = data.roles ?? [];
         this.user = data.user;
         this.form = this.fb.group({
-            username: [{ value: this.user.username, disabled: true }, [Validators.required]],
+            username: [
+                { value: this.user.username, disabled: true },
+                [Validators.required],
+            ],
             // password: [this.user, [Validators.required]],
             roles: [this.user.roles.map((r) => r.name), [Validators.required]],
         });
