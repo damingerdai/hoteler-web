@@ -4,6 +4,7 @@ import {
     Component,
     OnInit,
     inject,
+    signal,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngxpert/hot-toast';
@@ -56,10 +57,8 @@ import { RoomCardComponent } from './room-card/room-card.component';
         MatSelectModule,
         ReactiveFormsModule,
         CurrencyPipe,
-        //SharedModule,
         LoadingShadeComponent,
         BreadcrumbComponent,
-        // CustomizerComponent,
         TagComponent,
         EmptyStateComponent,
         RoomCardComponent,
@@ -72,7 +71,7 @@ export class RoomComponent implements OnInit {
     private orderApi = inject(OrderService);
     private toast = inject(HotToastService);
 
-    public layout = 'card';
+    public layout = signal<'table' | 'card' | 'carousel'>('card');
 
     public displayedColumns: string[] = [
         'no',
@@ -82,14 +81,13 @@ export class RoomComponent implements OnInit {
         'action',
     ];
 
-    public rooms: Rooms;
+    public readonly rooms = signal<Rooms>([]);
 
     public roomForm: FormGroup;
 
-    public isLoading: boolean;
+    public readonly isLoading = signal(true);
 
     constructor() {
-        this.isLoading = true;
         this.roomForm = this.fb.group({
             status: [0],
         });
@@ -97,7 +95,7 @@ export class RoomComponent implements OnInit {
         this.roomForm
             .get('status')
             .valueChanges.pipe(
-                tap(() => (this.isLoading = true)),
+                tap(() => this.isLoading.set(true)),
                 map((res) =>
                     typeof res !== 'number' ? parseInt(res, 10) : res
                 ),
@@ -108,11 +106,11 @@ export class RoomComponent implements OnInit {
             .subscribe({
                 next: (res) => {
                     if (res.status === 200) {
-                        this.rooms = res.data;
+                        this.rooms.set(res.data);
                     }
-                    this.isLoading = false;
+                    this.isLoading.set(false);
                 },
-                error: () => (this.isLoading = false),
+                error: () => this.isLoading.set(false),
             });
     }
 
@@ -259,16 +257,16 @@ export class RoomComponent implements OnInit {
             });
     }
 
-    public layoutChange(layout: string) {
-        this.layout = layout;
-    }
-
-    public layoutChange2(e: MatButtonToggleChange) {
-        this.layout = e.value;
+    public layoutChange(layout: string | MatButtonToggleChange) {
+        if (layout instanceof MatButtonToggleChange) {
+            this.layout.set(layout.value as 'table' | 'card' | 'carousel');
+        } else {
+            this.layout.set(layout as 'table' | 'card' | 'carousel');
+        }
     }
 
     private fetchAllRooms() {
-        this.isLoading = true;
+        this.isLoading.set(true);
         const status = this.roomForm.get('status')?.value;
         of(status)
             .pipe(
@@ -282,11 +280,11 @@ export class RoomComponent implements OnInit {
             .subscribe({
                 next: (res) => {
                     if (res.status === 200) {
-                        this.rooms = res.data;
+                        this.rooms.set(res.data);
                     }
-                    this.isLoading = false;
+                    this.isLoading.set(false);
                 },
-                error: () => (this.isLoading = false),
+                error: () => this.isLoading.set(false),
             });
     }
 }

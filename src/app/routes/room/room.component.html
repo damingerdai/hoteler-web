@@ -16,7 +16,7 @@
         </button>
     </div>
     <mat-divider class="divider"></mat-divider>
-    @if (isLoading) {
+    @if (isLoading()) {
         <app-loading-shade />
     } @else {
         <div class="flex justify-start">
@@ -24,18 +24,18 @@
                 name="layout"
                 aria-label="Switch Layout"
                 hideSingleSelectionIndicator="true"
-                [value]="layout"
-                (change)="layoutChange2($event)"
+                [value]="layout()"
+                (change)="layoutChange($event)"
             >
                 <mat-button-toggle value="card">卡片</mat-button-toggle>
                 <mat-button-toggle value="table">表格</mat-button-toggle>
             </mat-button-toggle-group>
         </div>
 
-        @if (rooms.length > 0) {
-            @if (layout === 'card') {
+        @if (rooms().length > 0) {
+            @if (layout() === 'card') {
                 <div class="hoteler-row flex flex-wrap w-full mt-2">
-                    @for (room of rooms; track room.id; let i = $index) {
+                    @for (room of rooms(); track room.id; let i = $index) {
                         <div class="hoteler-col p-2 room-card">
                             <app-room-card
                                 [room]="room"
@@ -47,13 +47,13 @@
                         </div>
                     }
                 </div>
-            } @else if (layout === 'table') {
+            } @else if (layout() === 'table') {
                 <mat-card
                     class="mat-elevation-z8 table-responsive room-list mt-2"
                 >
                     <table
                         mat-table
-                        [dataSource]="rooms"
+                        [dataSource]="rooms()"
                         class="mat-elevation-z8 w-full mt-2"
                     >
                         <ng-container matColumnDef="no">
