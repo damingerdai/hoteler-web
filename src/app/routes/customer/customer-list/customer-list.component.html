@@ -1,159 +1,172 @@
-<app-breadcrumb url="/customer" label="客户信息管理" />
-<main class="-flex flex-col p-4">
-    <div class="w-full flex justify-content-end align-items-baseline">
-        <button mat-raised-button color="primary" (click)="createCustomer()">
-            创建客户
-        </button>
-    </div>
-    <mat-divider class="divider"></mat-divider>
-    @if (isLoading) {
-        <app-loading-shade />
-    } @else {
-        <div class="flex justify-start">
-            <mat-button-toggle-group
-                name="layout"
-                aria-label="Switch Layout"
-                hideSingleSelectionIndicator="true"
-                [value]="layout"
-                (change)="layoutChange($event)"
-            >
-                <mat-button-toggle value="card">卡片</mat-button-toggle>
-                <mat-button-toggle value="table">表格</mat-button-toggle>
-            </mat-button-toggle-group>
+<div class="page-container">
+    <app-breadcrumb label="客户信息" url="/customer" parentLabel="管理员" />
+
+    <header class="page-header">
+        <div class="title-section">
+            <h1 class="mat-headline-medium">客户信息</h1>
+            <p class="mat-body-medium secondary-text">
+                管理酒店客户资料，查看和维护客户信息
+            </p>
         </div>
-        @if (customers.length > 0) {
-            @if (layout === 'table') {
-                <div class="mat-elevation-z8 table-responsive m-t-16">
-                    @if (customers?.length > 0) {
-                        <table
-                            mat-table
-                            [dataSource]="customers"
-                            class="mat-elevation-z8 w-full"
-                        >
-                            <ng-container matColumnDef="id">
-                                <th mat-header-cell *matHeaderCellDef>ID.</th>
-                                <td mat-cell *matCellDef="let element">
-                                    {{ element.id }}
-                                </td>
-                            </ng-container>
-                            <ng-container matColumnDef="name">
-                                <th mat-header-cell *matHeaderCellDef>名字</th>
-                                <td mat-cell *matCellDef="let element">
-                                    {{ element.name }}
-                                </td>
-                            </ng-container>
-                            <ng-container matColumnDef="gender">
-                                <th mat-header-cell *matHeaderCellDef>性别</th>
-                                <td mat-cell *matCellDef="let element">
-                                    @switch (element.gender) {
-                                        @case ('M') {
-                                            <app-tag color="primary"
-                                                >男</app-tag
-                                            >
-                                        }
-                                        @case ('F') {
-                                            <app-tag color="secondary"
-                                                >女</app-tag
-                                            >
-                                        }
-                                        @default {
-                                            <app-tag color="error"
-                                                >未知性别</app-tag
-                                            >
-                                        }
+        <div class="action-section">
+            <button mat-flat-button color="primary" (click)="createCustomer()">
+                <mat-icon>add</mat-icon>
+                创建客户
+            </button>
+        </div>
+    </header>
+
+    <mat-card class="customer-table-card" appearance="outlined">
+        @if (isLoading()) {
+            <mat-progress-bar mode="indeterminate" color="primary" />
+        }
+
+        <mat-card-content class="customer-table-card-content">
+            <div class="table-tools">
+                <mat-form-field
+                    appearance="outline"
+                    subscriptSizing="dynamic"
+                    class="search-field"
+                >
+                    <mat-icon matPrefix>search</mat-icon>
+                    <mat-label>搜索客户...</mat-label>
+                    <input matInput />
+                </mat-form-field>
+
+                <mat-button-toggle-group
+                    name="layout"
+                    aria-label="切换客户展示方式"
+                    hideSingleSelectionIndicator="true"
+                    [value]="layout()"
+                    (change)="layoutChange($event)"
+                >
+                    <mat-button-toggle value="card">
+                        <mat-icon>grid_view</mat-icon>
+                        卡片
+                    </mat-button-toggle>
+                    <mat-button-toggle value="table">
+                        <mat-icon>table_rows</mat-icon>
+                        表格
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            @if (isLoading()) {
+                <div class="loading-state">
+                    <mat-icon>groups</mat-icon>
+                    <span>正在加载客户信息...</span>
+                </div>
+            } @else if (customers().length === 0) {
+                <app-empty-state
+                    icon="group"
+                    title="没有找到客户"
+                    description="当前酒店还没有录入客户信息，您可以立即创建一个新客户。"
+                >
+                    <button action mat-flat-button (click)="createCustomer()">
+                        <mat-icon>add</mat-icon>
+                        创建首个客户
+                    </button>
+                </app-empty-state>
+            } @else if (layout() === 'table') {
+                <div class="table-responsive">
+                    <table
+                        mat-table
+                        [dataSource]="customers()"
+                        class="customer-table"
+                    >
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef>ID</th>
+                            <td mat-cell *matCellDef="let customer">
+                                <span class="id-badge">{{ customer.id }}</span>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef>名字</th>
+                            <td mat-cell *matCellDef="let customer">
+                                <div class="customer-name-cell">
+                                    <div class="avatar">
+                                        {{ customer.name[0] | uppercase }}
+                                    </div>
+                                    <span>{{ customer.name }}</span>
+                                </div>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="gender">
+                            <th mat-header-cell *matHeaderCellDef>性别</th>
+                            <td mat-cell *matCellDef="let customer">
+                                @switch (customer.gender) {
+                                    @case ('M') {
+                                        <span class="status-chip male">男</span>
                                     }
-                                </td>
-                            </ng-container>
-                            <ng-container matColumnDef="cardId">
-                                <th mat-header-cell *matHeaderCellDef>
-                                    身份证号码
-                                </th>
-                                <td mat-cell *matCellDef="let element">
-                                    {{ processCustomerCardId(element) }}
-                                </td>
-                            </ng-container>
-                            <ng-container matColumnDef="phone">
-                                <th mat-header-cell *matHeaderCellDef>
-                                    联系方式
-                                </th>
-                                <td mat-cell *matCellDef="let element">
-                                    {{ processCustomerPhone(element) }}
-                                </td>
-                            </ng-container>
-                            <ng-container matColumnDef="action">
-                                <th mat-header-cell *matHeaderCellDef>操作</th>
-                                <td
-                                    mat-cell
-                                    *matCellDef="let element"
-                                    class="action-container"
+                                    @case ('F') {
+                                        <span class="status-chip female"
+                                            >女</span
+                                        >
+                                    }
+                                    @default {
+                                        <span class="status-chip unknown"
+                                            >未知</span
+                                        >
+                                    }
+                                }
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="cardId">
+                            <th mat-header-cell *matHeaderCellDef>
+                                身份证号码
+                            </th>
+                            <td mat-cell *matCellDef="let customer">
+                                {{ processCustomerCardId(customer) }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="phone">
+                            <th mat-header-cell *matHeaderCellDef>联系方式</th>
+                            <td mat-cell *matCellDef="let customer">
+                                {{ processCustomerPhone(customer) }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef>操作</th>
+                            <td mat-cell *matCellDef="let customer">
+                                <button
+                                    mat-icon-button
+                                    color="primary"
+                                    matTooltip="编辑客户"
+                                    (click)="updateCustomer(customer)"
                                 >
-                                    <button
-                                        mat-raised-button
-                                        color="accent"
-                                        (click)="updateCustomer(element)"
-                                    >
-                                        修改
-                                    </button>
-                                    <button
-                                        mat-raised-button
-                                        color="warn"
-                                        (click)="deleteCustomer(element.id)"
-                                    >
-                                        删除
-                                    </button>
-                                </td>
-                            </ng-container>
-                            <tr
-                                mat-header-row
-                                *matHeaderRowDef="displayedColumns"
-                            ></tr>
-                            <tr
-                                mat-row
-                                *matRowDef="let row; columns: displayedColumns"
-                            ></tr>
-                        </table>
-                    } @else {
-                        <div>空</div>
-                    }
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button
+                                    mat-icon-button
+                                    color="warn"
+                                    matTooltip="删除客户"
+                                    (click)="deleteCustomer(customer.id)"
+                                >
+                                    <mat-icon>delete_outline</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                        ></tr>
+                        <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                        ></tr>
+                    </table>
                 </div>
-            } @else if (layout === 'card') {
-                <div class="flex flex-wrap w-full m-t-8">
-                    @for (customer of customers; track customer.id) {
-                        <div class="hoteler-col p-8">
-                            <app-customer-card
-                                [customer]="customer"
-                                (update)="updateCustomer($event)"
-                                (delete)="deleteCustomer($event)"
-                            />
-                        </div>
+            } @else {
+                <div class="customer-grid">
+                    @for (customer of customers(); track customer.id) {
+                        <app-customer-card
+                            [customer]="customer"
+                            (update)="updateCustomer($event)"
+                            (delete)="deleteCustomer($event)"
+                        />
                     }
-                </div>
-            } @else if (layout === 'carousel') {
-                <div class="m-x-32 p-x-16">
-                    <app-carousel>
-                        @for (customer of customers; track customer.id) {
-                            <div class="hoteler-col p-8" appCarouselItem>
-                                <app-customer-card
-                                    [customer]="customer"
-                                    (update)="updateCustomer($event)"
-                                    (delete)="deleteCustomer($event)"
-                                />
-                            </div>
-                        }
-                    </app-carousel>
                 </div>
             }
-        } @else {
-            <app-empty-state
-                icon="group"
-                title="没有找到客户"
-                description="当前酒店还没有录入客户信息，您可以立即创建一个新客户。"
-            >
-                <button action mat-flat-button (click)="createCustomer()">
-                    <mat-icon>add</mat-icon>
-                    创建首个客户
-                </button>
-            </app-empty-state>
-        }
-    }
-</main>
+        </mat-card-content>
+    </mat-card>
+</div>

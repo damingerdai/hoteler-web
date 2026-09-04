@@ -2,24 +2,24 @@ import {
     Component,
     OnInit,
     inject,
+    signal,
 } from '@angular/core';
+import { UpperCasePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngxpert/hot-toast';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { filter, finalize, map, switchMap } from 'rxjs/operators';
 import { Customers, ICustomer } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/services/customers';
 import {
     BreadcrumbComponent,
-    CarouselComponent,
     ConfirmComponent,
-    TagComponent,
 } from 'src/app/shared/components';
 import {
     CreateCustomerDialogComponent,
     UpdateCustomerDialogComponent,
 } from '../dialog';
-import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { EmptyStateComponent } from 'src/app/shared/components/empty-state';
@@ -29,24 +29,29 @@ import {
     MatButtonToggleModule,
 } from '@angular/material/button-toggle';
 import { CustomerCardComponent } from '../customer-card/customer-card.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
     selector: 'app-customer-list',
     templateUrl: './customer-list.component.html',
     styleUrls: ['./customer-list.component.scss'],
     imports: [
-        BreadcrumbComponent,
-        LoadingShadeComponent,
-        CarouselComponent,
-        TagComponent,
-        EmptyStateComponent,
-        MatButtonModule,
-        MatDividerModule,
-        MatTableModule,
-        MatIconModule,
-        MatButtonToggleModule,
-        CustomerCardComponent,
-    ],
+    BreadcrumbComponent,
+    EmptyStateComponent,
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    MatProgressBarModule,
+    CustomerCardComponent,
+    UpperCasePipe
+],
 })
 export class CustomerListComponent implements OnInit {
     private customerApi = inject(CustomerService);
@@ -62,17 +67,11 @@ export class CustomerListComponent implements OnInit {
         'action',
     ];
 
-    public customers: Customers;
+    public readonly customers = signal<Customers>([]);
 
-    public isLoading: boolean;
+    public readonly isLoading = signal(true);
 
-    public layout: 'table' | 'card' | 'carousel';
-
-    constructor() {
-        this.customers = [];
-        this.isLoading = true;
-        this.layout = 'card';
-    }
+    public readonly layout = signal<'table' | 'card' | 'carousel'>('card');
 
     ngOnInit(): void {
         this.fetchCustomers();
@@ -156,18 +155,18 @@ export class CustomerListComponent implements OnInit {
     }
 
     toggleLayout() {
-        switch (this.layout) {
+        switch (this.layout()) {
             case 'card':
-                this.layout = 'table';
+                this.layout.set('table');
                 break;
             case 'table':
-                this.layout = 'carousel';
+                this.layout.set('carousel');
                 break;
             case 'carousel':
-                this.layout = 'card';
+                this.layout.set('card');
                 break;
             default:
-                this.layout = 'card';
+                this.layout.set('card');
         }
     }
 
@@ -188,18 +187,20 @@ export class CustomerListComponent implements OnInit {
     }
 
     public layoutChange(e: MatButtonToggleChange) {
-        this.layout = e.value;
+        this.layout.set(e.value);
     }
 
-    private fetchCustomers() {
-        this.isLoading = true;
-        this.customerApi.list().subscribe((res) => {
-            if (res.status === 200) {
-                this.customers = res.data;
-            } else {
-                this.toast.error('获取客户失败：' + res.error.message);
-            }
-            this.isLoading = false;
-        });
+    private fetchCustomers(): void {
+        this.isLoading.set(true);
+        this.customerApi
+            .list()
+            .pipe(finalize(() => this.isLoading.set(false)))
+            .subscribe((res) => {
+                if (res.status === 200) {
+                    this.customers.set(res.data);
+                } else {
+                    this.toast.error('获取客户失败：' + res.error.message);
+                }
+            });
     }
 }
