@@ -41,6 +41,7 @@
 
             .order-table {
                 width: 100%;
+                min-width: 760px;
                 background: transparent;
 
                 // 表头样式
@@ -49,6 +50,14 @@
                     color: var(--mat-sys-on-surface-variant);
                     background-color: var(--mat-sys-surface-container-highest);
                 }
+            }
+
+            .table-responsive {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-gutter: stable;
             }
 
             .empty-state {

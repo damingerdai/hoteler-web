@@ -41,6 +41,7 @@
 
             .user-table {
                 width: 100%;
+                min-width: 640px;
                 background: transparent;
 
                 // 表头样式
@@ -97,14 +98,20 @@
                     }
                 }
 
-
-
                 // 悬停交互
                 tr.clickable-row:hover {
                     background-color: var(--mat-sys-surface-container-high);
                     cursor: pointer;
                     transition: background 0.2s ease;
                 }
+            }
+
+            .table-responsive {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-gutter: stable;
             }
         }
     }

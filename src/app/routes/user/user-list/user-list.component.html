@@ -44,76 +44,83 @@
             </div>
 
             @if (users().length > 0) {
-                <table mat-table [dataSource]="users()" class="user-table">
-                    <ng-container matColumnDef="id">
-                        <th mat-header-cell *matHeaderCellDef>主键</th>
-                        <td mat-cell *matCellDef="let user">
-                            <span class="id-badge">{{
-                                user.id.toString().slice(-6)
-                            }}</span>
-                        </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="username">
-                        <th mat-header-cell *matHeaderCellDef>名字</th>
-                        <td mat-cell *matCellDef="let user">
-                            <div class="user-info">
-                                <div class="avatar">
-                                    {{ user.username[0] | uppercase }}
-                                </div>
-                                <span class="user-name">{{
-                                    user.username
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="users()" class="user-table">
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef>主键</th>
+                            <td mat-cell *matCellDef="let user">
+                                <span class="id-badge">{{
+                                    user.id.toString().slice(-6)
                                 }}</span>
-                            </div>
-                        </td>
-                    </ng-container>
+                            </td>
+                        </ng-container>
 
-                    <ng-container matColumnDef="roles">
-                        <th mat-header-cell *matHeaderCellDef>角色</th>
-                        <td mat-cell *matCellDef="let user">
-                            <div class="role-tags">
-                                @for (
-                                    role of sortRoles(user.roles);
-                                    track role.id
-                                ) {
-                                    <span
-                                        class="role-chip"
-                                        [class.admin]="role.name === 'admin'"
-                                        >{{ role.name }}</span
-                                    >
-                                }
-                            </div>
-                        </td>
-                    </ng-container>
+                        <ng-container matColumnDef="username">
+                            <th mat-header-cell *matHeaderCellDef>名字</th>
+                            <td mat-cell *matCellDef="let user">
+                                <div class="user-info">
+                                    <div class="avatar">
+                                        {{ user.username[0] | uppercase }}
+                                    </div>
+                                    <span class="user-name">{{
+                                        user.username
+                                    }}</span>
+                                </div>
+                            </td>
+                        </ng-container>
 
-                    <ng-container matColumnDef="action">
-                        <th mat-header-cell *matHeaderCellDef>操作</th>
-                        <td mat-cell *matCellDef="let user">
-                            <button
-                                mat-icon-button
-                                color="primary"
-                                matTooltip="编辑用户"
-                                (click)="openUpdateUserDialog(user)"
-                            >
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                            <button
-                                mat-icon-button
-                                color="warn"
-                                matTooltip="删除用户"
-                                (click)="openDeleteUserDialog(user.id)"
-                            >
-                                <mat-icon>delete_outline</mat-icon>
-                            </button>
-                        </td>
-                    </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr
-                        mat-row
-                        *matRowDef="let row; columns: displayedColumns"
-                        class="clickable-row"
-                    ></tr>
-                </table>
+                        <ng-container matColumnDef="roles">
+                            <th mat-header-cell *matHeaderCellDef>角色</th>
+                            <td mat-cell *matCellDef="let user">
+                                <div class="role-tags">
+                                    @for (
+                                        role of sortRoles(user.roles);
+                                        track role.id
+                                    ) {
+                                        <span
+                                            class="role-chip"
+                                            [class.admin]="
+                                                role.name === 'admin'
+                                            "
+                                            >{{ role.name }}</span
+                                        >
+                                    }
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef>操作</th>
+                            <td mat-cell *matCellDef="let user">
+                                <button
+                                    mat-icon-button
+                                    color="primary"
+                                    matTooltip="编辑用户"
+                                    (click)="openUpdateUserDialog(user)"
+                                >
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button
+                                    mat-icon-button
+                                    color="warn"
+                                    matTooltip="删除用户"
+                                    (click)="openDeleteUserDialog(user.id)"
+                                >
+                                    <mat-icon>delete_outline</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                        ></tr>
+                        <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                            class="clickable-row"
+                        ></tr>
+                    </table>
+                </div>
             } @else if (!loading()) {
                 <div class="empty-state">
                     <mat-icon>group_off</mat-icon>
