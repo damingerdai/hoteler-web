@@ -1,5 +1,7 @@
 @use '@angular/material' as mat;
 @use '@angular/cdk';
+@use '@ngxpert/hot-toast/styles';
+@use '@ngxpert/hot-toast/themes/material';
 @use './app-theme';
 @use './styles/breakpoints';
 @use './styles/buttons';

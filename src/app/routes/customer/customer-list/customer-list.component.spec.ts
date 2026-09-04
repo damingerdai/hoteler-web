@@ -2,12 +2,12 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { NgModule } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiTestingModule } from 'src/app/core/testings';
 
 import { CustomerListComponent } from './customer-list.component';
 import { provideRouter } from '@angular/router';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 describe('CustomerListComponent', () => {
   let component: CustomerListComponent;
@@ -21,7 +21,8 @@ describe('CustomerListComponent', () => {
         CustomerListComponent
       ],
       providers: [
-        provideRouter([])
+        provideRouter([]),
+        provideHotToastConfig()
       ]
     })
     .compileComponents();
@@ -42,7 +43,6 @@ describe('CustomerListComponent', () => {
 @NgModule({
   exports: [
     MatDialogModule,
-    MatSnackBarModule,
     NoopAnimationsModule,
     A11yModule
   ]

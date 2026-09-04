@@ -6,7 +6,7 @@ import {
     inject,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { HotToastService } from '@ngxpert/hot-toast';
 import { MatButtonModule } from '@angular/material/button';
 import {
     MatButtonToggleChange,
@@ -70,7 +70,7 @@ export class RoomComponent implements OnInit {
     private fb = inject(FormBuilder);
     private roomApi = inject(RoomService);
     private orderApi = inject(OrderService);
-    private snackBar = inject(MatSnackBar);
+    private toast = inject(HotToastService);
 
     public layout = 'card';
 
@@ -133,10 +133,9 @@ export class RoomComponent implements OnInit {
             )
             .subscribe(
                 () => {
-                    this.snackBar.open('创建房间成功🚀', 'X', {
+                    this.toast.success('创建房间成功🚀', {
                         duration: 500,
-                        horizontalPosition: 'right',
-                        verticalPosition: 'top',
+                        position: 'top-right',
                     });
                 },
                 (err) => {
@@ -166,17 +165,15 @@ export class RoomComponent implements OnInit {
             .subscribe(
                 (res) => {
                     if (res.status === 200) {
-                        this.snackBar.open('更新房间成功🚀', 'X', {
+                        this.toast.success('更新房间成功🚀', {
                             duration: 500,
-                            horizontalPosition: 'right',
-                            verticalPosition: 'top',
+                            position: 'top-right',
                         });
                     } else {
                         const message = res.error.message;
-                        this.snackBar.open('更新房间失败🚀：' + message, 'X', {
+                        this.toast.error('更新房间失败🚀：' + message, {
                             duration: 500,
-                            horizontalPosition: 'right',
-                            verticalPosition: 'top',
+                            position: 'top-right',
                         });
                     }
                 },
@@ -207,20 +204,17 @@ export class RoomComponent implements OnInit {
             )
             .subscribe((res) => {
                 if (res.status === 200) {
-                    this.snackBar.open('删除房间成功🚀', 'X', {
+                    this.toast.success('删除房间成功🚀', {
                         duration: 500,
-                        horizontalPosition: 'right',
-                        verticalPosition: 'top',
+                        position: 'top-right',
                     });
                     this.fetchAllRooms();
                 } else {
-                    this.snackBar.open(
+                    this.toast.error(
                         '删除房间失败:' + res.error.message,
-                        'X',
                         {
                             duration: 500,
-                            horizontalPosition: 'right',
-                            verticalPosition: 'top',
+                            position: 'top-right',
                         }
                     );
                 }
@@ -254,14 +248,13 @@ export class RoomComponent implements OnInit {
             )
             .subscribe((res) => {
                 if (res.status === 200) {
-                    this.snackBar.open('入住成功🚀', 'X', {
+                    this.toast.success('入住成功🚀', {
                         duration: 500,
-                        horizontalPosition: 'right',
-                        verticalPosition: 'top',
+                        position: 'top-right',
                     });
                     this.fetchAllRooms();
                 } else {
-                    this.snackBar.open('入住失败，请稍后再试');
+                    this.toast.error('入住失败，请稍后再试');
                 }
             });
     }

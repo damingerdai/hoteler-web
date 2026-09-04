@@ -8,6 +8,7 @@ import { PageHeaderComponent, TagComponent } from 'src/app/shared/components';
 import { RouterModule, provideRouter } from '@angular/router';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { LocalStorageService } from 'src/app/core/services';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 describe('UserListComponent', () => {
     let component: UserListComponent;
@@ -30,6 +31,7 @@ describe('UserListComponent', () => {
                 provideRouter([]),
                 LocalStorageService,
                 SettingsService,
+                provideHotToastConfig(),
             ],
         }).compileComponents();
 

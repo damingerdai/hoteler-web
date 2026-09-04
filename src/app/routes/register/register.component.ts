@@ -14,7 +14,7 @@ import {
     ValidatorFn,
     Validators,
 } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { HotToastService } from '@ngxpert/hot-toast';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { NgxDomConfettiService } from 'ngx-dom-confetti';
 import { timer } from 'rxjs';
@@ -52,7 +52,7 @@ const identityPasswordValidator: ValidatorFn = (
 })
 export class RegisterComponent implements OnInit {
     private fb = inject(FormBuilder);
-    private snackBar = inject(MatSnackBar);
+    private toast = inject(HotToastService);
     private userApi = inject(UserService);
     private router = inject(Router);
     private ngxDomConfettiService = inject(NgxDomConfettiService);
@@ -111,7 +111,7 @@ export class RegisterComponent implements OnInit {
             .createUser(this.username!.value, this.password!.value)
             .subscribe((res) => {
                 if (res.status === 200) {
-                    this.snackBar.open('注册成功', 'X');
+                    this.toast.success('注册成功');
                     const el = this.btn.nativeElement.children.item(
                         0
                     ) as HTMLElement;
@@ -123,7 +123,7 @@ export class RegisterComponent implements OnInit {
                         this.router.navigateByUrl('login')
                     );
                 } else {
-                    this.snackBar.open(res.error?.message ?? '注册失败', 'X');
+                    this.toast.error(res.error?.message ?? '注册失败');
                     this.isLoading = false;
                 }
             });

@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -16,6 +15,7 @@ import { ApiTestingModule } from 'src/app/core/testings';
 import { NgxDomConfettiModule } from 'ngx-dom-confetti';
 
 import { RegisterComponent } from './register.component';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -27,6 +27,7 @@ describe('RegisterComponent', () => {
         TestApp,
         RegisterComponent
       ],
+      providers: [provideHotToastConfig()],
     })
     .compileComponents();
   });
@@ -54,7 +55,6 @@ describe('RegisterComponent', () => {
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule,
     ReactiveFormsModule,
     RouterTestingModule,
     NoopAnimationsModule,

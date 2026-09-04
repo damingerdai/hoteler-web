@@ -12,9 +12,8 @@ import {
 } from '@angular/router';
 import { routes } from './app.route';
 import { httpInterceptorProviders } from './core/interceptors';
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { appInitializerProviders } from './core/initializers';
-import { provideAngularToaster } from 'angular-toaster';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
@@ -29,13 +28,9 @@ export const appConfig: ApplicationConfig = {
             withComponentInputBinding()
         ),
         httpInterceptorProviders,
-        {
-            provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-            useValue: { duration: 2500 },
-        },
         appInitializerProviders,
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideNativeDateAdapter(),
-        provideAngularToaster(),
+        provideHotToastConfig({ theme: 'material' }),
     ],
 };

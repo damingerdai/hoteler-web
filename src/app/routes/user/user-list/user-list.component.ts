@@ -5,6 +5,7 @@ import {
     OnInit,
     afterNextRender,
     inject,
+    signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,10 +20,9 @@ import { SharedPipesModule } from 'src/app/shared/shared.pipes.module';
 import { CreateUserComponent, UpdateUserComponent } from '../dialog';
 import { RoleService } from 'src/app/core/services/role/role.service';
 import { Roles } from 'src/app/core/models/roles';
-import { Subscription, filter, switchMap } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription, filter, finalize, switchMap } from 'rxjs';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
-import { ToasterService } from 'angular-toaster';
+import { HotToastService } from '@ngxpert/hot-toast';
 import { UpperCasePipe } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -46,12 +46,11 @@ export class UserListComponent implements OnInit, OnDestroy {
     protected dialog = inject(MatDialog);
     protected userService = inject(UserService);
     protected roleService = inject(RoleService);
-    protected snackBar = inject(MatSnackBar);
+    protected toast = inject(HotToastService);
     protected settings = inject(SettingsService);
     protected destroyRef = inject(DestroyRef);
-    protected toasterService = inject(ToasterService);
     protected currentUser: IUser;
-    protected loading = false;
+    protected readonly loading = signal(false);
 
     protected displayedColumns: string[] = [
         'id',
@@ -60,11 +59,11 @@ export class UserListComponent implements OnInit, OnDestroy {
         'action',
     ];
 
-    protected users: IUser[] = [];
+    protected readonly users = signal<IUser[]>([]);
     protected roles: Roles = [];
 
     constructor() {
-        this.users = [];
+        this.users.set([]);
         afterNextRender(() => {
             this.roleService.list().subscribe((res) => {
                 if (res.status === 200) {
@@ -74,23 +73,30 @@ export class UserListComponent implements OnInit, OnDestroy {
         });
     }
 
-    private loadUsers() {
-        this.loading = true;
-        this.userService.list().subscribe(
-            (res) => {
-                this.loading = false;
-                if (res.status === 200) {
-                    this.users = res.data;
-                    console.log(this.users);
-                } else {
-                    this.snackBar.open('获取用户失败', 'X');
-                }
-            },
-            () => {
-                this.snackBar.open('系统异常');
-                this.loading = false;
-            }
-        );
+
+    private loadUsers(): void {
+        this.loading.set(true);
+
+        this.userService
+            .list()
+            .pipe(
+                takeUntilDestroyed(this.destroyRef),
+                finalize(() => {
+                    this.loading.set(false);
+                })
+            )
+            .subscribe({
+                next: (res) => {
+                    if (res.status === 200) {
+                        this.users.set(res.data);
+                    } else {
+                        this.toast.error('获取用户失败');
+                    }
+                },
+                error: () => {
+                    this.toast.error('系统异常');
+                },
+            });
     }
 
     sortRoles(roles: Roles) {
@@ -117,16 +123,12 @@ export class UserListComponent implements OnInit, OnDestroy {
             )
             .subscribe((res) => {
                 if (res.status === 200) {
-                    // this.snackBar.open('创建用户成功', 'X');
-                    this.toasterService.pop({
-                        type: 'success',
-                        title: '创建成功',
-                        body: '创建用户成功',
-                        timeout: 10000,
+                    this.toast.success('创建用户成功', {
+                        duration: 10000,
                     });
                     this.loadUsers();
                 } else {
-                    this.snackBar.open('创建用户失败：' + res.error.message);
+                    this.toast.error('创建用户失败：' + res.error.message);
                 }
             });
     }
@@ -137,33 +139,6 @@ export class UserListComponent implements OnInit, OnDestroy {
             data: { roles: this.roles, user: { ...user } },
             width: '400px',
         });
-        // dialogRef
-        // .afterClosed()
-        // //.pipe(res => skip(res => res === undefined))
-        // .pipe(
-        //   filter((res) => !!res),
-        //   switchMap((res) =>
-        //     this.userService.createUser(
-        //       res.username,
-        //       res.password,
-        //       res.roles
-        //     )
-        //   )
-        // )
-        // .subscribe((res) => {
-        //   if (res.status === 200) {
-        //     // this.snackBar.open('创建用户成功', 'X');
-        //     this.toasterService.pop({
-        //       type: 'success',
-        //       title: '创建成功',
-        //       body: '创建用户成功',
-        //       timeout: 10000
-        //     });
-        //     this.loadUsers();
-        //   } else {
-        //     this.snackBar.open('创建用户失败：' + res.error.message);
-        //   }
-        // });
     }
 
     public openDeleteUserDialog(id: string) {
@@ -181,10 +156,10 @@ export class UserListComponent implements OnInit, OnDestroy {
             )
             .subscribe((res) => {
                 if (res.status === 200) {
-                    this.snackBar.open('删除用户成功', 'X');
+                    this.toast.success('删除用户成功');
                     this.loadUsers();
                 } else {
-                    this.snackBar.open('删除用户失败：' + res.error.message);
+                    this.toast.error('删除用户失败：' + res.error.message);
                 }
             });
     }

@@ -4,7 +4,7 @@ import {
     inject,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { HotToastService } from '@ngxpert/hot-toast';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { Customers, ICustomer } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/services/customers';
@@ -51,7 +51,7 @@ import { CustomerCardComponent } from '../customer-card/customer-card.component'
 export class CustomerListComponent implements OnInit {
     private customerApi = inject(CustomerService);
     private dialog = inject(MatDialog);
-    private snackBar = inject(MatSnackBar);
+    private toast = inject(HotToastService);
 
     public displayedColumns: string[] = [
         'id',
@@ -91,10 +91,10 @@ export class CustomerListComponent implements OnInit {
             )
             .subscribe((res) => {
                 if (res.status === 200) {
-                    this.snackBar.open('创建客户成功', 'X');
+                    this.toast.success('创建客户成功');
                     this.fetchCustomers();
                 } else {
-                    this.snackBar.open('创建客户失败：' + res.error.message);
+                    this.toast.error('创建客户失败：' + res.error.message);
                 }
             });
     }
@@ -119,12 +119,11 @@ export class CustomerListComponent implements OnInit {
             )
             .subscribe((res) => {
                 if (res.status === 200) {
-                    this.snackBar.open('更新客户成功', 'X');
+                    this.toast.success('更新客户成功');
                     this.fetchCustomers();
                 } else {
-                    this.snackBar.open(
+                    this.toast.error(
                         '更新客户失败：' + res.error.message,
-                        'X',
                         { duration: 2000 }
                     );
                 }
@@ -148,10 +147,10 @@ export class CustomerListComponent implements OnInit {
             )
             .subscribe((res) => {
                 if (res.status === 200) {
-                    this.snackBar.open('删除客户成功', 'X');
+                    this.toast.success('删除客户成功');
                     this.fetchCustomers();
                 } else {
-                    this.snackBar.open('创建客户失败：' + res.error.message);
+                    this.toast.error('创建客户失败：' + res.error.message);
                 }
             });
     }
@@ -198,7 +197,7 @@ export class CustomerListComponent implements OnInit {
             if (res.status === 200) {
                 this.customers = res.data;
             } else {
-                this.snackBar.open('获取客户失败：' + res.error.message);
+                this.toast.error('获取客户失败：' + res.error.message);
             }
             this.isLoading = false;
         });

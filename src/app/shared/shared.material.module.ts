@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -18,11 +18,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { materailProviders } from './material-config';
 
 
 const materials = [
@@ -41,7 +39,6 @@ const materials = [
   MatProgressSpinnerModule,
   MatNativeDateModule,
   MatRadioModule,
-  MatSnackBarModule,
   MatSelectModule,
   MatSidenavModule,
   MatSlideToggleModule,
@@ -59,19 +56,6 @@ const materials = [
   exports: [
     ...materials
   ],
-  // providers: [
-  //   ...materailProviders,
-  // ]
 })
 export class SharedMaterialModule {
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  static forRoot(config: SharedMaterialModule): ModuleWithProviders<SharedMaterialModule> {
-    return {
-      ngModule: SharedMaterialModule,
-      providers: [
-       ...materailProviders,
-      ]
-    };
-  }
  }

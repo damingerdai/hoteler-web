@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { RoomComponent } from './room.component';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 describe('RoomComponent', () => {
     let component: RoomComponent;
@@ -11,7 +12,11 @@ describe('RoomComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [RoomComponent, HttpClientTestingModule],
-            providers: [provideRouter([]), provideNoopAnimations()],
+            providers: [
+                provideRouter([]),
+                provideNoopAnimations(),
+                provideHotToastConfig(),
+            ],
         }).compileComponents();
     });
 
