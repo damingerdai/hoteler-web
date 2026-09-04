@@ -2,7 +2,12 @@
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "/api/proxy?path=/api/:path*"
+            "destination": "/api/proxy"
         }
-    ]
+    ],
+    "functions": {
+        "api/proxy.ts": {
+            "maxDuration": 60
+        }
+    }
 }

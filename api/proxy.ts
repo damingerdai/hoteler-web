@@ -50,11 +50,8 @@ export default async function handler(request: Request): Promise<Response> {
     }
 
     const requestUrl = new URL(request.url);
-    const forwardedPath =
-        requestUrl.searchParams.get('path') || requestUrl.pathname;
-    requestUrl.searchParams.delete('path');
     const destinationUrl = new URL(
-        forwardedPath + requestUrl.search,
+        requestUrl.pathname + requestUrl.search,
         BACKEND_URL.endsWith('/') ? BACKEND_URL : `${BACKEND_URL}/`
     );
 
@@ -67,6 +64,7 @@ export default async function handler(request: Request): Promise<Response> {
     });
 
     try {
+		console.log('Proxying request to:', destinationUrl);
         const response = await fetch(proxyRequest);
         const headers = new Headers(response.headers);
 
