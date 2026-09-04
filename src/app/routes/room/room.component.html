@@ -1,122 +1,143 @@
-<app-breadcrumb label="房间管理" url="/room" />
-<div class="flex flex-col p-4">
-    <div class="w-full flex justify-start items-baseline">
-        <form class="form-inline" [formGroup]="roomForm">
-            <mat-form-field class="form-field" appearance="outline">
-                <mat-label>房间状态</mat-label>
-                <mat-select formControlName="status">
-                    <mat-option [value]="0"> 全部 </mat-option>
-                    <mat-option [value]="1"> 空闲 </mat-option>
-                    <mat-option [value]="2"> 占用 </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </form>
-        <button mat-raised-button color="primary" (click)="createRoom()">
-            创建房间
-        </button>
-    </div>
-    <mat-divider class="divider"></mat-divider>
-    @if (isLoading()) {
-        <app-loading-shade />
-    } @else {
-        <div class="flex justify-start">
-            <mat-button-toggle-group
-                name="layout"
-                aria-label="Switch Layout"
-                hideSingleSelectionIndicator="true"
-                [value]="layout()"
-                (change)="layoutChange($event)"
-            >
-                <mat-button-toggle value="card">卡片</mat-button-toggle>
-                <mat-button-toggle value="table">表格</mat-button-toggle>
-            </mat-button-toggle-group>
-        </div>
+<div class="page-container">
+    <app-breadcrumb label="房间管理" url="/room" parentLabel="管理员" />
 
-        @if (rooms().length > 0) {
-            @if (layout() === 'card') {
-                <div class="hoteler-row flex flex-wrap w-full mt-2">
-                    @for (room of rooms(); track room.id; let i = $index) {
-                        <div class="hoteler-col p-2 room-card">
-                            <app-room-card
-                                [room]="room"
-                                [imageIndex]="i"
-                                (checkIn)="addOrderalog($event)"
-                                (update)="updateRoom($event)"
-                                (delete)="deleteRoom($event)"
-                            />
-                        </div>
-                    }
-                </div>
-            } @else if (layout() === 'table') {
-                <mat-card
-                    class="mat-elevation-z8 table-responsive room-list mt-2"
+    <header class="page-header">
+        <div class="title-section">
+            <h1 class="mat-headline-medium">房间管理</h1>
+            <p class="mat-body-medium secondary-text">
+                管理酒店房间信息，查看房间状态和价格
+            </p>
+        </div>
+        <div class="action-section">
+            <button mat-flat-button color="primary" (click)="createRoom()">
+                <mat-icon>add</mat-icon>
+                创建房间
+            </button>
+        </div>
+    </header>
+
+    <mat-card class="room-table-card" appearance="outlined">
+        @if (isLoading()) {
+            <mat-progress-bar mode="indeterminate" color="primary" />
+        }
+
+        <mat-card-content class="room-table-card-content">
+            <div class="table-tools">
+                <mat-form-field
+                    appearance="outline"
+                    subscriptSizing="dynamic"
+                    class="status-field"
                 >
-                    <table
-                        mat-table
-                        [dataSource]="rooms()"
-                        class="mat-elevation-z8 w-full mt-2"
-                    >
+                    <mat-label>房间状态</mat-label>
+                    <mat-select [formControl]="roomForm.controls.status">
+                        <mat-option [value]="0">全部房间</mat-option>
+                        <mat-option [value]="1">空闲房间</mat-option>
+                        <mat-option [value]="2">占用房间</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-button-toggle-group
+                    name="layout"
+                    aria-label="切换房间展示方式"
+                    hideSingleSelectionIndicator="true"
+                    [value]="layout()"
+                    (change)="layoutChange($event)"
+                >
+                    <mat-button-toggle value="card">
+                        <mat-icon>grid_view</mat-icon>
+                        卡片
+                    </mat-button-toggle>
+                    <mat-button-toggle value="table">
+                        <mat-icon>table_rows</mat-icon>
+                        表格
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            @if (isLoading()) {
+                <div class="loading-state">
+                    <mat-icon>meeting_room</mat-icon>
+                    <span>正在加载房间信息...</span>
+                </div>
+            } @else if (rooms().length === 0) {
+                <app-empty-state
+                    icon="bed"
+                    title="暂无房间数据"
+                    description="当前酒店还没有录入房间信息，您可以立即创建一个新房间。"
+                >
+                    <button action mat-flat-button (click)="createRoom()">
+                        <mat-icon>add</mat-icon>
+                        创建首个房间
+                    </button>
+                </app-empty-state>
+            } @else if (layout() === 'table') {
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="rooms()" class="room-table">
                         <ng-container matColumnDef="no">
-                            <th mat-header-cell *matHeaderCellDef>No.</th>
-                            <td mat-cell *matCellDef="let element">
-                                {{ element.id }}
+                            <th mat-header-cell *matHeaderCellDef>房间号</th>
+                            <td mat-cell *matCellDef="let room">
+                                <span class="id-badge">{{ room.id }}</span>
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="roomname">
                             <th mat-header-cell *matHeaderCellDef>房间名</th>
-                            <td mat-cell *matCellDef="let element">
-                                {{ element.roomname }}
+                            <td mat-cell *matCellDef="let room">
+                                <div class="room-name-cell">
+                                    <mat-icon>meeting_room</mat-icon>
+                                    <span>{{ room.roomname }}</span>
+                                </div>
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="price">
                             <th mat-header-cell *matHeaderCellDef>价格</th>
-                            <td mat-cell *matCellDef="let element">
-                                {{ element.price | currency }}
+                            <td mat-cell *matCellDef="let room">
+                                <span class="price-cell">{{
+                                    room.price | currency
+                                }}</span>
+                                <span class="price-unit">/晚</span>
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="status">
                             <th mat-header-cell *matHeaderCellDef>状态</th>
-                            <td mat-cell *matCellDef="let element">
-                                @switch (element.status) {
-                                    @case (1) {
-                                        <app-tag color="primary">空闲</app-tag>
-                                    }
-                                    @case (2) {
-                                        <app-tag color="secondary"
-                                            >占用</app-tag
-                                        >
-                                    }
+                            <td mat-cell *matCellDef="let room">
+                                @if (room.status === 1) {
+                                    <span class="status-chip available"
+                                        >空闲</span
+                                    >
+                                } @else {
+                                    <span class="status-chip occupied"
+                                        >占用</span
+                                    >
                                 }
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="action">
                             <th mat-header-cell *matHeaderCellDef>操作</th>
-                            <td
-                                mat-cell
-                                *matCellDef="let element"
-                                class="action-container"
-                            >
+                            <td mat-cell *matCellDef="let room">
                                 <button
-                                    mat-raised-button
+                                    mat-icon-button
                                     color="primary"
-                                    [disabled]="element.status === 2"
-                                    (click)="addOrderalog(element)"
+                                    matTooltip="办理入住"
+                                    [disabled]="room.status === 2"
+                                    (click)="addOrderalog(room)"
                                 >
-                                    入住
+                                    <mat-icon>key</mat-icon>
                                 </button>
                                 <button
-                                    mat-raised-button
-                                    color="accent"
-                                    (click)="updateRoom(element)"
+                                    mat-icon-button
+                                    color="primary"
+                                    matTooltip="编辑房间"
+                                    (click)="updateRoom(room)"
                                 >
-                                    修改
+                                    <mat-icon>edit</mat-icon>
                                 </button>
                                 <button
-                                    mat-raised-button
+                                    mat-icon-button
                                     color="warn"
-                                    (click)="deleteRoom(element.id)"
+                                    matTooltip="删除房间"
+                                    (click)="deleteRoom(room.id)"
                                 >
-                                    删除
+                                    <mat-icon>delete_outline</mat-icon>
                                 </button>
                             </td>
                         </ng-container>
@@ -129,20 +150,20 @@
                             *matRowDef="let row; columns: displayedColumns"
                         ></tr>
                     </table>
-                </mat-card>
+                </div>
+            } @else {
+                <div class="room-grid">
+                    @for (room of rooms(); track room.id; let i = $index) {
+                        <app-room-card
+                            [room]="room"
+                            [imageIndex]="i"
+                            (checkIn)="addOrderalog($event)"
+                            (update)="updateRoom($event)"
+                            (delete)="deleteRoom($event)"
+                        />
+                    }
+                </div>
             }
-        } @else {
-            <app-empty-state
-                icon="bed"
-                title="暂无房间数据"
-                description="当前酒店还没有录入房间信息，您可以立即创建一个新房间。"
-            >
-                <button action mat-flat-button (click)="createRoom()">
-                    <mat-icon>add</mat-icon>
-                    创建首个房间
-                </button>
-            </app-empty-state>
-        }
-    }
+        </mat-card-content>
+    </mat-card>
 </div>
-<!--<app-customizer (layoutChange)="layoutChange($event)"></app-customizer>-->

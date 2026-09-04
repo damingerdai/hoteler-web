@@ -25,7 +25,7 @@ import { CurrencyPipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import {
     AddCustomerRoomDialogComponent,
@@ -35,9 +35,7 @@ import {
 import {
     BreadcrumbComponent,
     ConfirmComponent,
-    TagComponent,
 } from 'src/app/shared/components';
-import { LoadingShadeComponent } from 'src/app/shared/components/loading-shade';
 import { EmptyStateComponent } from 'src/app/shared/components/empty-state';
 import { RoomCardComponent } from './room-card/room-card.component';
 
@@ -53,13 +51,11 @@ import { RoomCardComponent } from './room-card/room-card.component';
         MatTableModule,
         MatCardModule,
         MatProgressSpinnerModule,
-        MatDividerModule,
+        MatProgressBarModule,
         MatSelectModule,
         ReactiveFormsModule,
         CurrencyPipe,
-        LoadingShadeComponent,
         BreadcrumbComponent,
-        TagComponent,
         EmptyStateComponent,
         RoomCardComponent,
     ],
