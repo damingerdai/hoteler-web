@@ -7,6 +7,7 @@
     <mat-drawer-container class="layout-container" autosize>
         <mat-drawer
             class="drawer"
+            [class.collapsed]="drawerCollapsed && !isMobile"
             #drawer
             [opened]="drawerOpened"
             [mode]="mode"

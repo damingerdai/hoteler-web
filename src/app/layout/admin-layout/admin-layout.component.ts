@@ -28,6 +28,7 @@ export class AdminLayoutComponent {
     public isMobile: boolean;
 
     protected drawerOpened = true;
+    protected drawerCollapsed = false;
 
     // @ViewChild('drawer') drawer: MatDrawer;
 
@@ -84,19 +85,31 @@ export class AdminLayoutComponent {
             .subscribe((result) => {
                 this.isMobile = result.matches;
                 this.drawerOpened = !this.isMobile;
+                this.drawerCollapsed = false;
             });
     }
 
     toggleDrawer() {
-        this.drawerOpened = !this.drawerOpened;
+        if (this.isMobile) {
+            this.drawerOpened = !this.drawerOpened;
+            return;
+        }
+
+        this.drawerOpened = true;
+        this.drawerCollapsed = !this.drawerCollapsed;
     }
 
     openDrawer() {
         this.drawerOpened = true;
+        this.drawerCollapsed = false;
     }
 
     closeDrawer() {
-        this.drawerOpened = false;
+        if (this.isMobile) {
+            this.drawerOpened = false;
+        } else {
+            this.drawerCollapsed = true;
+        }
     }
 
     closeDrawerInMobile() {

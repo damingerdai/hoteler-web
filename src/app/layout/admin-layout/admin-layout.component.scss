@@ -30,12 +30,41 @@ app-navbar {
     position: absolute;
     inset: 0;
     height: 100%;
-    background: linear-gradient(135deg, var(--mat-sys-surface-container-low), var(--mat-sys-surface-container-high));
+    background: linear-gradient(
+        135deg,
+        var(--mat-sys-surface-container-low),
+        var(--mat-sys-surface-container-high)
+    );
 
     .drawer {
         background-color: var(--mat-sys-surface-container-low) !important;
         border-right: none !important;
-        width: 280px;
+        width: 280px !important;
+
+        &.collapsed {
+            width: 80px !important;
+
+            .drawer-content {
+                padding: 12px 8px;
+            }
+
+            .nav-subheader,
+            [matListItemTitle] {
+                display: none;
+            }
+
+            .nav-list {
+                a[mat-list-item] {
+                    justify-content: center;
+                    padding-right: 0;
+                    padding-left: 0;
+                }
+
+                [matListItemIcon] {
+                    margin-right: 0;
+                }
+            }
+        }
 
         .drawer-content {
             display: flex;
