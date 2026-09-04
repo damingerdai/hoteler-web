@@ -2,8 +2,10 @@ import {
     Component,
     OnInit,
     inject,
+    signal,
 } from '@angular/core';
-import { ApexOptions, NgxApexchartsModule } from 'ngx-apexcharts';
+import { forkJoin } from 'rxjs';
+import { ApexOptions, NgxApexchartsModule } from 'ngx-apexcharts/signals';
 import { CustomerService } from 'src/app/core/services/customers';
 import { RoomService } from 'src/app/core/services/room';
 import { BreadcrumbComponent } from 'src/app/shared/components';
@@ -26,13 +28,9 @@ type ApexOptions2 = ApexOptions & { show: boolean };
     ],
 })
 export class DashboardComponent implements OnInit {
-    protected loading = false;
+    protected loading = signal(false);
 
-    private customerApi: CustomerService = inject(CustomerService);
-
-    private roomApi: RoomService = inject(RoomService);
-
-    public roomStatusDonutChart: ApexOptions2 = {
+    protected roomStatusDonutChart = signal<ApexOptions2>({
         show: false,
         chart: {
             type: 'donut',
@@ -61,9 +59,9 @@ export class DashboardComponent implements OnInit {
                 },
             },
         },
-    };
+    });
 
-    public pastWeekCustomerCountChart: ApexOptions2 = {
+    protected pastWeekCustomerCountChart = signal<ApexOptions2>({
         show: false,
         chart: {
             type: 'line',
@@ -72,40 +70,59 @@ export class DashboardComponent implements OnInit {
         title: {
             text: '过去一周的入住客户数量变化',
         },
-    };
+    });
+
+    private customerApi: CustomerService = inject(CustomerService);
+
+    private roomApi: RoomService = inject(RoomService);
+
 
     ngOnInit(): void {
-        this.loading = true;
-        this.roomApi.getRoomStatusStat().subscribe((res) => {
-            this.loading = false;
-            if (res.status === 200) {
-                this.roomStatusDonutChart.show = true;
-                this.roomStatusDonutChart.series = [
-                    res.data.inUseNums,
-                    res.data.notUsedNums,
-                ];
-                this.roomStatusDonutChart.labels = ['占用', '空闲'];
-            }
-        });
+        this.loading.set(true);
 
-        this.customerApi.getPastWeekCustomerCountStat().subscribe((res) => {
-            this.loading = false;
-            if (res.status === 200) {
-                this.pastWeekCustomerCountChart.show = true;
-                this.pastWeekCustomerCountChart.series = [
-                    {
-                        name: '入住客户数量',
-                        data: res.data.pastWeekCustomerCounts.map(
-                            (v) => v.customerCount
-                        ),
-                    },
-                ];
-                this.pastWeekCustomerCountChart.xaxis = {
-                    categories: res.data.pastWeekCustomerCounts.map(
-                        (v) => v.checkInDate
-                    ),
-                };
-            }
+        forkJoin({
+            room: this.roomApi.getRoomStatusStat(),
+            customer: this.customerApi.getPastWeekCustomerCountStat(),
+        }).subscribe({
+            next: ({ room, customer }) => {
+                if (room.status === 200) {
+                    this.roomStatusDonutChart.update((chart) => ({
+                        ...chart,
+                        show: true,
+                        series: [
+                            room.data.inUseNums,
+                            room.data.notUsedNums,
+                        ],
+                        labels: ['占用', '空闲'],
+                    }));
+                }
+
+                if (customer.status === 200) {
+                    this.pastWeekCustomerCountChart.update((chart) => ({
+                        ...chart,
+                        show: true,
+                        series: [
+                            {
+                                name: '入住客户数量',
+                                data: customer.data.pastWeekCustomerCounts.map(
+                                    (v) => v.customerCount
+                                ),
+                            },
+                        ],
+                        xaxis: {
+                            categories: customer.data.pastWeekCustomerCounts.map(
+                                (v) => v.checkInDate
+                            ),
+                        },
+                    }));
+                }
+            },
+            error: () => {
+                this.loading.set(false);
+            },
+            complete: () => {
+                this.loading.set(false);
+            },
         });
     }
 }
