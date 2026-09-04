@@ -1,15 +1,13 @@
 import { DatePipe } from '@angular/common';
-import {
-    Component,
-    inject,
-    OnInit,
-} from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
+import { finalize } from 'rxjs/operators';
 import { Orders } from 'src/app/core/models';
 import { OrderService } from 'src/app/core/services/order/order.service';
 import { BreadcrumbComponent } from 'src/app/shared/components';
@@ -22,6 +20,7 @@ import { BreadcrumbComponent } from 'src/app/shared/components';
         MatButtonModule,
         MatDividerModule,
         MatInputModule,
+        MatProgressBarModule,
         MatCardModule,
         MatTableModule,
         MatIconModule,
@@ -32,7 +31,8 @@ import { BreadcrumbComponent } from 'src/app/shared/components';
 export class OrdersComponent implements OnInit {
     private orderApi = inject(OrderService);
 
-    protected orders: Orders = [];
+    protected orders = signal<Orders>([]);
+    protected loading = signal(true);
 
     protected displayedColumns: string[] = [
         'id',
@@ -44,9 +44,11 @@ export class OrdersComponent implements OnInit {
     ];
 
     public ngOnInit(): void {
-        this.orderApi.list().subscribe((res) => {
-            console.log(res);
-            this.orders = res.data;
-        });
+        this.orderApi
+            .list()
+            .pipe(finalize(() => this.loading.set(false)))
+            .subscribe((res) => {
+                this.orders.set(res.data);
+            });
     }
 }

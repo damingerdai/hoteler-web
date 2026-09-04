@@ -50,7 +50,46 @@
                     background-color: var(--mat-sys-surface-container-highest);
                 }
             }
+
+            .empty-state {
+                display: flex;
+                min-height: 220px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: var(--mat-sys-on-surface-variant);
+
+                mat-icon {
+                    width: 48px;
+                    height: 48px;
+                    margin-bottom: 8px;
+                    font-size: 48px;
+                }
+            }
+
+            .skeleton-container {
+                padding: 16px 0;
+
+                .skeleton-row {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    padding: 16px 0;
+                    border-bottom: 1px solid var(--mat-sys-outline-variant);
+
+                    .skeleton-item {
+                        height: 16px;
+                        flex: 1;
+                        border-radius: 4px;
+                        background: var(--mat-sys-surface-variant);
+                        opacity: 0.6;
+
+                        &.short {
+                            max-width: 80px;
+                        }
+                    }
+                }
+            }
         }
     }
-
 }

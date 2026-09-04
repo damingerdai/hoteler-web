@@ -15,6 +15,9 @@
         </div>
     </header>
     <mat-card class="order-table-card" appearance="outlined">
+        @if (loading()) {
+            <mat-progress-bar mode="indeterminate" color="primary" />
+        }
         <mat-card-content class="order-table-card-content">
             <div class="table-tools">
                 <mat-form-field
@@ -28,48 +31,66 @@
                 </mat-form-field>
             </div>
 
-            <table mat-table [dataSource]="orders" class="order-table">
-                <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef>订单号</th>
-                    <td mat-cell *matCellDef="let order">{{ order.id }}</td>
-                </ng-container>
-                <ng-container matColumnDef="customerId">
-                    <th mat-header-cell *matHeaderCellDef>客户</th>
-                    <td mat-cell *matCellDef="let order">
-                        {{ order.customer.name }}
-                    </td>
-                </ng-container>
-                <ng-container matColumnDef="roomId">
-                    <th mat-header-cell *matHeaderCellDef>房间</th>
-                    <td mat-cell *matCellDef="let order">
-                        {{ order.room.roomname }}
-                    </td>
-                </ng-container>
-                <ng-container matColumnDef="beginDate">
-                    <th mat-header-cell *matHeaderCellDef>开始时间</th>
-                    <td mat-cell *matCellDef="let order">
-                        {{
-                            order.beginDate
-                                | date: 'yyyy-MM-dd HH:mm:ss' : '+0800'
-                        }}
-                    </td>
-                </ng-container>
-                <ng-container matColumnDef="endDate">
-                    <th mat-header-cell *matHeaderCellDef>结束时间</th>
-                    <td mat-cell *matCellDef="let order">
-                        {{
-                            order.endDate
-                                | date: 'yyyy-MM-dd HH:mm:ss' : '+0800'
-                        }}
-                    </td>
-                </ng-container>
+            @if (orders().length > 0) {
+                <table mat-table [dataSource]="orders()" class="order-table">
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef>订单号</th>
+                        <td mat-cell *matCellDef="let order">{{ order.id }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="customerId">
+                        <th mat-header-cell *matHeaderCellDef>客户</th>
+                        <td mat-cell *matCellDef="let order">
+                            {{ order.customer.name }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="roomId">
+                        <th mat-header-cell *matHeaderCellDef>房间</th>
+                        <td mat-cell *matCellDef="let order">
+                            {{ order.room.roomname }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="beginDate">
+                        <th mat-header-cell *matHeaderCellDef>开始时间</th>
+                        <td mat-cell *matCellDef="let order">
+                            {{
+                                order.beginDate
+                                    | date: 'yyyy-MM-dd HH:mm:ss' : '+0800'
+                            }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="endDate">
+                        <th mat-header-cell *matHeaderCellDef>结束时间</th>
+                        <td mat-cell *matCellDef="let order">
+                            {{
+                                order.endDate
+                                    | date: 'yyyy-MM-dd HH:mm:ss' : '+0800'
+                            }}
+                        </td>
+                    </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr
-                    mat-row
-                    *matRowDef="let row; columns: displayedColumns"
-                ></tr>
-            </table>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr
+                        mat-row
+                        *matRowDef="let row; columns: displayedColumns"
+                    ></tr>
+                </table>
+            } @else if (!loading()) {
+                <div class="empty-state">
+                    <mat-icon>receipt_long</mat-icon>
+                    <p>暂无订单数据</p>
+                </div>
+            } @else {
+                <div class="skeleton-container">
+                    @for (row of [1, 2, 3, 4]; track $index) {
+                        <div class="skeleton-row">
+                            <div class="skeleton-item short"></div>
+                            <div class="skeleton-item"></div>
+                            <div class="skeleton-item"></div>
+                            <div class="skeleton-item"></div>
+                        </div>
+                    }
+                </div>
+            }
         </mat-card-content>
     </mat-card>
 </div>
