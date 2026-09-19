@@ -8,6 +8,7 @@
         class="avatars"
         [name]="username()"
         size="32"
+        textSizeRatio="2"
         bgColor="var(--mat-sys-primary-container)"
         fgColor="var(--mat-sys-on-primary-container)"
     />
@@ -18,8 +19,9 @@
         <ngx-avatars
             [name]="username()"
             size="48"
-            bgColor="var(--mat-sys-surface-container-high)"
-            fgColor="var(--mat-sys-primary)"
+            textSizeRatio="2"
+            bgColor="var(--mat-sys-primary-container)"
+            fgColor="var(--mat-sys-on-primary-container)"
         />
         <div class="user-info">
             <div class="username">{{ username() }}</div>
