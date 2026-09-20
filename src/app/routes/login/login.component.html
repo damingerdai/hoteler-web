@@ -9,22 +9,19 @@
         </div>
 
         <mat-card-content>
-            <form
-                [formGroup]="loginForm"
-                (ngSubmit)="login()"
-                class="login-form"
-            >
+            <form [formRoot]="loginForm" class="login-form">
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>用户名</mat-label>
                     <input
                         matInput
                         placeholder="请输入用户名"
-                        formControlName="username"
-                        required
+                        [formField]="loginForm.username"
                     />
                     <mat-icon matPrefix>person_outline</mat-icon>
-                    @if (username.invalid && username.touched) {
-                        <mat-error>用户名是必填项</mat-error>
+                    @if (username.invalid() && username.touched()) {
+                        <mat-error>{{
+                            username.errors()[0]?.message
+                        }}</mat-error>
                     }
                 </mat-form-field>
 
@@ -33,9 +30,8 @@
                     <input
                         matInput
                         [type]="hide ? 'password' : 'text'"
-                        formControlName="password"
+                        [formField]="loginForm.password"
                         placeholder="请输入密码"
-                        required
                     />
                     <mat-icon matPrefix>lock_open</mat-icon>
                     <button
@@ -49,15 +45,17 @@
                             hide ? 'visibility_off' : 'visibility'
                         }}</mat-icon>
                     </button>
-                    @if (password.invalid && password.touched) {
-                        <mat-error>密码是必填项</mat-error>
+                    @if (password.invalid() && password.touched()) {
+                        <mat-error>{{
+                            password.errors()[0]?.message
+                        }}</mat-error>
                     }
                 </mat-form-field>
 
-                @if (loginForm.errors?.['login']) {
+                @if (loginError()) {
                     <div class="error-container mat-body-small">
                         <mat-icon>error_outline</mat-icon>
-                        <span>{{ loginForm.errors?.['login'] }}</span>
+                        <span>{{ loginError() }}</span>
                     </div>
                 }
 
@@ -66,9 +64,9 @@
                     color="primary"
                     class="login-button"
                     type="submit"
-                    [disabled]="loginForm.invalid || isLoading"
+                    [disabled]="loginForm().invalid() || isLoading()"
                 >
-                    @if (!isLoading) {
+                    @if (!isLoading()) {
                         <span>立即登录</span>
                     } @else {
                         <mat-spinner diameter="24"></mat-spinner>
