@@ -15,7 +15,6 @@
         "strictNullChecks": false,
         "strictPropertyInitialization": false,
         "ignoreDeprecations": "6.0",
-        "typeRoots": ["node_modules/@types"],
         "isolatedModules": true,
         "useDefineForClassFields": true
     },

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { SettingsComponent } from './settings.component';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
@@ -14,6 +15,7 @@ describe('SettingsComponent', () => {
         SettingsComponent
        ],
        providers: [
+        provideRouter([]),
         LocalStorageService,
         SettingsService
        ]

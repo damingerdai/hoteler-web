@@ -16,9 +16,11 @@ describe('BreadcrumbComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BreadcrumbComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      fixture = TestBed.createComponent(BreadcrumbComponent);
+      component = fixture.componentInstance;
+      fixture.componentRef.setInput('url', '/settings');
+      fixture.componentRef.setInput('label', 'settings');
+      fixture.detectChanges();
   });
 
   it('should create', () => {

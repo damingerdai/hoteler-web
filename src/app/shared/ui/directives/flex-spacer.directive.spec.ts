@@ -31,7 +31,6 @@ describe('FlexSpacerDirective', () => {
             .nativeElement as HTMLDivElement;
         const flexGrow = div.style.flexGrow;
         fixture.detectChanges();
-        console.log(div);
-        expect(flexGrow).toBe('1');
+        expect(flexGrow).to.equal('1');
     });
 });

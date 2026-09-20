@@ -104,10 +104,10 @@ class ContainerComponent {
     invalidValueIncount = 'two';
 }
 
-xdescribe('SkeletonLoaderComponent', () => {
+describe.skip('SkeletonLoaderComponent', () => {
     let fixture: ComponentFixture<ContainerComponent>;
     beforeEach(() => {
-        spyOn(console, 'error');
+        vi.spyOn(console, 'error').mockReturnValue(undefined);
     });
 
     describe('When the component uses default configuration', () => {

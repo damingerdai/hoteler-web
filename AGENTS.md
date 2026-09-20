@@ -14,8 +14,8 @@ Angular 22 frontend (standalone components) for the hoteler hotel-management sys
 
 - `npm start` — dev server with HMR; proxies `/api` to the backend
 - `npm run build -- --configuration production` — production build. CI runs `lint` then this; unit tests are NOT run in CI.
-- `npm test` — Karma/Jasmine in watch mode, opens real Chrome (requires a local Chrome)
-- `npm run test:ci` — ChromeHeadless, single run, code coverage
+- `npm test` — Vitest in watch mode (runs in Node with happy-dom, no browser needed); `fakeAsync`/`waitForAsync` are supported via the `zone.js/plugins/vitest-patch` polyfill on the `testing` build configuration
+- `npm run test:ci` — single run with code coverage
 - Single spec: `npx ng test --include=path/to/file.spec.ts --watch=false`
 - `npm run lint` — ESLint (`src/**/*.ts` + template HTML) then stylelint (`src/**/*.scss`); `npm run lint:scss:fix` autofixes SCSS
 - `npm run e2e` — Cypress via @cypress/schematic; starts its own dev server
