@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     private userApi = inject(UserService);
     private router = inject(Router);
 
-    public hide = true;
+    public hide = signal(true);
 
     private model = signal<LoginModel>({ username: '', password: '' });
 
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
     public toggleVisibilityIcon(event: MouseEvent) {
         event.stopPropagation();
         event.preventDefault();
-        this.hide = !this.hide;
+        this.hide.set(!this.hide());
     }
 
     private async loginAction(

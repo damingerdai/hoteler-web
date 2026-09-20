@@ -29,7 +29,7 @@
                     <mat-label>密码</mat-label>
                     <input
                         matInput
-                        [type]="hide ? 'password' : 'text'"
+                        [type]="hide() ? 'password' : 'text'"
                         [formField]="loginForm.password"
                         placeholder="请输入密码"
                     />
@@ -42,7 +42,7 @@
                         [attr.aria-label]="'切换密码可见性'"
                     >
                         <mat-icon>{{
-                            hide ? 'visibility_off' : 'visibility'
+                            hide() ? 'visibility_off' : 'visibility'
                         }}</mat-icon>
                     </button>
                     @if (password.invalid() && password.touched()) {
