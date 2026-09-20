@@ -102,6 +102,20 @@
                             "optimization": false,
                             "extractLicenses": false,
                             "sourceMap": true
+                        },
+                        "testing": {
+                            "aot": false,
+                            "optimization": false,
+                            "extractLicenses": false,
+                            "styles": [
+                                "./node_modules/@angular/material/prebuilt-themes/azure-blue.css",
+                                "src/styles.scss"
+                            ],
+                            "polyfills": [
+                                "zone.js",
+                                "zone.js/testing",
+                                "zone.js/plugins/vitest-patch"
+                            ]
                         }
                     }
                 },
@@ -128,30 +142,17 @@
                     }
                 },
                 "test": {
-                    "builder": "@angular/build:karma",
+                    "builder": "@angular/build:unit-test",
                     "options": {
-                        "main": "src/test.ts",
-                        "polyfills": ["zone.js", "zone.js/testing"],
                         "tsConfig": "tsconfig.spec.json",
-                        "karmaConfig": "karma.conf.js",
-                        "assets": [
-                            {
-                                "glob": "**/*",
-                                "input": "public"
-                            }
+                        "reporters": ["default"],
+                        "coverageReporters": [
+                            "html",
+                            "text-summary",
+                            "lcovonly"
                         ],
-                        "styles": [
-                            "./node_modules/@angular/material/prebuilt-themes/azure-blue.css",
-                            "src/styles.scss"
-                        ],
-                        "stylePreprocessorOptions": {
-                            "includePaths": [
-                                "node_modules",
-                                "src",
-                                "src/styles"
-                            ]
-                        },
-                        "scripts": []
+                        "buildTarget": ":build:testing",
+                        "runner": "vitest"
                     }
                 },
                 "lint": {

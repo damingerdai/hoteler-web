@@ -13,7 +13,7 @@
         "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
         "changelog:all": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
         "test": "ng test",
-        "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+        "test:ci": "ng test --watch=false --coverage",
         "lint": "npm run lint:ts && npm run lint:scss",
         "lint:ts": "ng lint",
         "lint:scss": "stylelint \"src/**/*.scss\"",
@@ -50,7 +50,7 @@
         "rxjs": "7.8.1",
         "tfontfaceobserver": "^0.0.2",
         "tslib": "2.8.1",
-        "zone.js": "0.15.1"
+        "zone.js": "^0.16.3"
     },
     "devDependencies": {
         "@angular/build": "^22.1.7",
@@ -61,9 +61,8 @@
         "@commitlint/config-conventional": "19.8.1",
         "@cypress/schematic": "3.0.0",
         "@tauri-apps/cli": "^1.6.0",
-        "@types/jasmine": "5.1.9",
-        "@types/jasminewd2": "2.0.13",
         "@types/node": "22.18.9",
+        "@vitest/coverage-v8": "^4.1.11",
         "angular-eslint": "22.1.0",
         "autoprefixer": "^10.4.20",
         "baseline-browser-mapping": "^2.10.14",
@@ -71,16 +70,9 @@
         "cypress": "latest",
         "dotenv": "^16.4.5",
         "eslint": "^9.28.0",
+        "happy-dom": "^20.14.5",
         "husky": "9.1.7",
         "is-ci": "4.1.0",
-        "istanbul-lib-instrument": "^6.0.3",
-        "jasmine-core": "5.6.0",
-        "jasmine-spec-reporter": "7.0.0",
-        "karma": "6.4.4",
-        "karma-chrome-launcher": "3.2.0",
-        "karma-coverage": "2.2.1",
-        "karma-jasmine": "5.1.0",
-        "karma-jasmine-html-reporter": "2.1.0",
         "lint-staged": "15.5.2",
         "postcss": "^8.4.45",
         "postcss-scss": "^4.0.6",
@@ -93,6 +85,7 @@
         "tailwindcss": "^3.4.11",
         "ts-node": "10.9.2",
         "typescript": "6.0.3",
-        "typescript-eslint": "^8.33.1"
+        "typescript-eslint": "^8.33.1",
+        "vitest": "^4.0.8"
     }
 }

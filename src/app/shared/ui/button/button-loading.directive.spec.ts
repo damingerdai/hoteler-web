@@ -27,7 +27,7 @@ describe('ButtonLoadingDirective', () => {
         TestBed.compileComponents();
     }));
 
-    xit('button loading', () => {
+    it.skip('button loading', () => {
         const fixture = TestBed.createComponent(TestApp);
         const testComponent = fixture.debugElement.componentInstance;
         const buttonDebugElement = fixture.debugElement.query(
@@ -42,15 +42,14 @@ describe('ButtonLoadingDirective', () => {
                 'mat-mdc-button-loading'
             )
         ).toBe(true);
-        expect(buttonNativeElement.disabled)
-            .withContext('Expected button to be disabled')
-            .toBe(true);
+        expect(
+            buttonNativeElement.disabled,
+            'Expected button to be disabled'
+        ).toBe(true);
         const spinner1 = fixture.debugElement.query(
             By.directive(MatProgressSpinner)
         )!.componentInstance;
-        expect(spinner1)
-            .withContext('Expected spinner to be existed')
-            .toBe(true);
+        expect(spinner1, 'Expected spinner to be existed').toBe(true);
 
         testComponent.loading = false;
         fixture.detectChanges();
@@ -59,14 +58,13 @@ describe('ButtonLoadingDirective', () => {
                 'mat-mdc-button-loading'
             )
         ).toBe(false);
-        expect(buttonNativeElement.disabled)
-            .withContext('Expected button not to be disabled')
-            .toBeFalse();
+        expect(
+            buttonNativeElement.disabled,
+            'Expected button not to be disabled'
+        ).toBe(false);
         const spinner2 = fixture.debugElement.query(
             By.directive(MatProgressSpinner)
         )?.componentInstance;
-        expect(spinner2)
-            .withContext('Expected spinner to be not existed')
-            .toBeFalsy();
+        expect(spinner2, 'Expected spinner to be not existed').toBeFalsy();
     });
 });
