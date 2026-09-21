@@ -1,12 +1,21 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ApiService {
     private httpClient = inject(HttpClient);
+
+    private resolveUrl(url: string): string {
+        if (/^https?:\/\//i.test(url) || !environment.apiOrigin) {
+            return url;
+        }
+
+        return `${environment.apiOrigin.replace(/\/$/, '')}/${url.replace(/^\//, '')}`;
+    }
 
     public post<T>(
         url: string,
@@ -26,7 +35,7 @@ export class ApiService {
                 );
             });
         }
-        return this.httpClient.post<T>(url, params, httpOptions);
+        return this.httpClient.post<T>(this.resolveUrl(url), params, httpOptions);
     }
 
     public put<T>(
@@ -47,7 +56,7 @@ export class ApiService {
                 );
             });
         }
-        return this.httpClient.put<T>(url, params, httpOptions);
+        return this.httpClient.put<T>(this.resolveUrl(url), params, httpOptions);
     }
 
     public get<T>(
@@ -77,10 +86,10 @@ export class ApiService {
             });
         }
 
-        return this.httpClient.get<T>(url, { params });
+        return this.httpClient.get<T>(this.resolveUrl(url), { params, headers: httpOptions.headers });
     }
 
     public delete<T>(url: string): Observable<T> {
-        return this.httpClient.delete<T>(url);
+        return this.httpClient.delete<T>(this.resolveUrl(url));
     }
 }

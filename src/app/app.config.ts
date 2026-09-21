@@ -31,6 +31,6 @@ export const appConfig: ApplicationConfig = {
         appInitializerProviders,
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideNativeDateAdapter(),
-        provideHotToastConfig({ theme: 'material' }),
+        provideHotToastConfig({ theme: 'material', position: 'top-right', duration: 3000 }),
     ],
 };
