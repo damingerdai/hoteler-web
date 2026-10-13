@@ -1,84 +1,91 @@
 # Hoteler Web
 
-A modern hotel management frontend built with Angular 22, Angular Material, Tailwind CSS, and a responsive admin dashboard experience for daily hotel operations.
+<p align="center">
+  <img src="https://img.shields.io/badge/Angular-22-DD0031?style=for-the-badge&logo=angular" alt="Angular 22" />
+  <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind-3-06B6D4?style=for-the-badge&logo=tailwindcss" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Tauri-Desktop-24C8DB?style=for-the-badge&logo=tauri" alt="Tauri" />
+</p>
 
-This project is the frontend for [hoteler](https://github.com/damingerdai/hoteler), designed to help staff manage rooms, customers, orders, users, and operational insights in a clean and efficient workflow.
+<p align="center">
+  <strong>Built for hospitality teams</strong>
+</p>
 
-## Overview
+<p align="center">
+  <img src="screenshots/dashboard.png" alt="Hoteler dashboard preview" width="980" />
+</p>
 
-Hoteler Web provides a polished control panel for hotel administration, combining operational data and business workflows in a single interface. From the login screen to the dashboard and dark-theme experience, the app is built to feel clear, fast, and professional for both desktop and browser-based management.
+Hoteler Web is the modern frontend for the [hoteler](https://github.com/damingerdai/hoteler) platform — a premium operational dashboard built to help hotel teams manage rooms, customers, staff access, orders, and daily service workflows from one system.
 
-## Highlights
+Built for hospitality businesses that need order, clarity, and speed, it brings a polished product experience to real-world hotel operations.
 
-- Modern admin dashboard with occupancy and analytics widgets
-- Room status monitoring and management
-- Customer profile and record tracking
-- User administration and access management
-- Order and operational workflow management
-- Settings and configuration panels
-- Responsive interface with light and dark themes
-- Desktop app support via Tauri
+<p align="center">
+  <img src="https://img.shields.io/badge/Rooms-Managed-22C55E?style=flat-square" alt="Rooms managed" />
+  <img src="https://img.shields.io/badge/Customers-Tracked-3B82F6?style=flat-square" alt="Customers tracked" />
+  <img src="https://img.shields.io/badge/Orders-Visible-F59E0B?style=flat-square" alt="Orders visible" />
+  <img src="https://img.shields.io/badge/Staff-Access-Control-EF4444?style=flat-square" alt="Staff access control" />
+</p>
 
-## Screenshots
+## Why hospitality teams use it
 
-### Login
+- Streamlined daily hotel operations from a single control panel
+- Better visibility into room status, performance, and service readiness
+- Cleaner guest and customer relationship management
+- Simpler internal staff access and permission control
+- A more premium interface for both web and desktop environments
+- A modern foundation ready for real product deployment
 
-![Login](screenshots/login.png)
+## Feature highlights
 
-### Dashboard
+<div align="center">
 
-![Dashboard](screenshots/dashboard.png)
+| Capability           | Business value                                                |
+| -------------------- | ------------------------------------------------------------- |
+| 🏨 Room operations   | Keep occupancy and room readiness visible and easy to manage. |
+| 👥 Guest management  | Centralize customer records and service context.              |
+| 📊 Insight dashboard | Monitor hotel activity through a clean operational overview.  |
+| 👤 Role-based access | Manage staff permissions with clear structural control.       |
+| 🧾 Order workflows   | Track key tasks and service operations in one place.          |
+| 🌓 Theme support     | Use a comfortable light theme or focused dark mode.           |
+| 🖥️ Desktop-ready     | Package and ship the same experience through Tauri.           |
 
-### Dark mode
+</div>
 
-![Dark Mode](screenshots/dark-mode.png)
+## Product showcase
 
-## Tech Stack
+<p align="center">
+  <table>
+    <tr>
+      <td><img src="screenshots/login.png" width="290" alt="Login screen" /></td>
+      <td><img src="screenshots/dashboard.png" width="290" alt="Dashboard" /></td>
+      <td><img src="screenshots/room.png" width="290" alt="Room management" /></td>
+    </tr>
+    <tr>
+      <td><img src="screenshots/customer.png" width="290" alt="Customer management" /></td>
+      <td><img src="screenshots/users.png" width="290" alt="Users" /></td>
+      <td><img src="screenshots/dark-mode.png" width="290" alt="Dark mode" /></td>
+    </tr>
+  </table>
+</p>
+
+> Built to connect a hotel’s operational workflow to a modern web application, with deployment patterns that work for both browser-based and desktop environments.
+
+## Built with
 
 - Angular 22
 - Angular Material
-- Tailwind CSS 3
-- RxJS and Angular Router
+- Tailwind CSS
+- RxJS + Angular Router
 - TypeScript
-- Vite-based Vitest for tests
+- Vitest
 - ESLint + Stylelint
-- Tauri for desktop packaging
+- Tauri
 
-## Main Features
-
-### Dashboard
-
-The dashboard gives hotel staff a quick snapshot of operational health, including room occupancy trends, occupancy distribution, and visual insights that help with daily planning.
-
-### Room management
-
-Manage room statuses, availability, and related hotel inventory information in a structured administrative view.
-
-### Customer management
-
-Track customer information and relevant operational records in one place to support service workflows and account maintenance.
-
-### User and permissions
-
-Manage staff accounts, access, and role-related tasks through the built-in user administration area.
-
-### Orders and settings
-
-Handle operational tasks and app configuration from dedicated modules designed to keep the management flow organized.
-
-## Project Structure
-
-- `src/app/routes` — feature modules such as dashboard, room, customer, user, orders, and settings
-- `src/app/core` — shared services, guards, API layer, and initialization logic
-- `src/app/layout` — admin and common application layouts
-- `src-tauri` — desktop application wrapper built with Tauri
-- `screenshots` — UI screenshots used for documentation and product showcase
-
-## Getting Started
+## Getting started
 
 ### Prerequisites
 
-- Node.js 24 or newer
+- Node.js 24+
 - npm
 
 ### Install dependencies
@@ -87,13 +94,11 @@ Handle operational tasks and app configuration from dedicated modules designed t
 npm install
 ```
 
-### Start the app in development mode
+### Run locally
 
 ```bash
 npm start
 ```
-
-The app runs locally and proxies API requests through the backend configuration. By default, the local backend endpoint is expected at `http://localhost:8443` unless you override it in your environment.
 
 ### Production build
 
@@ -101,40 +106,44 @@ The app runs locally and proxies API requests through the backend configuration.
 npm run build -- --configuration production
 ```
 
-### Run tests
+### Test suite
 
 ```bash
 npm test
 ```
 
-For a single CI-style run:
-
-```bash
-npm run test:ci
-```
-
-### Linting
+### Lint
 
 ```bash
 npm run lint
 ```
 
-## Environment configuration
+## Backend integration & deployment
 
-The frontend expects the backend API under `/api/v1/...` and uses a proxy configured in `src/proxy.conf.js`.
+Hoteler Web is designed to work as the frontend layer of a larger hospitality platform and integrates with a backend via `/api/v1/...` routes.
 
-Create or update your local `.env` file if needed:
+The frontend uses a proxy configuration in `src/proxy.conf.js` to support local development and environment-specific deployment patterns.
+
+Example local config:
 
 ```bash
 BACKEND_URL=http://localhost:8443
 ```
 
-This value is used by the dev proxy so the frontend can reach the backend during local development.
+This makes it easy to connect the app to a local backend during development, then deploy the same UI against a hosted backend or production environment with minimal changes.
 
-## Related Project
+## Project structure
+
+- `src/app/routes` — dashboard, room, customer, user, settings, and orders features
+- `src/app/core` — shared services, API logic, guards, and initialization
+- `src/app/layout` — application shell and navigation structure
+- `src-tauri` — desktop packaging with Tauri
+- `screenshots` — UI assets used for product presentation and documentation
+
+## Related repository
 
 - Backend: [hoteler](https://github.com/damingerdai/hoteler)
 
-## License
+## Summary
 
-This project is distributed under the repository's existing licensing terms.
+Hoteler Web brings a startup-grade product experience to hotel management: cleaner operations, faster decisions, and a more polished workflow for hospitality teams that need software they can trust every day.
