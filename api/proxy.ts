@@ -54,17 +54,18 @@ export default async function handler(request: Request): Promise<Response> {
         requestUrl.pathname + requestUrl.search,
         BACKEND_URL.endsWith('/') ? BACKEND_URL : `${BACKEND_URL}/`
     );
+    const method = request.method.toUpperCase();
+    const hasBody = method !== 'GET' && method !== 'HEAD';
 
     const proxyRequest = new Request(destinationUrl, {
-        body: request.body,
+        method,
         headers: getForwardedHeaders(request),
-        method: request.method,
-        ...(request.method !== 'GET' &&
-            request.method !== 'HEAD' && { duplex: 'half' as const }),
+        body: hasBody ? await request.arrayBuffer() : undefined,
+        redirect: 'manual',
     });
 
     try {
-		console.log('Proxying request to:', destinationUrl);
+        console.log('Proxying request to:', destinationUrl);
         const response = await fetch(proxyRequest);
         const headers = new Headers(response.headers);
 
