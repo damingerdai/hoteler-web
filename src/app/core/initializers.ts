@@ -1,15 +1,15 @@
 import { inject, provideAppInitializer } from '@angular/core';
-import { FontfaceobserverService } from './bootstrap/fontfaceobserver.service';
+import { FontLoader } from './bootstrap/font-loader';
 
 const FontfaceobserverServiceFactory = (
-    fontfaceobserverService: FontfaceobserverService
+    fontfaceobserverService: FontLoader
 ) => {
     return () => fontfaceobserverService.load();
 };
 
 export const appInitializerProviders = [
     provideAppInitializer(() => {
-        const fontfaceobserverService = inject(FontfaceobserverService);
+        const fontfaceobserverService = inject(FontLoader);
 
         return FontfaceobserverServiceFactory(fontfaceobserverService)();
     }),

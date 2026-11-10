@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
-import { ForbiddenComponent } from './forbidden.component';
+import { Forbidden } from './forbidden';
 
 export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: ForbiddenComponent
+    component: Forbidden
   }
 ];

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { canActivateFn } from './core/guards/auth.guard';
-import { AdminLayoutComponent } from './layout/admin-layout';
-import { CommonLayoutComponent } from './layout/common-layout';
+import { canActivateFn } from './core/guards/auth-guard';
+import { AdminLayout } from './layout/admin-layout';
+import { CommonLayout } from './layout/common-layout';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AdminLayoutComponent,
+    component: AdminLayout,
     children: [
       {
         path: '',
@@ -76,7 +76,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: CommonLayoutComponent,
+    component: CommonLayout,
     children: [
       {
         path: 'login',

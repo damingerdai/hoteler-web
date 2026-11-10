@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { UnauthorizedComponent } from './unauthorized.component';
+import { Unauthorized } from './unauthorized';
 
 export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: UnauthorizedComponent
+    component: Unauthorized
   }
 ];

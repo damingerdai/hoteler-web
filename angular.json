@@ -239,19 +239,19 @@
             "type": ""
         },
         "@schematics/angular:guard": {
-            "typeSeparator": "."
+            "typeSeparator": "-"
         },
         "@schematics/angular:interceptor": {
-            "typeSeparator": "."
+            "typeSeparator": "-"
         },
         "@schematics/angular:module": {
-            "typeSeparator": "."
+            "typeSeparator": "-"
         },
         "@schematics/angular:pipe": {
-            "typeSeparator": "."
+            "typeSeparator": "-"
         },
         "@schematics/angular:resolver": {
-            "typeSeparator": "."
+            "typeSeparator": "-"
         }
     }
 }

@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { NotFoundComponent } from './not-found.component';
+import { NotFound } from './not-found';
 
 export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: NotFoundComponent
+    component: NotFound
   }
 ];

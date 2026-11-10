@@ -32,7 +32,7 @@ Angular 22 frontend (standalone components) for the hoteler hotel-management sys
 
 - Single app project `hoteler-web`; entrypoints `src/main.ts` + `src/app/app.config.ts`; top-level routes in `src/app/app.route.ts`.
 - Features live in `src/app/routes/<feature>/` (dashboard, room, customer, user, settings, orders — guarded by `canActivateFn` from `core/guards`; login/register/403/401/404 public), each rendered inside one of two layouts (`src/app/layout/admin-layout|common-layout`). Feature routes are lazy-loaded per folder.
-- `src/app/core/` holds cross-cutting code: `api/api.service.ts` (typed HttpClient wrapper), `services/*` (one folder per domain), `interceptors` (auth token), `guards`, `initializers`.
+- `src/app/core/` holds cross-cutting code: `api/api-client.ts` (typed HttpClient wrapper), `services/*` (one folder per domain), `interceptors` (auth token), `guards`, `initializers`.
 - All HTTP calls use relative URLs (`/api/v1/...`) — there is no API base URL in code. `/api` is wired at the edge per deployment:
     - dev: `src/proxy.conf.js` + `.env` `BACKEND_URL`
     - Docker: `_nginx/default.template` + `scripts/run.sh` render an nginx proxy from the runtime `BACKEND_URL` env var
@@ -43,7 +43,8 @@ Angular 22 frontend (standalone components) for the hoteler hotel-management sys
 ## Conventions & gotchas
 
 - Prettier: 4-space indent, single quotes, semicolons, es5 trailing commas.
-- Schematics generate flat standalone components (`flat: true`): files sit directly in the feature folder as `name.component.{ts,html,scss,spec.ts}`; selector prefix `app` (`test` and empty prefix also allowed in specs and `src/app/shared/`).
+- Schematics generate flat standalone components (`flat: true`): files sit directly in the feature folder as `name.ts`, `name.html`, `name.scss`, and `name.spec.ts`; selector prefix `app` (`test` and empty prefix also allowed in specs and `src/app/shared/`).
+- Components and directives omit role suffixes in filenames and class names (`Navbar` in `navbar.ts`). Services use purpose-based names (`CustomerData` in `customer-data.ts`, `UserSession` in `user-session.ts`). Guards, interceptors, pipes, modules, and resolvers use hyphenated suffixes (`auth-guard.ts`, `user-role-display-pipe.ts`), matching the CLI configuration. Update imports, templates, styles, and colocated specs together when renaming.
 - TypeScript is NOT strict (`strict: false`, `strictNullChecks: false`) — don't introduce strict-only idioms or assume null checks are enforced.
 - Tailwind 3 is available alongside Angular Material. SCSS include paths contain `node_modules`, `src`, `src/styles` — styles imports don't need relative `../` paths.
 - Component style budget: 6 kB warning / 10 kB error (angular.json) — keep component SCSS lean.

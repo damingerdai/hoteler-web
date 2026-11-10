@@ -1,1 +1,1 @@
-export * from './loading-shade.component';
+export * from './loading-shade';

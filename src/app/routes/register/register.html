@@ -1,0 +1,105 @@
+<div class="register-container">
+    <mat-card class="register-card" appearance="raised">
+        <div class="card-header-visual">
+            <mat-icon color="primary" class="app-logo"
+                >person_add_alt_1</mat-icon
+            >
+            <h1 class="mat-headline-medium">创建 Hoteler 账号</h1>
+            <p class="mat-body-medium text-secondary">
+                加入我们，开启您的智能酒店管理之旅
+            </p>
+        </div>
+
+        <mat-card-content>
+            <form
+                [formGroup]="form"
+                (ngSubmit)="register()"
+                class="register-form"
+            >
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>用户名</mat-label>
+                    <input
+                        matInput
+                        placeholder="建议使用常用邮箱或手机号"
+                        formControlName="username"
+                        required
+                    />
+                    <mat-icon matPrefix>account_circle</mat-icon>
+                    @if (username.invalid && username.touched) {
+                    <mat-error>请输入有效的用户名</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>设置密码</mat-label>
+                    <input
+                        matInput
+                        [type]="togglePassword.type"
+                        formControlName="password"
+                        placeholder="请输入密码"
+                        required
+                    />
+                    <mat-icon matPrefix>password</mat-icon>
+                    <matx-pass-toggle-visibility #togglePassword matSuffix />
+                    @if (password.invalid && password.touched) {
+                    <mat-error>密码是必填项</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>确认密码</mat-label>
+                    <input
+                        matInput
+                        [type]="hideConfirmPassword ? 'password' : 'text'"
+                        formControlName="confirmPassword"
+                        placeholder="请再次输入密码以确认"
+                        required
+                    />
+                    <mat-icon matPrefix>verified_user</mat-icon>
+                    <button
+                        type="button"
+                        mat-icon-button
+                        matSuffix
+                        (click)="toggleVisibilityConfirmPasswordIcon($event)"
+                        [attr.aria-label]="'切换密码可见性'"
+                    >
+                        <mat-icon
+                            >{{ hideConfirmPassword ? 'visibility_off' :
+                            'visibility' }}</mat-icon
+                        >
+                    </button>
+
+                    @if ( password.valid && confirmPassword.valid &&
+                    form.errors?.['identityPassword'] ) {
+                    <mat-error>两次输入的密码不一致</mat-error>
+                    } @else if ( confirmPassword.invalid &&
+                    confirmPassword.touched ) {
+                    <mat-error>请再次输入密码</mat-error>
+                    }
+                </mat-form-field>
+
+                <button
+                    #btn
+                    mat-flat-button
+                    color="primary"
+                    class="register-button"
+                    type="submit"
+                    [disabled]="form.invalid || isLoading"
+                >
+                    @if (!isLoading) {
+                    <span>立即注册</span>
+                    } @else {
+                    <mat-spinner diameter="24"></mat-spinner>
+                    }
+                </button>
+            </form>
+        </mat-card-content>
+
+        <mat-card-footer class="register-footer">
+            <div class="footer-content">
+                <span>已经有账号了?</span>
+                <a mat-button color="primary" routerLink="/login">返回登录</a>
+            </div>
+        </mat-card-footer>
+    </mat-card>
+</div>
