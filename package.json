@@ -70,7 +70,7 @@
         "cypress": "latest",
         "dotenv": "^16.4.5",
         "eslint": "^9.28.0",
-        "happy-dom": "^20.14.5",
+        "happy-dom": "^21.0.0",
         "husky": "9.1.7",
         "is-ci": "4.1.0",
         "lint-staged": "15.5.2",
