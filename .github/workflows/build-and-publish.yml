@@ -58,6 +58,8 @@ jobs:
               with:
                   ref: master
                   fetch-depth: 0
+                  token: ${{ secrets.RELEASE_TOKEN }}
+                  persist-credentials: true
 
             - name: Set up Node.js
               uses: actions/setup-node@v7.1.0
