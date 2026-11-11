@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { RoomComponent } from './room.component';
+import { Room } from './room';
 
 export const routes: Routes = [
   {
     path: '',
-    component: RoomComponent
+    component: Room
   }
 ];

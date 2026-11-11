@@ -1,2 +1,2 @@
-export * from './user-role-display.pipe';
+export * from './user-role-display-pipe';
 

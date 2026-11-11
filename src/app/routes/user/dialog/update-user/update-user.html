@@ -1,0 +1,66 @@
+<div class="dialog-container">
+    <div mat-dialog-title class="dialog-header">
+        <div class="title-with-icon">
+            <mat-icon color="primary">manage_accounts</mat-icon>
+            <span>更新用户信息</span>
+        </div>
+        <p class="mat-body-medium secondary-text">
+            请修改用户的登录凭证或所属角色
+        </p>
+    </div>
+    <form [formGroup]="form">
+        <mat-dialog-content class="dialog-content-wrapper">
+            <mat-form-field
+                class="w-full form-filed-full full-width"
+                appearance="outline"
+            >
+                <mat-label>用户名 (不可修改)</mat-label>
+                <mat-icon matPrefix>lock_outline</mat-icon>
+                <input
+                    matInput
+                    placeholder="请输入用户名"
+                    formControlName="username"
+                />
+                <mat-hint>建议使用英文或工号</mat-hint>
+            </mat-form-field>
+            <mat-form-field
+                class="w-full form-field-full full-width mt-4"
+                appearance="outline"
+            >
+                <mat-label>角色</mat-label>
+                <mat-icon matPrefix>badge</mat-icon>
+                <mat-select
+                    multiple
+                    formControlName="roles"
+                    placeholder="请选择角色"
+                >
+                    @for (role of roles; track role.id) {
+                    <mat-option [value]="role.name">
+                        <span class="option-text">{{ role.name }}</span>
+                    </mat-option>
+                    }
+                </mat-select>
+                <mat-hint>可多选，至少包含一个基础权限</mat-hint>
+            </mat-form-field>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end" class="dialog-actions">
+            <button
+                mat-button
+                mat-dialog-close
+                cdkFocusInitial
+                color="secondary"
+            >
+                取消
+            </button>
+            <button
+                mat-flat-button
+                [disabled]="form.invalid"
+                color="primary"
+                type="submit"
+                [mat-dialog-close]="form.getRawValue()"
+            >
+                保存更新
+            </button>
+        </mat-dialog-actions>
+    </form>
+</div>

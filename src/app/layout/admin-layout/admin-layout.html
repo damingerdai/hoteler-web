@@ -1,0 +1,58 @@
+<app-navbar
+    class="mat-elevation-z6"
+    [showMenu]="true"
+    (menuClick)="toggleDrawer()"
+></app-navbar>
+<div class="layout-body">
+    <mat-drawer-container class="layout-container" autosize>
+        <mat-drawer
+            class="drawer"
+            [class.collapsed]="drawerCollapsed && !isMobile"
+            #drawer
+            [opened]="drawerOpened"
+            [mode]="mode"
+            [disableClose]="mode === 'side'"
+        >
+            <div class="drawer-content">
+                @for (menu of menus; track $index) { @if (menu.type === 'menu')
+                {
+                <mat-nav-list class="nav-list">
+                    @if (menu.header) {
+                    <div matSubheader class="nav-subheader">
+                        {{ menu.header }}
+                    </div>
+                    } @for (item of menu.items; track item.link) {
+                    <a
+                        mat-list-item
+                        [routerLink]="item.link"
+                        routerLinkActive="active"
+                        (click)="closeDrawerInMobile()"
+                    >
+                        <mat-icon matListItemIcon> {{ item.icon }} </mat-icon>
+                        <span matListItemTitle>{{ item.line }}</span>
+                    </a>
+                    }
+                </mat-nav-list>
+                } @else if (menu.type === 'divider') {
+                <mat-divider class="my-2"></mat-divider>
+                } }
+                <div flexSpacer></div>
+                <mat-divider />
+                <mat-nav-list class="nav-list bottom-nav">
+                    <a
+                        mat-list-item
+                        routerLink="settings"
+                        routerLinkActive="active"
+                        (click)="closeDrawerInMobile()"
+                    >
+                        <mat-icon matListItemIcon>settings</mat-icon>
+                        <span matListItemTitle>设置</span>
+                    </a>
+                </mat-nav-list>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content class="main-content">
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

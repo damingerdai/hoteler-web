@@ -63,8 +63,7 @@ module.exports = tseslint.config(
     {
         files: [
             'src/app/shared/ui/**/*.ts',
-            'src/app/shared/ui/**/*.directive.ts',
-            'src/app/shared/**/*.component.ts',
+            'src/app/shared/components/**/*.ts',
         ],
         extends: [
             eslint.configs.recommended,

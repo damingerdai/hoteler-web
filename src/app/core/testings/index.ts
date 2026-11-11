@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NgModule } from '@angular/core';
-import { ApiService } from '../api/api.service';
+import { ApiClient } from '../api/api-client';
 import {
     provideHttpClient,
     withInterceptorsFromDi,
@@ -12,7 +12,7 @@ import {
     declarations: [],
     imports: [CommonModule],
     providers: [
-        ApiService,
+        ApiClient,
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting(),
     ],
