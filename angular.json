@@ -23,6 +23,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular/build:application",
+                    "defaultConfiguration": "production",
                     "options": {
                         "outputPath": "dist/hoteler",
                         "index": "src/index.html",
