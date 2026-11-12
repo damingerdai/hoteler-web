@@ -1,3 +1,11 @@
+## <small>0.0.7-beta.0 (2026-11-12)</small>
+
+* chore(deps): update angular-cli monorepo to v22.2.6 (#1503) ([5de490a](https://github.com/damingerdai/hoteler-web/commit/5de490a)), closes [#1503](https://github.com/damingerdai/hoteler-web/issues/1503)
+* chore(deps): update dependency happy-dom to v21 (#1502) ([0e00bf2](https://github.com/damingerdai/hoteler-web/commit/0e00bf2)), closes [#1502](https://github.com/damingerdai/hoteler-web/issues/1502)
+* ci: use changelog entries for GitHub release notes ([922a355](https://github.com/damingerdai/hoteler-web/commit/922a355))
+* fix: default Angular builds to production ([e88cfb8](https://github.com/damingerdai/hoteler-web/commit/e88cfb8))
+* fix(deps): update dependency rxjs to v7.8.2 (#1426) ([969dd7a](https://github.com/damingerdai/hoteler-web/commit/969dd7a)), closes [#1426](https://github.com/damingerdai/hoteler-web/issues/1426)
+* refactor: align Angular file naming with style guide (#1505) ([7333205](https://github.com/damingerdai/hoteler-web/commit/7333205)), closes [#1505](https://github.com/damingerdai/hoteler-web/issues/1505)
 ## <small>0.0.6-alpha.0 (2026-11-11)</small>
 
 - ci: add build and publish workflow ([5e70f13](https://github.com/damingerdai/hoteler-web/commit/5e70f13))

@@ -1,6 +1,6 @@
 {
     "name": "hoteler-web",
-    "version": "0.0.6-alpha.0",
+    "version": "0.0.7-beta.0",
     "engines": {
         "node": ">=24.0.0"
     },
