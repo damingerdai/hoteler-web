@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 
 import { ApiClient } from 'src/app/core/api/api-client';
 import {
@@ -11,9 +11,7 @@ import {
 } from 'src/app/core/models';
 import { ICustomer } from 'src/app/core/models/customer';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Service()
 export class CustomerData {
     private api = inject(ApiClient);
 

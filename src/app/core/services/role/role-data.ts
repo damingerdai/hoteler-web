@@ -1,12 +1,10 @@
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { ApiClient } from '../../api/api-client';
 import { Observable } from 'rxjs';
 import { IRole } from '../../models/roles';
 import { ListResponse } from '../../models';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Service()
 export class RoleData {
     private api = inject(ApiClient);
 

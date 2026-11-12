@@ -5,14 +5,14 @@ import {
     HttpInterceptor,
     HttpRequest,
 } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UserSession } from '../services/settings/user-session';
 
-@Injectable()
+@Service()
 export class AuthInterceptor implements HttpInterceptor {
     private router = inject(Router);
     private settings = inject(UserSession);

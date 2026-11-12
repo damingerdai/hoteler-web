@@ -1,11 +1,9 @@
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IUser, IUserToken } from '../../models';
 import { LocalStorage } from '../local-storage';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Service()
 export class UserSession {
     private localStorageService = inject(LocalStorage);
 

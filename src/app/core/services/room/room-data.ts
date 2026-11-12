@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiClient } from 'src/app/core/api/api-client';
 import { DataResponse, IResponse, ListResponse } from 'src/app/core/models';
@@ -8,9 +8,7 @@ import { IRoom, IRoomStatusStat } from 'src/app/core/models/room';
 type RoomsListResponse = ListResponse<IRoom>;
 type IRoomStatusStatReponse = DataResponse<IRoomStatusStat>;
 
-@Injectable({
-    providedIn: 'root',
-})
+@Service()
 export class RoomData {
     private api = inject(ApiClient);
 

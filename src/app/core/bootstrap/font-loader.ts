@@ -1,11 +1,9 @@
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
 import { Observer } from 'tfontfaceobserver';
 import { StyleManager } from '../services/style-manager/style-manager';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Service()
 export class FontLoader {
     private styleManager = inject(StyleManager);
 

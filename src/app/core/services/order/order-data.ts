@@ -1,12 +1,10 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiClient } from '../../api/api-client';
 import { DataResponse, IOrder, ListPageResponse } from '../../models';
 import { HttpParams } from '@angular/common/http';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Service()
 export class OrderData {
     private api = inject(ApiClient);
 

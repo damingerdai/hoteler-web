@@ -1,11 +1,9 @@
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiClient } from '../../api/api-client';
 import { DataResponse, IResponse, IUser, ListResponse } from '../../models';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Service()
 export class UserData {
     private api = inject(ApiClient);
 
