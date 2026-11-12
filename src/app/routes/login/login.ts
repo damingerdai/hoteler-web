@@ -1,10 +1,4 @@
-import {
-    Component,
-    OnInit,
-    computed,
-    inject,
-    signal,
-} from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import {
     FieldState,
     FieldTree,
@@ -96,18 +90,15 @@ export class Login implements OnInit {
                 return this.toLoginErrors(res);
             }
             const token = res.userToken;
-            this.settings.saveToken(token);
             const userRes = await firstValueFrom(
                 this.userApi.getCurrentUser(token.accessToken)
             );
             if (userRes.status == 200) {
-                this.settings.user = {
-                    ...this.settings.user,
-                    ...userRes.data,
-                };
+                this.settings.start(userRes.data, token);
                 this.router.navigate(['dashboard']);
+                return undefined;
             }
-            return undefined;
+            return this.toLoginErrors(userRes);
         } catch (err) {
             return this.toLoginErrors(err);
         }

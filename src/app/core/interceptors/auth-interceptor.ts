@@ -6,58 +6,47 @@ import {
     HttpRequest,
 } from '@angular/common/http';
 import { Service, inject } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { throwError, Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UserSession } from '../services/settings/user-session';
+import { SessionNavigation } from '../services/settings/session-navigation';
 
 @Service()
 export class AuthInterceptor implements HttpInterceptor {
-    private router = inject(Router);
-    private settings = inject(UserSession);
-    private dialog = inject(MatDialog);
+    private readonly session = inject(UserSession);
+    private readonly navigation = inject(SessionNavigation);
 
     intercept(
         request: HttpRequest<unknown>,
         next: HttpHandler
     ): Observable<HttpEvent<unknown>> {
-        return this.afterIntercept(this.doIntercept(request, next));
-    }
+        // The application reaches its backend exclusively through relative /api URLs.
+        const path = request.url.split(/[?#]/)[0];
+        const isApi = path.startsWith('/api/');
+        const isLogin = path === '/api/v1/token';
+        const token = this.session.user?.accessToken;
+        const authenticatedRequest =
+            isApi && !isLogin && token && !request.headers.has('Authorization')
+                ? request.clone({
+                      setHeaders: { Authorization: 'Bearer ' + token },
+                  })
+                : request;
 
-    private doIntercept(
-        request: HttpRequest<unknown>,
-        next: HttpHandler
-    ): Observable<HttpEvent<unknown>> {
-        const accessToken = this.settings?.user?.accessToken;
-        if (accessToken) {
-            const authReq = request.clone({
-                setHeaders: { Authorization: 'Bearer ' + accessToken },
-            });
-            return next.handle(authReq);
-        }
-        return next.handle(request);
-    }
-
-    private afterIntercept(response: Observable<HttpEvent<unknown>>) {
-        return response.pipe(
+        return next.handle(authenticatedRequest).pipe(
             catchError((error) => {
-                if (error instanceof HttpErrorResponse) {
-                    switch (error.status) {
-                        case 401:
-                            this.dialog.closeAll();
-                            this.settings.user = null;
-                            this.router.navigateByUrl('/401');
-                            break;
-                        case 403:
-                            this.dialog.closeAll();
-                            this.settings.user = null;
-                            this.router.navigateByUrl('/403');
-                            break;
-                        default:
-                            return throwError(() => error);
-                    }
+                if (
+                    error instanceof HttpErrorResponse &&
+                    error.status === 401 &&
+                    isApi &&
+                    !isLogin &&
+                    token &&
+                    this.session.user?.accessToken === token &&
+                    authenticatedRequest.headers.get('Authorization') ===
+                        'Bearer ' + token
+                ) {
+                    this.navigation.expire();
                 }
+                // Permission errors and login errors belong to the requesting UI.
                 return throwError(() => error);
             })
         );

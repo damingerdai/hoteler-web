@@ -1,55 +1,81 @@
 import { Service, inject } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { IUser, IUserToken } from '../../models';
 import { LocalStorage } from '../local-storage';
 
+export type SessionUser = Readonly<IUser>;
+
 @Service()
 export class UserSession {
-    private localStorageService = inject(LocalStorage);
+    private readonly storage = inject(LocalStorage);
+    private readonly state = new BehaviorSubject<SessionUser | null>(
+        this.restore()
+    );
 
-    private _user: Partial<IUser> = {};
-    private userSource = new Subject<Partial<IUser>>();
-    public user$ = this.userSource.asObservable();
+    readonly user$ = this.state.asObservable();
 
-    public set user(user: Partial<IUser> | null) {
-        const exitUser =
-            this.localStorageService.get<Partial<IUser>>('user') ?? {};
-        this._user = {
-            ...exitUser,
-            ...(user ?? {}),
-        };
-        this.localStorageService.set('user', user);
-        this.userSource.next(user ?? {});
+    get user(): SessionUser | null {
+        return this.state.value;
     }
 
-    public get user() {
-        if (!this._user) {
-            this._user = this.localStorageService.get<Partial<IUser>>('user') ?? {};
+    get isAuthenticated(): boolean {
+        return this.user !== null;
+    }
+
+    /** Publish a session only after both authentication and profile loading succeed. */
+    start(user: IUser, token: IUserToken): void {
+        const session = { ...user, ...token };
+        if (!this.isSession(session)) {
+            throw new Error('Invalid user session');
         }
-        if (!this._user) {
-            this._user = {};
+        this.commit(session);
+    }
+
+    clearUser(): void {
+        this.commit(null);
+    }
+
+    private commit(user: SessionUser | null): void {
+        const snapshot = user ? Object.freeze(structuredClone(user)) : null;
+        try {
+            if (snapshot) {
+                this.storage.set('user', snapshot);
+            } else {
+                this.storage.remove('user');
+            }
+        } finally {
+            // Logout must clear memory even when browser storage is unavailable.
+            this.state.next(snapshot);
         }
-        return this._user;
     }
 
-    public saveToken(token: IUserToken) {
-        const user = this.localStorageService.get<Partial<IUser>>('user') ?? {};
-        user.accessToken = token.accessToken;
-        user.refreshToken = token.refreshToken;
-        user.exp = token.exp;
-        this._user = user;
-        this.localStorageService.set('user', user);
-    }
-
-    constructor() {
-        const user = this.localStorageService.get<Partial<IUser>>('user');
-        if (user) {
-            this._user = user;
+    private restore(): SessionUser | null {
+        try {
+            const user = this.storage.get<unknown>('user');
+            return this.isSession(user)
+                ? Object.freeze(structuredClone(user))
+                : null;
+        } catch {
+            return null;
         }
     }
 
-    public clearUser() {
-        this.user = null;
-        this.localStorageService.remove('user');
+    private isSession(value: unknown): value is IUser {
+        if (!value || typeof value !== 'object') {
+            return false;
+        }
+        const user = value as Partial<IUser>;
+        return (
+            typeof user.id === 'string' &&
+            user.id.length > 0 &&
+            typeof user.username === 'string' &&
+            user.username.length > 0 &&
+            typeof user.accessToken === 'string' &&
+            user.accessToken.length > 0 &&
+            typeof user.refreshToken === 'string' &&
+            user.refreshToken.length > 0 &&
+            typeof user.exp === 'number' &&
+            Number.isFinite(user.exp)
+        );
     }
 }
