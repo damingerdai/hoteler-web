@@ -3,7 +3,7 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DirectivesModule } from './directives-module';
 
-// eslint-disable-next-line @angular-eslint/prefer-standalone
+ 
 @Component({
     template: `
         <nav style="display: flex">

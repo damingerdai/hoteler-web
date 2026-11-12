@@ -3,7 +3,7 @@ import { waitForAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DirectivesModule } from './directives-module';
 
-// eslint-disable-next-line @angular-eslint/prefer-standalone
+ 
 @Component({
     template: `
         <img
@@ -13,7 +13,7 @@ import { DirectivesModule } from './directives-module';
     `,
     standalone: false,
 })
-// eslint-disable-next-line @angular-eslint/component-class-suffix
+ 
 class TestApp {}
 
 describe('Img', () => {

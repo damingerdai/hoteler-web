@@ -12,7 +12,7 @@ import { ButtonModule } from './button-module';
     selector: 'test-app',
     template: ` <button mat-button [loading]="loading">Test Button</button> `,
 })
-// eslint-disable-next-line @angular-eslint/component-class-suffix
+ 
 class TestApp {
     public loading = false;
 }

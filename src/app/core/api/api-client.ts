@@ -33,7 +33,11 @@ export class ApiClient {
                 );
             });
         }
-        return this.httpClient.post<T>(this.resolveUrl(url), params, httpOptions);
+        return this.httpClient.post<T>(
+            this.resolveUrl(url),
+            params,
+            httpOptions
+        );
     }
 
     public put<T>(
@@ -54,7 +58,11 @@ export class ApiClient {
                 );
             });
         }
-        return this.httpClient.put<T>(this.resolveUrl(url), params, httpOptions);
+        return this.httpClient.put<T>(
+            this.resolveUrl(url),
+            params,
+            httpOptions
+        );
     }
 
     public get<T>(
@@ -84,7 +92,10 @@ export class ApiClient {
             });
         }
 
-        return this.httpClient.get<T>(this.resolveUrl(url), { params, headers: httpOptions.headers });
+        return this.httpClient.get<T>(this.resolveUrl(url), {
+            params,
+            headers: httpOptions.headers,
+        });
     }
 
     public delete<T>(url: string): Observable<T> {

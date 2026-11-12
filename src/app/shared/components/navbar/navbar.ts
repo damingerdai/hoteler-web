@@ -1,4 +1,3 @@
-import { SessionNavigation } from 'src/app/core/services/settings/session-navigation';
 import {
     Component,
     EventEmitter,
@@ -140,10 +139,9 @@ export class Navbar implements OnInit, OnDestroy {
         }
     }
 
-    private readonly sessionNavigation = inject(SessionNavigation);
-
     public logout() {
-        this.sessionNavigation.logout();
+        this.settings.clearUser();
+        void this.router.navigateByUrl('/login');
     }
 
     public toggle() {

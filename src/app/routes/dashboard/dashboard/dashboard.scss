@@ -33,10 +33,6 @@
     grid-template-columns: repeat(2, 1fr); // 平板和桌面端双列
   }
 
-  @include breakpoints.respond-above(xl) {
-    // 如果以后图表多了，可以在超大屏幕开启三列
-    // grid-template-columns: repeat(3, 1fr); 
-  }
 }
 
 .chart-card {
