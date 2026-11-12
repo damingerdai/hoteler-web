@@ -121,7 +121,21 @@ jobs:
                   RELEASE_TAG: ${{ steps.version.outputs.tag }}
               run: |
                   set -euo pipefail
-                  ARGS=("$RELEASE_TAG" --verify-tag --title "$RELEASE_TAG" --generate-notes)
+                  NOTES_FILE="$RUNNER_TEMP/release-notes.md"
+                  node - "$NOTES_FILE" <<'NODE'
+                  const fs = require('node:fs');
+                  const changelog = fs.readFileSync('CHANGELOG.md', 'utf8');
+                  const headings = [...changelog.matchAll(/^#{1,3}\s+(?:<small>)?\[?v?(\d+\.\d+\.\d+(?:-[\w.-]+)?)(?=[\s\]])[^\n]*$/gm)];
+                  const version = process.env.RELEASE_TAG.replace(/^v/, '');
+                  const index = headings.findIndex((heading) => heading[1] === version);
+                  if (index === -1) {
+                      throw new Error(`No changelog entry found for ${version}`);
+                  }
+                  const start = headings[index].index;
+                  const end = headings[index + 1]?.index ?? changelog.length;
+                  fs.writeFileSync(process.argv[2], changelog.slice(start, end).trim() + '\n');
+                  NODE
+                  ARGS=("$RELEASE_TAG" --verify-tag --title "$RELEASE_TAG" --notes-file "$NOTES_FILE")
                   if [[ "$RELEASE_TAG" == *-* ]]; then
                       ARGS+=(--prerelease)
                   fi
