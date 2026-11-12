@@ -8,6 +8,9 @@ export class ApiClient {
     private httpClient = inject(HttpClient);
 
     private resolveUrl(url: string): string {
+        if (url.startsWith('api/')) {
+            url = '/' + url;
+        }
         if (/^https?:\/\//i.test(url) || !environment.apiOrigin) {
             return url;
         }

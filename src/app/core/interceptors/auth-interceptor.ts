@@ -29,7 +29,8 @@ export class AuthInterceptor implements HttpInterceptor {
                 ? request.url.slice(origin.length)
                 : request.url;
         const path = backendUrl.split(/[?#]/)[0];
-        const isApi = path.startsWith('/api/');
+        //const isApi = path.startsWith('/api/');
+        const isApi = path.startsWith('/api/') || path.startsWith('api/');
         const isLogin = path === '/api/v1/token';
         const token = this.session.user?.accessToken;
         const authenticatedRequest =
