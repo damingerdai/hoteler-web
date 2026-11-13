@@ -1,7 +1,4 @@
-import {
-    provideHttpClient,
-    withInterceptorsFromDi,
-} from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
     HttpTestingController,
     provideHttpClientTesting,
@@ -9,7 +6,7 @@ import {
 import { TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { httpInterceptorProviders } from '../../interceptors';
+import { authInterceptor } from '../../interceptors';
 import { UserSession } from '../settings/user-session';
 import { environment } from '../../../../environments/environment';
 import { RoomData } from './room-data';
@@ -23,9 +20,8 @@ describe('RoomData authentication', () => {
         environment.apiOrigin = '';
         TestBed.configureTestingModule({
             providers: [
-                provideHttpClient(withInterceptorsFromDi()),
+                provideHttpClient(withInterceptors([authInterceptor])),
                 provideHttpClientTesting(),
-                httpInterceptorProviders,
                 {
                     provide: UserSession,
                     useValue: { user: { accessToken: 'room-token' } },

@@ -1,24 +1,18 @@
 import { ApplicationConfig } from '@angular/core';
-import {
-    provideHttpClient,
-    withInterceptorsFromDi,
-    withXhr,
-} from '@angular/common/http';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
     provideRouter,
     withComponentInputBinding,
     withInMemoryScrolling,
 } from '@angular/router';
-import { routes } from './app.route';
-import { httpInterceptorProviders } from './core/interceptors';
-import { appInitializerProviders } from './core/initializers';
 import { provideHotToastConfig } from '@ngxpert/hot-toast';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { routes } from './app.route';
+import { authInterceptor } from './core/interceptors';
+import { appInitializerProviders } from './core/initializers';
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideAnimationsAsync(),
         provideRouter(
             routes,
             withInMemoryScrolling({
@@ -27,10 +21,13 @@ export const appConfig: ApplicationConfig = {
             }),
             withComponentInputBinding()
         ),
-        httpInterceptorProviders,
         appInitializerProviders,
-        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClient(withInterceptors([authInterceptor])),
         provideNativeDateAdapter(),
-        provideHotToastConfig({ theme: 'material', position: 'top-right', duration: 3000 }),
+        provideHotToastConfig({
+            theme: 'material',
+            position: 'top-right',
+            duration: 3000,
+        }),
     ],
 };

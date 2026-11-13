@@ -1,57 +1,42 @@
-import {
-    HttpErrorResponse,
-    HttpEvent,
-    HttpHandler,
-    HttpInterceptor,
-    HttpRequest,
-} from '@angular/common/http';
-import { Service, inject } from '@angular/core';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, throwError } from 'rxjs';
 import { UserSession } from '../services/settings/user-session';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-@Service()
-export class AuthInterceptor implements HttpInterceptor {
-    private readonly session = inject(UserSession);
-    private readonly dialog = inject(MatDialog);
-    private readonly router = inject(Router);
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+    const router = inject(Router);
+    const session = inject(UserSession);
+    const dialog = inject(MatDialog);
 
-    intercept(
-        request: HttpRequest<unknown>,
-        next: HttpHandler
-    ): Observable<HttpEvent<unknown>> {
-        const origin = environment.apiOrigin?.replace(/\/$/, '');
-        const backendUrl =
-            origin && request.url.startsWith(origin + '/')
-                ? request.url.slice(origin.length)
-                : request.url;
-        const path = backendUrl.split(/[?#]/)[0];
-        //const isApi = path.startsWith('/api/');
-        const isApi = path.startsWith('/api/') || path.startsWith('api/');
-        const isLogin = path === '/api/v1/token';
-        const token = this.session.user?.accessToken;
-        const authenticatedRequest =
-            isApi && !isLogin && token && !request.headers.has('Authorization')
-                ? request.clone({
-                      setHeaders: { Authorization: 'Bearer ' + token },
-                  })
-                : request;
+    const origin = environment.apiOrigin?.replace(/\/$/, '');
+    const backendUrl =
+        origin && req.url.startsWith(origin + '/')
+            ? req.url.slice(origin.length)
+            : req.url;
+    const path = backendUrl.split(/[?#]/)[0];
+    const isApi = path.startsWith('/api/') || path.startsWith('api/');
+    const isLogin = path === '/api/v1/token' || path === 'api/v1/token';
+    const token = session.user?.accessToken;
 
-        return next.handle(authenticatedRequest).pipe(
-            catchError((error) => {
-                if (
-                    error instanceof HttpErrorResponse &&
-                    (error.status === 401 || error.status === 403)
-                ) {
-                    this.dialog.closeAll();
-                    this.session.clearUser();
-                    void this.router.navigateByUrl('/' + error.status);
-                }
-                return throwError(() => error);
-            })
-        );
-    }
-}
+    const authenticatedRequest =
+        isApi && !isLogin && token && !req.headers.has('Authorization')
+            ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
+            : req;
+
+    return next(authenticatedRequest).pipe(
+        catchError((error) => {
+            if (
+                error instanceof HttpErrorResponse &&
+                (error.status === 401 || error.status === 403)
+            ) {
+                dialog.closeAll();
+                session.clearUser();
+                router.navigateByUrl(`/${error.status}`);
+            }
+            return throwError(() => error);
+        })
+    );
+};
