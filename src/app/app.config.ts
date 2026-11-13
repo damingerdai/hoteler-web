@@ -8,7 +8,7 @@ import {
 import { provideHotToastConfig } from '@ngxpert/hot-toast';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { routes } from './app.route';
-import { authInterceptor } from './core/interceptors';
+import { authInterceptor, baseUrlInterceptor } from './core/interceptors';
 import { appInitializerProviders } from './core/initializers';
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +22,9 @@ export const appConfig: ApplicationConfig = {
             withComponentInputBinding()
         ),
         appInitializerProviders,
-        provideHttpClient(withInterceptors([authInterceptor])),
+        provideHttpClient(
+            withInterceptors([baseUrlInterceptor, authInterceptor])
+        ),
         provideNativeDateAdapter(),
         provideHotToastConfig({
             theme: 'material',
