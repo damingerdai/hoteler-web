@@ -7,7 +7,7 @@ import { SharedPipesModule } from 'src/app/shared/shared-pipes-module';
 import { PageHeader, Tag } from 'src/app/shared/components';
 import { RouterModule, provideRouter } from '@angular/router';
 import { UserSession } from 'src/app/core/services/settings/user-session';
-import { LocalStorage } from 'src/app/core/services';
+import { LocalStorage } from 'src/app/core/services/local-storage';
 import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 describe('UserList', () => {

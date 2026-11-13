@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { Settings } from './settings';
 import { UserSession } from 'src/app/core/services/settings/user-session';
-import { LocalStorage } from 'src/app/core/services';
+import { LocalStorage } from 'src/app/core/services/local-storage';
 
 describe('Settings', () => {
   let component: Settings;

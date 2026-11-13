@@ -5,7 +5,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ThemePicker } from './theme-picker';
 import { ThemeStorage } from '../theme-storage/theme-storage';
 import { UserSession } from 'src/app/core/services/settings/user-session';
-import { LocalStorage } from 'src/app/core/services';
+import { LocalStorage } from 'src/app/core/services/local-storage';
 
 describe('ThemePicker', () => {
   let component: ThemePicker;

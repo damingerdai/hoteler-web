@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LocalStorage } from 'src/app/core/services';
+import { LocalStorage } from 'src/app/core/services/local-storage';
 import { UserSession } from 'src/app/core/services/settings/user-session';
 import { ApiTestingModule } from 'src/app/core/testings';
 

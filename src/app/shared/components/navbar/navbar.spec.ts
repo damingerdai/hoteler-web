@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { LocalStorage } from 'src/app/core/services';
+import { LocalStorage } from 'src/app/core/services/local-storage';
 import { UserSession } from 'src/app/core/services/settings/user-session';
 
 import { Navbar } from './navbar';
