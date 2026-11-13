@@ -10,6 +10,7 @@ import {
     ListResponse,
 } from 'src/app/core/models';
 import { ICustomer } from 'src/app/core/models/customer';
+import { httpResource } from '@angular/common/http';
 
 @Service()
 export class CustomerData {
@@ -42,6 +43,12 @@ export class CustomerData {
     > {
         return this.api.get<DataResponse<IPastWeekCustomerCountStat>>(
             'api/v1/stat/customers/counts'
+        );
+    }
+
+    public getPastWeekCustomerCountStatResource() {
+        return httpResource<DataResponse<IPastWeekCustomerCountStat>>(
+            () => 'api/v1/stat/customers/counts'
         );
     }
 }

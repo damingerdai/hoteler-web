@@ -1,4 +1,4 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpParams, httpResource } from '@angular/common/http';
 import { Service, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiClient } from 'src/app/core/api/api-client';
@@ -41,5 +41,11 @@ export class RoomData {
 
     public getRoomStatusStat(): Observable<IRoomStatusStatReponse> {
         return this.api.get<IRoomStatusStatReponse>('api/v1/stat/rooms/nums');
+    }
+
+    public getRoomStatusStatResource() {
+        return httpResource<IRoomStatusStatReponse>(
+            () => 'api/v1/stat/rooms/nums'
+        );
     }
 }
