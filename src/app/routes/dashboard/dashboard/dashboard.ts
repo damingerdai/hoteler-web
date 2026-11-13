@@ -1,10 +1,4 @@
-import {
-    Component,
-    OnInit,
-    inject,
-    signal,
-} from '@angular/core';
-import { forkJoin } from 'rxjs';
+import { Component, computed, inject } from '@angular/core';
 import { ApexOptions, NgxApexchartsModule } from 'ngx-apexcharts/signals';
 import { CustomerData } from 'src/app/core/services/customers';
 import { RoomData } from 'src/app/core/services/room';
@@ -13,7 +7,7 @@ import { LoadingShade } from 'src/app/shared/components/loading-shade';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
-type ApexOptions2 = ApexOptions & { show: boolean };
+type ApexOptionsResponse = ApexOptions & { show: boolean };
 
 @Component({
     selector: 'app-dashboard',
@@ -27,102 +21,79 @@ type ApexOptions2 = ApexOptions & { show: boolean };
         Breadcrumb,
     ],
 })
-export class Dashboard implements OnInit {
-    protected loading = signal(false);
+export class Dashboard {
+    private customerApi = inject(CustomerData);
+    private roomApi = inject(RoomData);
 
-    protected roomStatusDonutChart = signal<ApexOptions2>({
-        show: false,
-        chart: {
-            type: 'donut',
-            height: '300px',
-        },
-        title: {
-            text: '房间状态统计',
-        },
-        series: [44, 55, 13, 33],
-        labels: ['Apple', 'Mango', 'Orange', 'Watermelon'],
-        plotOptions: {
-            pie: {
-                donut: {
-                    labels: {
-                        show: true,
-                        name: {
-                            show: true,
-                        },
-                        value: {
-                            show: true,
-                        },
-                        total: {
-                            show: true,
-                        },
-                    },
+    private roomResource = this.roomApi.getRoomStatusStatResource();
+    private customerResource =
+        this.customerApi.getPastWeekCustomerCountStatResource();
+
+    protected loading = computed(
+        () => this.roomResource.isLoading() || this.customerResource.isLoading()
+    );
+
+    protected roomStatusDonutChart = computed<ApexOptionsResponse>(() => {
+        const baseOptions: ApexOptionsResponse = {
+            show: false,
+            chart: {
+                type: 'donut',
+                height: '300px',
+            },
+            title: {
+                text: '房间状态统计',
+            },
+        };
+
+        if (!this.roomResource.hasValue()) {
+            return baseOptions;
+        }
+        const res = this.roomResource.value();
+        if (res.status !== 200) {
+            return baseOptions;
+        }
+        return {
+            ...baseOptions,
+            show: true,
+            series: [res.data.inUseNums, res.data.notUsedNums],
+            labels: ['占用', '空闲'],
+        };
+    });
+
+    protected pastWeekCustomerCountChart = computed<ApexOptionsResponse>(() => {
+        const baseOptions: ApexOptionsResponse = {
+            show: false,
+            chart: {
+                type: 'line',
+                height: '300px',
+            },
+            title: {
+                text: '过去一周的入住客户数量变化',
+            },
+        };
+        if (!this.customerResource.hasValue()) {
+            return baseOptions;
+        }
+        const res = this.customerResource.value();
+        if (res.status !== 200) {
+            return baseOptions;
+        }
+        return {
+            ...baseOptions,
+            show: true,
+            series: [
+                {
+                    name: '入住客户数量',
+                    data: res.data.pastWeekCustomerCounts.map(
+                        (v) => v.customerCount
+                    ),
                 },
+            ],
+            xaxis: {
+                categories: res.data.pastWeekCustomerCounts.map(
+                    (v) => v.checkInDate
+                ),
             },
-        },
+        };
     });
-
-    protected pastWeekCustomerCountChart = signal<ApexOptions2>({
-        show: false,
-        chart: {
-            type: 'line',
-            height: '300px',
-        },
-        title: {
-            text: '过去一周的入住客户数量变化',
-        },
-    });
-
-    private customerApi: CustomerData = inject(CustomerData);
-
-    private roomApi: RoomData = inject(RoomData);
-
-
-    ngOnInit(): void {
-        this.loading.set(true);
-
-        forkJoin({
-            room: this.roomApi.getRoomStatusStat(),
-            customer: this.customerApi.getPastWeekCustomerCountStat(),
-        }).subscribe({
-            next: ({ room, customer }) => {
-                if (room.status === 200) {
-                    this.roomStatusDonutChart.update((chart) => ({
-                        ...chart,
-                        show: true,
-                        series: [
-                            room.data.inUseNums,
-                            room.data.notUsedNums,
-                        ],
-                        labels: ['占用', '空闲'],
-                    }));
-                }
-
-                if (customer.status === 200) {
-                    this.pastWeekCustomerCountChart.update((chart) => ({
-                        ...chart,
-                        show: true,
-                        series: [
-                            {
-                                name: '入住客户数量',
-                                data: customer.data.pastWeekCustomerCounts.map(
-                                    (v) => v.customerCount
-                                ),
-                            },
-                        ],
-                        xaxis: {
-                            categories: customer.data.pastWeekCustomerCounts.map(
-                                (v) => v.checkInDate
-                            ),
-                        },
-                    }));
-                }
-            },
-            error: () => {
-                this.loading.set(false);
-            },
-            complete: () => {
-                this.loading.set(false);
-            },
-        });
-    }
 }
