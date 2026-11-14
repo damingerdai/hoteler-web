@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 BACKEND_URL=${BACKEND_URL}
 envsubst '$BACKEND_URL' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf
