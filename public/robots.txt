@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /api
+Disallow: /dashboard
+Disallow: /room
+Disallow: /customer
+Disallow: /user
+Disallow: /settings
+Disallow: /orders
+Disallow: /401
+Disallow: /403
+Disallow: /404
+
+Sitemap: https://hoteler.damingerdai.com/sitemap.xml
