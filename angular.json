@@ -171,6 +171,7 @@
                     "builder": "@angular/build:unit-test",
                     "options": {
                         "tsConfig": "tsconfig.spec.json",
+                        "setupFiles": ["src/test-setup.ts"],
                         "reporters": ["default"],
                         "coverageReporters": [
                             "html",
