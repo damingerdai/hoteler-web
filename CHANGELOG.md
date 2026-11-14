@@ -1,3 +1,22 @@
+## <small>0.0.7-beta.1 (2026-11-14)</small>
+
+* test: import LocalStorage from its own services barrel ([b05a7aa](https://github.com/damingerdai/hoteler-web/commit/b05a7aa))
+* test: isolate localStorage in the test environment ([f134b24](https://github.com/damingerdai/hoteler-web/commit/f134b24))
+* build: update Node and nginx image versions ([3db91d6](https://github.com/damingerdai/hoteler-web/commit/3db91d6))
+* feat: add branded startup loading screen ([9147781](https://github.com/damingerdai/hoteler-web/commit/9147781))
+* feat: close sourcemap for prod configuration ([ac200db](https://github.com/damingerdai/hoteler-web/commit/ac200db))
+* feat(http): add base url interceptor for api origin resolution ([dd8aa5b](https://github.com/damingerdai/hoteler-web/commit/dd8aa5b))
+* feat(services): expose stats endpoints as signal resources ([1fa3bfb](https://github.com/damingerdai/hoteler-web/commit/1fa3bfb))
+* fix: migrate Angular services to Service decorator ([9b829e5](https://github.com/damingerdai/hoteler-web/commit/9b829e5))
+* fix: publish robots.txt and sitemap for public routes ([c9064e6](https://github.com/damingerdai/hoteler-web/commit/c9064e6))
+* fix: update nginx routing and static asset handling ([2b276dd](https://github.com/damingerdai/hoteler-web/commit/2b276dd))
+* fix(auth): attach session tokens to relative API requests ([f117213](https://github.com/damingerdai/hoteler-web/commit/f117213))
+* fix(auth): redesign user session and scope authentication handling ([a0964d6](https://github.com/damingerdai/hoteler-web/commit/a0964d6))
+* fix(auth): simplify error handling and update pending UI changes ([fb53ebd](https://github.com/damingerdai/hoteler-web/commit/fb53ebd))
+* refactor(auth): migrate auth interceptor to functional interceptor ([f83a2a0](https://github.com/damingerdai/hoteler-web/commit/f83a2a0))
+* refactor(dashboard): load dashboard stats through httpResource signals ([38a2113](https://github.com/damingerdai/hoteler-web/commit/38a2113))
+* refactor(http): register base url interceptor before auth interceptor ([ca04060](https://github.com/damingerdai/hoteler-web/commit/ca04060))
+* ci: add build and publish workflow ([4953044](https://github.com/damingerdai/hoteler-web/commit/4953044))
 ## <small>0.0.7-beta.0 (2026-11-12)</small>
 
 * chore(deps): update angular-cli monorepo to v22.2.6 (#1503) ([5de490a](https://github.com/damingerdai/hoteler-web/commit/5de490a)), closes [#1503](https://github.com/damingerdai/hoteler-web/issues/1503)
