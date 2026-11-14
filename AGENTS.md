@@ -6,7 +6,7 @@ Angular 22 frontend (standalone components) for the hoteler hotel-management sys
 
 ## Setup
 
-- Node >= 24 required (`.nvmrc`: 24.19.0, `engine-strict=true`). `.npmrc` sets `legacy-peer-deps=true` — use npm, not yarn/pnpm.
+- Node >= 24 required (`.nvmrc`: 26.13.1, `engine-strict=true`). `.npmrc` sets `legacy-peer-deps=true` — use npm, not yarn/pnpm.
 - Dev proxy: `src/proxy.conf.js` reads `BACKEND_URL` from `.env` (default `http://localhost:8443`). Note: the committed `.env` misspells it as `BACKEND_UR`, so the localhost default is what's actually active — set `BACKEND_URL` to point elsewhere.
 - `npm run start:online` references `src/proxy.conf.online.json`, which does not exist — this script is currently broken.
 
