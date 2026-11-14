@@ -1,3 +1,6 @@
+## <small>0.0.7-beta.2 (2026-11-14)</small>
+
+* fix: use POSIX shell for Alpine container entrypoint ([18dc347](https://github.com/damingerdai/hoteler-web/commit/18dc347))
 ## <small>0.0.7-beta.1 (2026-11-14)</small>
 
 * test: import LocalStorage from its own services barrel ([b05a7aa](https://github.com/damingerdai/hoteler-web/commit/b05a7aa))
