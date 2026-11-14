@@ -86,6 +86,7 @@
                             "outputHashing": "all",
                             "namedChunks": false,
                             "extractLicenses": true,
+                            "sourceMap": false,
                             "budgets": [
                                 {
                                     "type": "initial",
