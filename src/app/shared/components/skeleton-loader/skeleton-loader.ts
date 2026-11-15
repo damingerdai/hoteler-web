@@ -17,7 +17,6 @@ import {
     SKELETON_LOADER_CONFIG,
 } from './skeleton-loader-config.types';
 
-
 @Component({
     selector: 'app-skeleton-loader',
     templateUrl: './skeleton-loader.html',

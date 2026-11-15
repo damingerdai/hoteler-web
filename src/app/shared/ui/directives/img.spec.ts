@@ -3,7 +3,6 @@ import { waitForAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DirectivesModule } from './directives-module';
 
- 
 @Component({
     template: `
         <img
@@ -13,7 +12,6 @@ import { DirectivesModule } from './directives-module';
     `,
     standalone: false,
 })
- 
 class TestApp {}
 
 describe('Img', () => {

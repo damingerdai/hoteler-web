@@ -1,34 +1,33 @@
 @use 'long-shadow' as *;
 
 .hoteler-error {
-  &-wrap {
-    text-align: center;
-  }
+    &-wrap {
+        text-align: center;
+    }
 
-  &-code {
-    padding: 20px 0;
-    font-size: 150px;
-    text-shadow:
-      long-shadow(
-        $direction: 45deg,
-        $length: 60px,
-        $color: rgba(0, 0, 0, .03),
-        $fade: rgba(0, 0, 0, .0015),
-        $shadow-count: 20
-      );
-  }
+    &-code {
+        padding: 20px 0;
+        font-size: 150px;
+        text-shadow: long-shadow(
+            $direction: 45deg,
+            $length: 60px,
+            $color: rgba(0, 0, 0, 0.03),
+            $fade: rgba(0, 0, 0, 0.0015),
+            $shadow-count: 20
+        );
+    }
 
-  &-title {
-    margin: 0 0 16px;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 32px;
-  }
+    &-title {
+        margin: 0 0 16px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 32px;
+    }
 
-  &-message {
-    margin: 0 0 16px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 28px;
-  }
+    &-message {
+        margin: 0 0 16px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 28px;
+    }
 }

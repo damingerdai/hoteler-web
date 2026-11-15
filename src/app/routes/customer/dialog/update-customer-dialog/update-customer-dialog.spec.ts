@@ -12,49 +12,48 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateCustomerDialog } from './update-customer-dialog';
 
 describe('UpdateCustomerDialog', () => {
-  let component: UpdateCustomerDialog;
-  let fixture: ComponentFixture<UpdateCustomerDialog>;
+    let component: UpdateCustomerDialog;
+    let fixture: ComponentFixture<UpdateCustomerDialog>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ TestApp, UpdateCustomerDialog ],
-      declarations: [ ],
-      providers: [
-        {
-          provide: MAT_DIALOG_DATA,
-          useValue: {
-            id: 1,
-            name: 'test user',
-            gender: 'F',
-            phone: 12799999
-          }
-        }
-      ]
-    })
-    .compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [TestApp, UpdateCustomerDialog],
+            declarations: [],
+            providers: [
+                {
+                    provide: MAT_DIALOG_DATA,
+                    useValue: {
+                        id: 1,
+                        name: 'test user',
+                        gender: 'F',
+                        phone: 12799999,
+                    },
+                },
+            ],
+        }).compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateCustomerDialog);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(UpdateCustomerDialog);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
 @NgModule({
-  exports: [
-    BrowserModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    NoopAnimationsModule,
-    A11yModule
-  ]
+    exports: [
+        BrowserModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        A11yModule,
+    ],
 })
-class TestApp { }
+class TestApp {}

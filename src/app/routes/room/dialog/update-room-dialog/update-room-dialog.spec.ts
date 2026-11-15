@@ -12,49 +12,48 @@ import { ApiTestingModule } from 'src/app/core/testings';
 import { UpdateRoomDialog } from './update-room-dialog';
 
 describe('UpdateRoomDialog', () => {
-  let component: UpdateRoomDialog;
-  let fixture: ComponentFixture<UpdateRoomDialog>;
+    let component: UpdateRoomDialog;
+    let fixture: ComponentFixture<UpdateRoomDialog>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [ TestApp, UpdateRoomDialog ],
-      declarations: [  ],
-      providers: [
-        {
-          provide: MAT_DIALOG_DATA,
-          useValue: {
-            id: '1',
-            roomname: 'test-room',
-            price: 200,
-            status: 'inused'
-          }
-        }
-      ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [TestApp, UpdateRoomDialog],
+            declarations: [],
+            providers: [
+                {
+                    provide: MAT_DIALOG_DATA,
+                    useValue: {
+                        id: '1',
+                        roomname: 'test-room',
+                        price: 200,
+                        status: 'inused',
+                    },
+                },
+            ],
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateRoomDialog);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(UpdateRoomDialog);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
 @NgModule({
-  exports: [
-    CommonModule,
-    ApiTestingModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    NoopAnimationsModule
-  ]
+    exports: [
+        CommonModule,
+        ApiTestingModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        NoopAnimationsModule,
+    ],
 })
 class TestApp {}

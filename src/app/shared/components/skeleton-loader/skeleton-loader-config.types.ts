@@ -4,12 +4,14 @@ import { InjectionToken } from '@angular/core';
 export type SkeletonLoaderConfigTheme = Record<string, any> | null;
 
 export interface SkeletonLoaderConfig {
-  appearance: 'circle' | 'line' | 'custom-content' | '';
-  animation: 'progress' | 'progress-dark' | 'pulse' | 'false' | false;
-  theme: SkeletonLoaderConfigTheme;
-  loadingText: string;
-  count: number;
-  ariaLabel: string;
+    appearance: 'circle' | 'line' | 'custom-content' | '';
+    animation: 'progress' | 'progress-dark' | 'pulse' | 'false' | false;
+    theme: SkeletonLoaderConfigTheme;
+    loadingText: string;
+    count: number;
+    ariaLabel: string;
 }
 
-export const SKELETON_LOADER_CONFIG = new InjectionToken<SkeletonLoaderConfig>('skeleton-loader.config');
+export const SKELETON_LOADER_CONFIG = new InjectionToken<SkeletonLoaderConfig>(
+    'skeleton-loader.config'
+);

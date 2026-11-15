@@ -1,81 +1,83 @@
 .settings-page {
-  padding: 16px 24px;
+    padding: 16px 24px;
 }
 
 .settings-section {
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
 
-    mat-icon {
-      font-size: 24px;
-      width: 24px;
-      height: 24px;
-    }
+        mat-icon {
+            font-size: 24px;
+            width: 24px;
+            height: 24px;
+        }
 
-    h2 {
-      margin: 0;
-      font-weight: 600;
+        h2 {
+            margin: 0;
+            font-weight: 600;
+        }
     }
-  }
 }
 
 .settings-card {
-  border-radius: 16px; // 保持 M3 的大圆角
-  border-color: var(--mat-sys-outline-variant);
-  background-color: var(--mat-sys-surface-container-low);
+    border-radius: 16px; // 保持 M3 的大圆角
+    border-color: var(--mat-sys-outline-variant);
+    background-color: var(--mat-sys-surface-container-low);
 
-  .setting-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
+    .setting-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
 
-    .setting-label {
-      display: flex;
-      flex-direction: column;
+        .setting-label {
+            display: flex;
+            flex-direction: column;
 
-      span {
-        font-weight: 500;
-        color: var(--mat-sys-on-surface);
-      }
+            span {
+                font-weight: 500;
+                color: var(--mat-sys-on-surface);
+            }
+        }
     }
-  }
 }
 
 .tech-stack-content {
-  .tech-group {
-    padding: 8px 0;
+    .tech-group {
+        padding: 8px 0;
 
-    h3 {
-      margin-bottom: 8px;
-      color: var(--mat-sys-primary); // 使用主题主色强调标题
-      letter-spacing: 0.5px;
-    }
-
-    // 调整列表项样式，使其更紧凑
-    mat-nav-list {
-      background: var(--mat-sys-surface-container);
-      border-radius: 12px;
-      overflow: hidden;
-
-      a[mat-list-item] {
-        --mdc-list-list-item-leading-icon-color: var(--mat-sys-on-surface-variant);
-
-        &:hover {
-          background-color: var(--mat-sys-surface-container-highest);
+        h3 {
+            margin-bottom: 8px;
+            color: var(--mat-sys-primary); // 使用主题主色强调标题
+            letter-spacing: 0.5px;
         }
-      }
+
+        // 调整列表项样式，使其更紧凑
+        mat-nav-list {
+            background: var(--mat-sys-surface-container);
+            border-radius: 12px;
+            overflow: hidden;
+
+            a[mat-list-item] {
+                --mdc-list-list-item-leading-icon-color: var(
+                    --mat-sys-on-surface-variant
+                );
+
+                &:hover {
+                    background-color: var(--mat-sys-surface-container-highest);
+                }
+            }
+        }
     }
-  }
 }
 
 .mt-8 {
-  margin-top: 32px;
+    margin-top: 32px;
 }
 
 .mt-4 {
-  margin-top: 16px;
+    margin-top: 16px;
 }

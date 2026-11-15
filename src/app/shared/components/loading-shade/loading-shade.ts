@@ -3,13 +3,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
     selector: 'app-loading-shade',
-    imports: [
-        MatProgressSpinnerModule,
-    ],
+    imports: [MatProgressSpinnerModule],
     templateUrl: './loading-shade.html',
     styleUrl: './loading-shade.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoadingShade {
-
-}
+export class LoadingShade {}

@@ -1,11 +1,6 @@
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 
-import {
-    Component,
-    OnInit,
-    inject,
-    signal,
-} from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { MatButtonModule } from '@angular/material/button';
@@ -32,10 +27,7 @@ import {
     CreateRoomDialog,
     UpdateRoomDialog,
 } from './dialog';
-import {
-    Breadcrumb,
-    Confirm,
-} from 'src/app/shared/components';
+import { Breadcrumb, Confirm } from 'src/app/shared/components';
 import { EmptyState } from 'src/app/shared/components/empty-state';
 import { RoomCard } from './room-card/room-card';
 
@@ -204,13 +196,10 @@ export class Room implements OnInit {
                     });
                     this.fetchAllRooms();
                 } else {
-                    this.toast.error(
-                        '删除房间失败:' + res.error.message,
-                        {
-                            duration: 500,
-                            position: 'top-right',
-                        }
-                    );
+                    this.toast.error('删除房间失败:' + res.error.message, {
+                        duration: 500,
+                        position: 'top-right',
+                    });
                 }
             });
     }

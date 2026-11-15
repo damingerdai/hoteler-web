@@ -10,9 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
     templateUrl: './theme-picker.html',
     styleUrls: ['./theme-picker.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatTooltipModule, MatMenuModule, MatIconModule, MatButtonModule, ThemeSelector]
+    imports: [
+        MatTooltipModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        ThemeSelector,
+    ],
 })
-export class ThemePicker {
-
-
-}
+export class ThemePicker {}

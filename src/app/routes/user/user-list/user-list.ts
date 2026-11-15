@@ -11,10 +11,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { IUser } from 'src/app/core/models';
 import { UserData } from 'src/app/core/services/user/user-data';
-import {
-    Breadcrumb,
-    Confirm,
-} from 'src/app/shared/components';
+import { Breadcrumb, Confirm } from 'src/app/shared/components';
 import { SharedMaterialModule } from 'src/app/shared/shared-material-module';
 import { SharedPipesModule } from 'src/app/shared/shared-pipes-module';
 import { CreateUser, UpdateUser } from '../dialog';
@@ -72,7 +69,6 @@ export class UserList implements OnInit, OnDestroy {
             });
         });
     }
-
 
     private loadUsers(): void {
         this.loading.set(true);

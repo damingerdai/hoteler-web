@@ -12,49 +12,48 @@ import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CreateUser', () => {
-  let component: CreateUser;
-  let fixture: ComponentFixture<CreateUser>;
+    let component: CreateUser;
+    let fixture: ComponentFixture<CreateUser>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TestApp, CreateUser],
-      providers: [
-        {
-          provide: MAT_DIALOG_DATA,
-          useValue: {
-            roles: [
-              {
-                id: '1',
-                name: 'admin',
-                description: 'admin role',
-              }
-            ]
-          }
-        }
-      ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [TestApp, CreateUser],
+            providers: [
+                {
+                    provide: MAT_DIALOG_DATA,
+                    useValue: {
+                        roles: [
+                            {
+                                id: '1',
+                                name: 'admin',
+                                description: 'admin role',
+                            },
+                        ],
+                    },
+                },
+            ],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(CreateUser);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(CreateUser);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
 @NgModule({
-  exports: [
-    BrowserModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    NoopAnimationsModule,
-    A11yModule
-  ]
+    exports: [
+        BrowserModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        A11yModule,
+    ],
 })
-class TestApp { }
+class TestApp {}

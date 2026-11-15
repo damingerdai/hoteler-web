@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
 import { ICustomer } from 'src/app/core/models';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,10 +24,10 @@ import { Tag } from 'src/app/shared/components';
         MatButtonModule,
         MatIconModule,
         MatRippleModule,
-        Tag
+        Tag,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true
+    standalone: true,
 })
 export class CustomerCard {
     @Input({ required: true }) public customer!: ICustomer;
@@ -48,7 +54,11 @@ export class CustomerCard {
         return '未知性别';
     }
 
-    public get genderTagColor(): 'primary' | 'secondary' | 'tertiary' | 'error' {
+    public get genderTagColor():
+        | 'primary'
+        | 'secondary'
+        | 'tertiary'
+        | 'error' {
         if (this.customer?.gender === 'M') return 'primary';
         if (this.customer?.gender === 'F') return 'tertiary';
         return 'error';

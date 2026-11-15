@@ -13,45 +13,37 @@ import { ApiTestingModule } from 'src/app/core/testings';
 import { Login } from './login';
 
 describe('Login', () => {
-  let component: Login;
-  let fixture: ComponentFixture<Login>;
+    let component: Login;
+    let fixture: ComponentFixture<Login>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        TestApp,
-        RouterTestingModule,
-        Login
-      ],
-      declarations: [  ]
-    })
-    .compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [TestApp, RouterTestingModule, Login],
+            declarations: [],
+        }).compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(Login);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(Login);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
 @NgModule({
-  providers: [
-    LocalStorage,
-    UserSession
-  ],
-  exports: [
-    BrowserModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    RouterTestingModule,
-    NoopAnimationsModule,
-    ApiTestingModule,
-  ]
+    providers: [LocalStorage, UserSession],
+    exports: [
+        BrowserModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        RouterTestingModule,
+        NoopAnimationsModule,
+        ApiTestingModule,
+    ],
 })
-class TestApp { }
+class TestApp {}

@@ -5,25 +5,21 @@ import { AdminLayout } from './admin-layout';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 describe('AdminLayout', () => {
-  let component: AdminLayout;
-  let fixture: ComponentFixture<AdminLayout>;
+    let component: AdminLayout;
+    let fixture: ComponentFixture<AdminLayout>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ AdminLayout, RouterModule ],
-      providers: [
-        provideRouter([]),
-        provideAnimationsAsync()
-      ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [AdminLayout, RouterModule],
+            providers: [provideRouter([]), provideAnimationsAsync()],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(AdminLayout);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(AdminLayout);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

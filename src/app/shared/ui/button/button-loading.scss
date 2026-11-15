@@ -1,12 +1,12 @@
 .mat-mdc-button-loading {
-  .mdc-button__label,
-  .mat-icon {
-    visibility: hidden;
-  }
+    .mdc-button__label,
+    .mat-icon {
+        visibility: hidden;
+    }
 
-  .mat-mdc-progress-spinner {
-    position: absolute;
-    top: calc(50% - 12px);
-    left: calc(50% - 12px);
-  }
+    .mat-mdc-progress-spinner {
+        position: absolute;
+        top: calc(50% - 12px);
+        left: calc(50% - 12px);
+    }
 }

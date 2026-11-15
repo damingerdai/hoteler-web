@@ -22,40 +22,33 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-
 const materials = [
-  MatButtonModule,
-  MatCardModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatFormFieldModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatProgressSpinnerModule,
-  MatNativeDateModule,
-  MatRadioModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSlideToggleModule,
-  MatTableModule,
-  MatToolbarModule,
-  MatTooltipModule,
+    MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatTooltipModule,
 ];
 
-
 @NgModule({
-  declarations: [],
-  imports: [
-    ...materials
-  ],
-  exports: [
-    ...materials
-  ],
+    declarations: [],
+    imports: [...materials],
+    exports: [...materials],
 })
-export class SharedMaterialModule {
- }
+export class SharedMaterialModule {}

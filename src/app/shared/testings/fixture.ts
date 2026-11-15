@@ -7,8 +7,11 @@ import { ComponentFixture } from '@angular/core/testing';
  * This function solves this issue.
  * @since 2021-06-30: 添加泛型支持
  */
- export async function runOnPushChangeDetection<T>(fixture: ComponentFixture<T>): Promise<void> {
-  const changeDetectorRef = fixture.debugElement.injector.get<ChangeDetectorRef>(ChangeDetectorRef);
-  changeDetectorRef.detectChanges();
-  return fixture.whenStable();
+export async function runOnPushChangeDetection<T>(
+    fixture: ComponentFixture<T>
+): Promise<void> {
+    const changeDetectorRef =
+        fixture.debugElement.injector.get<ChangeDetectorRef>(ChangeDetectorRef);
+    changeDetectorRef.detectChanges();
+    return fixture.whenStable();
 }

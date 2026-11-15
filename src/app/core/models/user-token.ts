@@ -1,5 +1,5 @@
 export interface IUserToken {
-  accessToken: string;
-  refreshToken: string;
-  exp: number;
+    accessToken: string;
+    refreshToken: string;
+    exp: number;
 }

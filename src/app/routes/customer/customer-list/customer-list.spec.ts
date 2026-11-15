@@ -10,41 +10,28 @@ import { provideRouter } from '@angular/router';
 import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 describe('CustomerList', () => {
-  let component: CustomerList;
-  let fixture: ComponentFixture<CustomerList>;
+    let component: CustomerList;
+    let fixture: ComponentFixture<CustomerList>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        ApiTestingModule,
-        TestApp,
-        CustomerList
-      ],
-      providers: [
-        provideRouter([]),
-        provideHotToastConfig()
-      ]
-    })
-    .compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [ApiTestingModule, TestApp, CustomerList],
+            providers: [provideRouter([]), provideHotToastConfig()],
+        }).compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CustomerList);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(CustomerList);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
-
 @NgModule({
-  exports: [
-    MatDialogModule,
-    NoopAnimationsModule,
-    A11yModule
-  ]
+    exports: [MatDialogModule, NoopAnimationsModule, A11yModule],
 })
-class TestApp { }
+class TestApp {}

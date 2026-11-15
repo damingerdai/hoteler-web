@@ -1,36 +1,36 @@
 .tag {
-  position: relative;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-  display: inline-flex;
-  padding: 7px 12px;
-  border-radius: 16px;
-  align-items: center;
-  cursor: default;
-  min-height: 32px;
-  height: 1px;
-  margin: 4px;
-  color: var(--mat-sys-on-surface);
-  background: var(--mat-sys-surface);
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    padding: 7px 12px;
+    border-radius: 16px;
+    align-items: center;
+    cursor: default;
+    min-height: 32px;
+    height: 1px;
+    margin: 4px;
+    color: var(--mat-sys-on-surface);
+    background: var(--mat-sys-surface);
 
-  &.tag-primary {
-    background: var(--mat-sys-primary);
-    color: var(--mat-sys-on-primary);
-  }
+    &.tag-primary {
+        background: var(--mat-sys-primary);
+        color: var(--mat-sys-on-primary);
+    }
 
-  &.tag-secondary {
-    background: var(--mat-sys-secondary);
-    color: var(--mat-sys-on-secondary);
-  }
+    &.tag-secondary {
+        background: var(--mat-sys-secondary);
+        color: var(--mat-sys-on-secondary);
+    }
 
-  &.tag-tertiary {
-    background: var(--mat-sys-tertiary);
-    color: var(--mat-sys-on-tertiary);
-  }
+    &.tag-tertiary {
+        background: var(--mat-sys-tertiary);
+        color: var(--mat-sys-on-tertiary);
+    }
 
-  &.tag-error {
-    background: var(--mat-sys-error);
-    color: var(--mat-sys-on-error);
-  }
+    &.tag-error {
+        background: var(--mat-sys-error);
+        color: var(--mat-sys-on-error);
+    }
 }

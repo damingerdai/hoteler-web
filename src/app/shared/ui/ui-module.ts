@@ -4,15 +4,8 @@ import { ButtonModule } from './button';
 import { DirectivesModule } from './directives/directives-module';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    ButtonModule,
-    DirectivesModule
-  ],
-  exports: [
-    ButtonModule,
-    DirectivesModule
-  ]
+    declarations: [],
+    imports: [CommonModule, ButtonModule, DirectivesModule],
+    exports: [ButtonModule, DirectivesModule],
 })
-export class UiModule { }
+export class UiModule {}

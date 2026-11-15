@@ -12,40 +12,37 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateCustomerDialog } from './create-customer-dialog';
 
 describe('CreateCustomerDialog', () => {
-  let component: CreateCustomerDialog;
-  let fixture: ComponentFixture<CreateCustomerDialog>;
+    let component: CreateCustomerDialog;
+    let fixture: ComponentFixture<CreateCustomerDialog>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ TestApp, CreateCustomerDialog ],
-      declarations: [ ],
-    })
-    .compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [TestApp, CreateCustomerDialog],
+            declarations: [],
+        }).compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CreateCustomerDialog);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(CreateCustomerDialog);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
-
-
 @NgModule({
-  exports: [
-    BrowserModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    NoopAnimationsModule,
-    A11yModule
-  ]
+    exports: [
+        BrowserModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        A11yModule,
+    ],
 })
-class TestApp { }
+class TestApp {}

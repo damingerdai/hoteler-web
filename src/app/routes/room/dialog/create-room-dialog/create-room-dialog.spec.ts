@@ -12,39 +12,37 @@ import { ApiTestingModule } from 'src/app/core/testings';
 import { CreateRoomDialog } from './create-room-dialog';
 
 describe('CreateRoomDialog', () => {
-  let component: CreateRoomDialog;
-  let fixture: ComponentFixture<CreateRoomDialog>;
+    let component: CreateRoomDialog;
+    let fixture: ComponentFixture<CreateRoomDialog>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [ TestApp, CreateRoomDialog ],
-      declarations: [  ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [TestApp, CreateRoomDialog],
+            declarations: [],
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CreateRoomDialog);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(CreateRoomDialog);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
-
 @NgModule({
-  exports: [
-    CommonModule,
-    ApiTestingModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    NoopAnimationsModule
-  ]
+    exports: [
+        CommonModule,
+        ApiTestingModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        NoopAnimationsModule,
+    ],
 })
 class TestApp {}

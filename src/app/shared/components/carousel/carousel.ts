@@ -73,9 +73,7 @@ export class Carousel implements AfterContentInit {
     }
 
     ngAfterContentInit(): void {
-        this._keyManager = new FocusKeyManager<CarouselItem>(
-            this.items
-        );
+        this._keyManager = new FocusKeyManager<CarouselItem>(this.items);
     }
 
     /** Goes to the next set of items */

@@ -8,23 +8,17 @@ import { canActivateFn } from './auth-guard';
 import { CanActivateFn } from '@angular/router';
 
 describe('canActivateFn', () => {
-  let guard: CanActivateFn;
+    let guard: CanActivateFn;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        MatDialogModule
-      ],
-      providers: [
-        UserSession,
-        LocalStorage
-      ]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [RouterTestingModule, MatDialogModule],
+            providers: [UserSession, LocalStorage],
+        });
+        guard = canActivateFn;
     });
-    guard = canActivateFn;
-  });
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
+    it('should be created', () => {
+        expect(guard).toBeTruthy();
+    });
 });

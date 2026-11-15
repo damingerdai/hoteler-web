@@ -5,18 +5,14 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-breadcrumb',
-    imports: [
-        RouterModule,
-        MatIconModule,
-        MatButtonModule
-    ],
+    imports: [RouterModule, MatIconModule, MatButtonModule],
     templateUrl: './breadcrumb.html',
     styleUrl: './breadcrumb.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Breadcrumb {
-  url = input.required<string>();
-  label = input.required<string>();
+    url = input.required<string>();
+    label = input.required<string>();
 
-  parentLabel = input<string>('');
+    parentLabel = input<string>('');
 }

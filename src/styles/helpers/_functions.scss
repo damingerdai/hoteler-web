@@ -3,24 +3,24 @@
 // It makes the value negative.
 // Bootstrap
 @function negativify-map($map) {
-  $result: ();
+    $result: ();
 
-  @each $key, $value in $map {
-    @if $key !=0 {
-      $result: map.merge($result, ('-' + $key: (-$value)));
+    @each $key, $value in $map {
+        @if $key !=0 {
+            $result: map.merge($result, ('-' + $key: (-$value)));
+        }
     }
-  }
 
-  @return $result;
+    @return $result;
 }
 
 // It allows to combine multiple maps together.
 @function map-collect($maps...) {
-  $collection: ();
+    $collection: ();
 
-  @each $map in $maps {
-    $collection: map.merge($collection, $map);
-  }
+    @each $map in $maps {
+        $collection: map.merge($collection, $map);
+    }
 
-  @return $collection;
+    @return $collection;
 }

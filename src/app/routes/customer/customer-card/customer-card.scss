@@ -12,10 +12,11 @@
     border: 1px solid var(--mat-sys-outline-variant);
     background-color: var(--mat-sys-surface-container-low);
     overflow: hidden;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background-color 0.2s ease,
-                border-color 0.2s ease;
+    transition:
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background-color 0.2s ease,
+        border-color 0.2s ease;
     cursor: pointer;
 
     &:hover {
@@ -47,20 +48,34 @@
             font-weight: 700;
             color: #fff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
 
             &.gender-male {
-                background: linear-gradient(135deg, var(--mat-sys-primary) 0%, var(--mat-sys-primary-container) 100%);
+                background: linear-gradient(
+                    135deg,
+                    var(--mat-sys-primary) 0%,
+                    var(--mat-sys-primary-container) 100%
+                );
                 color: var(--mat-sys-on-primary);
             }
 
             &.gender-female {
-                background: linear-gradient(135deg, var(--mat-sys-tertiary) 0%, var(--mat-sys-tertiary-container) 100%);
+                background: linear-gradient(
+                    135deg,
+                    var(--mat-sys-tertiary) 0%,
+                    var(--mat-sys-tertiary-container) 100%
+                );
                 color: var(--mat-sys-on-tertiary);
             }
 
             &.gender-unknown {
-                background: linear-gradient(135deg, var(--mat-sys-error) 0%, var(--mat-sys-error-container) 100%);
+                background: linear-gradient(
+                    135deg,
+                    var(--mat-sys-error) 0%,
+                    var(--mat-sys-error-container) 100%
+                );
                 color: var(--mat-sys-on-error);
             }
         }
@@ -154,7 +169,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            
+
             mat-icon {
                 font-size: 18px;
                 width: 18px;
@@ -164,7 +179,7 @@
 
         .btn-edit {
             color: var(--mat-sys-primary);
-            
+
             &:hover {
                 background-color: var(--mat-sys-primary-container);
             }

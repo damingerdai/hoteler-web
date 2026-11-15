@@ -25,7 +25,11 @@ export class UserData {
         const headers = {
             Authorization: 'Bearer ' + accessToken,
         };
-        return this.api.get<DataResponse<IUser>>('/api/v1/user', undefined, headers);
+        return this.api.get<DataResponse<IUser>>(
+            '/api/v1/user',
+            undefined,
+            headers
+        );
     }
 
     public list(): Observable<ListResponse<IUser>> {

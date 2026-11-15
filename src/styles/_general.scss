@@ -1,16 +1,21 @@
 html,
-body { height: 100%; }
+body {
+    height: 100%;
+}
 /* stylelint-disable-next-line declaration-block-single-line-max-declarations */
-body { margin: 0; font-family: Roboto, 'Helvetica Neue', sans-serif; }
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
 
 .divider {
-  margin: {
-    top: 10px !important;
-    bottom: 10px !important;
-  };
+    margin: {
+        top: 10px !important;
+        bottom: 10px !important;
+    }
 }
 
 .hoteler-button[md-button],
 .hoteler-button[md-raised-button] {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }

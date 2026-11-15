@@ -4,24 +4,20 @@ import { NotFound } from './not-found';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NotFound', () => {
-  let component: NotFound;
-  let fixture: ComponentFixture<NotFound>;
+    let component: NotFound;
+    let fixture: ComponentFixture<NotFound>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        NotFound
-      ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [RouterTestingModule, NotFound],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(NotFound);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(NotFound);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

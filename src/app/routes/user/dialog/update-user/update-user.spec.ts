@@ -11,62 +11,60 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-
 @NgModule({
-  exports: [
-    BrowserModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    NoopAnimationsModule,
-    A11yModule
-  ]
+    exports: [
+        BrowserModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        A11yModule,
+    ],
 })
-class TestApp { }
+class TestApp {}
 
 describe('UpdateUser', () => {
-  let component: UpdateUser;
-  let fixture: ComponentFixture<UpdateUser>;
+    let component: UpdateUser;
+    let fixture: ComponentFixture<UpdateUser>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TestApp, UpdateUser],
-      providers: [
-        {
-          provide: MAT_DIALOG_DATA,
-          useValue: {
-            roles: [
-              {
-                id: '1',
-                name: 'admin',
-                description: 'admin role',
-              }
-            ],
-            user: {
-              username: 'test',
-              password: 'test',
-              roles: [
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [TestApp, UpdateUser],
+            providers: [
                 {
-                  id: '1',
-                  name: 'admin',
-                  description: 'admin role',
-                }
-              ]
-            }
-          }
-        }
-      ]
-    })
-      .compileComponents();
+                    provide: MAT_DIALOG_DATA,
+                    useValue: {
+                        roles: [
+                            {
+                                id: '1',
+                                name: 'admin',
+                                description: 'admin role',
+                            },
+                        ],
+                        user: {
+                            username: 'test',
+                            password: 'test',
+                            roles: [
+                                {
+                                    id: '1',
+                                    name: 'admin',
+                                    description: 'admin role',
+                                },
+                            ],
+                        },
+                    },
+                },
+            ],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(UpdateUser);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(UpdateUser);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

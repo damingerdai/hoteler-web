@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
 import { IRoom } from 'src/app/core/models';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,10 +21,10 @@ import { Tag } from 'src/app/shared/components';
         MatButtonModule,
         MatIconModule,
         MatRippleModule,
-        Tag
+        Tag,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true
+    standalone: true,
 })
 export class RoomCard {
     @Input({ required: true }) public room!: IRoom;
@@ -36,7 +42,11 @@ export class RoomCard {
         return this.room?.status === 1 ? '空闲' : '占用';
     }
 
-    public get statusTagColor(): 'primary' | 'secondary' | 'tertiary' | 'error' {
+    public get statusTagColor():
+        | 'primary'
+        | 'secondary'
+        | 'tertiary'
+        | 'error' {
         return this.room?.status === 1 ? 'primary' : 'secondary';
     }
 

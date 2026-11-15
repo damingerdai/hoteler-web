@@ -12,7 +12,6 @@ import { ButtonModule } from './button-module';
     selector: 'test-app',
     template: ` <button mat-button [loading]="loading">Test Button</button> `,
 })
- 
 class TestApp {
     public loading = false;
 }

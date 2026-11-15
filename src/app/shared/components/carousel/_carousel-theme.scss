@@ -1,9 +1,9 @@
-@use "sass:map";
-@use "@angular/material" as mat;
+@use 'sass:map';
+@use '@angular/material' as mat;
 
 @mixin hoteler-carousel-theme($theme) {
-  .carousel-nav.mat-mdc-mini-fab {
-    color: mat.get-theme-color($theme, on-surface);
-    background: mat.get-theme-color($theme, surface);
-  }
+    .carousel-nav.mat-mdc-mini-fab {
+        color: mat.get-theme-color($theme, on-surface);
+        background: mat.get-theme-color($theme, surface);
+    }
 }

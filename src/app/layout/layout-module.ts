@@ -7,14 +7,7 @@ import { CommonLayout } from './common-layout';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    SharedModule,
-  ],
-  declarations: [
-    AdminLayout,
-    CommonLayout
-  ],
+    imports: [CommonModule, RouterModule, SharedModule],
+    declarations: [AdminLayout, CommonLayout],
 })
-export class LayoutModule { }
+export class LayoutModule {}

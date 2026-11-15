@@ -1,74 +1,74 @@
 button.theme-picker-trigger {
-  color: inherit;
+    color: inherit;
 }
 
 .theme-picker-menu {
-  .mat-mdc-menu-item {
-    .mat-icon.theme-example-icon {
-      float: right;
-      margin-right: 0;
-      margin-left: 8px;
+    .mat-mdc-menu-item {
+        .mat-icon.theme-example-icon {
+            float: right;
+            margin-right: 0;
+            margin-left: 8px;
 
-      svg {
-        vertical-align: middle;
-      }
+            svg {
+                vertical-align: middle;
+            }
 
-      // The below colors need to align with the themes defined in ThemePicker
-      &.deeppurple-amber svg {
-        .docs-theme-icon-background {
-          fill: #fafafa;
+            // The below colors need to align with the themes defined in ThemePicker
+            &.deeppurple-amber svg {
+                .docs-theme-icon-background {
+                    fill: #fafafa;
+                }
+
+                .docs-theme-icon-button {
+                    fill: #ffc107;
+                }
+
+                .docs-theme-icon-toolbar {
+                    fill: #673ab7;
+                }
+            }
+
+            &.indigo-pink svg {
+                .docs-theme-icon-background {
+                    fill: #fafafa;
+                }
+
+                .docs-theme-icon-button {
+                    fill: #e91e63;
+                }
+
+                .docs-theme-icon-toolbar {
+                    fill: #3f51b5;
+                }
+            }
+
+            &.pink-bluegrey svg {
+                .docs-theme-icon-background {
+                    fill: #303030;
+                }
+
+                .docs-theme-icon-button {
+                    fill: #607d8b;
+                }
+
+                .docs-theme-icon-toolbar {
+                    fill: #e91e63;
+                }
+            }
+
+            &.purple-green svg {
+                .docs-theme-icon-background {
+                    fill: #303030;
+                }
+
+                .docs-theme-icon-button {
+                    fill: #4caf50;
+                }
+
+                .docs-theme-icon-toolbar {
+                    fill: #9c27b0;
+                }
+            }
         }
-
-        .docs-theme-icon-button {
-          fill: #ffc107;
-        }
-
-        .docs-theme-icon-toolbar {
-          fill: #673ab7;
-        }
-      }
-
-      &.indigo-pink svg {
-        .docs-theme-icon-background {
-          fill: #fafafa;
-        }
-
-        .docs-theme-icon-button {
-          fill: #e91e63;
-        }
-
-        .docs-theme-icon-toolbar {
-          fill: #3f51b5;
-        }
-      }
-
-      &.pink-bluegrey svg {
-        .docs-theme-icon-background {
-          fill: #303030;
-        }
-
-        .docs-theme-icon-button {
-          fill: #607d8b;
-        }
-
-        .docs-theme-icon-toolbar {
-          fill: #e91e63;
-        }
-      }
-
-      &.purple-green svg {
-        .docs-theme-icon-background {
-          fill: #303030;
-        }
-
-        .docs-theme-icon-button {
-          fill: #4caf50;
-        }
-
-        .docs-theme-icon-toolbar {
-          fill: #9c27b0;
-        }
-      }
     }
-  }
 }

@@ -30,7 +30,8 @@ describe('authInterceptor', () => {
                 {
                     provide: Router,
                     useValue: {
-                        navigateByUrl: (url: string) => (state.destination = url),
+                        navigateByUrl: (url: string) =>
+                            (state.destination = url),
                     },
                 },
             ],
@@ -99,10 +100,7 @@ describe('authInterceptor', () => {
             configure({ user: { accessToken: 'abc' } });
             let sent: HttpRequest<unknown>;
             run(
-                new HttpRequest(
-                    'GET',
-                    'https://backend.example/api/v1/rooms'
-                ),
+                new HttpRequest('GET', 'https://backend.example/api/v1/rooms'),
                 (req) => {
                     sent = req;
                     return throwError(() => new Error('stop'));

@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
     templateUrl: './error-code.html',
     styleUrls: ['./error-code.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatButtonModule, RouterModule]
+    imports: [MatButtonModule, RouterModule],
 })
 export class ErrorCode {
     public code = input<string>('');

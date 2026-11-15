@@ -18,49 +18,41 @@ import { Register } from './register';
 import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 describe('Register', () => {
-  let component: Register;
-  let fixture: ComponentFixture<Register>;
+    let component: Register;
+    let fixture: ComponentFixture<Register>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        TestApp,
-        Register
-      ],
-      providers: [provideHotToastConfig()],
-    })
-    .compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [TestApp, Register],
+            providers: [provideHotToastConfig()],
+        }).compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(Register);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(Register);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
-
 @NgModule({
-  providers: [
-    LocalStorage,
-    UserSession
-  ],
-  exports: [
-    BrowserModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    RouterTestingModule,
-    NoopAnimationsModule,
-    ApiTestingModule,
-    NgxDomConfettiModule,
-  ],
-  schemas: [NO_ERRORS_SCHEMA]
+    providers: [LocalStorage, UserSession],
+    exports: [
+        BrowserModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
+        NoopAnimationsModule,
+        ApiTestingModule,
+        NgxDomConfettiModule,
+    ],
+    schemas: [NO_ERRORS_SCHEMA],
 })
-class TestApp { }
+class TestApp {}

@@ -1,20 +1,20 @@
 @mixin hoteler-apexcharts-theme {
-  .apexcharts-title-text {
-    color: var(--mat-sys-on-surface) !important;
-    fill: var(--mat-sys-on-surface) !important;
-  }
-
-  .apexcharts-menu {
-    background: var(--mat-sys-surface) !important;
-  }
-
-  .apexcharts-menu-item {
-    &:hover {
-      color: var(--mat-sys-on-surface) !important;
+    .apexcharts-title-text {
+        color: var(--mat-sys-on-surface) !important;
+        fill: var(--mat-sys-on-surface) !important;
     }
-  }
 
-  .apexcharts-legend-text {
-    color: var(--mat-sys-on-surface) !important;
-  }
+    .apexcharts-menu {
+        background: var(--mat-sys-surface) !important;
+    }
+
+    .apexcharts-menu-item {
+        &:hover {
+            color: var(--mat-sys-on-surface) !important;
+        }
+    }
+
+    .apexcharts-legend-text {
+        color: var(--mat-sys-on-surface) !important;
+    }
 }

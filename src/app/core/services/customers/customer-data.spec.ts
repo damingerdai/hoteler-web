@@ -4,16 +4,16 @@ import { ApiTestingModule } from '../../testings';
 import { CustomerData } from './customer-data';
 
 describe('CustomerData', () => {
-  let service: CustomerData;
+    let service: CustomerData;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [ApiTestingModule]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [ApiTestingModule],
+        });
+        service = TestBed.inject(CustomerData);
     });
-    service = TestBed.inject(CustomerData);
-  });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+    it('should be created', () => {
+        expect(service).toBeTruthy();
+    });
 });

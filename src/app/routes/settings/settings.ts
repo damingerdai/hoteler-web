@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';import { MatListModule } from '@angular/material/list';
-;
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { Breadcrumb } from 'src/app/shared/components';
 import { ThemeSelector } from 'src/app/shared/components/theme-selector/theme-selector';
 
@@ -17,8 +17,6 @@ import { ThemeSelector } from 'src/app/shared/components/theme-selector/theme-se
         MatCardModule,
         MatListModule,
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Settings {
-
-}
+export class Settings {}

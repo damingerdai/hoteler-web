@@ -8,34 +8,28 @@ import { UserSession } from 'src/app/core/services/settings/user-session';
 import { LocalStorage } from 'src/app/core/services/local-storage';
 
 describe('ThemePicker', () => {
-  let component: ThemePicker;
-  let fixture: ComponentFixture<ThemePicker>;
+    let component: ThemePicker;
+    let fixture: ComponentFixture<ThemePicker>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        TestApp,
-        ThemePicker
-       ],
-      providers: [ ThemeStorage, LocalStorage, UserSession ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [TestApp, ThemePicker],
+            providers: [ThemeStorage, LocalStorage, UserSession],
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ThemePicker);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ThemePicker);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
 
 @NgModule({
-  exports: [
-    MatMenuModule,
-  ]
+    exports: [MatMenuModule],
 })
 class TestApp {}

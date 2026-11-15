@@ -25,9 +25,7 @@ describe('ErrorCode', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [ErrorCode],
-            providers: [
-                provideRouter([{ path: 'login', component: Login }]),
-            ],
+            providers: [provideRouter([{ path: 'login', component: Login }])],
         }).compileComponents();
     }));
 

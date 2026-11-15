@@ -3,7 +3,6 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DirectivesModule } from './directives-module';
 
- 
 @Component({
     template: `
         <nav style="display: flex">

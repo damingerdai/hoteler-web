@@ -48,7 +48,10 @@
                     math.percentage(math.div($i, $shadow-count))
                 );
             } @else {
-                $current-color: color.scale($color, $alpha: -(math.div($i, $shadow-count)));
+                $current-color: color.scale(
+                    $color,
+                    $alpha: -(math.div($i, $shadow-count))
+                );
             }
         }
 

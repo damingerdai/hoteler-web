@@ -1,23 +1,12 @@
-import {
-    Component,
-    OnInit,
-    inject,
-    signal,
-} from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { filter, finalize, map, switchMap } from 'rxjs/operators';
 import { Customers, ICustomer } from 'src/app/core/models';
 import { CustomerData } from 'src/app/core/services/customers';
-import {
-    Breadcrumb,
-    Confirm,
-} from 'src/app/shared/components';
-import {
-    CreateCustomerDialog,
-    UpdateCustomerDialog,
-} from '../dialog';
+import { Breadcrumb, Confirm } from 'src/app/shared/components';
+import { CreateCustomerDialog, UpdateCustomerDialog } from '../dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
@@ -38,20 +27,20 @@ import { MatInputModule } from '@angular/material/input';
     templateUrl: './customer-list.html',
     styleUrls: ['./customer-list.scss'],
     imports: [
-    Breadcrumb,
-    EmptyState,
-    MatButtonModule,
-    MatCardModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonToggleModule,
-    MatProgressBarModule,
-    CustomerCard,
-    UpperCasePipe
-],
+        Breadcrumb,
+        EmptyState,
+        MatButtonModule,
+        MatCardModule,
+        MatDividerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonToggleModule,
+        MatProgressBarModule,
+        CustomerCard,
+        UpperCasePipe,
+    ],
 })
 export class CustomerList implements OnInit {
     private customerApi = inject(CustomerData);
@@ -121,10 +110,9 @@ export class CustomerList implements OnInit {
                     this.toast.success('更新客户成功');
                     this.fetchCustomers();
                 } else {
-                    this.toast.error(
-                        '更新客户失败：' + res.error.message,
-                        { duration: 2000 }
-                    );
+                    this.toast.error('更新客户失败：' + res.error.message, {
+                        duration: 2000,
+                    });
                 }
             });
     }

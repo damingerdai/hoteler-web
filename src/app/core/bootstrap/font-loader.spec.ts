@@ -20,8 +20,8 @@ describe('FontLoader', () => {
         TestBed.configureTestingModule({
             providers: [
                 FontLoader,
-                { provide: StyleManager, useValue: styleManagerSpy }
-            ]
+                { provide: StyleManager, useValue: styleManagerSpy },
+            ],
         });
 
         service = TestBed.inject(FontLoader);
@@ -42,7 +42,9 @@ describe('FontLoader', () => {
 
     it('should fallback to setStyle when font loading fails', async () => {
         // 模拟字体加载失败
-        vi.mocked(Observer.prototype.load).mockReturnValue(Promise.reject('Load failed'));
+        vi.mocked(Observer.prototype.load).mockReturnValue(
+            Promise.reject('Load failed')
+        );
 
         await expect(service.load()).resolves.toBeUndefined(); // 内部 catch 进行了 resolve
 
@@ -58,4 +60,3 @@ describe('FontLoader', () => {
         );
     });
 });
-
