@@ -13,7 +13,7 @@ COPY . .
 RUN npm run build
 
 # docker run  -p 8081:80 -e BACKEND_URL='http://127.0.0.1:8443' hoteler-web -it
-FROM nginx:1.31.8-alpine3.24
+FROM nginx:1.31.9-alpine3.24
 COPY _nginx/default.template /etc/nginx/conf.d/default.template
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
