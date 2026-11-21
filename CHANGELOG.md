@@ -1,3 +1,21 @@
+## [0.0.7](https://github.com/damingerdai/hoteler-web/compare/v0.0.7-beta.2...v0.0.7) (2026-11-21)
+
+### Bug Fixes
+
+* **build:** migrate to conventional-changelog v8 ([e769b62](https://github.com/damingerdai/hoteler-web/commit/e769b625e845b6bdec29504e9a09b3bcc02bc094))
+* **dashboard:** remove redundant apxChart attribute ([ee68258](https://github.com/damingerdai/hoteler-web/commit/ee682582caa7d8f0ac9ccd2840550279e7dc9325))
+* **dashboard:** use apx-chart component tag for charts ([7bbd891](https://github.com/damingerdai/hoteler-web/commit/7bbd8911cdafc85d695cd3edc05a93170243a4e8))
+* **deps:** update angular monorepo to v22.3.0 ([#1508](https://github.com/damingerdai/hoteler-web/issues/1508)) ([92e4972](https://github.com/damingerdai/hoteler-web/commit/92e49726dec765250a8733035c18cd8179562252))
+* **deps:** update dependency apexcharts to v8.9.1 ([#1529](https://github.com/damingerdai/hoteler-web/issues/1529)) ([3d13f8c](https://github.com/damingerdai/hoteler-web/commit/3d13f8c1f14b8ef904dc25be518b5a8abdbd94ee))
+* **deps:** update dependency ngx-dom-confetti to ^0.8.0 ([#1530](https://github.com/damingerdai/hoteler-web/issues/1530)) ([b7824b5](https://github.com/damingerdai/hoteler-web/commit/b7824b5d42b2cc60a1bfcb7b2e1c8dfb2a6fb261))
+* **deps:** update dependency tslib to v2.9.1 ([#1531](https://github.com/damingerdai/hoteler-web/issues/1531)) ([0a2d37f](https://github.com/damingerdai/hoteler-web/commit/0a2d37f18e5a154bd57d325e3c823e8356a44f93))
+
+### Features
+
+* bump angular 22.3 ([20425e9](https://github.com/damingerdai/hoteler-web/commit/20425e95d92bc5c8a7062fbf0226ac2dce44dfbd))
+* bump ngx-apexcharts to 1.0.0 ([1a5adc5](https://github.com/damingerdai/hoteler-web/commit/1a5adc58aa4fc7ea39f95d3fdfd6b723b9963ec6))
+* bump ngx-apexcharts to version 1.1.2 ([648719b](https://github.com/damingerdai/hoteler-web/commit/648719ba5794713d1be2c166933273256e7161e4))
+
 ## <small>0.0.7-beta.2 (2026-11-14)</small>
 
 * fix: use POSIX shell for Alpine container entrypoint ([18dc347](https://github.com/damingerdai/hoteler-web/commit/18dc347))
