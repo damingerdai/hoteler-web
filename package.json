@@ -30,12 +30,12 @@
     "private": true,
     "dependencies": {
         "@angular/animations": "22.3.0",
-        "@angular/cdk": "22.2.2",
+        "@angular/cdk": "22.3.0",
         "@angular/common": "22.3.0",
         "@angular/compiler": "22.3.0",
         "@angular/core": "22.3.0",
         "@angular/forms": "22.3.0",
-        "@angular/material": "22.2.2",
+        "@angular/material": "22.3.0",
         "@angular/platform-browser": "22.3.0",
         "@angular/platform-browser-dynamic": "22.3.0",
         "@angular/router": "22.3.0",
@@ -54,7 +54,7 @@
     },
     "devDependencies": {
         "@angular/build": "^22.2.2",
-        "@angular/cli": "22.2.6",
+        "@angular/cli": "22.3.0",
         "@angular/compiler-cli": "22.3.0",
         "@angular/language-service": "22.3.0",
         "@commitlint/cli": "19.8.1",
