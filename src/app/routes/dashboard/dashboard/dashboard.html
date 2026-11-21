@@ -20,15 +20,12 @@
                     <mat-card-subtitle>实时房间使用状态概览</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content class="chart-content">
-                    <div
-                        apxChart
+                    <apx-chart
                         [series]="roomStatusDonutChart().series"
                         [chart]="roomStatusDonutChart().chart"
                         [labels]="roomStatusDonutChart().labels"
-                        [plotOptions]="
-                                    roomStatusDonutChart().plotOptions
-                                "
-                    ></div>
+                        [plotOptions]="roomStatusDonutChart().plotOptions"
+                    />
                 </mat-card-content>
             </mat-card>
             } @if (pastWeekCustomerCountChart().show) {
@@ -46,12 +43,12 @@
                     >
                 </mat-card-header>
                 <mat-card-content class="chart-content">
-                    <div
+                    <apx-chart
                         apxChart
                         [series]="pastWeekCustomerCountChart().series"
                         [chart]="pastWeekCustomerCountChart().chart"
                         [xaxis]="pastWeekCustomerCountChart().xaxis"
-                    ></div>
+                    />
                 </mat-card-content>
             </mat-card>
             }
