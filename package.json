@@ -42,7 +42,7 @@
         "@ngneat/overview": "^8.1.0",
         "@ngxpert/hot-toast": "7.0.0",
         "apexcharts": "8.8.2",
-        "ngx-apexcharts": "1.0.0",
+        "ngx-apexcharts": "1.1.2",
         "ngx-avatars": "^1.9.3",
         "ngx-dom-confetti": "^0.7.0",
         "ngx-is-standalone": "0.3.0",

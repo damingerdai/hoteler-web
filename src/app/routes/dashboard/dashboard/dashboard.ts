@@ -1,5 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
-import { ApexOptions, NgxApexchartsModule } from 'ngx-apexcharts/signals';
+import { ApexOptions, NgxApexchartsModule } from 'ngx-apexcharts';
 import { CustomerData } from 'src/app/core/services/customers';
 import { RoomData } from 'src/app/core/services/room';
 import { Breadcrumb } from 'src/app/shared/components';
