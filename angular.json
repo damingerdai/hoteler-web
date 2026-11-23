@@ -149,7 +149,8 @@
                     "builder": "@angular/build:dev-server",
                     "options": {
                         "proxyConfig": "src/proxy.conf.js",
-                        "hmr": true
+                        "hmr": true,
+                        "host": "0.0.0.0"
                     },
                     "configurations": {
                         "production": {
