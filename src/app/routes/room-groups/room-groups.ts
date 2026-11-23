@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { Breadcrumb } from 'src/app/shared/components';
+import { EmptyState } from 'src/app/shared/components/empty-state';
 
 @Component({
     imports: [
@@ -25,6 +26,7 @@ import { Breadcrumb } from 'src/app/shared/components';
         ReactiveFormsModule,
 
         Breadcrumb,
+        EmptyState,
     ],
     selector: 'app-room-groups',
     styleUrl: './room-groups.scss',

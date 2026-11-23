@@ -13,8 +13,12 @@
     </header>
     <mat-card class="room-group-table" appearance="outline">
         <mat-progress-bar mode="indeterminate" color="primary" />
-        <mat-card-content
-            class="room-group-table-card-content"
-        ></mat-card-content>
+        <mat-card-content class="room-group-table-card-content">
+            <app-empty-state
+                icon="layers"
+                title="暂无房间数据"
+                description="当前酒店还没有录入房间分组信息，您可以立即创建一个新房间分组"
+            />
+        </mat-card-content>
     </mat-card>
 </div>
