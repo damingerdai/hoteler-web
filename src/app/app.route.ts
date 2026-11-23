@@ -52,6 +52,16 @@ export const routes: Routes = [
                     import('./routes/user/user.route').then((m) => m.routes),
             },
             {
+                path: 'room-group',
+                title: 'Hotler Portal -- 房间分组管理',
+                canActivate: [canActivateFn],
+                canActivateChild: [canActivateFn],
+                loadChildren: () =>
+                    import('./routes/room-groups/room-groups.routes').then(
+                        (m) => m.routes
+                    ),
+            },
+            {
                 path: 'settings',
                 title: 'Hoteler Portal -- 设置',
                 canLoad: [canActivateFn],

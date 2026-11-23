@@ -71,6 +71,11 @@ export class AdminLayout {
                     link: './orders',
                     line: '订单管理',
                 },
+                {
+                    icon: 'category',
+                    link: './room-group',
+                    line: '房间分组',
+                },
             ],
         },
     ];

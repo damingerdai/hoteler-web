@@ -1,0 +1,20 @@
+<div class="page-container">
+    <app-breadcrumb label="房间分组" url="/room-group" parentLabel="管理员" />
+    <header class="page-header">
+        <div class="title-section">
+            <h1 class="mat-healine-medium">房间分组</h1>
+            <p class="mat-body-medium secondary-text">管理酒店房间分组信息</p>
+        </div>
+        <div class="action-section">
+            <button mat-flat-button color="primary">
+                <mat-icon>add</mat-icon>创建房间分组
+            </button>
+        </div>
+    </header>
+    <mat-card class="room-group-table" appearance="outline">
+        <mat-progress-bar mode="indeterminate" color="primary" />
+        <mat-card-content
+            class="room-group-table-card-content"
+        ></mat-card-content>
+    </mat-card>
+</div>
